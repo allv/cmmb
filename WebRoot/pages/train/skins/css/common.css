@@ -1,0 +1,195 @@
+* {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;
+}
+BODY {
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+}
+IFRAME {
+	height: 100%;
+	width: 100%;
+}
+INPUT {
+	height: 20px;
+	border: 1px solid #9DB0CC;
+}
+TEXTAREA {
+	border: 1px solid #9DB0CC;
+}
+FORM {
+	margin: 0px;
+}
+input.groovybutton
+{
+   font-size:11px;
+   font-weight:bold;
+   color:#000000;
+   width:67px;
+   background-color:#33CC33;
+   border-top-style:outset;
+   border-top-color:#336699;
+   border-top-width:1px;
+   border-bottom-style:outset;
+   border-bottom-color:#336699;
+   border-bottom-width:1px;
+   border-left-style:outset;
+   border-left-color:#336699;
+   border-left-width:1px;
+   border-right-style:outset;
+   border-right-color:#336699;
+   border-right-width:1px;
+}
+
+BUTTON {
+   font-size:11px;
+   font-weight:bold;
+   color:#000000;
+   width:78px;
+   background-color:#33CC33;
+   border-top-style:outset;
+   border-top-color:#336699;
+   border-top-width:1px;
+   border-bottom-style:outset;
+   border-bottom-color:#336699;
+   border-bottom-width:1px;
+   border-left-style:outset;
+   border-left-color:#336699;
+   border-left-width:1px;
+   border-right-style:outset;
+   border-right-color:#336699;
+   border-right-width:1px;
+}
+#ERROR_MSG {
+	font-weight: bold;
+	color: #FF0000;
+}
+.noInput input {
+	height: 25px;
+	width: 20px;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+}
+
+.errorInput {
+	border: 2px solid #FF0000;
+}
+
+input.checkBox1 {
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	line-height: 0px;
+	height: 18px;
+	width: 18px;
+}
+
+.select {
+	position: absolute;
+	width: 158px; /* With the padding included, the width is 190 pixels: the actual width of the image. */
+	height: 21px;
+	padding: 0 24px 0 8px;
+	color: #fff;
+	font: 12px/21px arial,sans-serif;
+	overflow: hidden;
+}
+
+input.radio{
+    border:none;
+    display:none;
+}
+
+.tabcss{
+   table-layout:auto;
+   border:solid #add9c0; border-width:1px 0px 0px 1px;
+}
+.tabcss tr{
+}
+
+.tabcss td{
+   border:solid #add9c0; border-width:0px 1px 1px 0px; padding:0px 0px;
+}
+
+.tabcss th{
+   border:solid #add9c0; border-width:0px 1px 1px 0px; padding:0px 0px;
+}
+
+.tdclass{
+   border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;
+}
+
+.checkBox {
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	line-height: 0px;
+	height: 18px;
+	width: 18px;
+}
+.topLanBar {
+	color: #999999;
+	height: 22px;
+}
+.topLanBar_index {
+	height: 24px;
+}
+.tableList_bar {
+	padding: 5px;
+	border: 1px solid #CCCCCC;
+	background-color: #E4E4E4;
+}
+.tableList {
+	tr:hover;
+	border-collapse:collapse;
+	border:2px solid #CCCCCC;
+}
+.tableList th {
+	background-color: #99DD00;
+	color: #FFFFFF;
+}
+.tableList td b {
+	font-weight: bold;
+	color: #009900;
+}
+.tableList td font {
+	font-weight: bold;
+	color: #FF0000;
+}
+.yellow_lan {
+	background-color: #FFCC00;
+	height: 6px;
+}
+
+.input01{
+	border: 1px solid #CDC28D; /* 输入框表框颜色*/
+	background-color: #F2F9FD; /* 输入框背景颜色*/
+	height: 24px; /*输入框高度*/
+	width: 200px; /*输入框宽度*/
+	padding-top: 4px; /*输入框里的文字和输入框上边之间的距离（因为输入框比较高，输入的字不是居中的，所以设定此样式）*/
+	font-family: Arial, Helvetica, sans-serif; /*输入框文字类型*/
+	font-size: 12px; /*输入框内文字大小*/
+	padding-left: 10px; /*输入框里的文字和输入框左边之间的距离*/
+}
+
+label
+ {
+  display:-moz-inline-block;
+  display:inline-block;
+  cursor:pointer;
+  margin:0px 0;
+  padding-left:20px;
+  line-height:15px;
+  background:url(../img/1.gif) no-repeat left top;
+ }
+ label.checked
+ {
+  background-position:left bottom;
+ }

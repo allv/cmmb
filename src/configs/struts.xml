@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation"
+		value="false" />
+	<constant name="struts.action.extension" value="do" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.custom.i18n.resources" value="langue"></constant>
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<include file="configs/struts-wlw.xml" />
+	<include file="configs/struts-dhh.xml" />
+
+	<package name="admin" extends="struts-default">
+		<action name="index"
+			class="com.wootion.idp.view.action.login.UserLoginAction">
+			<result name="sucess">/pages/train/login.jsp</result>
+		</action>
+		<action name="login"
+			class="com.wootion.idp.view.action.login.LoginUserAction">
+			<result name="sucess">/pages/train/main.jsp</result>
+			<result name="failure">/pages/train/login.jsp</result>
+		</action>
+		<action name="logout"
+			class="com.wootion.idp.view.action.login.LogOutAction">
+			<result name="sucess">/pages/train/login.jsp</result>
+		</action>
+		<action name="menu"
+			class="com.wootion.idp.view.action.function.MenuAction">
+			<result name="sucess">/pages/train/menu.jsp</result>
+		</action>
+		<!-- 用户管理   begin -->
+		<action name="useradd"
+			class="com.wootion.idp.view.action.user.UserAddAction">
+			<result name="sucess">/pages/train/user/add.jsp</result>
+		</action>
+		<action name="adduser"
+			class="com.wootion.idp.view.action.user.AddUserAction">
+			<result name="sucess">/pages/train/message.jsp</result>
+			<result name="failure">/pages/train/user/add.jsp</result>
+		</action>
+		<action name="usermodify"
+			class="com.wootion.idp.view.action.user.UserModifyAction">
+			<result name="sucess">/pages/train/user/modify.jsp</result>
+		</action>
+		<action name="modifyuser"
+			class="com.wootion.idp.view.action.user.ModifyUserAction">
+			<result name="sucess">/pages/train/message.jsp</result>
+		</action>
+		<action name="deleteuser"
+			class="com.wootion.idp.view.action.user.DeleteUserAction">
+			<result name="sucess">/pages/train/message.jsp</result>
+		</action>
+		<action name="queryuser"
+			class="com.wootion.idp.view.action.user.QueryUserAction">
+			<result name="sucess">/pages/train/user/user.jsp</result>
+		</action>
+		<action name="fprole"
+			class="com.wootion.idp.view.action.user.RoleFPUserAction">
+			<result name="sucess">/pages/train/user/fprole.jsp</result>
+		</action>
+		
+		<action name="active"
+			class="com.wootion.idp.view.action.user.ActiveUserAction">
+			<result name="sucess">/pages/train/message.jsp</result>
+		</action>
+		<action name="dofprole"
+			class="com.wootion.idp.view.action.user.DoFPRoleAction">
+			<result name="sucess">/pages/train/message.jsp</result>
+		</action>
+		<!-- 用户管理   end -->
+		<!-- 角色管理   begin -->
+		<action name="queryrole"
+			class="com.wootion.idp.view.action.role.QueryRoleAction">
+			<result name="sucess">/pages/train/role/role.jsp</result>
+		</action>
+		<action name="roleadd"
+			class="com.wootion.idp.view.action.role.RoleAddAction">
+			<result name="sucess">/pages/train/role/add.jsp</result>
+		</action>
+		<action name="addrole"
+			class="com.wootion.idp.view.action.role.AddRoleAction">
+			<result name="sucess">/pages/train/message.jsp</result>
+		</action>
+		<action name="rolemodify"
+			class="com.wootion.idp.view.action.role.RoleModifyAction">
+			<result name="sucess">/pages/train/role/modify.jsp</result>
+		</action>
+		<action name="modifyrole"
+			class="com.wootion.idp.view.action.role.ModifyRoleAction">
+			<result name="sucess">/pages/train/message.jsp</result>
+		</action>
+		<action name="deleterole"
+			class="com.wootion.idp.view.action.role.DeleteRoleAction">
+			<result name="sucess">/pages/train/message.jsp</result>
+		</action>
+		<action name="fpermission"
+			class="com.wootion.idp.view.action.role.GetRolePermissionAction">
+			<result name="sucess">
+				/pages/train/role/fpermission.jsp
+			</result>
+		</action>
+		<action name="dofpermission"
+			class="com.wootion.idp.view.action.role.DoFPermissionAction">
+			<result name="sucess">/pages/train/message.jsp</result>
+		</action>
+		<!-- 角色管理   end -->
+	</package>
+
+</struts>

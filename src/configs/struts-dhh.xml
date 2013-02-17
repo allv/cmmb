@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="dhh" extends="struts-default">
+		<action name="welcome"
+			class="com.wootion.cmmb.view.action.welcome.WelcomeAction">
+			<result name="sucess">/pages/train/welcome.jsp</result>
+		</action>
+
+		<action name="userregister"
+			class="com.wootion.cmmb.view.action.user.UserRegisterAction">
+			<result name="sucess">/pages/train/register.jsp</result>
+		</action>
+		<action name="userregisterdo"
+			class="com.wootion.cmmb.view.action.user.UserRegisterDoAction">
+			<result name="sucess">/pages/train/message.jsp</result>
+			<result name="failure">/pages/train/register.jsp</result>
+		</action>
+		<action name="modifyuserinfo"
+			class="com.wootion.cmmb.view.action.user.ModifyUserInfoAction">
+			<result name="sucess">
+				/pages/train/modifyUserInfo.jsp
+			</result>
+		</action>
+		<action name="modifyuserinfodo"
+			class="com.wootion.cmmb.view.action.user.ModifyUserInfoDoAction">
+			<result name="sucess">/pages/train/message.jsp</result>
+		</action>
+		<action name="userview"
+			class="com.wootion.cmmb.view.action.user.UserViewAction">
+			<result name="sucess">
+				/pages/train/user/userInfo.jsp
+			</result>
+		</action>
+		<action name="uppassword"
+			class="com.wootion.cmmb.view.action.user.UpPasswordAction">
+			<result name="sucess">/pages/train/upPassword.jsp</result>
+		</action>
+		<action name="uppassworddo"
+			class="com.wootion.cmmb.view.action.user.UpPasswordDoAction">
+			<result name="sucess">/pages/train/message.jsp</result>
+		</action>
+		<action name="unregister"
+			class="com.wootion.cmmb.view.action.user.UnRegisterAction">
+			<result name="sucess">/pages/train/unRegister.jsp</result>
+		</action>
+		<action name="unregisterdo"
+			class="com.wootion.cmmb.view.action.user.UnRegisterDoAction">
+			<result name="sucess">/pages/train/message.jsp</result>
+		</action>
+	</package>
+</struts>

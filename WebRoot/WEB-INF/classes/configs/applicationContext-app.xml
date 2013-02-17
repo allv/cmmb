@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<bean id="baseDao"
+		class="com.wootion.cimp.idao.impl.BaseDaoHibernateImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="projectService" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.wootion.cimp.services.impl.projectServiceImpl">
+				<property name="baseDao">
+					<ref bean="baseDao" />
+				</property>
+				<property name="commondao">
+					<ref bean="commondao" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="memberService" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.wootion.cimp.services.impl.memberServiceImpl">
+				<property name="baseDao">
+					<ref bean="baseDao" />
+				</property>
+				<property name="commondao">
+					<ref bean="commondao" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="memberHealthService" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.wootion.cimp.services.impl.memberHealthServiceImpl">
+				<property name="baseDao">
+					<ref bean="baseDao" />
+				</property>
+				<property name="commondao">
+					<ref bean="commondao" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="ActivityService" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.wootion.cmmb.service.activity.ActivityServiceImpl">
+				<property name="baseDao">
+					<ref bean="baseDao" />
+				</property>
+				<property name="commondao">
+					<ref bean="commondao" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="PsychologyService" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.wootion.cmmb.service.psychology.PsychologyServiceImpl">
+				<property name="baseDao">
+					<ref bean="baseDao" />
+				</property>
+				<property name="commondao">
+					<ref bean="commondao" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="BathrecordService" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.wootion.cmmb.service.careservices.BathrecordServiceImpl">
+				<property name="baseDao">
+					<ref bean="baseDao" />
+				</property>
+				<property name="commondao">
+					<ref bean="commondao" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="SensoryService" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.wootion.cmmb.service.activity.SensoryServiceImpl">
+				<property name="baseDao">
+					<ref bean="baseDao" />
+				</property>
+				<property name="commondao">
+					<ref bean="commondao" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="BloodpressureService" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.wootion.cmmb.service.activity.BloodpressureServiceImpl">
+				<property name="baseDao">
+					<ref bean="baseDao" />
+				</property>
+				<property name="commondao">
+					<ref bean="commondao" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="HelpcleanService" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.wootion.cmmb.service.careservices.HelpcleanServiceImpl">
+				<property name="baseDao">
+					<ref bean="baseDao" />
+				</property>
+				<property name="commondao">
+					<ref bean="commondao" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="OthercareservicesService" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.wootion.cmmb.service.careservices.OthercareservicesServiceImpl">
+				<property name="baseDao">
+					<ref bean="baseDao" />
+				</property>
+				<property name="commondao">
+					<ref bean="commondao" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="ServiceplanService" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.wootion.cmmb.service.careservices.ServiceplanServiceImpl">
+				<property name="baseDao">
+					<ref bean="baseDao" />
+				</property>
+				<property name="commondao">
+					<ref bean="commondao" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="ManagementService" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.wootion.cmmb.service.management.ManagementServiceImpl">
+				<property name="baseDao">
+					<ref bean="baseDao" />
+				</property>
+				<property name="commondao">
+					<ref bean="commondao" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+    <bean id="InstrumentService" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.wootion.cmmb.service.activity.InstrumentServiceImpl">
+				<property name="baseDao">
+					<ref bean="baseDao" />
+				</property>
+				<property name="commondao">
+					<ref bean="commondao" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="VolunteerService" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.wootion.cmmb.service.volunteer.VolunteerServiceImpl">
+				<property name="baseDao">
+					<ref bean="baseDao" />
+				</property>
+				<property name="commondao">
+					<ref bean="commondao" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+    <bean id="careService" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.wootion.cmmb.service.careservices.careServiceImpl">
+				<property name="baseDao">
+					<ref bean="baseDao" />
+				</property>
+				<property name="commondao">
+					<ref bean="commondao" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="cmmpconfig"
+		class="com.wootion.cimp.util.CMMPConfig">
+		
+	</bean>
+</beans>

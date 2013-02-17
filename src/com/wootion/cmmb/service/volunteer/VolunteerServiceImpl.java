@@ -1,0 +1,208 @@
+package com.wootion.cmmb.service.volunteer;
+
+
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+import com.wootion.cimp.idao.BaseDao;
+import com.wootion.cimp.vo.data.Member;
+import com.wootion.cmmb.persistenc.po.bean.Activityinfo;
+import com.wootion.cmmb.persistenc.po.bean.Volunteerhistory;
+import com.wootion.cmmb.persistenc.po.bean.Volunteerinfo;
+import com.wootion.cmmb.persistenc.po.bean.activityhistory;
+import com.wootion.cmmb.persistenc.po.bean.psychologyinfo;
+import com.wootion.idp.common.utils.QueryResult;
+import com.wootion.idp.persistence.dao.CommonDao;
+
+public class VolunteerServiceImpl implements VolunteerService
+{
+	private BaseDao baseDao;
+	private CommonDao commondao;
+	public CommonDao getCommondao() {
+		return commondao;
+	}
+	public void setCommondao(CommonDao commondao) {
+		this.commondao = commondao;
+	}
+	public BaseDao getBaseDao() {
+		return baseDao;
+	}
+	public void setBaseDao(BaseDao baseDao) {
+		this.baseDao = baseDao;
+	}
+	
+	public void saveVolunteer(Volunteerinfo vinfos)
+	{
+		baseDao.save(vinfos);
+	}
+	public QueryResult<Volunteerinfo> getQueryVolResult(Integer index,
+            Integer maxresult, String vname, String vspecialty,
+            String sessionID) throws ParseException {
+		String whererjpql = "1 = 1";
+		List<Object> lst = new ArrayList<Object>();
+		if (vname != null && !vname.trim().equals(""))
+	    {
+	         whererjpql = whererjpql + " and o.vname like '%"
+	                 + vname + "%'";
+	    }
+		if (vspecialty != null && !vspecialty.trim().equals(""))
+	     {
+	         whererjpql = whererjpql + " and o.vspecialty like '%"
+	                 + vspecialty + "%'";
+	     }
+	     LinkedHashMap<String, String> map = new LinkedHashMap<String, String>();
+
+	     map.put("vtime", "DESC");
+	     return this.commondao.getScrollData(Volunteerinfo.class, "vid", index,
+	             maxresult, whererjpql, lst.toArray(), map);
+	}
+	public boolean deleVolunteerinfo(String vnumber) throws Exception {
+		List<Volunteerinfo> volList = null;
+		try {
+			volList = new ArrayList<Volunteerinfo>();
+			volList = baseDao.find("from Volunteerinfo ac where ac.vnumber=?", vnumber);
+			
+			if (volList != null && volList.size() > 0) {
+				for (int i=0; i<volList.size(); i++)
+				{
+					baseDao.delete(volList.get(i));
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	public String modifyvol(String vid, String vnumber, String vtime, String vname, String vage, 
+			String vgender, String vphone, String vspecialty, String vcommunitywork, String vstudy,
+			String vintention, String vtrain) throws ParseException {
+		SessionFactory factory = baseDao.getFactory();
+        Session s1 = factory.openSession();
+        Session s2 = factory.openSession();
+        Transaction tx1 = s1.beginTransaction();
+        tx1.begin();
+        Volunteerinfo vol = new Volunteerinfo();
+		List<Volunteerinfo> list = baseDao.find("from Volunteerinfo ai where ai.vid=?", vid);
+		//保存活动历史记录
+		if (list.size() > 0)
+		{
+			Volunteerhistory vhis = new Volunteerhistory();
+			vhis.setVnumber(list.get(0).getVnumber());
+			vhis.setVtime(list.get(0).getVtime());
+			vhis.setVname(list.get(0).getVname());
+			vhis.setVage(list.get(0).getVage());
+			vhis.setVgender(list.get(0).getVgender());
+			vhis.setVphone(list.get(0).getVphone());
+			vhis.setVspecialty(list.get(0).getVspecialty());
+			vhis.setVcommunitywork(list.get(0).getVcommunitywork());
+			vhis.setVstudy(list.get(0).getVstudy());
+			vhis.setVintention(list.get(0).getVintention());
+			vhis.setVtrain(list.get(0).getVtrain());
+			
+			s1.save(vhis);
+			tx1.commit();
+			s1.close();
+		}
+		Transaction tx2 = s2.beginTransaction();
+	    tx2.begin();
+		{
+			try
+			{
+				vol.setVid(vid);
+				vol.setVnumber(vnumber);
+				vol.setVtime(vtime);
+				vol.setVname(vname);
+				vol.setVage(vage);
+				vol.setVgender(vgender);
+				vol.setVphone(vphone);
+				vol.setVspecialty(vspecialty);
+				vol.setVcommunitywork(vcommunitywork);
+				vol.setVstudy(vstudy);
+				vol.setVintention(vintention);
+				vol.setVtrain(vtrain);
+				//baseDao.update(act);
+				s2.update(vol);
+				tx2.commit();
+				s2.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+				tx2.commit();
+				s2.close();
+				return "error";
+			}
+		}
+    	return "success";
+	}
+	
+	public Volunteerinfo lookVolunteer(String vid) throws Exception {
+		List<Volunteerinfo> volList = null;
+		try {
+			volList = new ArrayList<Volunteerinfo>();
+			volList = baseDao.find("from Volunteerinfo ta where ta.vid=?", vid);
+			if (volList.size() > 0) {
+				return volList.get(0);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public boolean delevolchoose(String vid) throws Exception {
+		List<Volunteerinfo> volList = null;
+		try {
+			volList = new ArrayList<Volunteerinfo>();
+			volList = baseDao.find("from Volunteerinfo ps where vid=?", vid);
+			if (volList != null && volList.size() > 0) {
+				baseDao.delete(volList.get(0));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	
+	public QueryResult<Volunteerhistory> getQueryVolHistoryResult(Integer index,
+            Integer maxresult, String vname, String vspecialty,
+            String sessionID) throws ParseException {
+		String whererjpql = "o.vid in (select max(a.vid) from Volunteerhistory as a group by a.vnumber)";
+		List<Object> lst = new ArrayList<Object>();
+		if (vname != null && !vname.trim().equals(""))
+	    {
+	         whererjpql = whererjpql + " and o.vname like '%"
+	                 + vname + "%'";
+	    }
+		if (vspecialty != null && !vspecialty.trim().equals(""))
+	     {
+	         whererjpql = whererjpql + " and o.vspecialty like '%"
+	                 + vspecialty + "%'";
+	     }
+		
+	     LinkedHashMap<String, String> map = new LinkedHashMap<String, String>();
+
+	     map.put("vtime", "DESC");
+	     return this.commondao.getScrollData(Volunteerhistory.class, "vid", index,
+	             maxresult, whererjpql, lst.toArray(), map);
+	}
+	public Volunteerhistory lookVolunteerhis(String vid)
+			throws Exception {
+		List<Volunteerhistory> volhisList = null;
+		try {
+			volhisList = new ArrayList<Volunteerhistory>();
+			volhisList = baseDao.find("from Volunteerhistory ta where ta.vid=?", vid);
+			if (volhisList.size() > 0) {
+				return volhisList.get(0);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+}

@@ -1,0 +1,46 @@
+@charset "utf-8";
+
+.dialogbox
+{
+	position: absolute;
+	left: expression((body.clientWidth-600)/2);
+	top: expression((body.clientHeight-400)/2);
+	width: 600px;
+	height: 400px;
+	z-index: 1000;
+	visibility: visible;
+}
+
+.container
+ {
+ 	text-align: center;
+	position: absolute;
+	top: 40%;
+	width: 100%;
+	left: 0;
+}
+
+.loader
+{
+	font-family: Tahoma, Helvetica, sans;
+	font-size: 11.5px;
+	color: #000000;
+	background-color: #FFFFFF;
+	padding: 10px 0 16px 0;
+	margin: 2 auto;
+	display: block;
+	width: 900px;
+	border: 1px solid #5a667b;
+	text-align: left;
+	z-index: 1002;
+}
+
+.loader th {
+	padding-right:5px;
+	text-align:right;
+}
+
+.loader td {
+	padding-left:5px;
+	text-align:left;
+}
