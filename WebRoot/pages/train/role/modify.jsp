@@ -18,7 +18,7 @@ function onSubmit(){
   </tr>
 </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
-<form method="post" action="modifyrole.do" onSubmit="return onSubmit()">
+<form method="post" action="modifyrole.do" onSubmit="return onSubmit();">
 	<input type="hidden" name="wtroleId" id="wtroleId" value="${role.wtroleId }" />
   <tr>
     <td align="right">角色名称</td>
@@ -35,7 +35,7 @@ function onSubmit(){
   <tr>
     <td>&nbsp;</td>
     <td><button type="submit">提交</button> 
-		<button onClick="forward('queryrole.do')">返回</button></td>
+		<button onClick="javascript:window.close();">返回</button></td>
   </tr>
 </form>
 </table>

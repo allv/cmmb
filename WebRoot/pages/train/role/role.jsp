@@ -7,17 +7,38 @@
 <link href="<%=basePath%>/pages/train/skins/css/common.css" rel="stylesheet" type="text/css" />
 </head>
 <script type="text/javascript">
-   function hiddbutton(cid){
-       if(cid=='10001'||cid=='10002'){
-          document.getElementById('02').disabled="disabled" ; 
-          document.getElementById('03').disabled="disabled" ; 
-          document.getElementById('04').disabled="disabled" ; 
-       }else{
-          document.getElementById('02').disabled="" ;
-          document.getElementById('03').disabled="" ;
-          document.getElementById('04').disabled="" ; 
-       }
-   }
+function showDialog(url) {
+	var obj = new Object();
+	window.showModalDialog(url,obj,"dialogWidth=500px;dialogHeight=250px"); 
+}
+function createRole() {
+	showDialog('roleadd.do');
+}
+
+function modifyRole(roleid) {
+	showDialog('rolemodify.do?mid=' + roleid);
+	$("#btn_search").click();
+}
+
+function assignPermissions(roleid) {
+	showDialog('fpermission.do?mid=' + roleid);
+	$("#btn_search").click();
+}
+
+function deleteRole(roleid) {
+	if(confirm('确认删除?')){
+		$.ajax({
+			   url: "<%=basePath%>/ajaxDeleteRole.htm?roleid="+roleid,
+			   type: "POST",
+			   success: function(data){
+			   alert(data);
+			   $("#btn_search").click();
+			   }
+			 });
+	}else {
+		void(0);
+	}
+}
 </script>
 <body>
 <div class="topLanBar"><b>当前位置：</b>基本信息管理 > 角色管理</div>
@@ -38,48 +59,33 @@
     <tr>
        <td align="right">角色名</td>
       <td><input name="rolename" value="${rolename }" type="text" size="20">
-       <button type="submit">搜索</button></td>
+       <button type="submit" id="btn_search">搜索</button></td>
     </tr>
   </table>
   <table width="100%" border="0" cellpadding="3" cellspacing="1" class="tableList">
     <tr>
       <td colspan="8" class="tableList_bar">
-		<button id="01" onClick="forward('roleadd.do')">
-		<img src="<%=basePath%>/pages/train/skins/img/add.gif">新增</button>
-    <button id="02" onClick="onOption('rolemodify.do')">
-		<img src="<%=basePath%>/pages/train/skins/img/edit.gif">修改</button>
-    <button id="03" onClick="onDelete('deleterole.do')">
-		<img src="<%=basePath%>/pages/train/skins/img/del.gif">删除</button>
-    <button id="04" onClick="onOption('fpermission.do')">分配权限</button>
+		<button id="01" onClick="createRole()">
+		<img src="<%=basePath%>/pages/train/skins/img/add.gif">新增角色</button>
        </td>
     </tr>
     <tr>
-      <th>&nbsp;</th>
       <th nowrap>角色名称</th>
       <th nowrap>创建时间</th>
-      <!-- 
-      <th nowrap>是否可用</th>
-       -->
       <th nowrap>描述</th>
+      <th nowrap>操作</th>
     </tr>
     <c:forEach var="ftbl" items="${result.resultlist}" varStatus="loopStatus">
     	<tr>
-	      <td align="center" bgcolor="#CBD7ED"><input class="radio" type="radio" id="${ftbl.wtroleId}" name="checkbox" value="${ftbl.wtroleId}" onclick="hiddbutton(this.value);"></td>
-	      <td nowrap bgcolor="#E4E4E4">${ftbl.wtroleName}</td>
-	      <td nowrap bgcolor="#E4E4E4"><fmt:formatDate value="${ftbl.wtroleCreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-	      <!-- 
-	      <td nowrap bgcolor="#E4E4E4">
-	      	 <c:choose>
-		         <c:when test="${1 == ftbl.wtroleIsuseable}" >
-		           可用 
-		         </c:when >
-		       <c:otherwise > 
-		           不可用
-		       </c:otherwise>
-		     </c:choose>
-		  </td>
-		   -->
-	      <td nowrap bgcolor="#E4E4E4">${ftbl.wtroleDescription}</td>
+	      <td align="center" nowrap bgcolor="#E4E4E4">${ftbl.wtroleName} </td>
+	      <td align="center" nowrap bgcolor="#E4E4E4"><fmt:formatDate value="${ftbl.wtroleCreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+	      <td align="center" nowrap bgcolor="#E4E4E4">${ftbl.wtroleDescription}</td>
+	      <td align="center" align="center" nowrap bgcolor="#E4E4E4"><a href="javascript:deleteRole('${ftbl.wtroleId}')">删除</a>&nbsp;&nbsp;
+	      <a href="javascript:modifyRole('${ftbl.wtroleId}');">编辑</a>&nbsp;&nbsp;
+	      <a href="javascript:viewMembers('${ftbl.wtroleId}');">查看会员</a>&nbsp;&nbsp;
+	      <a href="javascript:assignMemebers('${ftbl.wtroleId}');">分配会员</a>&nbsp;&nbsp;
+	      <a href="javascript:viewPermissions('${ftbl.wtroleId}');">查看权限</a>&nbsp;&nbsp;
+	      <a href="javascript:assignPermissions('${ftbl.wtroleId}');">分配权限</a>&nbsp;&nbsp;</td>
     	</tr>
     </c:forEach>
   </table>

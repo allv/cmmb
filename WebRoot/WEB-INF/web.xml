@@ -92,6 +92,16 @@
         <servlet-name>ImageUploadServlet</servlet-name>
         <url-pattern>/ImageUploadServlet.htm</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>AjaxDeleteRole</servlet-name>
+        <servlet-class>com.wootion.cmmb.view.servlet.AjaxDeleteRoleServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AjaxDeleteRole</servlet-name>
+        <url-pattern>/ajaxDeleteRole.htm</url-pattern>
+    </servlet-mapping>
 	
 	<error-page>
 		<error-code>400</error-code>

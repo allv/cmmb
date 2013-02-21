@@ -27,15 +27,6 @@ function onSubmit(){
     <td align="right">描述</td>
     <td><input type="text" name="wtroleDescription" id="wtroleDescription"></td>
   </tr>
-  <tr>
-    <td align="right">权限组</td>
-    <td>
-   	<select name="parentrole">
-		<option value="10001">管理员</option>
-		<option value="10002">街道工作人员</option>
-	</select>
-	</td>
-  </tr>
 	<tr>
       <td align="right">&nbsp;</td>
       <td id="ERROR_MSG"></td>
@@ -43,7 +34,7 @@ function onSubmit(){
   <tr>
     <td>&nbsp;</td>
     <td><button type="submit">提交</button> 
-		<button onClick="forward('queryrole.do')">返回</button></td>
+		<button onClick="javascript:window.close();">返回</button></td>
   </tr>
 </form>
 </table>

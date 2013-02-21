@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file="../import.jsp"%>
+<%@ page import="java.util.List"%>
+<%@ page import="com.wootion.idp.view.vo.FordNagativation"%>
 <html>
 <head>
 <title>分配权限</title>
@@ -120,10 +122,16 @@ BUTTON {
 	<%
 	    List<FordNagativation> lst = (List<FordNagativation>)request.getAttribute("lst");
 		List<FordNagativation> parentlst = (List<FordNagativation>)request.getAttribute("parentlst");
+		System.out.println("allen test lst"+lst);
+		System.out.println("allen test lst"+lst.size());
+		System.out.println("allen test parentlst"+parentlst);
+		System.out.println("allen test parentlst"+parentlst.size());
 		for(int i=0;i<lst.size();i++)
 		{
 			FordNagativation fnFir = lst.get(i);
 			FordNagativation roleFir = parentlst.get(i);
+			System.out.println("allen test fnFir"+fnFir);
+			System.out.println("allen test roleFir"+roleFir);
 			if("yes".equals(roleFir.getHaveIt().trim())){
 				if("yes".equals(fnFir.getHaveIt().trim())){
 				%>
@@ -137,10 +145,14 @@ BUTTON {
 			<%}
 			List<FordNagativation> lstSec = fnFir.getLst();
 			List<FordNagativation> rolelstSec = roleFir.getLst();
+			System.out.println("allen test lstSec"+lstSec);
+			System.out.println("allen test rolelstSec"+rolelstSec);
 			for(int j=0;j<lstSec.size();j++)
 			{
 				FordNagativation fnSec = lstSec.get(j);
 				FordNagativation roleSec = rolelstSec.get(j);
+				System.out.println("allen test fnSec"+fnSec);
+				System.out.println("allen test roleSec"+roleSec);
 				if("yes".equals(roleSec.getHaveIt().trim())){
 					if("yes".equals(fnSec.getHaveIt().trim())){
 					%>
@@ -152,24 +164,6 @@ BUTTON {
 				}else{%>
 				        dd.add(<%=fnSec.getNagativeID()%>,<%=fnSec.getParentID()%>, '<input type="checkbox" name="checkp1" value="<%=fnSec.getNagativeID()%>" class="fakech<%=fnSec.getParentID()%>" id="fakech<%=fnSec.getNagativeID()%>" onClick="checkStatus(<%=fnSec.getNagativeID()%>,this)" disabled="disabled">&nbsp;<%=fnSec.getNagativeName()%> ');
 				<%}
-				List<FordNagativation> lstTrd = fnSec.getLstResource();
-				List<FordNagativation> rolelstTrd = roleSec.getLstResource();
-				for(int k=0;k<lstTrd.size();k++)
-				{
-					FordNagativation fnTrd = lstTrd.get(k);
-					FordNagativation roleTrd = rolelstTrd.get(k);
-					if("yes".equals(roleTrd.getHaveIt().trim())){
-						if("yes".equals(fnTrd.getHaveIt().trim())){
-						%>
-							dd.add(<%=fnTrd.getNagativeID()%>,<%=fnTrd.getParentID()%>, '<input type="checkbox" checked name="checkc" value="<%=fnTrd.getNagativeID()%>" class="<%=fnTrd.getParentID()%>" id="ch<%=fnTrd.getNagativeID()%>" onClick="checkStatus(<%=fnTrd.getNagativeID()%>,this)">&nbsp;<%=fnTrd.getNagativeName()%> ');
-						<%}else{
-						%>
-							dd.add(<%=fnTrd.getNagativeID()%>,<%=fnTrd.getParentID()%>, '<input type="checkbox" name="checkc" value="<%=fnTrd.getNagativeID()%>" class="<%=fnTrd.getParentID()%>" id="ch<%=fnTrd.getNagativeID()%>" onClick="checkStatus(<%=fnTrd.getNagativeID()%>,this)">&nbsp;<%=fnTrd.getNagativeName()%> ');
-					    <%}
-				    }else{%>
-				           dd.add(<%=fnTrd.getNagativeID()%>,<%=fnTrd.getParentID()%>, '<input type="checkbox" name="checkc1" value="<%=fnTrd.getNagativeID()%>" class="fakech<%=fnTrd.getParentID()%>" id="fakech<%=fnTrd.getNagativeID()%>" onClick="checkStatus(<%=fnTrd.getNagativeID()%>,this)" disabled="disabled">&nbsp;<%=fnTrd.getNagativeName()%> ');
-				    <%}
-				}
 			}
 		}
 	%>
@@ -182,7 +176,7 @@ BUTTON {
       <td>&nbsp;</td>
       <td><button onClick="fpermission('<%=basePath%>/dofpermission.do');">提交</button>
  
-        <button onClick="forward('queryrole.do')">返回</button></td>
+        <button onClick="window.close();">返回</button></td>
     </tr>
     </tr>
     

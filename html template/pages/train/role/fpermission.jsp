@@ -1,3 +1,4 @@
+<%@page import="com.sun.xml.internal.bind.v2.schemagen.xmlschema.Import"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file="../import.jsp"%>
 <html>
@@ -118,6 +119,7 @@ BUTTON {
 	dd.add(0,-1, '权限列表(<font color="red">请给角色：&nbsp;<%=request.getAttribute("roleName")%>&nbsp;分配相应权限)</font>');
 	
 	<%
+	import com.wootion.idp.view.vo.FordNagativation;
 	    List<FordNagativation> lst = (List<FordNagativation>)request.getAttribute("lst");
 		List<FordNagativation> parentlst = (List<FordNagativation>)request.getAttribute("parentlst");
 		for(int i=0;i<lst.size();i++)

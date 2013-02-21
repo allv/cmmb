@@ -131,7 +131,6 @@ public class DataInit {
 				commonService.saveObject(resUserAdd);
 				
 				// 初始化功能 角色管理
-				/*
 				Wtfunction funrole = new Wtfunction();
 				funrole.setWtfunctionId(102L);
 				funrole.setWtfunParentid(100L);
@@ -151,7 +150,7 @@ public class DataInit {
 				resRoleAdd.setWtresCode("01");
 				resRoleAdd.setWtresCreatetime(date);
 				commonService.saveObject(resRoleAdd);
-                */
+				
 				// 用户角色关系
 				WtUserRoleRelationship ur = new WtUserRoleRelationship();
 				ur.setWturId(10001L);
@@ -170,6 +169,12 @@ public class DataInit {
 				rf2.setWtfunction(funuser);
 				rf2.setWtrole(role);
 				commonService.saveObject(rf2);
+				
+				Wtrolefunrelationship rf3 = new Wtrolefunrelationship();
+				rf3.setWtrolefunId(10003L);
+				rf3.setWtfunction(funrole);
+				rf3.setWtrole(role);
+				commonService.saveObject(rf3);
 				
 				// 许可表
 				Wtpermission per1 = new Wtpermission();

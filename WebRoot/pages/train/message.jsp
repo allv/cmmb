@@ -23,6 +23,15 @@ BODY {
 }
 -->
 </style>
+<script type="text/javascript">
+function goBack(backURL) {
+	if(window.parent != null){
+		window.close();
+	}else {
+		window.location.href = "${back }";
+	}
+}
+</script>
 </head>
 <body>
 <table width="100%" height="100%" cellspacing="0">
@@ -45,14 +54,15 @@ BODY {
 				  time = time - 1;
 				  var span_dt_dt = document.getElementById("span_dt_dt");
 				  span_dt_dt.innerHTML = time ;
-					if(time == 0)
-						window.location.href = "${back }";
+					if(time == 0){
+						goBack("${back }");
+					}
 				} 
 				show_date_time(); 
 				</script></td>
           </tr>
           <tr>
-            <td colspan="2" align="right"><button onClick="window.location.href='${back }'">返回</button></td>
+            <td colspan="2" align="right"><button onClick="goBack('${back }')">返回</button></td>
           </tr>
         </table></td>
       </tr>
