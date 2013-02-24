@@ -20,8 +20,23 @@ function modifyRole(roleid) {
 	$("#btn_search").click();
 }
 
+function viewPermissions(roleid) {
+	showDialog('viewPermission.do?mid=' + roleid);
+	$("#btn_search").click();
+}
+
 function assignPermissions(roleid) {
 	showDialog('fpermission.do?mid=' + roleid);
+	$("#btn_search").click();
+}
+
+function viewMembers(roleid) {
+	showDialog('viewRoleMember.do?mid=' + roleid);
+	$("#btn_search").click();
+}
+
+function assignMemebers(roleid) {
+	showDialog('getRoleMember.do?mid=' + roleid);
 	$("#btn_search").click();
 }
 

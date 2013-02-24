@@ -140,4 +140,9 @@ public interface UserManagerService extends BaseService
     
     //public List<Wtuser> getSubUserId(String userid);
 
+    /**
+     * 获取全部用户(未删除的,激活的)
+     * @return
+     */
+    public List<Wtuser> getAllUsersWithUsable();
 }

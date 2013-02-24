@@ -172,11 +172,9 @@ BUTTON {
 </script>
       </td>
     </tr>
-    <tr>
-      <td>&nbsp;</td>
+    <tr align="center">
       <td><button onClick="fpermission('<%=basePath%>/dofpermission.do');">提交</button>
- 
-        <button onClick="window.close();">返回</button></td>
+        <button onClick="window.close();" type="reset">返回</button></td>
     </tr>
     </tr>
     

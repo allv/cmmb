@@ -9,6 +9,9 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.StringUtils;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.wootion.idp.common.utils.RoleUtil;
@@ -23,6 +26,21 @@ import com.wootion.idp.view.vo.LeftMenu;
 
 public class UserManagerDAOHibernate extends HibernateDaoSupport implements
 		UserManagerDAO {
+    
+    @SuppressWarnings("unchecked")
+    public List<Wtuser> getUsers(Wtuser queryObject) {
+	return (List<Wtuser>)getHibernateTemplate().findByExample(queryObject);
+    }
+    
+    public Wtuser findUserById(Long userid) { 
+	DetachedCriteria criteria=DetachedCriteria.forClass(Wtuser.class);
+	criteria.add(Restrictions.eq("wtuserId", userid));
+	List<Wtuser> result = getHibernateTemplate().findByCriteria(criteria);
+	if(result.size() == 1){
+	    return result.get(0);
+	}
+	return null;
+    }
 
 	public void deleteUserRole(Long userID) {
 		Object[] objsz = new Object[] { userID };

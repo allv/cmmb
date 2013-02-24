@@ -20,6 +20,7 @@ import com.wootion.cimp.services.IMPServiceFactory;
 import com.wootion.cmmb.common.util.DateUtil;
 import com.wootion.idp.common.collections.PermissionCollection;
 import com.wootion.idp.common.collections.UserCacheBean;
+import com.wootion.idp.common.utils.DomainUtil;
 import com.wootion.idp.common.utils.EntityIDFactory;
 import com.wootion.idp.common.utils.ExcelOperate;
 import com.wootion.idp.common.utils.FordGlobal;
@@ -595,6 +596,21 @@ public class UserManagerServiceImpl extends BaseServiceImpl implements
 			e.printStackTrace();
 		}
 
+	}
+
+	@Override
+	public List<Wtuser> getAllUsersWithUsable() {
+	    List<Object> allObject = this.getAllObject(Wtuser.class);
+	    List<Wtuser> result = new ArrayList<Wtuser>();
+	    if(allObject != null ) {
+		for(Object obj:allObject) {
+		    Wtuser user = (Wtuser) obj;
+		    if(!DomainUtil.isUserDeleted(user)) {
+			result.add(user);
+		    }
+		}
+	    }
+	    return result;
 	}
 	
 	/**

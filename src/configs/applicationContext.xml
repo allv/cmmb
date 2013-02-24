@@ -107,6 +107,7 @@
 				class="com.wootion.idp.service.role.RoleManagerServiceImpl">
 				<property name="commonDao" ref="commondao" />
 				<property name="managerDAO" ref="rolemanagedao" />
+				<property name="userDAO" ref="usermanagerdao" />
 			</bean>
 		</property>
 	</bean>

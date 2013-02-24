@@ -2,17 +2,25 @@ package com.wootion.idp.service.role;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import org.apache.commons.lang.StringUtils;
 
 import com.wootion.idp.common.collections.PermissionCollection;
+import com.wootion.idp.common.utils.DomainUtil;
 import com.wootion.idp.common.utils.EntityIDFactory;
 import com.wootion.idp.common.utils.QueryResult;
 import com.wootion.idp.persistence.dao.role.RoleManagerDAO;
+import com.wootion.idp.persistence.dao.user.UserManagerDAO;
+import com.wootion.idp.persistence.po.bean.WtUserRoleRelationship;
 import com.wootion.idp.persistence.po.bean.Wtfunction;
 import com.wootion.idp.persistence.po.bean.Wtpermission;
 import com.wootion.idp.persistence.po.bean.Wtresource;
 import com.wootion.idp.persistence.po.bean.Wtrole;
 import com.wootion.idp.persistence.po.bean.Wtrolefunrelationship;
+import com.wootion.idp.persistence.po.bean.Wtuser;
 import com.wootion.idp.service.BaseServiceImpl;
 import com.wootion.idp.view.vo.FordNagativation;
 
@@ -20,6 +28,7 @@ public class RoleManagerServiceImpl extends BaseServiceImpl implements
         RoleManagerService
 {
     RoleManagerDAO managerDAO;
+    UserManagerDAO userDAO;
 
     public List<Wtpermission> getAllRolePermission()
     {
@@ -189,9 +198,11 @@ public class RoleManagerServiceImpl extends BaseServiceImpl implements
             per.setWtfrId(EntityIDFactory.getBeanID());
             per.setWtrole(wtrole);
             Wtresource resource = new Wtresource();
-            resource.setWtresourceId(Long.parseLong(temp[i]));
-            per.setWtresource(resource);
-            lstPer.add(per);
+            if(StringUtils.isNotBlank(temp[i])) {
+        	resource.setWtresourceId(Long.parseLong(temp[i]));
+        	per.setWtresource(resource);
+        	lstPer.add(per);
+            }
         }
         // 保存新关系
         managerDAO.addRFRR(roleID, lstRF, lstPer);
@@ -244,6 +255,14 @@ public class RoleManagerServiceImpl extends BaseServiceImpl implements
     public void setManagerDAO(RoleManagerDAO managerDAO)
     {
         this.managerDAO = managerDAO;
+    }
+
+    public UserManagerDAO getUserDAO() {
+        return userDAO;
+    }
+
+    public void setUserDAO(UserManagerDAO userDAO) {
+        this.userDAO = userDAO;
     }
 
     public List getRecordsByPage(int currentPage, int recordsPerPage)
@@ -321,6 +340,36 @@ public class RoleManagerServiceImpl extends BaseServiceImpl implements
         String hql = " isDelete=0";
         list = commonDao.getQueryObjects(Wtrole.class, hql, null, null);
         return list;
+    }
+
+    @Override
+    public List<Wtuser> getRoleUsers(Long roleid) {
+	List<Wtuser> result = new ArrayList<Wtuser>();
+	Wtrole role = (Wtrole) commonDao.getObject(Wtrole.class, roleid);
+	if(role == null ) return result;
+	Set<WtUserRoleRelationship> wtUserRoleRelationships = role.getWtUserRoleRelationships();
+	for(WtUserRoleRelationship relation:wtUserRoleRelationships) {
+	    if(!DomainUtil.isUserDeleted(relation.getWtuser())) {
+		result.add(relation.getWtuser());
+	    }
+	}
+	return result;
+    }
+    
+    public boolean addRoleUsers(Long roleid,List<String> userids) {
+	Wtrole role = (Wtrole) commonDao.getObject(Wtrole.class, roleid);
+	if(role == null ) return false;
+	Set<WtUserRoleRelationship> newWtUserRoleRelationships = new HashSet<WtUserRoleRelationship>();
+	for(String userid:userids) {
+	    Wtuser user = userDAO.findUserById(Long.valueOf(userid));
+	    WtUserRoleRelationship relation = new WtUserRoleRelationship();
+	    relation.setWtrole(role);
+	    relation.setWtuser(user);
+	    newWtUserRoleRelationships.add(relation);
+	}
+	role.setWtUserRoleRelationships(newWtUserRoleRelationships);
+	commonDao.saveObject(role);
+	return true;
     }
 
 }

@@ -11,6 +11,10 @@ import java.util.Set;
  */
 
 public class Wtuser implements java.io.Serializable {
+    
+    public static String Usabled = "1";
+    public static String UnUsabled = "0";
+    
 	/** 公司全称 */
 	private String corpName;
 	/** 公司地址 */

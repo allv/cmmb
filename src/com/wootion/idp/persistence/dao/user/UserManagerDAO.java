@@ -58,4 +58,8 @@ public interface UserManagerDAO {
    public int sameLoginNameNum(String loginName);
    
    public boolean saveuser(Wtuser user);
+   
+   public List<Wtuser> getUsers(Wtuser queryObject);
+   
+   public Wtuser findUserById(Long userid);
 }

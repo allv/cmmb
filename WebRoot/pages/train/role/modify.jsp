@@ -35,7 +35,7 @@ function onSubmit(){
   <tr>
     <td>&nbsp;</td>
     <td><button type="submit">提交</button> 
-		<button onClick="javascript:window.close();">返回</button></td>
+		<button onClick="javascript:window.close();" type="reset">返回</button></td>
   </tr>
 </form>
 </table>

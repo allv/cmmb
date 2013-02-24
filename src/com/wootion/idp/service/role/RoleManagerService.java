@@ -96,4 +96,13 @@ public interface RoleManagerService extends BaseService {
      * @return
      */
     public List<Wtrole> getRecords();
+    
+    /**
+     * 根据角色ID，获取对应的用户
+     * @param roleid
+     * @return
+     */
+    public List<Wtuser> getRoleUsers(Long roleid);
+    
+    public boolean addRoleUsers(Long roleid,List<String> userids);
 }
