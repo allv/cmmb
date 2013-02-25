@@ -359,16 +359,21 @@ public class RoleManagerServiceImpl extends BaseServiceImpl implements
     public boolean addRoleUsers(Long roleid,List<String> userids) {
 	Wtrole role = (Wtrole) commonDao.getObject(Wtrole.class, roleid);
 	if(role == null ) return false;
+	Set<WtUserRoleRelationship> currentUserRoleRelationships = role.getWtUserRoleRelationships();
+	commonDao.deleteAll(currentUserRoleRelationships);
 	Set<WtUserRoleRelationship> newWtUserRoleRelationships = new HashSet<WtUserRoleRelationship>();
 	for(String userid:userids) {
-	    Wtuser user = userDAO.findUserById(Long.valueOf(userid));
-	    WtUserRoleRelationship relation = new WtUserRoleRelationship();
-	    relation.setWtrole(role);
-	    relation.setWtuser(user);
-	    newWtUserRoleRelationships.add(relation);
+		if(StringUtils.isNotBlank(userid)){
+			Wtuser user = new Wtuser();
+			user.setWtuserId(Long.valueOf(userid));
+			WtUserRoleRelationship relation = new WtUserRoleRelationship();
+			relation.setWtrole(role);
+			relation.setWtuser(user);
+			relation.setWturId(EntityIDFactory.getBeanID());
+			newWtUserRoleRelationships.add(relation);
+		}
 	}
-	role.setWtUserRoleRelationships(newWtUserRoleRelationships);
-	commonDao.saveObject(role);
+	commonDao.saveOrUpdateAll(newWtUserRoleRelationships);
 	return true;
     }
 

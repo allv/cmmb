@@ -28,7 +28,7 @@ function Node(id, pid, name, url, title, target, icon, iconOpen, open) {
 };
 
 // Tree object
-function dTree(objName) {	//alert(document.location.pathname);	var temp = document.location.pathname.split("/");	//alert(temp.length);	//for(var i=0;i<temp.length;i++){	//	alert(temp[i]);	//}		var bapt = "/"+temp[1];	this.config = {
+function dTree(objName,bapt) {	//alert(document.location.pathname);	var temp = document.location.pathname.split("/");	//alert(temp.length);	//for(var i=0;i<temp.length;i++){	//	alert(temp[i]);	//}	//	var bapt = "/"+temp[1];	this.config = {
 		target					: null,
 		folderLinks			: true,
 		useSelection		: true,

@@ -1,5 +1,6 @@
 package com.wootion.idp.view.action.user;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,72 +9,75 @@ import javax.servlet.http.HttpServletResponse;
 import com.wootion.idp.persistence.po.bean.Wtrole;
 import com.wootion.idp.persistence.po.bean.Wtuser;
 import com.wootion.idp.service.ServiceFactroy;
+import com.wootion.idp.service.role.RoleManagerService;
 import com.wootion.idp.view.action.BaseAction;
 
-public class UserModifyAction extends BaseAction
-{
+public class UserModifyAction extends BaseAction {
 
-    private Long   mid;
+	private Long mid;
 
-    private Wtuser user;
-    
-    /**用户角色列表*/
-    private List<Wtrole> roleList;
-    
-    /**用户角色*/
-    private Wtrole userRoles;
+	private Wtuser user;
 
-    public String execute(HttpServletRequest request,
-            HttpServletResponse response)
-    {
-        user = (Wtuser) ServiceFactroy.getUserService().getObjectByID(
-                Wtuser.class, mid);
-        //RoleManagerService roleService = ServiceFactroy.getRoleService();
-        //roleList = roleService.getRecords();
-        //roleList = ServiceFactroy.getUserService().getUserRole(mid);
-        //userRoles = null;
-        return SUCESS;
-    }
+	/** 用户角色列表 */
+	private List<Wtrole> roleList;
 
-    public Long getMid()
-    {
-        return mid;
-    }
+	private List<WtroleVOForUpdate> allRoles;
 
-    public void setMid(Long mid)
-    {
-        this.mid = mid;
-    }
+	public String execute(HttpServletRequest request,
+			HttpServletResponse response) {
+		user = (Wtuser) ServiceFactroy.getUserService().getObjectByID(
+				Wtuser.class, mid);
+		RoleManagerService roleService = ServiceFactroy.getRoleService();
+		List<Wtrole> allRoleRecords = roleService.getRecords();
+		roleList = ServiceFactroy.getUserService().getUserRole(mid);
+		allRoles = new ArrayList<WtroleVOForUpdate>();
+		for(Wtrole role:allRoleRecords) {
+			if(role.getWtroleId().equals(10001L)) continue;
+			WtroleVOForUpdate newRole = new WtroleVOForUpdate();
+			newRole.setRole(role);
+			boolean flag = false;
+			for(Wtrole tempRole:roleList) {
+				if(role.getWtroleId().equals(tempRole.getWtroleId()) && tempRole.getHaveIt().equals("yes")) {
+					flag = true;
+					break;
+				}
+			}
+			newRole.setChecked(flag);
+			allRoles.add(newRole);
+		}
+		return SUCESS;
+	}
 
-    public Wtuser getUser()
-    {
-        return user;
-    }
+	public Long getMid() {
+		return mid;
+	}
 
-    public void setUser(Wtuser user)
-    {
-        this.user = user;
-    }
+	public void setMid(Long mid) {
+		this.mid = mid;
+	}
 
-    public List<Wtrole> getRoleList()
-    {
-        return roleList;
-    }
+	public Wtuser getUser() {
+		return user;
+	}
 
-    public void setRoleList(List<Wtrole> roleList)
-    {
-        this.roleList = roleList;
-    }
+	public void setUser(Wtuser user) {
+		this.user = user;
+	}
 
-    public Wtrole getUserRoles()
-    {
-        return userRoles;
-    }
+	public List<Wtrole> getRoleList() {
+		return roleList;
+	}
 
-    public void setUserRoles(Wtrole userRoles)
-    {
-        this.userRoles = userRoles;
-    }
+	public void setRoleList(List<Wtrole> roleList) {
+		this.roleList = roleList;
+	}
 
- 
+	public List<WtroleVOForUpdate> getAllRoles() {
+		return allRoles;
+	}
+
+	public void setAllRoles(List<WtroleVOForUpdate> allRoles) {
+		this.allRoles = allRoles;
+	}
+
 }

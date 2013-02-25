@@ -7,8 +7,10 @@
 <link href="<%=basePath%>/pages/train/skins/css/common.css" rel="stylesheet" type="text/css" />
 </head>
 <script type="text/javascript">
-function showDialog(url) {
+function showDialog(url,arguments) {
 	var obj = new Object();
+	var date  =new Date();
+	url = url + '?time='+date.getTime() +'&'+ arguments;
 	window.showModalDialog(url,obj,"dialogWidth=500px;dialogHeight=250px"); 
 }
 function createRole() {
@@ -16,27 +18,27 @@ function createRole() {
 }
 
 function modifyRole(roleid) {
-	showDialog('rolemodify.do?mid=' + roleid);
+	showDialog('rolemodify.do','mid=' + roleid);
 	$("#btn_search").click();
 }
 
 function viewPermissions(roleid) {
-	showDialog('viewPermission.do?mid=' + roleid);
+	showDialog('viewPermission.do','mid=' + roleid);
 	$("#btn_search").click();
 }
 
 function assignPermissions(roleid) {
-	showDialog('fpermission.do?mid=' + roleid);
+	showDialog('fpermission.do','mid=' + roleid);
 	$("#btn_search").click();
 }
 
 function viewMembers(roleid) {
-	showDialog('viewRoleMember.do?mid=' + roleid);
+	showDialog('viewRoleMember.do','mid=' + roleid);
 	$("#btn_search").click();
 }
 
 function assignMemebers(roleid) {
-	showDialog('getRoleMember.do?mid=' + roleid);
+	showDialog('getRoleMember.do','mid=' + roleid);
 	$("#btn_search").click();
 }
 

@@ -9,6 +9,7 @@ function onSubmit(){
 	if(check("wtroleName","string","请输入角色名称！"))return false;
 }
 </script>
+<base target="_self">
 </head>
 <body>
 <div class="topLanBar"><b>当前位置：</b>用户管理 > 修改角色</div>
@@ -18,7 +19,7 @@ function onSubmit(){
   </tr>
 </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
-<form method="post" action="modifyrole.do" onSubmit="return onSubmit();">
+<form method="post" action="modifyrole.do" onSubmit="return onSubmit();" >
 	<input type="hidden" name="wtroleId" id="wtroleId" value="${role.wtroleId }" />
   <tr>
     <td align="right">角色名称</td>

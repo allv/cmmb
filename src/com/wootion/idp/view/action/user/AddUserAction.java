@@ -1,6 +1,7 @@
 package com.wootion.idp.view.action.user;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +18,8 @@ public class AddUserAction extends BaseAction {
 	private String password;
 	/** 角色选择 */
 	private String userRole;
+	
+	private List<String> selectedRoles;
 
 	/** 大客户 */
     private String bigclient ;
@@ -136,7 +139,6 @@ public class AddUserAction extends BaseAction {
             user.setOpenName(openName);
             user.setCorpAdd(corpAdd);
             //10001:管理员角色  10002：行政人员 10003：护理人员 10004：康复人员
-            userRole="10002";
 //            if(null!=type){
 //            	if("x".equals(type)){
 //            		userRole="10002";
@@ -204,7 +206,13 @@ public class AddUserAction extends BaseAction {
 //            	}
 //            }*/
             //ServiceFactroy.getUserService().addObject(user);
-            ServiceFactroy.getUserService().saveUserandRole(user, userRole);
+            String roles = "";
+            if(selectedRoles != null ) {
+            	for(String role:selectedRoles) {
+            		roles = roles + role + ",";
+            	}
+            }
+            ServiceFactroy.getUserService().saveUserandRole(user, roles);
         }
         catch (Exception e)
         {
@@ -382,6 +390,14 @@ public class AddUserAction extends BaseAction {
 
 	public void setLinkmanAdd(String linkmanAdd) {
 		this.linkmanAdd = linkmanAdd;
+	}
+
+	public List<String> getSelectedRoles() {
+		return selectedRoles;
+	}
+
+	public void setSelectedRoles(List<String> selectedRoles) {
+		this.selectedRoles = selectedRoles;
 	}
 
 	

@@ -18,7 +18,7 @@ function onSubmit(){
   </tr>
 </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
-<form method="post" action="addrole.do" onSubmit="return onSubmit()">
+<form method="post" action="addrole.do" target="#">
   <tr>
     <td align="right">角色名称</td>
     <td><input type="text" name="wtroleName" id="wtroleName"></td>
@@ -42,7 +42,7 @@ function onSubmit(){
     </tr>
   <tr>
     <td>&nbsp;</td>
-    <td><button type="submit">提交</button> 
+    <td><button type="submit" onclick="return onSubmit();">提交</button> 
 		<button onClick="javascript:window.close();" type="reset">返回</button></td>
   </tr>
 </form>

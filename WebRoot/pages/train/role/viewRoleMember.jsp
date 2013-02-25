@@ -5,12 +5,9 @@
 <%@ page import="com.wootion.idp.view.vo.FordNagativation"%>
 <html>
 <head>
+<base target="_self">
 <title>查看会员</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="StyleSheet" href="<%=basePath%>/pages/train/dtree/dtree.css"
-	type="text/css" />
-<script type="text/javascript"
-	src="<%=basePath%>/pages/train/dtree/dtree.js"></script>
 <script type="text/javascript">
 	
 </script>

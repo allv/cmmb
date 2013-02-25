@@ -101,6 +101,7 @@ BUTTON {
 }
 -->
 </style>
+<base target="_self">
 </head>
 <body>
 <div class="topLanBar"><b>当前位置：</b>角色管理 > 角色权限分配</div>
@@ -116,22 +117,16 @@ BUTTON {
     <input type="hidden" name="mid" id="mid" value="<%=request.getAttribute("mid")%>" />
     <tr>
       <td width="50%" valign="top"><script type="text/javascript"> 
-	dd = new dTree( 'dd ');
+	dd = new dTree( 'dd ','<%=basePath%>');
 	dd.add(0,-1, '权限列表(<font color="red">请给角色：&nbsp;<%=request.getAttribute("roleName")%>&nbsp;分配相应权限)</font>');
 	
 	<%
 	    List<FordNagativation> lst = (List<FordNagativation>)request.getAttribute("lst");
 		List<FordNagativation> parentlst = (List<FordNagativation>)request.getAttribute("parentlst");
-		System.out.println("allen test lst"+lst);
-		System.out.println("allen test lst"+lst.size());
-		System.out.println("allen test parentlst"+parentlst);
-		System.out.println("allen test parentlst"+parentlst.size());
 		for(int i=0;i<lst.size();i++)
 		{
 			FordNagativation fnFir = lst.get(i);
 			FordNagativation roleFir = parentlst.get(i);
-			System.out.println("allen test fnFir"+fnFir);
-			System.out.println("allen test roleFir"+roleFir);
 			if("yes".equals(roleFir.getHaveIt().trim())){
 				if("yes".equals(fnFir.getHaveIt().trim())){
 				%>
@@ -145,14 +140,10 @@ BUTTON {
 			<%}
 			List<FordNagativation> lstSec = fnFir.getLst();
 			List<FordNagativation> rolelstSec = roleFir.getLst();
-			System.out.println("allen test lstSec"+lstSec);
-			System.out.println("allen test rolelstSec"+rolelstSec);
 			for(int j=0;j<lstSec.size();j++)
 			{
 				FordNagativation fnSec = lstSec.get(j);
 				FordNagativation roleSec = rolelstSec.get(j);
-				System.out.println("allen test fnSec"+fnSec);
-				System.out.println("allen test roleSec"+roleSec);
 				if("yes".equals(roleSec.getHaveIt().trim())){
 					if("yes".equals(fnSec.getHaveIt().trim())){
 					%>

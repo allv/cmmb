@@ -10,13 +10,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionContext;
-import com.wootion.cimp.services.IMPServiceFactory;
 import com.wootion.cmmb.common.util.DateUtil;
 import com.wootion.idp.common.collections.PermissionCollection;
 import com.wootion.idp.common.collections.UserCacheBean;
@@ -33,7 +32,6 @@ import com.wootion.idp.persistence.po.bean.Wtresource;
 import com.wootion.idp.persistence.po.bean.Wtrole;
 import com.wootion.idp.persistence.po.bean.Wtuser;
 import com.wootion.idp.service.BaseServiceImpl;
-import com.wootion.idp.service.ServiceFactroy;
 
 public class UserManagerServiceImpl extends BaseServiceImpl implements
 		UserManagerService {
@@ -53,6 +51,24 @@ public class UserManagerServiceImpl extends BaseServiceImpl implements
 		if (user != null) // 存在用户信息
 			return true;
 		return false;
+	}
+	
+	@Override
+	public void modifyUserWithRoles(Wtuser user,List<String> roles) {
+		super.modifyObject(user);
+		Set<WtUserRoleRelationship> wtUserRoleRelationships = new HashSet<WtUserRoleRelationship>();
+		if(roles != null ) { 
+			for(String roleid:roles) { 
+				Wtrole role = (Wtrole) commonDao.getObject(Wtrole.class, Long.parseLong(roleid));
+				WtUserRoleRelationship e = new WtUserRoleRelationship();
+				e.setWtrole(role);
+				e.setWtuser(user);
+				e.setWturId(EntityIDFactory.getBeanID());
+				wtUserRoleRelationships.add(e);
+			}
+		}
+		managerDAO.deleteUserRole(user.getWtuserId());
+		commonDao.saveOrUpdateAll(wtUserRoleRelationships);
 	}
 
 	public Integer userLogin(String userName, String userPwd, String sessionID) {
@@ -237,14 +253,16 @@ public class UserManagerServiceImpl extends BaseServiceImpl implements
 		
 		String[] tempRole = roles.split(",");
 		for (int i = 0; i < tempRole.length; i++) {
-			WtUserRoleRelationship ur = new WtUserRoleRelationship();
-			ur.setWturId(EntityIDFactory.getBeanID());
-			ur.setWtuser(wtuser);
-			
-			Wtrole role = new Wtrole();
-			role.setWtroleId(Long.parseLong(tempRole[i]));
-			ur.setWtrole(role);
-			lstRF.add(ur);
+			if(StringUtils.isNotBlank(tempRole[i])){
+				WtUserRoleRelationship ur = new WtUserRoleRelationship();
+				ur.setWturId(EntityIDFactory.getBeanID());
+				ur.setWtuser(wtuser);
+				
+				Wtrole role = new Wtrole();
+				role.setWtroleId(Long.parseLong(tempRole[i]));
+				ur.setWtrole(role);
+				lstRF.add(ur);
+			}
 		}
 		wtuser.setWtUserRoleRelationships(lstRF);
 		wtuser.getWtUserRoleRelationships();
@@ -612,6 +630,7 @@ public class UserManagerServiceImpl extends BaseServiceImpl implements
 	    }
 	    return result;
 	}
+
 	
 	/**
 	 * 得到父Id

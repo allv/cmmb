@@ -61,6 +61,8 @@ public class ModifyUserAction extends BaseAction
 
 	/** 联系人地址 */
 	private String linkmanAdd;
+	
+	private List<String> selectedRoles;
     
     @Override
     public String execute(HttpServletRequest request,
@@ -86,12 +88,13 @@ public class ModifyUserAction extends BaseAction
               user.setLinkmanTel(linkmanTel);
               user.setLinkmanEmail(linkmanEmail);
               user.setLinkmanAdd(linkmanAdd);
+              
 //            user.setWtuserIsuseable(wtuserIsuseable);
 //            user.setUserMark(userMark);
 //            user.setUserExtendMark(userExtendMark);
 //            user.setFtpAccount(ftpAccount);
 //    		user.setFtppwd(ftppwd);
-            userService.modifyObject(user);
+            userService.modifyUserWithRoles(user, selectedRoles);
             request.setAttribute("msg", "修改用户信息成功！！");
             request.setAttribute("type", "ok");
         }
@@ -246,6 +249,14 @@ public class ModifyUserAction extends BaseAction
 		this.linkmanAdd = linkmanAdd;
 	}
 
+	public List<String> getSelectedRoles() {
+		return selectedRoles;
+	}
+
+	public void setSelectedRoles(List<String> selectedRoles) {
+		this.selectedRoles = selectedRoles;
+	}
+
 //	public void setFtpAccount(String ftpAccount) {
 //		this.ftpAccount = ftpAccount;
 //	}
@@ -257,4 +268,5 @@ public class ModifyUserAction extends BaseAction
 //	public void setFtppwd(String ftppwd) {
 //		this.ftppwd = ftppwd;
 //	}
+	
 }

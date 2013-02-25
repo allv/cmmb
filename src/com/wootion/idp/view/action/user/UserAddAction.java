@@ -1,5 +1,6 @@
 package com.wootion.idp.view.action.user;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,13 @@ public class UserAddAction extends BaseAction
     {
     	 RoleManagerService roleService = ServiceFactroy.getRoleService();
          roleList = roleService.getRecords();
+         List<Wtrole> result = new ArrayList<Wtrole>();
+         for(Wtrole role:roleList) { 
+        	 if(!role.getWtroleId().equals(10001L)) {
+        		 result.add(role);
+        	 }
+         }
+         roleList = result;
          return SUCESS;
     }
     public List<Wtrole> getRoleList()

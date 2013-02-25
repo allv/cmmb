@@ -79,7 +79,14 @@ function onSubmit(){
       <td align="right">E-mail</td>
       <td><input name="linkmanEmail" type="text" value="${user.linkmanEmail}" size="56"></td>
     </tr>
-   
+   <tr>
+      <td align="right">角色</td>
+      <td>
+      <c:forEach items="${allRoles }" var="role">
+	      <input type="checkbox" value="${role.role.wtroleId }" name="selectedRoles" <c:if test="${role.checked }">checked</c:if> /> ${role.role.wtroleName }
+      </c:forEach>
+      </td>
+    </tr>
     <tr>
       <td align="right">工作职责简介</td>
       <td><textarea name="corpNote" cols="58" rows="4">${user.corpNote}</textarea></td>

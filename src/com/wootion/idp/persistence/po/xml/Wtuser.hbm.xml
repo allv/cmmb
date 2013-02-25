@@ -35,7 +35,7 @@
 			<column name="wtuser_isuseable" length="1" not-null="true" />
 		</property>
 		
-		<set name="wtUserRoleRelationships" inverse="true" fetch="join"
+		<set name="wtUserRoleRelationships" inverse="true" fetch="join" 
 			lazy="true">
 			<key>
 				<column name="wtuser_id" length="32" not-null="true" />

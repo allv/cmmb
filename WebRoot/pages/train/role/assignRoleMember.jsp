@@ -5,12 +5,9 @@
 <%@ page import="com.wootion.idp.view.vo.FordNagativation"%>
 <html>
 <head>
+<base target="_self">
 <title>分配会员</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="StyleSheet" href="<%=basePath%>/pages/train/dtree/dtree.css"
-	type="text/css" />
-<script type="text/javascript"
-	src="<%=basePath%>/pages/train/dtree/dtree.js"></script>
 <script type="text/javascript">
 	function left() {
 		$("#tbl_allMem tr input:checked[type='checkbox']").parent().parent()
@@ -85,6 +82,7 @@ BUTTON {
 						<tr>
 							<td valign="top" width="45%">
 								<table id="tbl_curMem" width="100%">
+									<tr><td colspan="5">当前会员</td></tr>
 									<tr>
 										<th nowrap=""></th>
 										<th nowrap>账号</th>
@@ -118,6 +116,7 @@ BUTTON {
 							</td>
 							<td valign="top" width="45%">
 								<table id="tbl_allMem" width="100%">
+									<tr><td colspan="5">全部会员</td></tr>
 									<tr>
 										<th nowrap=""></th>
 										<th nowrap>账号</th>

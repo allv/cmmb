@@ -4,6 +4,7 @@
 <%@ page import="com.wootion.idp.view.vo.FordNagativation"%>
 <html>
 <head>
+<base target="_self">
 <title>查看权限</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="StyleSheet" href="<%=basePath%>/pages/train/dtree/dtree.css" type="text/css" />
@@ -116,7 +117,7 @@ BUTTON {
     <input type="hidden" name="mid" id="mid" value="<%=request.getAttribute("mid")%>" />
     <tr>
       <td width="50%" valign="top"><script type="text/javascript"> 
-	dd = new dTree( 'dd ');
+	dd = new dTree( 'dd ','<%=basePath%>');
 	dd.add(0,-1, '权限列表(<font color="red">请给角色：&nbsp;<%=request.getAttribute("roleName")%>&nbsp;分配相应权限)</font>');
 	
 	<%
