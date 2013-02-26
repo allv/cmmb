@@ -117,6 +117,16 @@
 		</action>
 
 		<!-- 角色管理 end -->
+		<action name="workflow" class="com.wootion.cmmb.view.action.workflow.QueryWorkflowAction" >
+			<result name="sucess">/pages/train/workflow/worflow.jsp</result>
+		</action>
+		
+		<!-- 工作流管理 start-->
+		
+		
+		<!-- 工作流管理 end-->
+		
+		
 	</package>
 
 </struts>

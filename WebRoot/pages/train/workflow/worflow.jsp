@@ -56,18 +56,6 @@ function deleteRole(roleid) {
 		void(0);
 	}
 }
-
-function getParentRoleName(roleid) {
-	var roleName = '';
-	if(roleid == '10001') {
-		roleName = '管理员';
-	}else if(roleid == '10002') {
-		roleName = '行政人员';
-	}else if(roleid == '10003') {
-		roleName = '经理';
-	}
-	document.write(roleName);
-}
 </script>
 <body>
 <div class="topLanBar"><b>当前位置：</b>基本信息管理 > 角色管理</div>
@@ -101,7 +89,6 @@ function getParentRoleName(roleid) {
     <tr>
       <th nowrap>角色名称</th>
       <th nowrap>创建时间</th>
-      <th nowrap>权限组</th>
       <th nowrap>描述</th>
       <th nowrap>操作</th>
     </tr>
@@ -109,7 +96,6 @@ function getParentRoleName(roleid) {
     	<tr>
 	      <td align="center" nowrap bgcolor="#E4E4E4">${ftbl.wtroleName} </td>
 	      <td align="center" nowrap bgcolor="#E4E4E4"><fmt:formatDate value="${ftbl.wtroleCreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-	      <td align="center" nowrap bgcolor="#E4E4E4"><script>getParentRoleName('${ftbl.parentRole}')</script></td>
 	      <td align="center" nowrap bgcolor="#E4E4E4">${ftbl.wtroleDescription}</td>
 	      <td align="center" align="center" nowrap bgcolor="#E4E4E4"><a href="javascript:deleteRole('${ftbl.wtroleId}')">删除</a>&nbsp;&nbsp;
 	      <a href="javascript:modifyRole('${ftbl.wtroleId}');">编辑</a>&nbsp;&nbsp;

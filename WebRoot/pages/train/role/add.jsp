@@ -33,6 +33,7 @@ function onSubmit(){
    	<select name="parentrole">
 		<option value="10001">管理员</option>
 		<option value="10002">行政人员</option>
+		<option value="10003">经理</option>
 	</select>
 	</td>
   </tr>
