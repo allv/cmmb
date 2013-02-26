@@ -43,5 +43,34 @@
 		<property name="vtrain" type="java.lang.String">
 			<column name="vtrain" length="300" />
 		</property>
+		
+		<property name="vcallno" type="java.lang.String">
+			<column name="vcallno" length="30" />
+		</property>
+		
+		<property name="vbirthday" type="java.lang.String">
+			<column name="vbirthday" length="30" />
+		</property>
+		
+		<property name="vpriority" type="java.lang.String">
+			<column name="vpriority" length="10" />
+		</property>
+		
+		<property name="vservewill" type="java.lang.String">
+			<column name="vservewill" length="100" />
+		</property>
+		<property name="servetime" type="java.lang.String">
+			<column name="servetime" length="300" />
+		</property>
+		
+		<property name="servedate" type="java.lang.String">
+			<column name="servedate" length="300" />
+		</property>
+		
+		<property name="vtotal" type="java.lang.String">
+			<column name="vtotal" length="10" />
+		</property>
+		
+		
 	</class>
 </hibernate-mapping>

@@ -43,50 +43,41 @@
         //document.getElementById(cid).value
     }else{
     	document.getElementById(pname).value=arr[0];
-    	document.getElementById("startdate").value=arr[2];
-    	document.getElementById("enddate").value=arr[3];
     }
     	
   } 
   
-    Date.prototype.format = function(format)
-	{
-	    var o =
-	    {
-	        "M+" : this.getMonth()+1, //month
-	        "d+" : this.getDate(),    //day
-	        "h+" : this.getHours(),   //hour
-	        "m+" : this.getMinutes(), //minute
-	        "s+" : this.getSeconds(), //second
-	        "q+" : Math.floor((this.getMonth()+3)/3),  //quarter
-	        "S" : this.getMilliseconds() //millisecond
-	    }
-	    if(/(y+)/.test(format))
-	    format=format.replace(RegExp.$1,(this.getFullYear()+"").substr(4 - RegExp.$1.length));
-	    for(var k in o)
-	    if(new RegExp("("+ k +")").test(format))
-	    format = format.replace(RegExp.$1,RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length));
-	    return format;
-	}
-
 //保存
     function Save() {
-        var mstarttime = document.getElementById("mstarttime").value;
-    	var mendtime = document.getElementById("mendtime").value;
-    	if(mstarttime==""){
-    	    alert('开始日期不能为空!');
-    	    return;
-    	}
-    	if(mendtime==""){
-    	    alert('结束日期不能为空!');
+        var magname = document.getElementById("mimagename").value;
+    	if(magname==""){
+    	    alert('活动名称不能为空!');
     	    return;
     	}
     	
-    	if(mendtime<mstarttime){
-    	    alert('结束日期必须大于开始日期!');
+    	var magfee = document.getElementById("mimagefee").value;
+    	if(magfee==""){
+    	    alert('活动费用不能为空!');
+    	    return;
+    	}else if(!is_positiveInteger(magfee)){
+                alert('活动费用必须为正数字');
+                return;
+        }
+        
+        var mstarttime = document.getElementById("mstarttime").value;
+    	if(mstarttime==""){
+    	    alert('活动时间不能为空!');
     	    return;
     	}
+    	
     	var mnumber = document.getElementById("mnumber").value;
+        if(mnumber==""){
+    	    alert('活动人数不能为空!');
+    	    return;
+    	}else if(!is_positiveInteger(mnumber)){
+            alert('活动人数必须为正数字');
+            return;
+        }
     	var mplace = document.getElementById("mplace").value;
     	var morganizer = document.getElementById("morganizer").value;
     	var mserialnum = document.getElementById("mserialnum").value;
@@ -97,28 +88,15 @@
     	var mbelongpro = document.getElementById("mbelongpro").value;
     	var minfo = document.getElementById("minfo").value;
     	var mimageurl = document.getElementById("mimageurl").value;
-        var item = mstarttime + "|" + mendtime + "|" + mnumber + "|" + mplace + "|" + morganizer + "|" + mserialnum + "|" + mbelongpro + "|" + minfo + "|" + mimageurl;
+    	var mimagereflect = document.getElementById("mimagereflect").value;
+    	var mimagevolunteer = document.getElementById("mimagevolunteer").value;
+        var item = mstarttime + "|" + magname+"|"+ magfee +"|"+mimagereflect+"|"+mimagevolunteer+ "|" + mnumber + "|" + mplace + "|" + morganizer + "|" + mserialnum + "|" + mbelongpro + "|" + minfo + "|" + mimageurl;
         $2("detail").value = item;
         
-        var stddate = document.getElementById("startdate").value;
-        var endate = document.getElementById("enddate").value;
-        var dateTime = new Date();
-        var thisdate = dateTime.format('yyyy-MM-dd');
-        var date1 = dateTime.setFullYear(thisdate.split('-').join(','));
-        var date2 = dateTime.setFullYear(stddate.split('-').join(','));
-        var date3 = dateTime.setFullYear(endate.split('-').join(','));
-        var a1 = thisdate.split("-");
-        var b1 = stddate.split("-");
-        var c1 = endate.split("-");
-        var d1 = new Date(a1[0],a1[1],a1[2]);
-        var d2 = new Date(b1[0],b1[1],b1[2]);
-        var d3 = new Date(c1[0],c1[1],c1[2]);
-        if (mbelongpro == "")
-        {
-            alert("请选择一个项目!");
-        }
-        else
-        {
+        //if (mbelongpro == "")
+        //{
+            //alert("请选择一个项目!");
+        //}
             $.ajax({
 					type : "POST",
 					url : basePath + "/managementsaveActivity.do?detail=" + encodeURI(item),
@@ -135,7 +113,6 @@
 						alert("未知错误！");
 					}
 				});
-        }
     }
     
 var previousRows=0;    
@@ -207,8 +184,6 @@ function showExtShow(){
 </table>
 <form name="myform"  method="post" action="managementsaveActivity.do">
 <input type="hidden" id="detail" name="detail" />
-<input name="startdate" type="hidden" value=""/>
-<input name="enddate" type="hidden" value=""/>
 <div style="text-align:center">
 <table style="margin:auto" width="40%"  border="0" cellspacing="3" cellpadding="1">
     <tr>
@@ -217,33 +192,55 @@ function showExtShow(){
     </tr>
     
     <tr>
-      <td align="right">所属项目</td>
-      <td><input type="text" id="mbelongpro" name="mbelongpro" size="20" onclick="choosePro()"><span style='color:red;'>&nbsp;*</span></td>
+      <td align="right">活动名称</td>
+      <td><input name="mimagename" type="text" value="${mimagename}" size="20"/><span style='color:red;'>&nbsp;*</span></td>
+    </tr>
+    
+       
+    <tr>
+      <td align="right">活动费用</td>
+      <td><input name="mimagefee" type="text" value="0" size="20"/>元<span style='color:red;'>&nbsp;*</span></td>
     </tr>
     
     <tr>
-      <td align="right">活动开始时间</td>
+      <td align="right">所属项目</td>
+      <td><input type="text" id="mbelongpro" name="mbelongpro" size="20"><button onclick="choosePro()" >选择项目</button></td>
+    </tr>
+    
+    <tr>
+      <td align="right">活动时间</td>
       <td><input type="text" size="" name="mstarttime" value="" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})" /><span style='color:red;'>&nbsp;*</span></td>
     </tr>
     <tr>
-      <td align="right">活动结束时间</td>
-      <td><input type="text" size="" name="mendtime" value="" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})" /><span style='color:red;'>&nbsp;*</span></td>
-    </tr>
-    <tr>
-      <td align="right">人数</td>
-      <td><input type="text" name="mnumber" value="${mnumber}"/></td>
+      <td align="right">参与人数</td>
+      <td><input type="text" name="mnumber" value="${mnumber}"/><span style='color:red;'>&nbsp;*</span></td>
     </tr>
     <tr>
       <td align="right">地点</td>
       <td><input name="mplace" type="text" value="${mplace}" size="20"/></td>
     </tr>
+    
     <tr>
-      <td align="right">活动组织者</td>
+      <td align="right">活动满意度</td>
+      <td>
+        <select name="mimagereflect" id="mimagereflect">
+	       <option value="很满意" selected>   很满意  </option>
+	       <option value="一般满意">   一般满意  </option>
+		   <option value="不满意">   不满意  </option>
+	    </select>
+      </td>
+    </tr>
+    
+    <tr>
+      <td align="right">活动负责人</td>
        <td>
       <input name="morganizer" type="text" value="${morganizer}"/></td>
     </tr>
     
-    
+      <tr>
+      <td align="right">活动志愿者</td>
+      <td><textarea name="mimagevolunteer" cols="58" rows="4">${mimagevolunteer}</textarea></td>
+    </tr>
    
     <tr>
       <td align="right">备注</td>

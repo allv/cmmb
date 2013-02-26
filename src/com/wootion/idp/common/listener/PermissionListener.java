@@ -1,6 +1,5 @@
 package com.wootion.idp.common.listener;
 
-import com.wootion.cimp.services.IMPServiceFactory;
 import com.wootion.idp.common.collections.PermissionCollection;
 import com.wootion.idp.common.utils.DataInit;
 import com.wootion.idp.persistence.po.bean.Wtfunction;

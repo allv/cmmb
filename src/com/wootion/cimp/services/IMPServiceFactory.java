@@ -1,7 +1,6 @@
 package com.wootion.cimp.services;
 
 
-import com.wootion.cimp.util.CMMPConfig;
 import com.wootion.idp.common.utils.SpringBeanFactory;
 import com.wootion.cmmb.service.activity.*;
 import com.wootion.cmmb.service.psychology.*;
@@ -24,10 +23,6 @@ public class IMPServiceFactory {
 	public static memberHealthService getMemberHealthService() {
 		return (memberHealthService) SpringBeanFactory
 				.getSpringBean("memberHealthService");
-	}
-	
-	public static CMMPConfig getCMMPConfig() {
-		return (CMMPConfig) SpringBeanFactory.getSpringBean("cmmpconfig");
 	}
 	
 	public static ActivityService getActivityService() {

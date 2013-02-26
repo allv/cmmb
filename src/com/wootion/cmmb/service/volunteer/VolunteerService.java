@@ -10,7 +10,7 @@ public interface VolunteerService {
 	public void saveVolunteer(Volunteerinfo vinfos);
 	
 	public QueryResult<Volunteerinfo> getQueryVolResult(Integer index,
-            Integer maxresult, String vname, String vspecialty,
+            Integer maxresult, String vname, String vcallno,String vtime,String vgender,
             String sessionID)
 			throws ParseException;
 	
@@ -24,10 +24,14 @@ public interface VolunteerService {
 	
 	public String modifyvol(String vid, String vnumber, String vtime, String vname, String vage, 
 			String vgender, String vphone, String vspecialty, String vcommunitywork, String vstudy,
-			String vintention, String vtrain) throws ParseException;
+			String vintention, String vtrain,String vcallno,String vbirthday,String vpriority,String vservewill) throws ParseException;
 
 	public QueryResult<Volunteerhistory> getQueryVolHistoryResult(Integer index,
             Integer maxresult, String vname, String vspecialty,
             String sessionID)
 			throws ParseException;
+	
+	public String saveVolServTime(Volunteerinfo vol)throws Exception;
+	
+	public String[] getAllBirth()throws Exception;
 }

@@ -3,6 +3,7 @@ package com.wootion.cmmb.view.action.volunteer;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -38,6 +39,19 @@ public class volunteerAction extends BaseAction
 	private String vstudy;
 	private String vintention;
 	private String vtrain;
+	
+	//编号
+	private String vcallno;
+	//生日
+	private String vbirthday;
+	//志愿者星级 1星,2星,3星级
+	private String vpriority;
+	//服务意向时间段
+	private String vservewill;
+	//累计时间(小时)
+	private String servetime;
+	//服务日期
+	private String servedate;
 	
 	private QueryResult<Volunteerinfo> result;
 	public VolunteerService volunteerservice;
@@ -99,6 +113,22 @@ public class volunteerAction extends BaseAction
 				{
 					vtrain = pstrs[k];
 				}
+				else if (k == 9)
+				{
+					vcallno = pstrs[k];
+				}
+				else if (k == 10)
+				{
+					vbirthday = pstrs[k];
+				}
+				else if (k == 11)
+				{
+					vpriority = pstrs[k];
+				}
+				else if (k == 12)
+				{
+					vservewill = pstrs[k];
+				}
 			}
 			vinfos.setVnumber(timestamp);
 			vinfos.setVtime(vtime);
@@ -111,6 +141,12 @@ public class volunteerAction extends BaseAction
 			vinfos.setVstudy(vstudy);
 			vinfos.setVintention(vintention);
 			vinfos.setVtrain(vtrain);
+			
+			vinfos.setVcallno(vcallno);
+			vinfos.setVbirthday(vbirthday);
+			vinfos.setVpriority(vpriority);
+			vinfos.setVservewill(vservewill);
+			vinfos.setVtotal("0");
 			volunteerservice.saveVolunteer(vinfos);
 			out.print("success");
 		}catch(Exception e)
@@ -212,6 +248,7 @@ public class volunteerAction extends BaseAction
 		String vnumber = sdf.format(new Date());
 		String dtal = request.getParameter("detail");
 		String pstrs[] = dtal.split("\\|");
+		Volunteerinfo vol = new Volunteerinfo();
 		for (int k=0; k<pstrs.length; k++)
 		{
 			if (k == 0)
@@ -254,8 +291,26 @@ public class volunteerAction extends BaseAction
 			{
 				vtrain = pstrs[k];
 			}
+			
+			else if (k == 10)
+			{
+				vcallno = pstrs[k];
+			}
+			else if (k == 11)
+			{
+				vbirthday = pstrs[k];
+			}
+			else if (k == 12)
+			{
+				vpriority = pstrs[k];
+			}
+			else if (k == 13)
+			{
+				vservewill = pstrs[k];
+			}
 		}
-    	flag = volunteerservice.modifyvol(vid, vnumber, vtime, vname, vage, vgender, vphone, vspecialty, vcommunitywork, vstudy, vintention, vtrain);
+    	flag = volunteerservice.modifyvol(vid, vnumber, vtime, vname, vage, vgender, vphone, vspecialty, vcommunitywork, vstudy, vintention, vtrain,
+    			vcallno,vbirthday,vpriority,vservewill);
     	PrintWriter out = null;
     	try {
 			out = response.getWriter();
@@ -300,12 +355,101 @@ public class volunteerAction extends BaseAction
         
         try {
 			result = volunteerservice.getQueryVolResult(firstindex, maxresult, 
-					vname, vspecialty, request.getSession().getId());  
+					vname, vcallno,vtrain,vgender, request.getSession().getId());  
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         return "volunteermange";
+	}
+	
+	public String servtime()throws Exception{
+		HttpServletRequest request = getRequest();
+		String vid = request.getParameter("vid");
+		request.setAttribute("volid", vid);
+		
+		Volunteerinfo vol = new Volunteerinfo();
+	    vol = volunteerservice.lookVolunteer(vid);// 获取志愿者信息
+	    request.setAttribute("volObj", vol);
+		return "volservtime";
+	}
+	
+	public String ServtimeSubmit()throws Exception{
+		HttpServletRequest request = getRequest();
+    	HttpServletResponse response = getResponse();
+    	
+    	String vid = (String)request.getParameter("volid");
+    	Volunteerinfo vol = new Volunteerinfo();
+	    vol = volunteerservice.lookVolunteer(vid);// 获取志愿者信息
+    	
+    	String servdate = (String)request.getParameter("servdateitem");
+    	String servlen = (String)request.getParameter("servlenitem");
+    	String servbak = (String)request.getParameter("servbakitem");
+    	String servtotal = (String)request.getParameter("servtotal");
+    	String flag = "";
+    	vol.setServedate(servdate);
+    	vol.setServetime(servlen);
+    	vol.setVtotal(servtotal);
+    	vol.setA5(servbak);
+    	flag = volunteerservice.saveVolServTime(vol);
+		PrintWriter out = null;
+    	try {
+			out = response.getWriter();
+			out.print(flag);
+		} catch (Exception e) {
+			e.printStackTrace();
+			out.print("error");
+		} finally {
+			out.flush();
+			out.close();
+		}
+		return null;
+	}
+	
+	public String showpic()throws Exception{
+		HttpServletRequest request = getRequest();
+		String vid = request.getParameter("vid");
+		request.setAttribute("volid", vid);
+		
+		Volunteerinfo vol = new Volunteerinfo();
+	    vol = volunteerservice.lookVolunteer(vid);// 获取志愿者信息
+	    System.out.println("vidvidivididid"+vid);
+	    //获取当年每个月的累计时间,如果为空则置为0
+	    String servdate = vol.getServedate();
+	    String servlen = vol.getServetime();
+	    
+	    Calendar cal = Calendar.getInstance();
+	    String year = String.valueOf(cal.get(Calendar.YEAR));
+	    int[] data = calc(servdate,servlen,year);
+	    
+	    request.setAttribute("data", data);
+		return "volpic";
+	}
+	
+	private int[] calc(String servdate,String servlen,String year){
+		int[] monthdata = new int[]{0,0,0,0,0,0,0,0,0,0,0,0};
+		if(servdate!=null){
+			for(int index=0;index<servdate.split("#").length;index++){
+				String curdate = servdate.split("#")[index];
+				int curval = Integer.parseInt(servlen.split("#")[index]);
+				if(curdate.indexOf(year)==-1){
+					//只计算本年度的
+					continue;
+				}
+				int curmonth = Integer.parseInt(curdate.substring(5,7));
+				
+				monthdata[curmonth-1]=monthdata[curmonth-1]+curval;
+			}
+		}
+		return monthdata;
+	}
+	
+	public String allbir()throws Exception{
+		HttpServletRequest request = getRequest();
+		//获取所有志愿者生日
+		String[] allbir = volunteerservice.getAllBirth();
+		request.setAttribute("allbir", allbir);
+		return "volgetallbir";
 	}
 	
 	public String viewacthistory() throws Exception{
@@ -314,7 +458,7 @@ public class volunteerAction extends BaseAction
 		Volunteerhistory vol = new Volunteerhistory();
 
 		try {
-			vol = volunteerservice.lookVolunteerhis(vid);// 获取活动信息
+			vol = volunteerservice.lookVolunteerhis(vid);// 获取志愿者信息
 			if (vol!=null) {
 				request.setAttribute("result", vol);
 			} else {
@@ -427,6 +571,48 @@ public class volunteerAction extends BaseAction
 	}
 	public void setResult(QueryResult<Volunteerinfo> result) {
 		this.result = result;
+	}
+	public String getVbirthday() {
+		return vbirthday;
+	}
+	public void setVbirthday(String vbirthday) {
+		this.vbirthday = vbirthday;
+	}
+	public String getVpriority() {
+		return vpriority;
+	}
+	public void setVpriority(String vpriority) {
+		this.vpriority = vpriority;
+	}
+	public String getVservewill() {
+		return vservewill;
+	}
+	public void setVservewill(String vservewill) {
+		this.vservewill = vservewill;
+	}
+	public String getServetime() {
+		return servetime;
+	}
+	public void setServetime(String servetime) {
+		this.servetime = servetime;
+	}
+	public String getServedate() {
+		return servedate;
+	}
+	public void setServedate(String servedate) {
+		this.servedate = servedate;
+	}
+	public VolunteerService getVolunteerservice() {
+		return volunteerservice;
+	}
+	public void setVolunteerservice(VolunteerService volunteerservice) {
+		this.volunteerservice = volunteerservice;
+	}
+	public String getVcallno() {
+		return vcallno;
+	}
+	public void setVcallno(String vcallno) {
+		this.vcallno = vcallno;
 	}
     
 }

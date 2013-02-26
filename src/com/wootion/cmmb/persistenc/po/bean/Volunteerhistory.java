@@ -13,6 +13,21 @@ public class Volunteerhistory {
 	private String vstudy;
 	private String vintention;
 	private String vtrain;
+	
+	//编号
+	private String vcallno;
+	//生日
+	private String vbirthday;
+	//志愿者星级 1星,2星,3星级
+	private String vpriority;
+	//服务意向时间段
+	private String vservewill;
+	//累计时间(小时)
+	private String servetime;
+	//服务日期
+	private String servedate;
+	//累计总时数
+	private String vtotal;
 	public String getVid() {
 		return vid;
 	}
@@ -84,6 +99,48 @@ public class Volunteerhistory {
 	}
 	public void setVtrain(String vtrain) {
 		this.vtrain = vtrain;
+	}
+	public String getVcallno() {
+		return vcallno;
+	}
+	public void setVcallno(String vcallno) {
+		this.vcallno = vcallno;
+	}
+	public String getVbirthday() {
+		return vbirthday;
+	}
+	public void setVbirthday(String vbirthday) {
+		this.vbirthday = vbirthday;
+	}
+	public String getVpriority() {
+		return vpriority;
+	}
+	public void setVpriority(String vpriority) {
+		this.vpriority = vpriority;
+	}
+	public String getVservewill() {
+		return vservewill;
+	}
+	public void setVservewill(String vservewill) {
+		this.vservewill = vservewill;
+	}
+	public String getServetime() {
+		return servetime;
+	}
+	public void setServetime(String servetime) {
+		this.servetime = servetime;
+	}
+	public String getServedate() {
+		return servedate;
+	}
+	public void setServedate(String servedate) {
+		this.servedate = servedate;
+	}
+	public String getVtotal() {
+		return vtotal;
+	}
+	public void setVtotal(String vtotal) {
+		this.vtotal = vtotal;
 	}
 	
 }

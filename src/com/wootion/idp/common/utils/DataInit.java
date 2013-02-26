@@ -506,6 +506,63 @@ public class DataInit {
 				funpdshAdd777.setWtresCode("01");
 				funpdshAdd777.setWtresCreatetime(date);
 				
+				
+				Wtfunction funpd1777 = new Wtfunction();
+				funpd1777.setWtfunctionId(979L);
+				funpd1777.setWtfunParentid(0L);
+				funpd1777.setWtfunIsleaf("0");
+				funpd1777.setWtfunCode("97");
+				funpd1777.setWtfunOrder("97");
+				funpd1777.setWtfunName("活动室管理");
+				funpd1777.setWtfunExcutepath("activityhouse.do");
+				funpd1777.setWtfunCreatetime(date);
+				commonService.saveObject(funpd1777);
+                
+				Wtrolefunrelationship rf1777 = new Wtrolefunrelationship();
+				rf1777.setWtrolefunId(12977L);
+				rf1777.setWtfunction(funpd1777);
+				rf1777.setWtrole(role);
+			    commonService.saveObject(rf1777);
+			    
+			    Wtrolefunrelationship rf1276 = new Wtrolefunrelationship();
+			    rf1276.setWtrolefunId(11998L);
+			    rf1276.setWtfunction(funpd1777);
+			    rf1276.setWtrole(role2);
+			    commonService.saveObject(rf1276);
+				
+				Wtfunction funActivityhouse = new Wtfunction();
+				funActivityhouse.setWtfunctionId(11977L);
+				funActivityhouse.setWtfunParentid(979L);
+				funActivityhouse.setWtfunIsleaf("1");
+				funActivityhouse.setWtfunCode("2097");
+				funActivityhouse.setWtfunOrder("2097");
+				funActivityhouse.setWtfunName("活动室管理");
+				funActivityhouse.setWtfunExcutepath("activityhouse.do");
+				funActivityhouse.setWtfunCreatetime(date);
+				commonService.saveObject(funActivityhouse);
+                
+				Wtrolefunrelationship rf1721 = new Wtrolefunrelationship();
+				rf1721.setWtrolefunId(11397L);
+				rf1721.setWtfunction(funActivityhouse);
+				rf1721.setWtrole(role);
+			    commonService.saveObject(rf1721);
+				
+			    Wtrolefunrelationship rf1987 = new Wtrolefunrelationship();
+			    rf1987.setWtrolefunId(13552L);
+			    rf1987.setWtfunction(funActivityhouse);
+			    rf1987.setWtrole(role2);
+			    commonService.saveObject(rf1987);
+			    
+				Wtresource funpdshAdd1777 = new Wtresource();
+				funpdshAdd1777.setWtresourceId(12288L);
+				funpdshAdd1777.setWtfunction(funActivityhouse);
+				funpdshAdd1777.setWtresName("添加");
+				funpdshAdd1777.setWtresCode("01");
+				funpdshAdd1777.setWtresCreatetime(date);
+				
+				
+				
+				
 				Wtfunction funpd12 = new Wtfunction();
 				funpd12.setWtfunctionId(131L);
 				funpd12.setWtfunParentid(0L);
@@ -523,7 +580,7 @@ public class DataInit {
 				funmem.setWtfunIsleaf("1");
 				funmem.setWtfunCode("2101");
 				funmem.setWtfunOrder("2101");
-				funmem.setWtfunName("信息登记");
+				funmem.setWtfunName("会员信息登记");
 				funmem.setWtfunExcutepath("memberlist.do");
 				funmem.setWtfunCreatetime(date);
 				commonService.saveObject(funmem);

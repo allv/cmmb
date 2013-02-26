@@ -45,6 +45,14 @@ public class managementAction extends BaseAction
 	private String minfo;
 	private String mbelongpro;
 	private String mimageurl;
+	//活动名称
+	private String mimagename;
+	//活动志愿者
+	private String mimagevolunteer;
+	//活动满意度
+	private String mimagereflect;
+	//活动费用
+	private String mimagefee;
 	
 	private QueryResult<Managementinfo> result;
 	public ManagementService managementservice;
@@ -74,33 +82,45 @@ public class managementAction extends BaseAction
 				}
 				else if (k == 1)
 				{
-					mendtime = pstrs[k];
+					mimagename = pstrs[k];
 				}
 				else if (k == 2)
 				{
-					mnumber = pstrs[k];
+					mimagefee = pstrs[k];
 				}
 				else if (k == 3)
 				{
-					mplace = pstrs[k];
+					mimagereflect = pstrs[k];
 				}
 				else if (k == 4)
 				{
-					morganizer = pstrs[k];
+					mimagevolunteer = pstrs[k];
 				}
 				else if (k == 5)
 				{
-					mserialnum = pstrs[k];
+					mnumber = pstrs[k];
 				}
 				else if (k == 6)
 				{
-					mbelongpro = pstrs[k];
+					mplace = pstrs[k];
 				}
 				else if (k == 7)
 				{
-					minfo = pstrs[k];
+					morganizer = pstrs[k];
 				}
 				else if (k == 8)
+				{
+					mserialnum = pstrs[k];
+				}
+				else if (k == 9)
+				{
+					mbelongpro = pstrs[k];
+				}
+				else if (k == 10)
+				{
+					minfo = pstrs[k];
+				}
+				else if (k == 11)
 				{
 					mimageurl = pstrs[k];
 				}
@@ -108,13 +128,17 @@ public class managementAction extends BaseAction
 			
 			minfos.setMstarttime(mstarttime);
 			minfos.setMendtime(mendtime);
-			minfos.setMnumber(mnumber);
+			minfos.setMnumber(Integer.parseInt(mnumber));
 			minfos.setMplace(mplace);
 			minfos.setMorganizer(morganizer);
 			minfos.setMserialnum(mserialnum);
 			minfos.setMbelongpro(mbelongpro);
 			minfos.setMinfo(minfo);
 			minfos.setMimageurl(mimageurl);
+			minfos.setMimagename(mimagename);
+			minfos.setMimagefee(Integer.parseInt(mimagefee));
+			minfos.setMimagereflect(mimagereflect);
+			minfos.setMimagevolunteer(mimagevolunteer);
 			managementservice.saveManagement(minfos);
 			out.print("success");
 		}catch(Exception e)
@@ -199,44 +223,72 @@ public class managementAction extends BaseAction
 			{
 				mid = pstrs[k];
 			}
-			if (k == 1)
-			{
-				mstarttime = pstrs[k];
-			}
-			else if (k == 2)
-			{
-				mendtime = pstrs[k];
-			}
-			else if (k == 3)
-			{
-				mnumber = pstrs[k];
-			}
-			else if (k == 4)
-			{
-				mplace = pstrs[k];
-			}
-			else if (k == 5)
-			{
-				morganizer = pstrs[k];
-			}
-			else if (k == 6)
-			{
-				mserialnum = pstrs[k];
-			}
-			else if (k == 7)
-			{
-				mbelongpro = pstrs[k];
-			}
-			else if (k == 8)
-			{
-				minfo = pstrs[k];
-			}
-			else if (k == 9)
-			{
-				mimageurl = pstrs[k];
-			}
+				if (k == 1)
+				{
+					mstarttime = pstrs[k];
+				}
+				else if (k == 2)
+				{
+					mimagename = pstrs[k];
+				}
+				else if (k == 3)
+				{
+					mimagefee = pstrs[k];
+				}
+				else if (k == 4)
+				{
+					mimagereflect = pstrs[k];
+				}
+				else if (k == 5)
+				{
+					mimagevolunteer = pstrs[k];
+				}
+				else if (k == 6)
+				{
+					mnumber = pstrs[k];
+				}
+				else if (k == 7)
+				{
+					mplace = pstrs[k];
+				}
+				else if (k == 8)
+				{
+					morganizer = pstrs[k];
+				}
+				else if (k == 9)
+				{
+					mserialnum = pstrs[k];
+				}
+				else if (k == 10)
+				{
+					mbelongpro = pstrs[k];
+				}
+				else if (k == 11)
+				{
+					minfo = pstrs[k];
+				}
+				else if (k == 12)
+				{
+					mimageurl = pstrs[k];
+				}
 		}
-    	flag = managementservice.modifyman(mid, mstarttime, mendtime, mnumber, mplace, morganizer, mserialnum, minfo, mbelongpro, mimageurl);
+		Managementinfo minfos = new Managementinfo();
+		minfos.setMid(mid);
+		minfos.setMstarttime(mstarttime);
+		minfos.setMendtime(mendtime);
+		minfos.setMnumber(Integer.parseInt(mnumber));
+		minfos.setMplace(mplace);
+		minfos.setMorganizer(morganizer);
+		minfos.setMserialnum(mserialnum);
+		minfos.setMbelongpro(mbelongpro);
+		minfos.setMinfo(minfo);
+		minfos.setMimageurl(mimageurl);
+		minfos.setMimagename(mimagename);
+		minfos.setMimagefee(Integer.parseInt(mimagefee));
+		minfos.setMimagereflect(mimagereflect);
+		minfos.setMimagevolunteer(mimagevolunteer);
+		
+    	flag = managementservice.modifyman(minfos);
     	PrintWriter out = null;
     	try {
 			out = response.getWriter();
@@ -300,7 +352,7 @@ public class managementAction extends BaseAction
         
         try {
 			result = managementservice.getQueryManResult(firstindex, maxresult, 
-					mstarttime, morganizer, mserialnum, request.getSession().getId());  
+					mstarttime, mserialnum, mimagefee,mnumber, request.getSession().getId());  
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -397,5 +449,35 @@ public class managementAction extends BaseAction
 	}
 	public void setMimageurl(String mimageurl) {
 		this.mimageurl = mimageurl;
+	}
+	public String getMimagename() {
+		return mimagename;
+	}
+	public void setMimagename(String mimagename) {
+		this.mimagename = mimagename;
+	}
+	public String getMimagevolunteer() {
+		return mimagevolunteer;
+	}
+	public void setMimagevolunteer(String mimagevolunteer) {
+		this.mimagevolunteer = mimagevolunteer;
+	}
+	public String getMimagereflect() {
+		return mimagereflect;
+	}
+	public void setMimagereflect(String mimagereflect) {
+		this.mimagereflect = mimagereflect;
+	}
+	public String getMimagefee() {
+		return mimagefee;
+	}
+	public void setMimagefee(String mimagefee) {
+		this.mimagefee = mimagefee;
+	}
+	public ManagementService getManagementservice() {
+		return managementservice;
+	}
+	public void setManagementservice(ManagementService managementservice) {
+		this.managementservice = managementservice;
 	}
 }

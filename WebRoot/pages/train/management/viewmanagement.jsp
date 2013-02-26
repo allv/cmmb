@@ -30,7 +30,7 @@ Marquee.prototype.Scroll=function(){if(this.Correct==0 && this.CTL>this.ClientSc
 </script>
 </head>
 <body onload="shows()">
-<div class="topLanBar"><b>当前位置：</b>活动管理> 活动管理> 活动明细</div>
+<div class="topLanBar"><b>当前位置：</b>活动管理> 活动明细</div>
 <table width="100%">
   <tr>
     <td background="<%=basePath%>/pages/train/skins/img/lan-index.gif">&nbsp;</td>
@@ -39,36 +39,60 @@ Marquee.prototype.Scroll=function(){if(this.Correct==0 && this.CTL>this.ClientSc
 <form  method="post">
 <div style="text-align:center">
 <table style="margin:auto" width="40%" border="0" cellspacing="0" cellpadding="5">
-    <tr>
+     <tr>
       <td align="right">活动编号</td>
-      <td><input name="mserialnum" type="text" value="${result.mserialnum}" size="20" disabled/></td>
+      <td><input name="mserialnum" type="text" value="${result.mserialnum}" size="20" disabled/><span style='color:red;'>&nbsp;*</span></td>
+    </tr>
+    
+    <tr>
+      <td align="right">活动名称</td>
+      <td><input name=mimagename type="text" value="${result.mimagename}" size="20" disabled/><span style='color:red;'>&nbsp;*</span></td>
+    </tr>
+    
+       
+    <tr>
+      <td align="right">活动费用</td>
+      <td><input name=mimagefee type="text" value="${result.mimagefee}" size="20" disabled/>元<span style='color:red;'>&nbsp;*</span></td>
     </tr>
     
     <tr>
       <td align="right">所属项目</td>
-      <td><input type="text" name="mbelongpro" size="20" value="${result.mbelongpro}" disabled/></td>
+      <td><input type="text" id="mbelongpro" name="mbelongpro" size="20" value="${result.mbelongpro }" disabled></td>
     </tr>
     
     <tr>
-      <td align="right">活动开始时间</td>
-      <td><input type="text" size="" name="mstarttime" value="${result.mstarttime}" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',readOnly:true})" disabled/></td>
+      <td align="right">活动时间</td>
+      <td><input type="text" size="" name="mstarttime" value="${result.mstarttime}" disabled/><span style='color:red;'>&nbsp;*</span></td>
     </tr>
     <tr>
-      <td align="right">活动结束时间</td>
-      <td><input type="text" size="" name="mendtime" value="${result.mendtime}" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',readOnly:true})" disabled/></td>
-    </tr>
-    <tr>
-      <td align="right">人数</td>
-      <td><input type="text" name="mnumber" value="${result.mnumber}" disabled/></td>
+      <td align="right">参与人数</td>
+      <td><input type="text" name="mnumber" value="${result.mnumber}" disabled/><span style='color:red;'>&nbsp;*</span></td>
     </tr>
     <tr>
       <td align="right">地点</td>
       <td><input name="mplace" type="text" value="${result.mplace}" size="20" disabled/></td>
     </tr>
+    
     <tr>
-      <td align="right">活动组织者</td>
+      <td align="right">活动满意度</td>
+      <td>
+        <select name="mimagereflect" id="mimagereflect" disabled>
+	       <option value="很满意" ${result.mimagereflect == '很满意' ? "selected" : ""}>   很满意  </option>
+	       <option value="一般满意" ${result.mimagereflect == '一般满意' ? "selected" : ""}>   一般满意  </option>
+		   <option value="不满意" ${result.mimagereflect == '不满意' ? "selected" : ""}>   不满意  </option>
+	    </select>
+      </td>
+    </tr>
+    
+    <tr>
+      <td align="right">活动负责人</td>
        <td>
       <input name="morganizer" type="text" value="${result.morganizer}" disabled/></td>
+    </tr>
+    
+      <tr>
+      <td align="right">活动志愿者</td>
+      <td><textarea name="mimagevolunteer" cols="58" rows="4" disabled>${result.mimagevolunteer}</textarea></td>
     </tr>
    
     <tr>

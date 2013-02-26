@@ -230,7 +230,7 @@ function onSubmit(){
 <input type="hidden" name="careid" value="${care.careid}" />
 <p><div align="left" id="topA" class="fixed_div0">
 	<h2>G5 护理评估与计划</h2></p>
-<table width="840" border="1" style="table-layout:auto;border:solid #8B8378; border-width:1px 0px 0px 1px;" style="table-layout:auto;border:solid #8B8378; border-width:1px 0px 0px 1px;">
+<table width="840" border="1"  style="table-layout:auto;border:solid #8B8378; border-width:1px 0px 0px 1px;">
   <tr>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"  width="161">姓名<span style='color:red;'>&nbsp;*</span></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"  width="187"><input name="memname" value="${care.memname}" id="memname" type=“text” size="10"/><input type="button" value="选择" onclick="chooseElders();"></td>

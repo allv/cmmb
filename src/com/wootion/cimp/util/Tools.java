@@ -14,23 +14,6 @@ import com.wootion.cimp.util.PageBasicInfo;
 
 public class Tools 
 {
-    public static final String SAVE_FILES_URL=IMPServiceFactory.getCMMPConfig().getSaveFileUrl();//"cimp/saveFiles/";//上传文件路径
-   
-    public static final String SAVE_TEMFILES_URL=IMPServiceFactory.getCMMPConfig().getTemplateFileUrl();//"cimp/saveFiles/";//上传文件路径
-    
-    public static final String SAVE_FILES_ZIP=IMPServiceFactory.getCMMPConfig().getZipFileUrl();//"cimp/zipFiles/";//打包文件路径
-
-    public static final String FTP_SERVER_IP=IMPServiceFactory.getCMMPConfig().getFtpServerIP();//"10.130.45.103";//ftp地址
-
-    public static final int FTP_SERVER_PORT=IMPServiceFactory.getCMMPConfig().getFtpServerPort();//21;//ftp端口
-    
-    public static final String FTP_USERNAME=IMPServiceFactory.getCMMPConfig().getFtpUserName();//"test";//ftp用户名
-    
-    public static final String FTP_POSSWORD=IMPServiceFactory.getCMMPConfig().getFtpUserPwd();//"test";//ftp密码
-    
-    public static final String FTP_REMETEPATH=IMPServiceFactory.getCMMPConfig().getFtpUploadPath();//"";//ftp上传地址
-    
-    public static final int HTTP_PORT=IMPServiceFactory.getCMMPConfig().getHttpServerPort();//"";//ftp上传地址
         /**
          *  转化list将其中的重复值去掉
          * @param oldList 含有重复值的list

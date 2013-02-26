@@ -42,7 +42,7 @@ public class VolunteerServiceImpl implements VolunteerService
 		baseDao.save(vinfos);
 	}
 	public QueryResult<Volunteerinfo> getQueryVolResult(Integer index,
-            Integer maxresult, String vname, String vspecialty,
+            Integer maxresult, String vname, String vcallno,String vtime,String vgender,
             String sessionID) throws ParseException {
 		String whererjpql = "1 = 1";
 		List<Object> lst = new ArrayList<Object>();
@@ -51,11 +51,22 @@ public class VolunteerServiceImpl implements VolunteerService
 	         whererjpql = whererjpql + " and o.vname like '%"
 	                 + vname + "%'";
 	    }
-		if (vspecialty != null && !vspecialty.trim().equals(""))
-	     {
-	         whererjpql = whererjpql + " and o.vspecialty like '%"
-	                 + vspecialty + "%'";
-	     }
+		if (vcallno != null && !vcallno.trim().equals(""))
+	    {
+	         whererjpql = whererjpql + " and o.vcallno like '%"
+	                 + vcallno + "%'";
+	    }
+		if (vtime != null && !vtime.trim().equals(""))
+	    {
+	         whererjpql = whererjpql + " and o.vtrain > '"
+	                 + vtime + "'";
+	    }
+		if (vgender != null && !vgender.trim().equals(""))
+	    {
+	         whererjpql = whererjpql + " and o.vgender = '"
+	                 + vgender + "'";
+	    }
+		
 	     LinkedHashMap<String, String> map = new LinkedHashMap<String, String>();
 
 	     map.put("vtime", "DESC");
@@ -82,7 +93,7 @@ public class VolunteerServiceImpl implements VolunteerService
 	}
 	public String modifyvol(String vid, String vnumber, String vtime, String vname, String vage, 
 			String vgender, String vphone, String vspecialty, String vcommunitywork, String vstudy,
-			String vintention, String vtrain) throws ParseException {
+			String vintention, String vtrain,String vcallno,String vbirthday,String vpriority,String vservewill ) throws ParseException {
 		SessionFactory factory = baseDao.getFactory();
         Session s1 = factory.openSession();
         Session s2 = factory.openSession();
@@ -106,6 +117,12 @@ public class VolunteerServiceImpl implements VolunteerService
 			vhis.setVintention(list.get(0).getVintention());
 			vhis.setVtrain(list.get(0).getVtrain());
 			
+			vhis.setVcallno(list.get(0).getVcallno());
+			vhis.setVbirthday(list.get(0).getVbirthday());
+			vhis.setVpriority(list.get(0).getVpriority());
+			vhis.setVservewill(list.get(0).getVservewill());
+			
+			
 			s1.save(vhis);
 			tx1.commit();
 			s1.close();
@@ -127,6 +144,14 @@ public class VolunteerServiceImpl implements VolunteerService
 				vol.setVstudy(vstudy);
 				vol.setVintention(vintention);
 				vol.setVtrain(vtrain);
+				vol.setVtotal(list.get(0).getVtotal());
+				vol.setServedate(list.get(0).getServedate());
+				vol.setServetime(list.get(0).getServetime());
+				vol.setA5(list.get(0).getA5());
+				vol.setVcallno(vcallno);
+				vol.setVbirthday(vbirthday);
+				vol.setVpriority(vpriority);
+				vol.setVservewill(vservewill);
 				//baseDao.update(act);
 				s2.update(vol);
 				tx2.commit();
@@ -204,5 +229,49 @@ public class VolunteerServiceImpl implements VolunteerService
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public String saveVolServTime(Volunteerinfo vol){
+		try{
+			baseDao.update(vol);
+		    return "success";
+		}catch(Exception e){
+			return "error";
+		}
+	}
+	
+	public String[]  getAllBirth()throws Exception{
+		String[] allbir = new String[12];
+		for(int firindex=0;firindex<12;firindex++){
+			allbir[firindex]="";
+		}
+		List<Volunteerinfo> volList = null;
+		try {
+			volList = new ArrayList<Volunteerinfo>();
+			volList = baseDao.queryHQL("from Volunteerinfo ta order by ta.vbirthday");
+			if(volList!=null&&volList.size()>0){
+				for(int listindex=0;listindex<volList.size();listindex++){
+					String birdate = volList.get(listindex).getVbirthday();
+					int birmonth = Integer.parseInt(birdate.substring(5,7));
+					if(volList.get(listindex).getVpriority().indexOf("1")!=-1){
+						//如果是1星 
+						allbir[birmonth-1] += "<span style=\"color: red\">"+volList.get(listindex).getVcallno()+"     "+volList.get(listindex).getVname()+"  "+volList.get(listindex).getVpriority()+"     "+volList.get(listindex).getVbirthday()+"</span><br>";
+					}
+					if(volList.get(listindex).getVpriority().indexOf("2")!=-1){
+						//如果是2星
+						allbir[birmonth-1] += "<span style=\"color: green\">"+volList.get(listindex).getVcallno()+"     "+volList.get(listindex).getVname()+"     "+volList.get(listindex).getVpriority()+"     "+volList.get(listindex).getVbirthday()+"</span><br>";
+					}
+					
+					if(volList.get(listindex).getVpriority().indexOf("3")!=-1){
+						//如果是3星
+						allbir[birmonth-1] += "<span style=\"color: blue\">"+volList.get(listindex).getVcallno()+"     "+volList.get(listindex).getVname()+"     "+volList.get(listindex).getVpriority()+"     "+volList.get(listindex).getVbirthday()+"</span><br>";
+					}
+				}
+					
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return allbir;
 	}
 }

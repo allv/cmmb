@@ -15,7 +15,7 @@ public interface ManagementService {
 	public void saveManagement(Managementinfo minfos);
 	
 	public QueryResult<Managementinfo> getQueryManResult(Integer index,
-            Integer maxresult, String mstarttime, String morganizer, String mserialnum,
+            Integer maxresult, String mstarttime,String mserialnum, String mimagefee, String mnumber,
             String sessionID)
 			throws ParseException;
 	
@@ -25,8 +25,7 @@ public interface ManagementService {
 	
 	public Managementhistory lookManagementhis(String mid)throws Exception;
 	
-	public String modifyman(String mid, String mstarttime, String mendtime, String mnumber, String mplace, 
-			String morganizer, String mserialnum, String minfo, String mbelongpro, String mimageurl) throws ParseException;
+	public String modifyman(Managementinfo minfos) throws ParseException;
 
 	public QueryResult<Managementhistory> getQueryManHistoryResult(Integer index,
             Integer maxresult, String mstarttime, String morganizer, String mserialnum,

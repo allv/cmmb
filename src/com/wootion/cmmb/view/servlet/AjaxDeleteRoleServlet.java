@@ -16,7 +16,7 @@ import com.wootion.idp.service.role.RoleManagerService;
 
 public class AjaxDeleteRoleServlet extends HttpServlet {
 
-	private static final long serialVersionUID = -4708494697102123042L;
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)

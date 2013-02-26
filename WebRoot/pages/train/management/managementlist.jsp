@@ -58,13 +58,16 @@ function manView(mid){
 <form method="post" name="actform" action="managementlist.do">
   <table width="100%" border="0" cellspacing="0" cellpadding="2">
     <tr>
-      <td align="right">活动开始时间</td>
+      <td align="right">活动时间</td>
       <td><input type="text" size="20" id="mstarttime" name="mstarttime" value="" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})" />
+      </td>
+       <td align="right">活动参与人数</td>
+      <td><input type="text" size="20" id="mnumber" name="mnumber" value=""/>
       </td>
     </tr>
     <tr>
-      <td align="right">活动组织者</td>
-      <td><input name="morganizer" id="morganizer" value="" type="text" size="20">
+      <td align="right">活动费用</td>
+      <td><input name="mimagefee" id="mimagefee" value="" type="text" size="20">
       
       <td align="right">活动编号</td>
       <td><input name="mserialnum" id="mserialnum" value="" type="text" size="20">
@@ -83,11 +86,12 @@ function manView(mid){
        <!--<td align="right"><button onClick="forward('managementhistory.do')" id="001">历史记录</button></td>-->
     </tr>
     <tr>
-      <th nowrap>活动开始时间</th>
-      <th nowrap>活动结束时间</th>
-      <th nowrap>人数</th>
-      <th nowrap>活动组织者</th>
       <th nowrap>活动编号</th>
+      <th nowrap>活动名称</th>
+      <th nowrap>活动时间</th>
+      <th nowrap>参与人数</th>
+      <th nowrap>活动负责人</th>
+      <th nowrap>活动费用</th>
       <th nowrap>操作</th>
     </tr>
 	<c:choose>
@@ -101,11 +105,12 @@ function manView(mid){
 	<c:otherwise>
     <c:forEach var="man" items="${result.resultlist}" varStatus="loopStatus">
     <tr>
+          <td align="center" nowrap bgcolor="#E4E4E4">${man.mserialnum}</td>
+          <td align="center" nowrap bgcolor="#E4E4E4">${man.mimagename} </td>
 	      <td align="center" nowrap bgcolor="#E4E4E4">${man.mstarttime} </td>
-	      <td align="center" nowrap bgcolor="#E4E4E4">${man.mendtime} </td>
 	      <td align="center" nowrap bgcolor="#E4E4E4">${man.mnumber} </td>
 	      <td align="center" nowrap bgcolor="#E4E4E4">${man.morganizer} </td>
-	      <td align="center" nowrap bgcolor="#E4E4E4">${man.mserialnum}</td>
+	      <td align="center" nowrap bgcolor="#E4E4E4">${man.mimagefee} </td>
 	      <td align="center" nowrap bgcolor="#E4E4E4"><a href="javascript:manView('${man.mid}');">明细</a>&nbsp;&nbsp;<a href="javascript:manEdit('${man.mid}');">编辑</a>&nbsp;&nbsp;<a href="javascript:manDel('${man.mid}');">删除</a>&nbsp;&nbsp;</td>
     </tr>
     </c:forEach>

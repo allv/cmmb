@@ -219,9 +219,4 @@
 			</bean>
 		</property>
 	</bean>
-
-	<bean id="cmmpconfig"
-		class="com.wootion.cimp.util.CMMPConfig">
-		
-	</bean>
 </beans>

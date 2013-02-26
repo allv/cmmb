@@ -1812,7 +1812,7 @@ function chooseElders(){
     </div></td>
     <td><div align="center">
       <input type="text" name="a272" id="a272" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})"/>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" onclick="delRow1(this)" value="删除" /></div></td>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" onClick="delRow1(this)" value="删除" /></div></td>
   </tr>
   </tbody>
 </table>

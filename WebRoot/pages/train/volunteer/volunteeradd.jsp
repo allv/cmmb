@@ -16,6 +16,11 @@ var $2 = function(id){
        	 	alert('姓名不能为空');
         	return;
     	}
+    	var vcallno = document.getElementById("vcallno").value;
+    	if(vcallno==""){
+    	    alert('编号不能为空');
+        	return;
+    	}
     	var vage = document.getElementById("vage").value;
     	var vgender = '男';
 		if(document.getElementById("vgender1").checked==true){
@@ -30,7 +35,11 @@ var $2 = function(id){
 		}
     	var vintention = document.getElementById("vintention").value;
     	var vtrain = document.getElementById("vtrain").value;
-        var item = vname + "|" + vage + "|" + vgender + "|" + vphone + "|" + vspecialty + "|" + vcommunitywork + "|" + vstudy + "|" + vintention + "|" + vtrain;
+    	
+    	var vbirthday = document.getElementById("vbirthday").value;
+    	var vpriority = document.getElementById("vpriority").value;
+    	var vservewill = document.getElementById("vservewill").value;
+        var item = vname + "|" + vage + "|" + vgender + "|" + vphone + "|" + vspecialty + "|" + vcommunitywork + "|" + vstudy + "|" + vintention + "|" + vtrain+'|'+vcallno+'|'+vbirthday+'|'+vpriority+'|'+vservewill;
         $2("detail").value = item;
         
         $.ajax({
@@ -62,13 +71,38 @@ var $2 = function(id){
 <form name="myform"  method="post" action="volunteersaveVolunteer.do">
 <input type="hidden" id="detail" name="detail" />
 <table  width="100%" border="0" cellpadding="3" cellspacing="1">
+     <tr>
+      <td align="right">志愿者编号</td>
+      <td><input type="text" name="vcallno" id="vcallno" value="${vcallno}"/><span style='color:red;'>&nbsp;*</span></td>
+    </tr>
     <tr>
       <td align="right">姓名</td>
-      <td><input type="text" name="vname" value="${vname}"/><span style='color:red;'>&nbsp;*</span></td>
+      <td><input type="text" name="vname" id="vname" value="${vname}"/><span style='color:red;'>&nbsp;*</span></td>
     </tr>
     <tr>
       <td align="right">年龄</td>
-      <td><input type="text" name="vage" value="${vage}"/>
+      <td><input type="text" name="vage" id="vage" value="${vage}"/>
+      </td>
+    </tr>
+     <tr>
+      <td align="right">生日</td>
+      <td><input type="text" name="vbirthday" id="vbirthday" value="${vbirthday}" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})"/>
+      </td>
+    </tr>
+     <tr>
+      <td align="right">志愿者级别</td>
+      <td>
+        <select name="vpriority" id="vpriority">
+	       <option value="1星" selected>   1星  </option>
+	       <option value="2星">   2星  </option>
+		   <option value="3星">   3星  </option>
+	    </select>
+      </td>
+    </tr>
+     <tr>
+      <td align="right">服务意向时间段</td>
+      <td>
+          <input type="text" id="vservewill" name="vservewill" value="${vservewill}"/>
       </td>
     </tr>
     <tr>
@@ -80,7 +114,7 @@ var $2 = function(id){
     </tr>
     <tr>
       <td align="right">电话</td>
-      <td><input name="vphone" type="text" value="${vphone}"/></td>
+      <td><input name="vphone" id="vphone"  type="text" value="${vphone}"/></td>
     </tr>
     <tr>
       <td align="right">是否有学习新知识意愿</td>
@@ -91,20 +125,20 @@ var $2 = function(id){
     </tr>
     <tr>
       <td align="right">加入志愿服务日期</td>
-      <td><input type="text" size="" name="vtrain" value="" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})" /></td>
+      <td><input type="text" id="vtrain" name="vtrain" value="${vtrain}" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})" /></td>
     </tr>
     <tr>
       <td align="right">个人特长</td>
-       <td><textarea name="vspecialty" cols="58" rows="4">${vspecialty}</textarea></td>
+       <td><textarea name="vspecialty" id="vspecialty" cols="58" rows="4">${vspecialty}</textarea></td>
     </tr>
     
     <tr>
       <td align="right">社区工作经历</td>
-      <td><textarea name="vcommunitywork" cols="58" rows="4">${vcommunitywork}</textarea></td>
+      <td><textarea name="vcommunitywork" id="vcommunitywork" cols="58" rows="4">${vcommunitywork}</textarea></td>
     </tr>
    <tr>
       <td align="right">志愿服务意向</td>
-      <td><textarea name="vintention" cols="58" rows="4">${vintention}</textarea></td>
+      <td><textarea name="vintention" id="vintention" cols="58" rows="4">${vintention}</textarea></td>
     </tr>
 </table>
 <table width="80%" cellspacing="0" cellpadding="1">

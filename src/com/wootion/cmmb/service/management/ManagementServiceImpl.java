@@ -40,24 +40,30 @@ public class ManagementServiceImpl implements ManagementService
 		baseDao.save(minfos);
 	}
 	public QueryResult<Managementinfo> getQueryManResult(Integer index,
-            Integer maxresult, String mstarttime, String morganizer, String mserialnum,
+            Integer maxresult, String mstarttime,String mserialnum, String mimagefee, String mnumber,
             String sessionID) throws ParseException {
 		String whererjpql = "1 = 1";
 		List<Object> lst = new ArrayList<Object>();
 		if(mstarttime != null && !mstarttime.trim().equals(""))
 		{
-			whererjpql = whererjpql + " and o.mstarttime <= ?";
+			whererjpql = whererjpql + " and o.mstarttime >= ?";
 	         lst.add(mstarttime);
 		}
-		if (morganizer != null && !morganizer.trim().equals(""))
-	     {
-	         whererjpql = whererjpql + " and o.morganizer like '%"
-	                 + morganizer + "%'";
-	     }
 		if (mserialnum != null && !mserialnum.trim().equals(""))
 	     {
 	         whererjpql = whererjpql + " and o.mserialnum like '%"
 	                 + mserialnum + "%'";
+	     }
+		if (mimagefee != null && !mimagefee.trim().equals(""))
+	     {
+	         whererjpql = whererjpql + " and o.mimagefee >= "
+	                 + mimagefee ;
+	     }
+		
+		if (mnumber != null && !mnumber.trim().equals(""))
+	     {
+	         whererjpql = whererjpql + " and o.mnumber > "
+	                 + mnumber;
 	     }
 		
 	     LinkedHashMap<String, String> map = new LinkedHashMap<String, String>();
@@ -67,15 +73,13 @@ public class ManagementServiceImpl implements ManagementService
 	             maxresult, whererjpql, lst.toArray(), map);
 	}
 	
-	public String modifyman(String mid, String mstarttime, String mendtime, String mnumber, String mplace, 
-			String morganizer, String mserialnum, String minfo, String mbelongpro, String mimageurl) throws ParseException {
+	public String modifyman(Managementinfo minfos) throws ParseException {
 		SessionFactory factory = baseDao.getFactory();
         Session s1 = factory.openSession();
         Session s2 = factory.openSession();
         Transaction tx1 = s1.beginTransaction();
         tx1.begin();
-        Managementinfo man = new Managementinfo();
-		List<Managementinfo> list = baseDao.find("from Managementinfo ai where ai.mid=?", mid);
+		List<Managementinfo> list = baseDao.find("from Managementinfo ai where ai.mid=?", minfos.getMid());
 		//保存活动历史记录
 		if (list.size() > 0)
 		{
@@ -85,7 +89,7 @@ public class ManagementServiceImpl implements ManagementService
 			mhis.setMmodifytime(mmodifytime);
 			mhis.setMstarttime(list.get(0).getMstarttime());
 			mhis.setMendtime(list.get(0).getMendtime());
-			mhis.setMnumber(list.get(0).getMnumber());
+			//mhis.setMnumber(list.get(0).getMnumber());
 			mhis.setMplace(list.get(0).getMplace());
 			mhis.setMorganizer(list.get(0).getMorganizer());
 			mhis.setMserialnum(list.get(0).getMserialnum());
@@ -101,18 +105,9 @@ public class ManagementServiceImpl implements ManagementService
 		{
 			try
 			{
-				man.setMid(mid);
-				man.setMstarttime(mstarttime);
-				man.setMendtime(mendtime);
-				man.setMnumber(mnumber);
-				man.setMplace(mplace);
-				man.setMorganizer(morganizer);
-				man.setMserialnum(mserialnum);
-				man.setMinfo(minfo);
-				man.setMbelongpro(mbelongpro);
-				man.setMimageurl(mimageurl);
+			    
 				//baseDao.update(act);
-				s2.update(man);
+				s2.update(minfos);
 				tx2.commit();
 				s2.close();
 			} catch (Exception e) {
@@ -162,7 +157,7 @@ public class ManagementServiceImpl implements ManagementService
 		List<Object> lst = new ArrayList<Object>();
 		if(mstarttime != null && !mstarttime.trim().equals(""))
 		{
-			whererjpql = whererjpql + " and o.mstarttime <= ?";
+			whererjpql = whererjpql + " and o.mstarttime >= ?";
 	         lst.add(mstarttime);
 		}
 		if (morganizer != null && !morganizer.trim().equals(""))
@@ -188,7 +183,7 @@ public class ManagementServiceImpl implements ManagementService
 		List<Managementhistory> manhisList = null;
 		try {
 			manhisList = new ArrayList<Managementhistory>();
-			manhisList = baseDao.find("from Managementhistory tp where tp.mid=?", mid);
+			manhisList = baseDao.find("from Managementhistory tp where tp.mid=? order by mstarttime desc", mid);
 			if (manhisList.size() > 0) {
 				return manhisList.get(0);
 			}

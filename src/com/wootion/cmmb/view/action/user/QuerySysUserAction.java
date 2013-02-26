@@ -13,11 +13,6 @@ import com.wootion.idp.view.action.BaseAction;
 /**
  * 文件名称：UserAction.java
  * 
- * @内容描述：TODO
- * @公 司：华通科技有限公司
- * @创建日期：2010-7-29下午02:05:45
- * @author Administrator
- * 
  */
 public class QuerySysUserAction extends BaseAction
 {

@@ -16,7 +16,7 @@
 		<property name="mendtime" type="java.lang.String">
 			<column name="mendtime" length="32"/>
 		</property>
-		<property name="mnumber" type="java.lang.String">
+		<property name="mnumber" type="java.lang.Integer">
 			<column name="mnumber" length="32"/>
 		</property>
 		<property name="mplace" type="java.lang.String">
@@ -37,5 +37,54 @@
 		<property name="mimageurl" type="java.lang.String">
 			<column name="mimageurl" length="5000" />
 		</property>
+		
+		
+		
+		<property name="mimagename" type="java.lang.String">
+			<column name="mimagename" length="100" />
+		</property>
+		<property name="mimagevolunteer" type="java.lang.String">
+			<column name="mimagevolunteer" length="500" />
+		</property>
+		<property name="mimagereflect" type="java.lang.String">
+			<column name="mimagereflect" length="10" />
+		</property>
+		<property name="mimagefee" type="java.lang.Integer">
+			<column name="mimagefee" length="10" />
+		</property>
+		
+		
+		<property name="a1" type="java.lang.String">
+			<column name="a1" length="100" />
+		</property>
+		
+		<property name="a2" type="java.lang.String">
+			<column name="a2" length="100" />
+		</property>
+		
+		<property name="a3" type="java.lang.String">
+			<column name="a3" length="100" />
+		</property>
+		<property name="a4" type="java.lang.String">
+			<column name="a4" length="100" />
+		</property>
+		
+		<property name="a5" type="java.lang.String">
+			<column name="a5" length="500" />
+		</property>
+		
+		<property name="a6" type="java.lang.String">
+			<column name="a6" length="500" />
+		</property>
+		
+		<property name="a7" type="java.lang.String">
+			<column name="a7" length="100" />
+		</property>
+		
+		<property name="a8" type="java.lang.String">
+			<column name="a8" length="100" />
+		</property>
+		
+		
 	</class>
 </hibernate-mapping>
