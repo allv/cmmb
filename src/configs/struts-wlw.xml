@@ -45,6 +45,16 @@
 			<result name="sucess">/pages/train/cseries/clist.jsp</result>
 		</action>
 		
+		<!-- 
+		<action name="activity*" 
+		 	class="com.wootion.cmmb.view.action.c_series.activityAction" method="{1}">
+		 	<result name="careadd">/pages/train/care/careadd.jsp</result>
+		 	<result name="carelist">/pages/train/care/carelist.jsp</result>
+		 	<result name="caredetail">/pages/train/care/careview.jsp</result>
+		 	<result name="careedit">/pages/train/care/caremodify.jsp</result>
+			<result name="sucess">/pages/train/cseries/clist.jsp</result>
+		</action>
+		 -->
 		<action name="recovery*" 
 		 	class="com.wootion.cmmb.view.action.recovery.recoveryAction" method="{1}">
 		 	<result name="recoverymange">/pages/train/recovery/recoverylist.jsp</result>
