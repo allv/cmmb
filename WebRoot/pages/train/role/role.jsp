@@ -42,6 +42,16 @@ function assignMemebers(roleid) {
 	$("#btn_search").click();
 }
 
+function viewRoleForms(roleid) {
+	showDialog('viewRoleForms.do','mid=' + roleid);
+	$("#btn_search").click();
+}
+
+function assignRoleForms(roleid) {
+	showDialog('getRoleForms.do','mid=' + roleid);
+	$("#btn_search").click();
+}
+
 function deleteRole(roleid) {
 	if(confirm('确认删除?')){
 		$.ajax({
@@ -116,7 +126,10 @@ function getParentRoleName(roleid) {
 	      <a href="javascript:viewMembers('${ftbl.wtroleId}');">查看会员</a>&nbsp;&nbsp;
 	      <a href="javascript:assignMemebers('${ftbl.wtroleId}');">分配会员</a>&nbsp;&nbsp;
 	      <a href="javascript:viewPermissions('${ftbl.wtroleId}');">查看权限</a>&nbsp;&nbsp;
-	      <a href="javascript:assignPermissions('${ftbl.wtroleId}');">分配权限</a>&nbsp;&nbsp;</td>
+	      <a href="javascript:assignPermissions('${ftbl.wtroleId}');">分配权限</a>&nbsp;&nbsp;
+	      <a href="javascript:viewRoleForms('${ftbl.wtroleId}');">查看表单</a>&nbsp;&nbsp;
+	      <a href="javascript:assignRoleForms('${ftbl.wtroleId}');">分配表单</a>&nbsp;&nbsp;
+	      </td>
     	</tr>
     </c:forEach>
   </table>

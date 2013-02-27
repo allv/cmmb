@@ -115,9 +115,22 @@
 		<action name="assignRoleMember" class="com.wootion.idp.view.action.role.AssignRoleMemeberAction" method="assignRoleUser">
 			<result name="sucess">/pages/train/message_popwindow.jsp</result>
 		</action>
+		
+		<action name="viewRoleForms"
+			class="com.wootion.idp.view.action.role.ViewRoleFormsAction">
+			<result name="sucess">
+				/pages/train/role/viewRoleForms.jsp
+			</result>
+		</action>
+		<action name="getRoleForms" class="com.wootion.idp.view.action.role.AssignRoleFormsAction" method="getRoleForms">
+			<result name="sucess">/pages/train/role/assignRoleForms.jsp</result>
+		</action>
+		<action name="assignRoleForms" class="com.wootion.idp.view.action.role.AssignRoleFormsAction" method="assignRoleForms">
+			<result name="sucess">/pages/train/message_popwindow.jsp</result>
+		</action>
 
 		<!-- 角色管理 end -->
-		<action name="workflow" class="com.wootion.cmmb.view.action.workflow.QueryWorkflowAction" >
+		<action name="queryworkflow" class="com.wootion.cmmb.view.action.workflow.QueryWorkflowAction" >
 			<result name="sucess">/pages/train/workflow/worflow.jsp</result>
 		</action>
 		

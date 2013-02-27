@@ -1,12 +1,20 @@
 package com.wootion.cimp.services;
 
 
-import com.wootion.idp.common.utils.SpringBeanFactory;
-import com.wootion.cmmb.service.activity.*;
-import com.wootion.cmmb.service.psychology.*;
-import com.wootion.cmmb.service.careservices.*;
+import com.wootion.cmmb.service.activity.ActivityService;
+import com.wootion.cmmb.service.activity.BloodpressureService;
+import com.wootion.cmmb.service.activity.InstrumentService;
+import com.wootion.cmmb.service.activity.SensoryService;
+import com.wootion.cmmb.service.careservices.BathrecordService;
+import com.wootion.cmmb.service.careservices.HelpcleanService;
+import com.wootion.cmmb.service.careservices.OthercareservicesService;
+import com.wootion.cmmb.service.careservices.ServiceplanService;
+import com.wootion.cmmb.service.careservices.careService;
 import com.wootion.cmmb.service.management.ManagementService;
+import com.wootion.cmmb.service.psychology.PsychologyService;
 import com.wootion.cmmb.service.volunteer.VolunteerService;
+import com.wootion.cmmb.service.workflow.WorkflowService;
+import com.wootion.idp.common.utils.SpringBeanFactory;
 
 
 public class IMPServiceFactory {
@@ -82,5 +90,10 @@ public class IMPServiceFactory {
 	public static VolunteerService getVolunteerService() {
 		return (VolunteerService) SpringBeanFactory
 				.getSpringBean("VolunteerService");
+	}
+	
+	public static WorkflowService getWorkflowService() {
+		return (WorkflowService) SpringBeanFactory
+				.getSpringBean("WorkflowService");
 	}
 }

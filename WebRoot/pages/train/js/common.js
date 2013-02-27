@@ -1,13 +1,3 @@
-function document.onkeydown() {         
-    /*if (event.keyCode == 8) {
-    	if (document.activeElement.type == "text") {
-             if (document.activeElement.readOnly == false)
-       			return true;
-        }
-        return false;
-    }*/
-}
-
 Date.prototype.format = function(format){
 	    var o =
 	    {

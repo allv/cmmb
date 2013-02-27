@@ -105,4 +105,6 @@ public interface RoleManagerService extends BaseService {
     public List<Wtuser> getRoleUsers(Long roleid);
     
     public boolean addRoleUsers(Long roleid,List<String> userids);
+
+	public boolean saveRoleForms(long parseLong, List<String> selecteForms);
 }
