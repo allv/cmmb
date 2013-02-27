@@ -1,0 +1,79 @@
+﻿ <link href="pages/train/skins/css/common.css" rel="stylesheet" type="text/css" />
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>角色管理</title>
+<script type="text/javascript"> 
+function createRole() {
+    var obj = new Object();
+window.showModalDialog('createRole.htm',obj,"dialogWidth=500px;dialogHeight=250px"); 
+}
+
+function viewMembers() {
+    var obj = new Object();
+window.showModalDialog('viewRoleMemebers.htm',obj,"dialogWidth=500px;dialogHeight=250px"); 
+}
+
+function assignMemebers() {
+    var obj = new Object();
+window.showModalDialog('assignRoleMemebers.htm',obj,"dialogWidth=600px;dialogHeight=450px"); 
+}
+
+function viewPermissions() {
+    var obj = new Object();
+window.showModalDialog('viewRolePermissions.htm',obj,"dialogWidth=500px;dialogHeight=250px"); 
+}
+
+function assignPermissions() {
+    var obj = new Object();
+window.showModalDialog('assignRolePermissions.htm',obj,"dialogWidth=600px;dialogHeight=450px"); 
+}
+</script>
+</head>
+<body>
+<div class="topLanBar"><b>当前位置：</b>权限管理> 角色管理</div>
+<table width="100%">
+  <tr>
+    <td background="pages/train/skins/img/lan-index.gif">&nbsp;</td>
+  </tr>
+</table>
+<form method="post" name="recoveryform" action="#">
+  <table width="100%" border="0" cellspacing="0" cellpadding="2">
+    <tr>
+      <td align="right">角色名称</td>
+      <td><input type="text" /></td>
+      <td> 
+        <button type="submit">搜索</button></td>
+    </tr>
+  </table>
+  <table width="100%" border="0" cellpadding="3" cellspacing="1" class="tableList">
+     <tr>
+       <td><button onClick="createRole();" id="001">新建角色</button></td>
+    </tr>
+    <tr>
+      <th nowrap>角色编号</th>
+      <th nowrap>角色名称</th>
+      <th nowrap>操作</th>
+    </tr>
+	<tr>
+	      <td align="center" nowrap bgcolor="#E4E4E4">SUPER_ADMIN　</td>
+	      <td align="center" nowrap bgcolor="#E4E4E4">超级管理员 </td>
+	      <td align="center" nowrap bgcolor="#E4E4E4"><a href="javascript: confirm('确认删除？'); void(0);">删除</a>&nbsp;&nbsp;<a href="javascript:viewMembers();">查看会员</a>&nbsp;&nbsp;<a href="javascript:assignMemebers();">分配会员</a>&nbsp;&nbsp;<a href="javascript:viewPermissions();">查看权限</a>&nbsp;&nbsp;<a href="javascript:assignPermissions();">分配权限</a>&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+	      <td align="center" nowrap bgcolor="#E4E4E4">HEALTH_DEPT_MANAGER</td>
+	      <td align="center" nowrap bgcolor="#E4E4E4">康复部门经理 </td>
+	      <td align="center" nowrap bgcolor="#E4E4E4"><a href="javascript: confirm('确认删除？'); void(0);">删除</a>&nbsp;&nbsp;<a href="javascript:viewMembers();">查看会员</a>&nbsp;&nbsp;<a href="javascript:assignMemebers();">分配会员</a>&nbsp;&nbsp;<a href="javascript:viewPermissions();">查看权限</a>&nbsp;&nbsp;<a href="javascript:assignPermissions();">分配权限</a>&nbsp;&nbsp;</td>
+    </tr>
+    <tr>
+	      <td align="center" nowrap bgcolor="#E4E4E4">HEALTH_DEPT</td>
+	      <td align="center" nowrap bgcolor="#E4E4E4">康复部门员工 </td>
+	      <td align="center" nowrap bgcolor="#E4E4E4"><a href="javascript: confirm('确认删除？'); void(0);">删除</a>&nbsp;&nbsp;<a href="javascript:viewMembers();">查看会员</a>&nbsp;&nbsp;<a href="javascript:assignMemebers();">分配会员</a>&nbsp;&nbsp;<a href="javascript:viewPermissions();">查看权限</a>&nbsp;&nbsp;<a href="javascript:assignPermissions();">分配权限</a>&nbsp;&nbsp;</td>
+    </tr>
+
+	
+    
+  </table>
+</form>
+</body>
+</html>
