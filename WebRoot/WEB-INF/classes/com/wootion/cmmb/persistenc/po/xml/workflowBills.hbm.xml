@@ -21,6 +21,12 @@
 		<property name="rejectReason" type="java.lang.String">
 			<column name="wf_bills_rejectReason" length="1000" />
 		</property>
+		<property name="billStatus" type="java.lang.Integer">
+			<column name="wf_bills_billstatus" length="1" />
+		</property>
+		<property name="nextHandleType" type="java.lang.Integer">
+			<column name="wf_bills_nextHandleType" length="1" />
+		</property>
 		
 		<many-to-one name="workflow"
 			class="com.wootion.cmmb.persistenc.po.bean.Workflow" fetch="join"

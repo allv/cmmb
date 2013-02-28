@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.wootion.cimp.services.IMPServiceFactory;
 import com.wootion.cmmb.persistenc.po.bean.Workflow;
-import com.wootion.cmmb.service.workflow.WorkflowService;
+import com.wootion.cmmb.service.workflow.WorkflowManageService;
 import com.wootion.idp.common.utils.QueryResult;
 import com.wootion.idp.view.action.BaseAction;
 
@@ -19,7 +19,7 @@ public class QueryWorkflowAction extends BaseAction {
 
 	private QueryResult<Workflow> result;
 
-	private WorkflowService service;
+	private WorkflowManageService service;
 
 	@Override
 	public String execute(HttpServletRequest arg0, HttpServletResponse arg1) {
@@ -80,13 +80,13 @@ public class QueryWorkflowAction extends BaseAction {
 		this.workflowName = workflowName;
 	}
 
-	public WorkflowService getService() {
+	public WorkflowManageService getService() {
 		if (service == null)
 			service = IMPServiceFactory.getWorkflowService();
 		return service;
 	}
 
-	public void setService(WorkflowService service) {
+	public void setService(WorkflowManageService service) {
 		this.service = service;
 	}
 

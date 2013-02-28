@@ -13,7 +13,7 @@ import com.wootion.cmmb.service.careservices.careService;
 import com.wootion.cmmb.service.management.ManagementService;
 import com.wootion.cmmb.service.psychology.PsychologyService;
 import com.wootion.cmmb.service.volunteer.VolunteerService;
-import com.wootion.cmmb.service.workflow.WorkflowService;
+import com.wootion.cmmb.service.workflow.WorkflowManageService;
 import com.wootion.idp.common.utils.SpringBeanFactory;
 
 
@@ -92,8 +92,8 @@ public class IMPServiceFactory {
 				.getSpringBean("VolunteerService");
 	}
 	
-	public static WorkflowService getWorkflowService() {
-		return (WorkflowService) SpringBeanFactory
+	public static WorkflowManageService getWorkflowService() {
+		return (WorkflowManageService) SpringBeanFactory
 				.getSpringBean("WorkflowService");
 	}
 }

@@ -10,6 +10,7 @@ public class Workflow {
 	private String description;
 	private Date createtime;
 	private Form form;
+	private Integer useful;
 	private Set<WorkflowBills> bills;
 	private Set<WorkflowNodes> nodes;
 	private Set<WorkflowNodes> records;
@@ -76,5 +77,13 @@ public class Workflow {
 
 	public void setRecords(Set<WorkflowNodes> records) {
 		this.records = records;
+	}
+
+	public Integer getUseful() {
+		return useful;
+	}
+
+	public void setUseful(Integer useful) {
+		this.useful = useful;
 	}
 }

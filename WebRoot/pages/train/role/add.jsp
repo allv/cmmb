@@ -2,6 +2,7 @@
 <%@ include file="../import.jsp"%>
 <html>
 <head>
+<base target="_self">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>新增角色</title>
 <script type="text/javascript">
@@ -18,7 +19,7 @@ function onSubmit(){
   </tr>
 </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
-<form method="post" action="addrole.do" target="#">
+<form method="post" action="addrole.do" target="_self">
   <tr>
     <td align="right">角色名称</td>
     <td><input type="text" name="wtroleName" id="wtroleName"></td>

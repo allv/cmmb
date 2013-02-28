@@ -48,10 +48,14 @@
     	<tr>
 	      <td align="center" nowrap bgcolor="#E4E4E4">${ftbl.name} </td>
 	      <td align="center" nowrap bgcolor="#E4E4E4"><fmt:formatDate value="${ftbl.createtime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-	      <td align="center" nowrap bgcolor="#E4E4E4">${ftbl.form.name}</td>
+	      <td align="center" nowrap bgcolor="#E4E4E4">${ftbl.name}</td>
 	      <td align="center" nowrap bgcolor="#E4E4E4">${ftbl.description}</td>
-	      <td align="center" align="center" nowrap bgcolor="#E4E4E4"><a href="javascript:deleteRole('${ftbl.id}')">删除</a>&nbsp;&nbsp;
-	      <a href="javascript:modifyRole('${ftbl.id}');">编辑</a>&nbsp;&nbsp;
+	      <td align="center" align="center" nowrap bgcolor="#E4E4E4"><a href="javascript:deleteWorkflow('${ftbl.id}')">删除</a>&nbsp;&nbsp;
+	      <a href="javascript:modifyWorkflow('${ftbl.id}');">编辑</a>&nbsp;&nbsp;
+	      <a href="javascript:enableWorkflow('${ftbl.id}');">
+	      <c:if test="${ftbl.userful }" >禁用</c:if>
+	      <c:if test="${!ftbl.userful }" >启用</c:if>
+	      </a>&nbsp;&nbsp;
 	      </td>
     	</tr>
     </c:forEach>

@@ -3,7 +3,6 @@ INSERT INTO `wtfunction` (`wtfunction_id`,`wtfun_parentid`,`wtfun_isleaf`,`wtfun
 INSERT INTO `wtresource` (`wtresource_id`,`wtfunction_id`,`wtres_name`,`wtres_code`,`wtres_createtime`,`wtres_description`) VALUES (10301,103,'添加','01','2013-02-26 11:11:11',NULL);
 
 INSERT INTO `wtrolefunrelationship` VALUES (10004,10001,103,NULL);
-INSERT INTO `wtrolefunrelationship` VALUES (119898,10003,131,NULL);
 INSERT INTO `wtrolefunrelationship` VALUES (119899,10003,145,NULL);
 INSERT INTO `wtrolefunrelationship` VALUES (119900,10003,137,NULL);
 INSERT INTO `wtrolefunrelationship` VALUES (119901,10003,179,NULL);
@@ -16,6 +15,7 @@ INSERT INTO `wtrolefunrelationship` VALUES (119907,10003,167,NULL);
 INSERT INTO `wtrolefunrelationship` VALUES (119908,10003,1477,NULL);
 INSERT INTO `wtrolefunrelationship` VALUES (119909,10003,1499,NULL);
 INSERT INTO `wtrolefunrelationship` VALUES (119910,10003,1466,NULL);
+INSERT INTO `wtrolefunrelationship` VALUES (119911,10003,131,NULL);
 
 
 INSERT INTO `tbl_form` (`form_id`,`form_createtime`,`form_name`,`form_desc`,`form_code`) VALUES (100001,'2013-02-26 11:11:11','项目',NULL,NULL);

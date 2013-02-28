@@ -4,7 +4,7 @@ import com.wootion.cmmb.persistenc.po.bean.Workflow;
 import com.wootion.idp.common.utils.QueryResult;
 import com.wootion.idp.service.BaseServiceImpl;
 
-public class WorkflowServiceImpl extends BaseServiceImpl implements WorkflowService {
+public class WorkflowManageServiceImpl extends BaseServiceImpl implements WorkflowManageService {
 	
 	@Override
 	public QueryResult<Workflow> queryWorkflowsResult(Integer firstindex,

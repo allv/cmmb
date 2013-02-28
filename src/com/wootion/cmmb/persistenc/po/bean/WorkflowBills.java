@@ -1,5 +1,7 @@
 package com.wootion.cmmb.persistenc.po.bean;
 
+import org.apache.commons.lang.StringUtils;
+
 public class WorkflowBills {
 
 	private Long id;
@@ -8,6 +10,16 @@ public class WorkflowBills {
 	private String currentHandleUsers;
 	private String rejectReason;
 	private Workflow workflow;
+	private Integer billStatus;
+	private Integer nextHandleType;
+
+	public Integer getNextHandleType() {
+		return nextHandleType;
+	}
+
+	public void setNextHandleType(Integer nextHandleType) {
+		this.nextHandleType = nextHandleType;
+	}
 
 	public Long getId() {
 		return id;
@@ -41,6 +53,12 @@ public class WorkflowBills {
 		this.currentHandleUsers = currentHandleUsers;
 	}
 
+	public void addCurrentHandleUsers(String currentHandleUsers) {
+		if (this.currentHandleUsers == null)
+			this.currentHandleUsers = StringUtils.EMPTY;
+		currentHandleUsers = currentHandleUsers + currentHandleUsers + ",";
+	}
+
 	public String getRejectReason() {
 		return rejectReason;
 	}
@@ -55,6 +73,14 @@ public class WorkflowBills {
 
 	public void setWorkflow(Workflow workflow) {
 		this.workflow = workflow;
+	}
+
+	public Integer getBillStatus() {
+		return billStatus;
+	}
+
+	public void setBillStatus(Integer billStatus) {
+		this.billStatus = billStatus;
 	}
 
 }

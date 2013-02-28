@@ -17,6 +17,9 @@
 		<property name="description" type="java.lang.String">
 			<column name="wf_description" length="200" />
 		</property>
+		<property name="useful" type="java.lang.Integer">
+			<column name="wf_useful" length="1" />
+		</property>
 
 		<many-to-one name="form"
 			class="com.wootion.cmmb.persistenc.po.bean.Form" unique="true"

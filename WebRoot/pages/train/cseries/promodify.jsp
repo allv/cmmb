@@ -103,6 +103,15 @@
 		<button onClick="forward('c_serieslist.do')">返回</button></td>
   </tr>
 </table>
+<div class="foreverTop">
+<table style="float:right">
+<tr>
+<td align="center"><b>工作流管理</b></td>
+</tr>
+<tr align="center"><td><input type="button" value="查看工作流" /></td></tr>
+<tr align="center"><td><input type="button" value="提交" /></td></tr>
+</table>
+</div>
 </form>
 </body>
 <script type="text/javascript">

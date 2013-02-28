@@ -188,7 +188,9 @@ function trim(szStr){
 					   "&prostate="+encodeURI(prostate)+"&proresponsor="+encodeURI(proresponsor)+"&proagency="+encodeURI(proagency)+
 					   "&proauthority="+encodeURI(proauthority)+"&proresult="+encodeURI(proresult)+"&procontract="+
 					   encodeURI(procontract)+"&prostartdate="+prostartdate+"&probudget="+encodeURI(probudget)+"&protimes="+
-					   encodeURI(protimes)+"&proenddate="+proenddate+"&prodesc="+encodeURI(prodesc)+"&trdata="+encodeURI(trdata)+"&tddata="+encodeURI(tddata),
+					   encodeURI(protimes)+"&proenddate="+proenddate+"&prodesc="+encodeURI(prodesc)+"&trdata="+encodeURI(trdata)+"&tddata="+encodeURI(tddata)+
+					   "&submitflag="+submitflag
+					   ,
 					   success:function (msg){
 					   		var result = msg;
 					   		if('success'==result){
@@ -206,6 +208,14 @@ function trim(szStr){
 					   }	   
 		   }); 
     }
+    
+    var submitflag = 0;
+    
+    function submit() {
+    	submitflag = 1;
+    	Save();
+    }
+    
 </script>
 </head>
 <body>
@@ -273,7 +283,6 @@ function trim(szStr){
 		        <td>
 	        		<input type="button" class="groovybutton" onclick="DelRow()" value="删除标的" />
 	            </td>
-	            
 		    </tr>
 		    <tr>
 		        <th style="width:40px">序列号</th>
@@ -296,7 +305,7 @@ function trim(szStr){
     </tr>
   <tr align="right">
     <td>&nbsp;</td>
-    <td><input type="button" class="groovybutton" onClick="Save()" value="提交"></button> 
+    <td><input type="button" class="groovybutton" onClick="Save()" value="保存"></button> 
 		<input type="button" class="groovybutton" onClick="forward('c_serieslist.do')" value="返回"></button></td>
   </tr>
 </table>

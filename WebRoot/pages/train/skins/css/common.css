@@ -169,14 +169,14 @@ input.radio{
 }
 
 .input01{
-	border: 1px solid #CDC28D; /* 输入框表框颜色*/
-	background-color: #F2F9FD; /* 输入框背景颜色*/
-	height: 24px; /*输入框高度*/
-	width: 200px; /*输入框宽度*/
-	padding-top: 4px; /*输入框里的文字和输入框上边之间的距离（因为输入框比较高，输入的字不是居中的，所以设定此样式）*/
-	font-family: Arial, Helvetica, sans-serif; /*输入框文字类型*/
-	font-size: 12px; /*输入框内文字大小*/
-	padding-left: 10px; /*输入框里的文字和输入框左边之间的距离*/
+	border: 1px solid #CDC28D; /* è¾“å…¥æ¡†è¡¨æ¡†é¢œè‰²*/
+	background-color: #F2F9FD; /* è¾“å…¥æ¡†èƒŒæ™¯é¢œè‰²*/
+	height: 24px; /*è¾“å…¥æ¡†é«˜åº¦*/
+	width: 200px; /*è¾“å…¥æ¡†å®½åº¦*/
+	padding-top: 4px; /*è¾“å…¥æ¡†é‡Œçš„æ–‡å­—å’Œè¾“å…¥æ¡†ä¸Šè¾¹ä¹‹é—´çš„è·�ç¦»ï¼ˆå› ä¸ºè¾“å…¥æ¡†æ¯”è¾ƒé«˜ï¼Œè¾“å…¥çš„å­—ä¸�æ˜¯å±…ä¸­çš„ï¼Œæ‰€ä»¥è®¾å®šæ­¤æ ·å¼�ï¼‰*/
+	font-family: Arial, Helvetica, sans-serif; /*è¾“å…¥æ¡†æ–‡å­—ç±»åž‹*/
+	font-size: 12px; /*è¾“å…¥æ¡†å†…æ–‡å­—å¤§å°�*/
+	padding-left: 10px; /*è¾“å…¥æ¡†é‡Œçš„æ–‡å­—å’Œè¾“å…¥æ¡†å·¦è¾¹ä¹‹é—´çš„è·�ç¦»*/
 }
 
 label
@@ -193,3 +193,11 @@ label
  {
   background-position:left bottom;
  }
+.foreverTop{
+	position:fixed;width:97%;height:60px;text-align:right;top:0px;
+}
+
+.foreverTop table{
+	background-color: #CCE8CF;
+    float: right;
+}

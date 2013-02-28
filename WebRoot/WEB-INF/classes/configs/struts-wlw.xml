@@ -190,7 +190,7 @@
 		</action>
 		
 		<action name="project*" 
-		 	class="com.wootion.cmmb.view.action.c_series.ProjectAction" method="{1}">
+		 	class="com.wootion.cmmb.view.action.c_series.ProjectActionDecorator" method="{1}">
 		 	<result name="protrack">/pages/train/cseries/protrack1.jsp</result>
 		 	<result name="projectlist">/pages/train/cseries/clist.jsp</result>
 		 	<result name="prodetail">/pages/train/cseries/proview.jsp</result>
