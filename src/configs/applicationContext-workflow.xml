@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd 
+      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<bean id="WorkflowService" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.wootion.cmmb.common.workflow.WorkflowServiceImpl">
+				<property name="commonDao" ref="commondao" />
+				<property name="workflowDao" ref="WorkflowDAO" />
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="WorkflowDAO"
+		class=" com.wootion.cmmb.common.workflow.WorkflowDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="ProjectAction"
+		class="com.wootion.cmmb.view.action.c_series.ProjectActionImpl" >
+		<property name="projectservice">
+			<ref bean="projectService" />
+		</property>
+	</bean>
+	
+	<bean id="MemAction"
+		class="com.wootion.cmmb.view.action.membermanage.MemActionImpl" >
+		<property name="memservice">
+			<ref bean="memberService" />
+		</property>
+	</bean>
+
+	<bean id="WorkflowAspect"
+		class="com.wootion.cmmb.common.workflow.WorkflowAspect">
+		<property name="service">
+			<ref bean="WorkflowService" />
+		</property>
+	</bean>
+	<aop:config>
+		<aop:aspect id="wfAspect" ref="WorkflowAspect">
+			<aop:pointcut id="checkWorkflow"
+				expression="execution(public * com.wootion.cmmb.view.action..*Impl.premodify(..))" />
+			<aop:pointcut id="handleWorkflow"
+				expression="execution(public * com.wootion.cmmb.view.action..*Impl.modify*(..))" />
+			<aop:pointcut id="deleteWorkflow"
+				expression="execution(public * com.wootion.cmmb.view.action..*Impl.delete*(..))" />
+			<aop:pointcut id="viewWorkflow"
+				expression="execution(public * com.wootion.cmmb.view.action..*Impl.view*(..))" />
+			<aop:after pointcut-ref="checkWorkflow" method="checkWorkflow" arg-names="joinPoint"/>
+			<aop:after pointcut-ref="handleWorkflow" method="handleWorkflow" arg-names="joinPoint"/>
+			<aop:after pointcut-ref="deleteWorkflow" method="deleteWorkflow" arg-names="joinPoint"/>
+			<aop:after pointcut-ref="viewWorkflow" method="viewWorkflow" arg-names="joinPoint"/>
+		</aop:aspect>
+	</aop:config>
+</beans>

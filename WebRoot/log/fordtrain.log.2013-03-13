@@ -1,0 +1,133 @@
+2013-03-13 20:42:12,411 INFO Root WebApplicationContext: initialization started
+   2013-03-13 20:42:12,700 INFO Refreshing org.springframework.web.context.support.XmlWebApplicationContext@191ebc5: display name [Root WebApplicationContext]; startup date [Wed Mar 13 20:42:12 CST 2013]; root of context hierarchy
+   2013-03-13 20:42:13,083 INFO Loading XML bean definitions from ServletContext resource [/WEB-INF/classes/configs/applicationContext.xml]
+   2013-03-13 20:42:13,698 INFO Loading XML bean definitions from ServletContext resource [/WEB-INF/classes/configs/applicationContext-app.xml]
+   2013-03-13 20:42:13,761 INFO Loading XML bean definitions from ServletContext resource [/WEB-INF/classes/configs/applicationContext-jq.xml]
+   2013-03-13 20:42:13,783 INFO Loading XML bean definitions from ServletContext resource [/WEB-INF/classes/configs/applicationContext-wuc.xml]
+   2013-03-13 20:42:13,800 INFO Bean factory for application context [org.springframework.web.context.support.XmlWebApplicationContext@191ebc5]: org.springframework.beans.factory.support.DefaultListableBeanFactory@15099a1
+   2013-03-13 20:42:14,498 INFO Loading properties file from ServletContext resource [/WEB-INF/classes/configs/config.properties]
+   2013-03-13 20:42:14,541 INFO Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@15099a1: defining beans [propertyConfigurer,dataSource,sessionFactory,commondao,transactionManager,txProxyTemplate,commonservice,usermanagerdao,usermanagerservice,rolemanagedao,roleDAO,rolemanageservice,functionmanagerdao,functionmanagerservice,resourcemanagerdao,resourcemanageservice,WorkflowService,WorkflowDAO,baseDao,projectService,memberService,memberHealthService,ActivityService,PsychologyService,BathrecordService,SensoryService,BloodpressureService,HelpcleanService,OthercareservicesService,ServiceplanService,ManagementService,InstrumentService,VolunteerService,careService,WorkflowMgmService,listuserservice]; root of factory hierarchy
+   2013-03-13 20:42:14,622 INFO MLog clients using log4j logging.
+   2013-03-13 20:42:14,783 INFO Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+   2013-03-13 20:42:16,364 INFO Building new Hibernate SessionFactory
+   2013-03-13 20:42:16,657 INFO Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1b61fpq8trolixvd54kq6|652548, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1b61fpq8trolixvd54kq6|652548, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+   2013-03-13 20:42:24,245 INFO Using DataSource [com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1b61fpq8trolixvd54kq6|652548, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1b61fpq8trolixvd54kq6|652548, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]] of Hibernate SessionFactory for HibernateTransactionManager
+   2013-03-13 20:42:25,875 INFO Root WebApplicationContext: initialization completed in 13423 ms
+   2013-03-13 20:42:27,679 INFO Parsing configuration file [struts-default.xml]
+   2013-03-13 20:42:27,942 INFO Parsing configuration file [struts-plugin.xml]
+   2013-03-13 20:42:28,119 INFO Parsing configuration file [./configs/struts.xml]
+   2013-03-13 20:42:28,123 WARN Settings: Could not parse struts.locale setting, substituting default VM locale
+   2013-03-13 20:42:28,145 INFO Loading global messages from langue
+   2013-03-13 20:42:28,145 INFO Overriding property struts.configuration.xml.reload - old value: false new value: true
+   2013-03-13 20:42:28,322 INFO Initializing Struts-Spring integration...
+   2013-03-13 20:42:28,322 INFO Setting autowire strategy to name
+   2013-03-13 20:42:28,322 INFO ... initialized Struts-Spring integration successfully
+   2013-03-13 20:42:30,027 INFO Setting DefaultObjectTypeDeterminer as default ...
+   2013-03-13 20:54:29,799 INFO Detected AnnotationActionValidatorManager, initializing it...
+   2013-03-13 20:55:14,922 WARN No configuration found for the specified action: 'modifyWorkflow.do' in namespace: '/'. Form action defaulting to 'action' attribute's literal value.
+   2013-03-13 20:55:16,645 WARN No configuration found for the specified action: 'modifyWorkflow.do' in namespace: '/'. Form action defaulting to 'action' attribute's literal value.
+   2013-03-13 21:54:22,630 ERROR Could not find action or result
+   There is no Action mapped for namespace / and action name viewWorkflowHandleUsers. - [unknown location]
+	at com.opensymphony.xwork2.DefaultActionProxy.prepare(DefaultActionProxy.java:186)
+	at org.apache.struts2.impl.StrutsActionProxyFactory.createActionProxy(StrutsActionProxyFactory.java:41)
+	at org.apache.struts2.dispatcher.Dispatcher.serviceAction(Dispatcher.java:494)
+	at org.apache.struts2.dispatcher.FilterDispatcher.doFilter(FilterDispatcher.java:422)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at com.wootion.idp.common.utils.filter.SessionFilter.doFilter(SessionFilter.java:59)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.__invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:293)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:859)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:602)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Thread.java:619)
+2013-03-13 21:54:28,102 ERROR Could not find action or result
+   There is no Action mapped for namespace / and action name viewWorkflowHandleUsers. - [unknown location]
+	at com.opensymphony.xwork2.DefaultActionProxy.prepare(DefaultActionProxy.java:186)
+	at org.apache.struts2.impl.StrutsActionProxyFactory.createActionProxy(StrutsActionProxyFactory.java:41)
+	at org.apache.struts2.dispatcher.Dispatcher.serviceAction(Dispatcher.java:494)
+	at org.apache.struts2.dispatcher.FilterDispatcher.doFilter(FilterDispatcher.java:422)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at com.wootion.idp.common.utils.filter.SessionFilter.doFilter(SessionFilter.java:59)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.__invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:293)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:859)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:602)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Thread.java:619)
+2013-03-13 22:05:19,036 INFO Closing org.springframework.web.context.support.XmlWebApplicationContext@191ebc5: display name [Root WebApplicationContext]; startup date [Wed Mar 13 20:42:12 CST 2013]; root of context hierarchy
+   2013-03-13 22:05:19,037 INFO Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@15099a1: defining beans [propertyConfigurer,dataSource,sessionFactory,commondao,transactionManager,txProxyTemplate,commonservice,usermanagerdao,usermanagerservice,rolemanagedao,roleDAO,rolemanageservice,functionmanagerdao,functionmanagerservice,resourcemanagerdao,resourcemanageservice,WorkflowService,WorkflowDAO,baseDao,projectService,memberService,memberHealthService,ActivityService,PsychologyService,BathrecordService,SensoryService,BloodpressureService,HelpcleanService,OthercareservicesService,ServiceplanService,ManagementService,InstrumentService,VolunteerService,careService,WorkflowMgmService,listuserservice]; root of factory hierarchy
+   2013-03-13 22:05:19,038 INFO Closing Hibernate SessionFactory
+   2013-03-13 22:05:34,547 INFO Root WebApplicationContext: initialization started
+   2013-03-13 22:05:34,688 INFO Refreshing org.springframework.web.context.support.XmlWebApplicationContext@1ed246d: display name [Root WebApplicationContext]; startup date [Wed Mar 13 22:05:34 CST 2013]; root of context hierarchy
+   2013-03-13 22:05:35,009 INFO Loading XML bean definitions from ServletContext resource [/WEB-INF/classes/configs/applicationContext.xml]
+   2013-03-13 22:05:35,294 INFO Loading XML bean definitions from ServletContext resource [/WEB-INF/classes/configs/applicationContext-app.xml]
+   2013-03-13 22:05:35,359 INFO Loading XML bean definitions from ServletContext resource [/WEB-INF/classes/configs/applicationContext-jq.xml]
+   2013-03-13 22:05:35,372 INFO Loading XML bean definitions from ServletContext resource [/WEB-INF/classes/configs/applicationContext-wuc.xml]
+   2013-03-13 22:05:35,390 INFO Bean factory for application context [org.springframework.web.context.support.XmlWebApplicationContext@1ed246d]: org.springframework.beans.factory.support.DefaultListableBeanFactory@3ad53
+   2013-03-13 22:05:35,686 INFO Loading properties file from ServletContext resource [/WEB-INF/classes/configs/config.properties]
+   2013-03-13 22:05:35,729 INFO Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@3ad53: defining beans [propertyConfigurer,dataSource,sessionFactory,commondao,transactionManager,txProxyTemplate,commonservice,usermanagerdao,usermanagerservice,rolemanagedao,roleDAO,rolemanageservice,functionmanagerdao,functionmanagerservice,resourcemanagerdao,resourcemanageservice,WorkflowService,WorkflowDAO,baseDao,projectService,memberService,memberHealthService,ActivityService,PsychologyService,BathrecordService,SensoryService,BloodpressureService,HelpcleanService,OthercareservicesService,ServiceplanService,ManagementService,InstrumentService,VolunteerService,careService,WorkflowMgmService,listuserservice]; root of factory hierarchy
+   2013-03-13 22:05:35,761 INFO MLog clients using log4j logging.
+   2013-03-13 22:05:35,867 INFO Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+   2013-03-13 22:05:36,907 INFO Building new Hibernate SessionFactory
+   2013-03-13 22:05:37,051 INFO Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1b61fpq8trrkpu65nnnn9|16d4a3e, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1b61fpq8trrkpu65nnnn9|16d4a3e, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+   2013-03-13 22:05:41,332 INFO Using DataSource [com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1b61fpq8trrkpu65nnnn9|16d4a3e, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1b61fpq8trrkpu65nnnn9|16d4a3e, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]] of Hibernate SessionFactory for HibernateTransactionManager
+   2013-03-13 22:05:42,427 INFO Root WebApplicationContext: initialization completed in 7879 ms
+   2013-03-13 22:05:43,457 INFO Parsing configuration file [struts-default.xml]
+   2013-03-13 22:05:43,612 INFO Parsing configuration file [struts-plugin.xml]
+   2013-03-13 22:05:43,703 INFO Parsing configuration file [./configs/struts.xml]
+   2013-03-13 22:05:43,706 WARN Settings: Could not parse struts.locale setting, substituting default VM locale
+   2013-03-13 22:05:43,717 INFO Loading global messages from langue
+   2013-03-13 22:05:43,718 INFO Overriding property struts.configuration.xml.reload - old value: false new value: true
+   2013-03-13 22:05:43,797 INFO Initializing Struts-Spring integration...
+   2013-03-13 22:05:43,797 INFO Setting autowire strategy to name
+   2013-03-13 22:05:43,797 INFO ... initialized Struts-Spring integration successfully
+   2013-03-13 22:05:44,714 INFO Setting DefaultObjectTypeDeterminer as default ...
+   2013-03-13 22:30:50,954 INFO Detected AnnotationActionValidatorManager, initializing it...
+   2013-03-13 22:43:27,416 INFO Closing org.springframework.web.context.support.XmlWebApplicationContext@1ed246d: display name [Root WebApplicationContext]; startup date [Wed Mar 13 22:05:34 CST 2013]; root of context hierarchy
+   2013-03-13 22:43:27,416 INFO Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@3ad53: defining beans [propertyConfigurer,dataSource,sessionFactory,commondao,transactionManager,txProxyTemplate,commonservice,usermanagerdao,usermanagerservice,rolemanagedao,roleDAO,rolemanageservice,functionmanagerdao,functionmanagerservice,resourcemanagerdao,resourcemanageservice,WorkflowService,WorkflowDAO,baseDao,projectService,memberService,memberHealthService,ActivityService,PsychologyService,BathrecordService,SensoryService,BloodpressureService,HelpcleanService,OthercareservicesService,ServiceplanService,ManagementService,InstrumentService,VolunteerService,careService,WorkflowMgmService,listuserservice]; root of factory hierarchy
+   2013-03-13 22:43:27,417 INFO Closing Hibernate SessionFactory
+   2013-03-13 22:43:27,766 INFO Building new Hibernate SessionFactory
+   2013-03-13 22:43:45,353 INFO Root WebApplicationContext: initialization started
+   2013-03-13 22:43:45,506 INFO Refreshing org.springframework.web.context.support.XmlWebApplicationContext@1f86f75: display name [Root WebApplicationContext]; startup date [Wed Mar 13 22:43:45 CST 2013]; root of context hierarchy
+   2013-03-13 22:43:45,840 INFO Loading XML bean definitions from ServletContext resource [/WEB-INF/classes/configs/applicationContext.xml]
+   2013-03-13 22:43:46,023 INFO Loading XML bean definitions from ServletContext resource [/WEB-INF/classes/configs/applicationContext-app.xml]
+   2013-03-13 22:43:46,056 INFO Loading XML bean definitions from ServletContext resource [/WEB-INF/classes/configs/applicationContext-jq.xml]
+   2013-03-13 22:43:46,074 INFO Loading XML bean definitions from ServletContext resource [/WEB-INF/classes/configs/applicationContext-wuc.xml]
+   2013-03-13 22:43:46,087 INFO Bean factory for application context [org.springframework.web.context.support.XmlWebApplicationContext@1f86f75]: org.springframework.beans.factory.support.DefaultListableBeanFactory@6f9c62
+   2013-03-13 22:43:46,393 INFO Loading properties file from ServletContext resource [/WEB-INF/classes/configs/config.properties]
+   2013-03-13 22:43:46,535 INFO Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6f9c62: defining beans [propertyConfigurer,dataSource,sessionFactory,commondao,transactionManager,txProxyTemplate,commonservice,usermanagerdao,usermanagerservice,rolemanagedao,roleDAO,rolemanageservice,functionmanagerdao,functionmanagerservice,resourcemanagerdao,resourcemanageservice,WorkflowService,WorkflowDAO,baseDao,projectService,memberService,memberHealthService,ActivityService,PsychologyService,BathrecordService,SensoryService,BloodpressureService,HelpcleanService,OthercareservicesService,ServiceplanService,ManagementService,InstrumentService,VolunteerService,careService,WorkflowMgmService,listuserservice]; root of factory hierarchy
+   2013-03-13 22:43:46,561 INFO MLog clients using log4j logging.
+   2013-03-13 22:43:46,668 INFO Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+   2013-03-13 22:43:47,810 INFO Building new Hibernate SessionFactory
+   2013-03-13 22:43:47,975 INFO Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1b61fpq8trsxtffpp27oh|1aadbf7, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1b61fpq8trsxtffpp27oh|1aadbf7, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+   2013-03-13 22:43:52,349 INFO Using DataSource [com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1b61fpq8trsxtffpp27oh|1aadbf7, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1b61fpq8trsxtffpp27oh|1aadbf7, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 15, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]] of Hibernate SessionFactory for HibernateTransactionManager
+   2013-03-13 22:43:53,393 INFO Root WebApplicationContext: initialization completed in 8039 ms
+   2013-03-13 22:43:54,486 INFO Parsing configuration file [struts-default.xml]
+   2013-03-13 22:43:54,623 INFO Parsing configuration file [struts-plugin.xml]
+   2013-03-13 22:43:54,709 INFO Parsing configuration file [./configs/struts.xml]
+   2013-03-13 22:43:54,712 WARN Settings: Could not parse struts.locale setting, substituting default VM locale
+   2013-03-13 22:43:54,723 INFO Loading global messages from langue
+   2013-03-13 22:43:54,723 INFO Overriding property struts.configuration.xml.reload - old value: false new value: true
+   2013-03-13 22:43:54,806 INFO Initializing Struts-Spring integration...
+   2013-03-13 22:43:54,807 INFO Setting autowire strategy to name
+   2013-03-13 22:43:54,807 INFO ... initialized Struts-Spring integration successfully
+   2013-03-13 22:43:55,793 INFO Setting DefaultObjectTypeDeterminer as default ...
+   2013-03-13 22:43:59,436 INFO Detected AnnotationActionValidatorManager, initializing it...
+   2013-03-13 22:51:19,435 INFO Building new Hibernate SessionFactory
+   
