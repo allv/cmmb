@@ -20,35 +20,37 @@
 		<property name="useful" type="java.lang.Integer">
 			<column name="wf_useful" length="1" />
 		</property>
+		<property name="deleted" type="java.lang.Integer">
+			<column name="wf_deleted" length="1" />
+		</property>
 
 		<many-to-one name="form"
-			class="com.wootion.cmmb.persistenc.po.bean.Form" unique="true"
-			column="form_id" not-null="true"></many-to-one>
+			class="com.wootion.cmmb.persistenc.po.bean.Form" unique="true" 
+			column="form_id" not-null="true" lazy="false"></many-to-one>
 
-		<set name="nodes" inverse="true" lazy="false" fetch="join"
-			cascade="save-update">
+		<set name="nodes" inverse="true" lazy="false"
+			cascade="all">
 			<key>
 				<column name="wf_id" length="32" />
 			</key>
 			<one-to-many class="com.wootion.cmmb.persistenc.po.bean.WorkflowNodes" />
 		</set>
 		
-		<set name="bills" inverse="true" lazy="false" fetch="join"
-			cascade="save-update">
+		<set name="bills" inverse="true" lazy="false"
+			cascade="all">
 			<key>
 				<column name="wf_id" length="32" />
 			</key>
 			<one-to-many class="com.wootion.cmmb.persistenc.po.bean.WorkflowBills" />
 		</set>
 		
-		<set name="records" inverse="true" lazy="false" fetch="join"
-			cascade="save-update">
+		<set name="records" inverse="true" lazy="false"
+			cascade="all">
 			<key>
 				<column name="wf_id" length="32" />
 			</key>
 			<one-to-many class="com.wootion.cmmb.persistenc.po.bean.WorkflowRecords" />
 		</set>
-
 
 	</class>
 </hibernate-mapping>

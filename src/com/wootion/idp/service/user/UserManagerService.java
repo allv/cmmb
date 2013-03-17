@@ -147,4 +147,5 @@ public interface UserManagerService extends BaseService
     public List<Wtuser> getAllUsersWithUsable();
     
     public void modifyUserWithRoles(Wtuser user,List<String> roles) ;
+	List<Wtrole> getUserRoles(Long userID);
 }

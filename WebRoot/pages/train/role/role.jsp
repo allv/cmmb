@@ -15,6 +15,7 @@ function showDialog(url,arguments) {
 }
 function createRole() {
 	showDialog('roleadd.do');
+	$("#btn_search").click();
 }
 
 function modifyRole(roleid) {

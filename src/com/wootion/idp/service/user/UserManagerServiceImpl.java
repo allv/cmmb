@@ -238,6 +238,11 @@ public class UserManagerServiceImpl extends BaseServiceImpl implements
 		return roles;
 	}
 	
+	@Override
+	public List<Wtrole> getUserRoles(Long userID) {
+		return managerDAO.getUserRoles(userID);
+	}
+	
 	private HttpServletRequest getRequest() {
 		ActionContext ctx = ActionContext.getContext();
 		return (HttpServletRequest) ctx.get(ServletActionContext.HTTP_REQUEST);

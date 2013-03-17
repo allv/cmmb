@@ -29,7 +29,7 @@
 		</set>
 		<one-to-one name="workflow"
 			class="com.wootion.cmmb.persistenc.po.bean.Workflow" fetch="join"
-			cascade="save-update" property-ref="form"></one-to-one>
+			 property-ref="form" lazy="false"></one-to-one>
 
 	</class>
 </hibernate-mapping>

@@ -24,13 +24,15 @@
 		<property name="billStatus" type="java.lang.Integer">
 			<column name="wf_bills_billstatus" length="1" />
 		</property>
-		<property name="nextHandleType" type="java.lang.Integer">
-			<column name="wf_bills_nextHandleType" length="1" />
+		<property name="handleType" type="java.lang.Integer">
+			<column name="wf_bills_handleType" length="1" />
+		</property>
+		<property name="handleTime" type="java.util.Date">
+			<column name="wf_bills_handletime" length="23" not-null="true" />
 		</property>
 		
 		<many-to-one name="workflow"
-			class="com.wootion.cmmb.persistenc.po.bean.Workflow" fetch="join"
-			lazy="false">
+			class="com.wootion.cmmb.persistenc.po.bean.Workflow" >
 			<column name="wf_id" length="32" not-null="true"/>
 		</many-to-one>
 

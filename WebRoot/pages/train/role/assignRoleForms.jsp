@@ -1,8 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file="../import.jsp"%>
-<%@ taglib prefix="s" uri="/struts-tags"%>
-<%@ page import="java.util.List"%>
-<%@ page import="com.wootion.idp.view.vo.FordNagativation"%>
 <html>
 <head>
 <base target="_self">

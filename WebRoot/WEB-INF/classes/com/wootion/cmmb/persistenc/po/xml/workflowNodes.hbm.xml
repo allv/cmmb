@@ -24,14 +24,15 @@
 		<property name="description" type="java.lang.String">
 			<column name="wf_nodes_description" length="200" />
 		</property>
+		<property name="hanleUsers" type="java.lang.String">
+			<column name="wf_nodes_hanleUsers" length="200" not-null="true"/>
+		</property>
 		
-		<many-to-one name="workflow" class="com.wootion.cmmb.persistenc.po.bean.Workflow" fetch="join" lazy="false">
+		<many-to-one name="workflow" class="com.wootion.cmmb.persistenc.po.bean.Workflow" >
             <column name="wf_id" length="32" not-null="true"/>
         </many-to-one>
 
-		<many-to-one name="user"
-			class="com.wootion.idp.persistence.po.bean.Wtuser" 
-			column="wtuser_id" not-null="true"></many-to-one>
+		
 
 	</class>
 </hibernate-mapping>

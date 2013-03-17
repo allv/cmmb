@@ -318,6 +318,17 @@ var basePath = '<%=basePath%>';
   </tr>  
 </table>
 </div>
+<%@ include file="../workflow.jsp"%>
 </form>
+<script type="text/javascript">
+function getWorkflowBillid() {
+	return '${mem.meminfoid}';
+}
+
+function getWorkflowFormid() {
+	return '100002';
+}
+
+</script>
 </body>
 </html>

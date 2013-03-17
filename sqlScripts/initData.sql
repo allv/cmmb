@@ -1,5 +1,5 @@
 INSERT INTO `wtrole` VALUES (10003,'经理','1','2013-02-26 10:01:00','10003',NULL,'1',0);
-INSERT INTO `wtfunction` (`wtfunction_id`,`wtfun_parentid`,`wtfun_isleaf`,`wtfun_code`,`wtfun_order`,`wtfun_name`,`wtfun_excutepath`,`wtfun_createtime`,`wtfun_description`) VALUES (103,100,'1','0103','0103','工作流管理','workflow.do','2013-02-26 11:11:00',NULL);
+INSERT INTO `wtfunction` (`wtfunction_id`,`wtfun_parentid`,`wtfun_isleaf`,`wtfun_code`,`wtfun_order`,`wtfun_name`,`wtfun_excutepath`,`wtfun_createtime`,`wtfun_description`) VALUES (103,100,'1','0103','0103','工作流管理','queryworkflow.do','2013-02-26 11:11:00',NULL);
 INSERT INTO `wtresource` (`wtresource_id`,`wtfunction_id`,`wtres_name`,`wtres_code`,`wtres_createtime`,`wtres_description`) VALUES (10301,103,'添加','01','2013-02-26 11:11:11',NULL);
 
 INSERT INTO `wtrolefunrelationship` VALUES (10004,10001,103,NULL);
@@ -16,6 +16,10 @@ INSERT INTO `wtrolefunrelationship` VALUES (119908,10003,1477,NULL);
 INSERT INTO `wtrolefunrelationship` VALUES (119909,10003,1499,NULL);
 INSERT INTO `wtrolefunrelationship` VALUES (119910,10003,1466,NULL);
 INSERT INTO `wtrolefunrelationship` VALUES (119911,10003,131,NULL);
+INSERT INTO `wtrolefunrelationship` VALUES (119912,10002,130,NULL);
+INSERT INTO `wtrolefunrelationship` VALUES (119913,10002,142,NULL);
+INSERT INTO `wtrolefunrelationship` VALUES (119914,10003,130,NULL);
+INSERT INTO `wtrolefunrelationship` VALUES (119915,10003,142,NULL);
 
 
 INSERT INTO `tbl_form` (`form_id`,`form_createtime`,`form_name`,`form_desc`,`form_code`) VALUES (100001,'2013-02-26 11:11:11','项目',NULL,NULL);

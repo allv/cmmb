@@ -220,13 +220,14 @@
 		</property>
 	</bean>
 
-    <bean id="WorkflowService" parent="txProxyTemplate">
+    <bean id="WorkflowMgmService" parent="txProxyTemplate">
 		<property name="target">
 			<bean
 				class="com.wootion.cmmb.service.workflow.WorkflowManageServiceImpl">
 				<property name="commonDao">
 					<ref bean="commondao" />
 				</property>
+				<property name="workflowDao" ref="WorkflowDAO" />
 			</bean>
 		</property>
 	</bean>

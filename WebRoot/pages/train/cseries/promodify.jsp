@@ -99,19 +99,11 @@
     </tr>
   <tr align="right">
     <td>&nbsp;</td>
-    <td><button onClick="Save()">提交</button> 
+    <td><button onClick="Save()">保存</button> 
 		<button onClick="forward('c_serieslist.do')">返回</button></td>
   </tr>
 </table>
-<div class="foreverTop">
-<table style="float:right">
-<tr>
-<td align="center"><b>工作流管理</b></td>
-</tr>
-<tr align="center"><td><input type="button" value="查看工作流" /></td></tr>
-<tr align="center"><td><input type="button" value="提交" /></td></tr>
-</table>
-</div>
+<%@ include file="../workflow.jsp"%>
 </form>
 </body>
 <script type="text/javascript">
@@ -270,94 +262,11 @@ function trim(szStr){
 }
 
     function Save() {
-        var trdata = '';
-        var tddata = '';
-        var tbody = $1("tbody");
-       
-        if(check("proidentity","string","项目编号不能为空！")||check("proname","string","项目名字不能为空！")||check("prostartdate","string","项目开始日期不能为空！")
-		  ||check("proenddate","string","项目结束日期不能为空！")){
-		      return false;
-		  }
-		  
-		  if(prostartdate>proenddate){
-		      alert('开始日期必须小于结束日期');
-		      return false;
-		  }
-       
-       for (var i = 0; i < tbody.rows.length; i++) {
-           var temptd='';
-           for(var j=3;j<tbody.rows[i].cells.length-1;j++){
-              //得到每行每列的值
-              if(tbody.rows[i].cells[j].childNodes[0].value==null||trim(tbody.rows[i].cells[j].childNodes[0].value)==''){
-                  //不允许空行出现
-                  alert('第'+(i+1)+'行,第'+(j-1)+'列不允许为空');
-                  return;
-              }
-                  if(j!=tbody.rows[i].cells.length-2){
-	                  //收集每行的统计项
-	              	  temptd+=tbody.rows[i].cells[j].childNodes[0].value+'计划'+','+tbody.rows[i].cells[j].childNodes[0].value+'实际'+',';
-              	  }else{
-              	      //alert(tbody.rows[i].cells.length-2);
-              	      //收集每行的统计项
-	              	  temptd+=tbody.rows[i].cells[j].childNodes[0].value+'计划'+','+tbody.rows[i].cells[j].childNodes[0].value+'实际';
-              	  }
-           }
-           //如果这一行的列数为奇数 则不通过
-           //if(tbody.rows[i].cells.length%2!=0){
-           //   alert('第'+(i+1)+'行统计项总数必须为偶数');
-           //   return;
-           //}
-           
-           if(i!=tbody.rows.length-1){
-              trdata+=tbody.rows[i].cells[2].childNodes[0].value+',';
-              tddata+=temptd+'|';
-           }else{
-              trdata+=tbody.rows[i].cells[2].childNodes[0].value;
-              tddata+=temptd;
-           }
-        }
-          var proidentity = document.getElementById("proidentity").value;	
-          var proid = document.getElementById("proid").value;
-		  var proname = document.getElementById("proname").value;
-		  var prostate = document.getElementById("prostate").value;
-		  var proresponsor = document.getElementById("proresponsor").value;
-		  var proagency = document.getElementById("proagency").value;
-		  var proauthority = document.getElementById("proauthority").value;
-		  var proresult = document.getElementById("proresult").value;
-		  var procontract = document.getElementById("procontract").value;
-		  var probudget = document.getElementById("probudget").value;
-		  var protimes = document.getElementById("protimes").value;
-		  var proenddate = document.getElementById("proenddate").value;
-		  var prostartdate = document.getElementById("prostartdate").value;
-		  var prodesc = document.getElementById("prodesc").value;  
-		  
-		  if(is_empty(proidentity)){
-		      alert('项目编号不能为空');
-		      return false;
-		  }
-		  
-		  if(is_empty(prostartdate)){
-		      alert('项目开始日期不能为空');
-		      return false;
-		  }
-		  
-		  if(is_empty(proenddate)){
-		      alert('项目结束日期不能为空');
-		      return false;
-		  }
-		  if(prostartdate>proenddate){
-		      alert('开始日期必须小于结束日期');
-		      return false;
-		  }
-		  
-		  
+       	var checked = checkSave();
+       	if(!checked) return checked;
 		  $.ajax({
 					   type: "POST",
-					   url: basePath + "/projectmodifypro.do?proidentity="+encodeURI(proidentity)+"&proname="+encodeURI(proname)+
-					   "&prostate="+encodeURI(prostate)+"&proresponsor="+encodeURI(proresponsor)+"&proagency="+encodeURI(proagency)+
-					   "&proauthority="+encodeURI(proauthority)+"&proresult="+encodeURI(proresult)+"&procontract="+
-					   encodeURI(procontract)+"&prostartdate="+prostartdate+"&probudget="+encodeURI(probudget)+"&protimes="+
-					   encodeURI(protimes)+"&proenddate="+proenddate+"&prodesc="+encodeURI(prodesc)+"&trdata="+encodeURI(trdata)+"&tddata="+encodeURI(tddata)+"&proid="+proid,
+					   url: generateURL(),
 					   success:function (msg){
 					   		var result = msg;
 					   		if('success'==result){
@@ -375,6 +284,113 @@ function trim(szStr){
 					   }	   
 		   }); 
     }
+
+function checkSave() {
+	if(check("proidentity","string","项目编号不能为空！")||check("proname","string","项目名字不能为空！")||check("prostartdate","string","项目开始日期不能为空！")
+	  ||check("proenddate","string","项目结束日期不能为空！")){
+	      return false;
+	  }
+	  
+	  if(prostartdate>proenddate){
+	      alert('开始日期必须小于结束日期');
+	      return false;
+	  }
+      
+         var proidentity = document.getElementById("proidentity").value;	
+	  var proenddate = document.getElementById("proenddate").value;
+	  var prostartdate = document.getElementById("prostartdate").value;
+	  
+	  if(is_empty(proidentity)){
+	      alert('项目编号不能为空');
+	      return false;
+	  }
+	  
+	  if(is_empty(prostartdate)){
+	      alert('项目开始日期不能为空');
+	      return false;
+	  }
+	  
+	  if(is_empty(proenddate)){
+	      alert('项目结束日期不能为空');
+	      return false;
+	  }
+	  if(prostartdate>proenddate){
+	      alert('开始日期必须小于结束日期');
+	      return false;
+	  }
+	  return true;
+}
+    
+function generateURL() {
+	var trdata = '';
+    var tddata = '';
+    var tbody = $1("tbody");
+    
+	for (var i = 0; i < tbody.rows.length; i++) {
+        var temptd='';
+        for(var j=3;j<tbody.rows[i].cells.length-1;j++){
+           //得到每行每列的值
+           if(tbody.rows[i].cells[j].childNodes[0].value==null||trim(tbody.rows[i].cells[j].childNodes[0].value)==''){
+               //不允许空行出现
+               alert('第'+(i+1)+'行,第'+(j-1)+'列不允许为空');
+               return;
+           }
+               if(j!=tbody.rows[i].cells.length-2){
+	                  //收集每行的统计项
+	              	  temptd+=tbody.rows[i].cells[j].childNodes[0].value+'计划'+','+tbody.rows[i].cells[j].childNodes[0].value+'实际'+',';
+           	  }else{
+           	      //alert(tbody.rows[i].cells.length-2);
+           	      //收集每行的统计项
+	              	  temptd+=tbody.rows[i].cells[j].childNodes[0].value+'计划'+','+tbody.rows[i].cells[j].childNodes[0].value+'实际';
+           	  }
+        }
+        
+        if(i!=tbody.rows.length-1){
+           trdata+=tbody.rows[i].cells[2].childNodes[0].value+',';
+           tddata+=temptd+'|';
+        }else{
+           trdata+=tbody.rows[i].cells[2].childNodes[0].value;
+           tddata+=temptd;
+        }
+     }
+	
+	var proidentity = document.getElementById("proidentity").value;	
+    var proid = document.getElementById("proid").value;
+	var proname = document.getElementById("proname").value;
+	var prostate = document.getElementById("prostate").value;
+	var proresponsor = document.getElementById("proresponsor").value;
+	var proagency = document.getElementById("proagency").value;
+	var proauthority = document.getElementById("proauthority").value;
+	var proresult = document.getElementById("proresult").value;
+	var procontract = document.getElementById("procontract").value;
+	var probudget = document.getElementById("probudget").value;
+	var protimes = document.getElementById("protimes").value;
+	var proenddate = document.getElementById("proenddate").value;
+	var prostartdate = document.getElementById("prostartdate").value;
+	var prodesc = document.getElementById("prodesc").value;  
+	
+	return basePath + "/projectmodifypro.do?proidentity="+encodeURI(proidentity)+"&proname="+encodeURI(proname)+
+	   "&prostate="+encodeURI(prostate)+"&proresponsor="+encodeURI(proresponsor)+"&proagency="+encodeURI(proagency)+
+	   "&proauthority="+encodeURI(proauthority)+"&proresult="+encodeURI(proresult)+"&procontract="+
+	   encodeURI(procontract)+"&prostartdate="+prostartdate+"&probudget="+encodeURI(probudget)+"&protimes="+
+	   encodeURI(protimes)+"&proenddate="+proenddate+"&prodesc="+encodeURI(prodesc)+"&trdata="+encodeURI(trdata)+"&tddata="+encodeURI(tddata)+"&proid="+proid
+}
+    
+function generateWorkflowURL(){
+	return generateURL();
+}
+
+function getWorkflowBillid() {
+	return '${pro.proid}';
+}
+
+function getWorkflowFormid() {
+	return '100001';
+}
+
+function afterWorkflowSuccess() {
+	window.location.href=basePath+"/c_serieslist.do";
+}
     init();
 </script>
 </html>

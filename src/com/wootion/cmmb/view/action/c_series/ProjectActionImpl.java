@@ -13,24 +13,20 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionContext;
-import com.wootion.cimp.services.IMPServiceFactory;
 import com.wootion.cimp.services.projectService;
 import com.wootion.cimp.util.PageBasicInfo;
 import com.wootion.cimp.vo.data.Project;
+import com.wootion.cmmb.common.workflow.WorkflowHandle;
+import com.wootion.cmmb.common.workflow.WorkflowParameter;
 import com.wootion.cmmb.persistenc.po.bean.Projecttracing;
 
-public class ProjectActionImpl implements ProjectAction {
+public class ProjectActionImpl implements ProjectAction,WorkflowHandle {
 	private PageBasicInfo pageObj = null;
 	public projectService projectservice;
-
-	ProjectActionImpl() {
-		projectservice = IMPServiceFactory.getProjectService();
-	}
 
 	/* (non-Javadoc)
 	 * @see com.wootion.cmmb.view.action.c_series.ProjectAction#addpro()
 	 */
-	@Override
 	public String addpro() throws Exception {
 		HttpServletRequest request = getRequest();
 		HttpServletResponse response = getResponse();
@@ -55,7 +51,7 @@ public class ProjectActionImpl implements ProjectAction {
 		// request.getSession().getId());
 		// Long userIdt = uc.getUserID();
 
-		flag = projectservice.saveProject(proname, prostate, proresponsor,
+		flag = getProjectservice().saveProject(proname, prostate, proresponsor,
 				proagency, proauthority, proresult, procontract, prostartdate,
 				proenddate, probudget, protimes, prodesc, proidentity,trdata, tddata);
 		PrintWriter out = null;
@@ -77,7 +73,6 @@ public class ProjectActionImpl implements ProjectAction {
 	/* (non-Javadoc)
 	 * @see com.wootion.cmmb.view.action.c_series.ProjectAction#addprotrack()
 	 */
-	@Override
 	public String addprotrack() throws Exception{
 		HttpServletRequest request = getRequest();
 		HttpServletResponse response = getResponse();
@@ -86,7 +81,7 @@ public class ProjectActionImpl implements ProjectAction {
 		String proname = request.getParameter("proname").trim();
 		String pagedata = request.getParameter("pagedata").trim();
 		String trackid = request.getParameter("trackid").trim();
-		flag = projectservice.saveProjectTrack(proid, trackid,proname, pagedata);
+		flag = getProjectservice().saveProjectTrack(proid, trackid,proname, pagedata);
 		PrintWriter out = null;
 		try {
 			out = response.getWriter();
@@ -104,7 +99,6 @@ public class ProjectActionImpl implements ProjectAction {
 	/* (non-Javadoc)
 	 * @see com.wootion.cmmb.view.action.c_series.ProjectAction#track()
 	 */
-	@Override
 	public String track() throws Exception {
 		HttpServletRequest request = getRequest();
 		String pid = request.getParameter("proid");
@@ -112,8 +106,8 @@ public class ProjectActionImpl implements ProjectAction {
 		Project pro = new Project();
 		List<Projecttracing> protracing = new ArrayList<Projecttracing>();
 		try {
-			pro = projectservice.lookProject(pid);// 获取项目信息
-			protracing = projectservice.lookProjectTrace(pid);// 获取项目进度追踪信息
+			pro = getProjectservice().lookProject(pid);// 获取项目信息
+			protracing = getProjectservice().lookProjectTrace(pid);// 获取项目进度追踪信息
 			request.setAttribute("pro", pro);
 			request.setAttribute("isview",isview);
 		} catch (Exception e) {
@@ -180,14 +174,13 @@ public class ProjectActionImpl implements ProjectAction {
 	/* (non-Javadoc)
 	 * @see com.wootion.cmmb.view.action.c_series.ProjectAction#premodify()
 	 */
-	@Override
 	public String premodify() throws Exception {
 		HttpServletRequest request = getRequest();
 		String pid = request.getParameter("proid");
 		Project pro = new Project();
 
 		try {
-			pro = projectservice.lookProject(pid);// 获取项目信息
+			pro = getProjectservice().lookProject(pid);// 获取项目信息
 			if (pro != null) {
 				request.setAttribute("pro", pro);
 				request.setAttribute("trdata",pro.getTrdata());
@@ -205,7 +198,6 @@ public class ProjectActionImpl implements ProjectAction {
 	/* (non-Javadoc)
 	 * @see com.wootion.cmmb.view.action.c_series.ProjectAction#modifypro()
 	 */
-	@Override
 	public String modifypro() throws Exception {
 		HttpServletRequest request = getRequest();
 		HttpServletResponse response = getResponse();
@@ -234,7 +226,7 @@ public class ProjectActionImpl implements ProjectAction {
 		// request.getSession().getId());
 		// Long userIdt = uc.getUserID();
 
-		flag = projectservice.modifyProject(pid, proname, prostate,
+		flag = getProjectservice().modifyProject(pid, proname, prostate,
 				proresponsor, proagency, proauthority, proresult, procontract,
 				prostartdate, proenddate, probudget, protimes, prodesc,
 				proidentity, trdata, tddata);
@@ -255,7 +247,6 @@ public class ProjectActionImpl implements ProjectAction {
 	/* (non-Javadoc)
 	 * @see com.wootion.cmmb.view.action.c_series.ProjectAction#deletepro()
 	 */
-	@Override
 	public String deletepro() throws Exception {
 		HttpServletRequest request = getRequest();
 		HttpServletResponse response = getResponse();
@@ -264,7 +255,7 @@ public class ProjectActionImpl implements ProjectAction {
 		try {
 			String pID = request.getParameter("proid");// 项目ID
 			out = response.getWriter();
-			flag = projectservice.deleProject(pID);
+			flag = getProjectservice().deleProject(pID);
 			if (flag) {
 				out.print("success");
 			}
@@ -281,14 +272,13 @@ public class ProjectActionImpl implements ProjectAction {
 	/* (non-Javadoc)
 	 * @see com.wootion.cmmb.view.action.c_series.ProjectAction#viewpro()
 	 */
-	@Override
 	public String viewpro() throws Exception {
 		HttpServletRequest request = getRequest();
 		String pid = request.getParameter("proid");
 		Project pro = new Project();
 
 		try {
-			pro = projectservice.lookProject(pid);// 获取项目信息
+			pro = getProjectservice().lookProject(pid);// 获取项目信息
 			if (pro != null) {
 				request.setAttribute("pro", pro);
 				request.setAttribute("trdata",pro.getTrdata());
@@ -306,8 +296,6 @@ public class ProjectActionImpl implements ProjectAction {
 	/* (non-Javadoc)
 	 * @see com.wootion.cmmb.view.action.c_series.ProjectAction#page(javax.servlet.http.HttpServletRequest, com.wootion.cimp.util.PageBasicInfo)
 	 */
-
-	@Override
 	public void page(HttpServletRequest request, PageBasicInfo pageObj) {
 		// 获得要查询的页数
 		String pageStr = request.getParameter("currentPage") == null ? ""
@@ -337,4 +325,24 @@ public class ProjectActionImpl implements ProjectAction {
 		return (HttpServletResponse) ctx
 				.get(ServletActionContext.HTTP_RESPONSE);
 	}
+
+	@Override
+	public String getBillid() {
+		HttpServletRequest request = getRequest();
+		return request.getParameter("proid").trim();
+	}
+
+	@Override
+	public Long getFormid() {
+		return WorkflowParameter.FORM_PROJECT;
+	}
+
+	public projectService getProjectservice() {
+		return projectservice;
+	}
+
+	public void setProjectservice(projectService projectservice) {
+		this.projectservice = projectservice;
+	}
+
 }

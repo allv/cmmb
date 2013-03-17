@@ -4,70 +4,77 @@
 	color: #000000;
 	text-decoration: none;
 }
+
 BODY {
 	border-top-width: 0px;
 	border-right-width: 0px;
 	border-bottom-width: 0px;
 	border-left-width: 0px;
 }
+
 IFRAME {
 	height: 100%;
 	width: 100%;
 }
+
 INPUT {
 	height: 20px;
 	border: 1px solid #9DB0CC;
 }
+
 TEXTAREA {
 	border: 1px solid #9DB0CC;
 }
+
 FORM {
 	margin: 0px;
 }
-input.groovybutton
-{
-   font-size:11px;
-   font-weight:bold;
-   color:#000000;
-   width:67px;
-   background-color:#33CC33;
-   border-top-style:outset;
-   border-top-color:#336699;
-   border-top-width:1px;
-   border-bottom-style:outset;
-   border-bottom-color:#336699;
-   border-bottom-width:1px;
-   border-left-style:outset;
-   border-left-color:#336699;
-   border-left-width:1px;
-   border-right-style:outset;
-   border-right-color:#336699;
-   border-right-width:1px;
+
+input.groovybutton {
+	font-size: 11px;
+	font-weight: bold;
+	color: #000000;
+	width: 67px;
+	background-color: #33CC33;
+	border-top-style: outset;
+	border-top-color: #336699;
+	border-top-width: 1px;
+	border-bottom-style: outset;
+	border-bottom-color: #336699;
+	border-bottom-width: 1px;
+	border-left-style: outset;
+	border-left-color: #336699;
+	border-left-width: 1px;
+	border-right-style: outset;
+	border-right-color: #336699;
+	border-right-width: 1px;
 }
 
 BUTTON {
-   font-size:11px;
-   font-weight:bold;
-   color:#000000;
-   width:78px;
-   background-color:#33CC33;
-   border-top-style:outset;
-   border-top-color:#336699;
-   border-top-width:1px;
-   border-bottom-style:outset;
-   border-bottom-color:#336699;
-   border-bottom-width:1px;
-   border-left-style:outset;
-   border-left-color:#336699;
-   border-left-width:1px;
-   border-right-style:outset;
-   border-right-color:#336699;
-   border-right-width:1px;
+	font-size: 11px;
+	font-weight: bold;
+	color: #000000;
+	width: 78px;
+	background-color: #33CC33;
+	border-top-style: outset;
+	border-top-color: #336699;
+	border-top-width: 1px;
+	border-bottom-style: outset;
+	border-bottom-color: #336699;
+	border-bottom-width: 1px;
+	border-left-style: outset;
+	border-left-color: #336699;
+	border-left-width: 1px;
+	border-right-style: outset;
+	border-right-color: #336699;
+	border-right-width: 1px;
 }
+
 #ERROR_MSG {
 	font-weight: bold;
 	color: #FF0000;
 }
+
 .noInput input {
 	height: 25px;
 	width: 20px;
@@ -93,36 +100,46 @@ input.checkBox1 {
 
 .select {
 	position: absolute;
-	width: 158px; /* With the padding included, the width is 190 pixels: the actual width of the image. */
+	width: 158px;
+	/* With the padding included, the width is 190 pixels: the actual width of the image. */
 	height: 21px;
 	padding: 0 24px 0 8px;
 	color: #fff;
-	font: 12px/21px arial,sans-serif;
+	font: 12px/21px arial, sans-serif;
 	overflow: hidden;
 }
 
-input.radio{
-    border:none;
-    display:none;
+input.radio {
+	border: none;
+	display: none;
 }
 
-.tabcss{
-   table-layout:auto;
-   border:solid #add9c0; border-width:1px 0px 0px 1px;
-}
-.tabcss tr{
-}
-
-.tabcss td{
-   border:solid #add9c0; border-width:0px 1px 1px 0px; padding:0px 0px;
+.tabcss {
+	table-layout: auto;
+	border: solid #add9c0;
+	border-width: 1px 0px 0px 1px;
 }
 
-.tabcss th{
-   border:solid #add9c0; border-width:0px 1px 1px 0px; padding:0px 0px;
+.tabcss tr {
+	
 }
 
-.tdclass{
-   border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;
+.tabcss td {
+	border: solid #add9c0;
+	border-width: 0px 1px 1px 0px;
+	padding: 0px 0px;
+}
+
+.tabcss th {
+	border: solid #add9c0;
+	border-width: 0px 1px 1px 0px;
+	padding: 0px 0px;
+}
+
+.tdclass {
+	border: solid #8B8378;
+	border-width: 0px 1px 1px 0px;
+	padding: 0px 0px;
 }
 
 .checkBox {
@@ -134,70 +151,92 @@ input.radio{
 	height: 18px;
 	width: 18px;
 }
+
 .topLanBar {
 	color: #999999;
 	height: 22px;
 }
+
 .topLanBar_index {
 	height: 24px;
 }
+
 .tableList_bar {
 	padding: 5px;
 	border: 1px solid #CCCCCC;
 	background-color: #E4E4E4;
 }
+
 .tableList {
-	tr:hover;
-	border-collapse:collapse;
-	border:2px solid #CCCCCC;
+	tr: hover;
+	border-collapse: collapse;
+	border: 2px solid #CCCCCC;
 }
+
 .tableList th {
 	background-color: #99DD00;
 	color: #FFFFFF;
 }
+
 .tableList td b {
 	font-weight: bold;
 	color: #009900;
 }
+
 .tableList td font {
 	font-weight: bold;
 	color: #FF0000;
 }
+
 .yellow_lan {
 	background-color: #FFCC00;
 	height: 6px;
 }
 
-.input01{
+.input01 {
 	border: 1px solid #CDC28D; /* è¾“å…¥æ¡†è¡¨æ¡†é¢œè‰²*/
 	background-color: #F2F9FD; /* è¾“å…¥æ¡†èƒŒæ™¯é¢œè‰²*/
 	height: 24px; /*è¾“å…¥æ¡†é«˜åº¦*/
 	width: 200px; /*è¾“å…¥æ¡†å®½åº¦*/
-	padding-top: 4px; /*è¾“å…¥æ¡†é‡Œçš„æ–‡å­—å’Œè¾“å…¥æ¡†ä¸Šè¾¹ä¹‹é—´çš„è·�ç¦»ï¼ˆå› ä¸ºè¾“å…¥æ¡†æ¯”è¾ƒé«˜ï¼Œè¾“å…¥çš„å­—ä¸�æ˜¯å±…ä¸­çš„ï¼Œæ‰€ä»¥è®¾å®šæ­¤æ ·å¼�ï¼‰*/
+	padding-top: 4px;
+	/*è¾“å…¥æ¡†é‡Œçš„æ–‡å­—å’Œè¾“å…¥æ¡†ä¸Šè¾¹ä¹‹é—´çš„è·�ç¦»ï¼ˆå› ä¸ºè¾“å…¥æ¡†æ¯”è¾ƒé«˜ï¼Œè¾“å…¥çš„å­—ä¸�æ˜¯å±…ä¸­çš„ï¼Œæ‰€ä»¥è®¾å®šæ­¤æ ·å¼�ï¼‰*/
 	font-family: Arial, Helvetica, sans-serif; /*è¾“å…¥æ¡†æ–‡å­—ç±»åž‹*/
 	font-size: 12px; /*è¾“å…¥æ¡†å†…æ–‡å­—å¤§å°�*/
-	padding-left: 10px; /*è¾“å…¥æ¡†é‡Œçš„æ–‡å­—å’Œè¾“å…¥æ¡†å·¦è¾¹ä¹‹é—´çš„è·�ç¦»*/
+	padding-left: 10px;
+	/*è¾“å…¥æ¡†é‡Œçš„æ–‡å­—å’Œè¾“å…¥æ¡†å·¦è¾¹ä¹‹é—´çš„è·�ç¦»*/
 }
 
-label
- {
-  display:-moz-inline-block;
-  display:inline-block;
-  cursor:pointer;
-  margin:0px 0;
-  padding-left:20px;
-  line-height:15px;
-  background:url(../img/1.gif) no-repeat left top;
- }
- label.checked
- {
-  background-position:left bottom;
- }
-.foreverTop{
-	position:fixed;width:97%;height:60px;text-align:right;top:0px;
+label {
+	display: -moz-inline-block;
+	display: inline-block;
+	cursor: pointer;
+	margin: 0px 0;
+	padding-left: 20px;
+	line-height: 15px;
+	background: url(../img/1.gif) no-repeat left top;
 }
 
-.foreverTop table{
-	background-color: #CCE8CF;
-    float: right;
+label.checked {
+	background-position: left bottom;
+}
+
+.foreverTop {
+	_position: absolute;
+	/*_top: expression(eval(document.documentElement.scrollTop) );*/
+	z-index: 1000px;
+	left: 0px;
+	top: 0px;
+	position: fixed;
+	width: 97%;
+	height: 60px;
+	text-align: center;
+}
+
+.foreverTop table {
+	background-color: #ffffff;
+	float: right;
+}
+
+.foreverTop img {
+	cursor: pointer;
 }

@@ -2,7 +2,7 @@ package com.wootion.cmmb.persistenc.po.bean;
 
 import java.util.Date;
 
-import com.wootion.idp.persistence.po.bean.Wtuser;
+import com.wootion.cmmb.common.workflow.WorkflowParameter;
 
 public class WorkflowNodes {
 
@@ -13,7 +13,8 @@ public class WorkflowNodes {
 	private Date createtime;
 	private String description;
 	private Workflow workflow;
-	private Wtuser user;
+	private String hanleUsers;
+	private String hanleUsersWithName;
 
 	public Long getId() {
 		return id;
@@ -71,11 +72,24 @@ public class WorkflowNodes {
 		this.workflow = workflow;
 	}
 
-	public Wtuser getUser() {
-		return user;
+	public String getHanleUsers() {
+		return hanleUsers;
 	}
 
-	public void setUser(Wtuser user) {
-		this.user = user;
+	public void setHanleUsers(String hanleUsers) {
+		this.hanleUsers = hanleUsers;
 	}
+
+	public String getNodeTypeDisplayValue() {
+		return WorkflowParameter.getNodeTypeDisplayValue(nodeType);
+	}
+
+	public String getHanleUsersWithName() {
+		return hanleUsersWithName;
+	}
+
+	public void setHanleUsersWithName(String hanleUsersWithName) {
+		this.hanleUsersWithName = hanleUsersWithName;
+	}
+
 }

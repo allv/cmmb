@@ -1,6 +1,7 @@
 package com.wootion.cimp.services;
 
 
+import com.wootion.cmmb.common.workflow.WorkflowService;
 import com.wootion.cmmb.service.activity.ActivityService;
 import com.wootion.cmmb.service.activity.BloodpressureService;
 import com.wootion.cmmb.service.activity.InstrumentService;
@@ -92,8 +93,13 @@ public class IMPServiceFactory {
 				.getSpringBean("VolunteerService");
 	}
 	
-	public static WorkflowManageService getWorkflowService() {
+	public static WorkflowManageService getWorkflowMgmService() {
 		return (WorkflowManageService) SpringBeanFactory
+				.getSpringBean("WorkflowMgmService");
+	}
+	
+	public static WorkflowService getWorkflowService() {
+		return (WorkflowService) SpringBeanFactory
 				.getSpringBean("WorkflowService");
 	}
 }

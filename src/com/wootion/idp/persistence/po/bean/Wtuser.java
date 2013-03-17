@@ -226,4 +226,10 @@ public class Wtuser implements java.io.Serializable {
 	public void setLinkmanAdd(String linkmanAdd) {
 		this.linkmanAdd = linkmanAdd;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		Wtuser user = (Wtuser) obj;
+		return this.wtuserId.equals(user.getWtuserId());
+	}
 }

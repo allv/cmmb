@@ -102,6 +102,26 @@
 		<servlet-name>AjaxDeleteRole</servlet-name>
 		<url-pattern>/ajaxDeleteRole.htm</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AjaxDeleteWorkflow</servlet-name>
+		<servlet-class>com.wootion.cmmb.view.servlet.AjaxDeleteWorkflowServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AjaxDeleteWorkflow</servlet-name>
+		<url-pattern>/ajaxDeleteWorkflow.htm</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AjaxEnableWorkflow</servlet-name>
+		<servlet-class>com.wootion.cmmb.view.servlet.AjaxEnableWorkflowServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AjaxEnableWorkflow</servlet-name>
+		<url-pattern>/ajaxEnableWorkflow.htm</url-pattern>
+	</servlet-mapping>
 
 	<error-page>
 		<error-code>400</error-code>

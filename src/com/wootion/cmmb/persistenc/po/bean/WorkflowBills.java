@@ -1,6 +1,9 @@
 package com.wootion.cmmb.persistenc.po.bean;
 
-import org.apache.commons.lang.StringUtils;
+import java.util.Date;
+
+import com.wootion.cmmb.common.workflow.WorkflowParameter;
+
 
 public class WorkflowBills {
 
@@ -11,14 +14,19 @@ public class WorkflowBills {
 	private String rejectReason;
 	private Workflow workflow;
 	private Integer billStatus;
-	private Integer nextHandleType;
-
-	public Integer getNextHandleType() {
-		return nextHandleType;
+	private Integer handleType;
+	private Date handleTime;
+	
+	public boolean isEnded() { 
+		return this.billStatus.equals(WorkflowParameter.BILL_STATUS_AUDITED) || this.billStatus.equals(WorkflowParameter.BILL_STATUS_DELETED);
 	}
 
-	public void setNextHandleType(Integer nextHandleType) {
-		this.nextHandleType = nextHandleType;
+	public Integer getHandleType() {
+		return handleType;
+	}
+
+	public void setHandleType(Integer handleType) {
+		this.handleType = handleType;
 	}
 
 	public Long getId() {
@@ -53,12 +61,6 @@ public class WorkflowBills {
 		this.currentHandleUsers = currentHandleUsers;
 	}
 
-	public void addCurrentHandleUsers(String currentHandleUsers) {
-		if (this.currentHandleUsers == null)
-			this.currentHandleUsers = StringUtils.EMPTY;
-		currentHandleUsers = currentHandleUsers + currentHandleUsers + ",";
-	}
-
 	public String getRejectReason() {
 		return rejectReason;
 	}
@@ -81,6 +83,14 @@ public class WorkflowBills {
 
 	public void setBillStatus(Integer billStatus) {
 		this.billStatus = billStatus;
+	}
+
+	public Date getHandleTime() {
+		return handleTime;
+	}
+
+	public void setHandleTime(Date handleTime) {
+		this.handleTime = handleTime;
 	}
 
 }

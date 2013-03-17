@@ -28,6 +28,11 @@ function assignPermissions() {
     var obj = new Object();
 window.showModalDialog('assignRolePermissions.htm',obj,"dialogWidth=600px;dialogHeight=450px"); 
 }
+
+function viewWorkflowBill() { 
+ var obj = new Object();
+window.showModalDialog('viewBillWorkflow.htm',obj,"dialogWidth=1000px;dialogHeight=500px"); 
+}
 </script>
 </head>
 <body>
@@ -68,7 +73,10 @@ window.showModalDialog('assignRolePermissions.htm',obj,"dialogWidth=600px;dialog
     <tr>
 	      <td align="center" nowrap bgcolor="#E4E4E4">HEALTH_DEPT</td>
 	      <td align="center" nowrap bgcolor="#E4E4E4">康复部门员工 </td>
-	      <td align="center" nowrap bgcolor="#E4E4E4"><a href="javascript: confirm('确认删除？'); void(0);">删除</a>&nbsp;&nbsp;<a href="javascript:viewMembers();">查看会员</a>&nbsp;&nbsp;<a href="javascript:assignMemebers();">分配会员</a>&nbsp;&nbsp;<a href="javascript:viewPermissions();">查看权限</a>&nbsp;&nbsp;<a href="javascript:assignPermissions();">分配权限</a>&nbsp;&nbsp;</td>
+	      <td align="center" nowrap bgcolor="#E4E4E4"><a href="javascript: confirm('确认删除？'); void(0);">删除</a>&nbsp;&nbsp;<a href="javascript:viewMembers();">查看会员</a>&nbsp;&nbsp;<a href="javascript:assignMemebers();">分配会员</a>&nbsp;&nbsp;<a href="javascript:viewPermissions();">查看权限</a>&nbsp;&nbsp;<a href="javascript:assignPermissions();">分配权限</a>&nbsp;&nbsp;
+	      <a href="javascript:viewWorkflowBill();">查看工作流</a>&nbsp;&nbsp;
+	      
+	      </td>
     </tr>
 
 	

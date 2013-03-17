@@ -2,6 +2,7 @@ package com.wootion.cmmb.persistenc.po.bean;
 
 import java.util.Date;
 
+import com.wootion.cmmb.common.workflow.WorkflowParameter;
 import com.wootion.idp.persistence.po.bean.Wtuser;
 
 public class WorkflowRecords {
@@ -86,6 +87,10 @@ public class WorkflowRecords {
 
 	public void setHandleUser(Wtuser handleUser) {
 		this.handleUser = handleUser;
+	}
+	
+	public String getHandleTypeDisplayValue() { 
+		return WorkflowParameter.getHandleTypeDisplayValue(this.handleType);
 	}
 
 }

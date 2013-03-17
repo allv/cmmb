@@ -9,6 +9,7 @@
 	<constant name="struts.devMode" value="false" />
 	<constant name="struts.custom.i18n.resources" value="langue"></constant>
 	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.objectFactory" value="spring" />
 	<include file="configs/struts-wlw.xml" />
 	<include file="configs/struts-dhh.xml" />
 
@@ -128,14 +129,40 @@
 		<action name="assignRoleForms" class="com.wootion.idp.view.action.role.AssignRoleFormsAction" method="assignRoleForms">
 			<result name="sucess">/pages/train/message_popwindow.jsp</result>
 		</action>
-
 		<!-- 角色管理 end -->
-		<action name="queryworkflow" class="com.wootion.cmmb.view.action.workflow.QueryWorkflowAction" >
-			<result name="sucess">/pages/train/workflow/worflow.jsp</result>
+
+		<!-- 工作流管理 start-->
+		<action name="queryworkflow" class="com.wootion.cmmb.view.action.workflowMgm.QueryWorkflowAction" >
+			<result name="sucess">/pages/train/workflow/workflowMgm.jsp</result>
 		</action>
 		
-		<!-- 工作流管理 start-->
+		<action name="workflowAdd" class="com.wootion.cmmb.view.action.workflowMgm.ModifyWorkflowAction" method="goToAdd">
+			<result name="sucess">/pages/train/workflow/addWorkflow.jsp</result>
+		</action>
 		
+		<action name="addWorkflow" class="com.wootion.cmmb.view.action.workflowMgm.ModifyWorkflowAction" method="addWorkflow">
+			<result name="sucess">/pages/train/message_popwindow.jsp</result>
+		</action>
+		
+		<action name="workflowModify" class="com.wootion.cmmb.view.action.workflowMgm.ModifyWorkflowAction" method="getWorkflow">
+			<result name="sucess">/pages/train/workflow/modifyWorkflow.jsp</result>
+		</action>
+		
+		<action name="modifyWorkflow" class="com.wootion.cmmb.view.action.workflowMgm.ModifyWorkflowAction" method="modifyWorkflow">
+			<result name="sucess">/pages/train/message_popwindow.jsp</result>
+		</action>
+		
+		<action name="viewWorkflowHandleUsers" class="com.wootion.cmmb.view.action.workflowMgm.ModifyWorkflowAction" method="getWorkflowHandleUsers">
+			<result name="sucess">/pages/train/workflow/viewWorkflowHandleUsers.jsp</result>
+		</action>
+		
+		<action name="viewWorkflowForms" class="com.wootion.cmmb.view.action.workflowMgm.ModifyWorkflowAction" method="getWorkflowUnAssignedForms">
+			<result name="sucess">/pages/train/workflow/viewWorkflowForms.jsp</result>
+		</action>
+		
+		<action name="viewWorkflowBillStatus" class="com.wootion.cmmb.common.workflow.WorkflowAction" method="viewWorkflowBillStatus">
+			<result name="sucess">/pages/train/workflow/viewBillWorkflow.jsp</result>
+		</action>
 		
 		<!-- 工作流管理 end-->
 		

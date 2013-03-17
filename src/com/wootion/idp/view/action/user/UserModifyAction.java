@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.wootion.idp.common.utils.DomainUtil;
 import com.wootion.idp.persistence.po.bean.Wtrole;
 import com.wootion.idp.persistence.po.bean.Wtuser;
 import com.wootion.idp.service.ServiceFactroy;
@@ -29,15 +30,15 @@ public class UserModifyAction extends BaseAction {
 				Wtuser.class, mid);
 		RoleManagerService roleService = ServiceFactroy.getRoleService();
 		List<Wtrole> allRoleRecords = roleService.getRecords();
-		roleList = ServiceFactroy.getUserService().getUserRole(mid);
+		roleList = ServiceFactroy.getUserService().getUserRoles(mid);
 		allRoles = new ArrayList<WtroleVOForUpdate>();
 		for(Wtrole role:allRoleRecords) {
-			if(role.getWtroleId().equals(10001L)) continue;
+			if(DomainUtil.isGroupRole(role)) continue;
 			WtroleVOForUpdate newRole = new WtroleVOForUpdate();
 			newRole.setRole(role);
 			boolean flag = false;
 			for(Wtrole tempRole:roleList) {
-				if(role.getWtroleId().equals(tempRole.getWtroleId()) && tempRole.getHaveIt().equals("yes")) {
+				if(role.getWtroleId().equals(tempRole.getWtroleId()) ) {
 					flag = true;
 					break;
 				}

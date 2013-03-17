@@ -325,7 +325,7 @@ public class RoleManagerServiceImpl extends BaseServiceImpl implements
 		Set<WtUserRoleRelationship> wtUserRoleRelationships = role
 				.getWtUserRoleRelationships();
 		for (WtUserRoleRelationship relation : wtUserRoleRelationships) {
-			if (!DomainUtil.isUserDeleted(relation.getWtuser())) {
+			if (DomainUtil.isUserAvailable(relation.getWtuser())) {
 				result.add(relation.getWtuser());
 			}
 		}

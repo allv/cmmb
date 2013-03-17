@@ -80,6 +80,7 @@
 		<button onClick="forward('c_serieslist.do')">返回</button></td>
   </tr>
 </table>
+<%@ include file="../workflow.jsp"%>
 </form>
 </body>
 <script type="text/javascript">
@@ -149,6 +150,15 @@ function trim(szStr){
   }
   return szStr;
 }
+
+function getWorkflowBillid() {
+	return '${pro.proid}';
+}
+
+function getWorkflowFormid() {
+	return '100001';
+}
+
 init();
 </script>
 </html>
