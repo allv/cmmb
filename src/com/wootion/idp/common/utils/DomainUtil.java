@@ -7,6 +7,7 @@ import com.wootion.idp.persistence.po.bean.Wtuser;
 public class DomainUtil {
 
 	public static final String MANAGER_ROLE_ID = "10003";
+	public static final String UNAUTHORIZED_PERMISSION = "unauthorized";
 	
 	public static boolean isUserDeleted(Wtuser user) {
 		return user.getIsDelete().intValue() != 0;

@@ -5,6 +5,14 @@
 
 <struts>
 	<package name="wlw" extends="struts-default" >
+		<interceptors>
+			<interceptor name="CheckPermission" class="com.wootion.cmmb.common.formPermission.FormPermissionInterceptor" />
+		</interceptors>
+		
+		<global-results>
+			<result name="unauthorized">/unauthorized.jsp</result>   
+        </global-results>
+        
 		<!--以下是王立文修改 -->
 		
 		<action name="download" class="com.wootion.cmmb.view.action.membermanage.DownLoadAction">  
@@ -191,6 +199,7 @@
 		
 		<action name="project*" 
 		 	class="ProjectAction" method="{1}">
+		 	<interceptor-ref name="CheckPermission" />
 		 	<result name="protrack">/pages/train/cseries/protrack1.jsp</result>
 		 	<result name="projectlist">/pages/train/cseries/clist.jsp</result>
 		 	<result name="prodetail">/pages/train/cseries/proview.jsp</result>

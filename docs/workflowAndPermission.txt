@@ -50,3 +50,19 @@
 测试用户:
 康复经理: kangfu000
 康复人员：kangfu001
+
+
+
+工作流集成方案：
+1.ACTION改成ACTIONIMPL。并抽取出接口
+2.ACTION实现WorkflowHandle的接口，并实现两个接口方法.billid方法主要取MODIFY和DELETE中取MID的方法
+3.单据查看页面中在</form>胆外入workflow.jsp,加入getWorkflowBillid和getWorkflowFormid 的JS方法
+4.单据修改页岩中在</form>里外入workflow.jsp,加放getWorkflowBillid
+										getWorkflowFormid
+							 			generateWorkflowURL
+							 			afterWorkflowSuccess 的JS方法
+5.测试							 		
+
+权限集成方案：
+1.在ACTION中的add,modify,delete方法中分别加入request.setAttribute(FormPermissionAspect.PRIMARY_KEY_iD, mid);
+2.在struts.xml中的定义action部分里加入interceptor

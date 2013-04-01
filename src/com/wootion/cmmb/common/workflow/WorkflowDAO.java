@@ -18,4 +18,7 @@ public interface WorkflowDAO {
 
 	public abstract List<Form> getAllForms();
 
+	public abstract List<WorkflowRecords> findWorkflowRecords(String billid,
+			Long formid);
+
 }

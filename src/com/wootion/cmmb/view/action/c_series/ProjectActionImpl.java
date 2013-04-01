@@ -16,6 +16,8 @@ import com.opensymphony.xwork2.ActionContext;
 import com.wootion.cimp.services.projectService;
 import com.wootion.cimp.util.PageBasicInfo;
 import com.wootion.cimp.vo.data.Project;
+import com.wootion.cmmb.common.exception.SameObjectException;
+import com.wootion.cmmb.common.formPermission.FormPermissionAspect;
 import com.wootion.cmmb.common.workflow.WorkflowHandle;
 import com.wootion.cmmb.common.workflow.WorkflowParameter;
 import com.wootion.cmmb.persistenc.po.bean.Projecttracing;
@@ -50,13 +52,23 @@ public class ProjectActionImpl implements ProjectAction,WorkflowHandle {
 		// UserCacheBean uc = PermissionCollection.getInstance().getUserCache(
 		// request.getSession().getId());
 		// Long userIdt = uc.getUserID();
-
-		flag = getProjectservice().saveProject(proname, prostate, proresponsor,
-				proagency, proauthority, proresult, procontract, prostartdate,
-				proenddate, probudget, protimes, prodesc, proidentity,trdata, tddata);
+		Project newProject = null;
+		try{
+			newProject = getProjectservice().saveProject(proname, prostate, proresponsor,
+					proagency, proauthority, proresult, procontract, prostartdate,
+					proenddate, probudget, protimes, prodesc, proidentity,trdata, tddata);
+		}catch(SameObjectException e) {
+			flag = e.getKey();
+		}
 		PrintWriter out = null;
 		try {
 			out = response.getWriter();
+			if(newProject != null ){ 
+				flag = "success";
+				request.setAttribute(FormPermissionAspect.PRIMARY_KEY_iD, newProject.getProid());
+			}else {
+				flag = "error";
+			}
 			out.print(flag);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -234,6 +246,7 @@ public class ProjectActionImpl implements ProjectAction,WorkflowHandle {
 		try {
 			out = response.getWriter();
 			out.print(flag);
+			request.setAttribute(FormPermissionAspect.PRIMARY_KEY_iD, pid);
 		} catch (Exception e) {
 			e.printStackTrace();
 			out.print("error");
@@ -258,6 +271,7 @@ public class ProjectActionImpl implements ProjectAction,WorkflowHandle {
 			flag = getProjectservice().deleProject(pID);
 			if (flag) {
 				out.print("success");
+				request.setAttribute(FormPermissionAspect.PRIMARY_KEY_iD, pID);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

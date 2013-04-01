@@ -45,5 +45,14 @@ public class WorkflowDAOImpl extends HibernateDaoSupport implements WorkflowDAO 
 		String hql = "from Form t";
 		return getHibernateTemplate().find(hql);
 	}
+
+	@Override
+	public List<WorkflowRecords> findWorkflowRecords(String billid, Long formid) {
+		Form form = (Form)getHibernateTemplate().load(Form.class, formid);
+		DetachedCriteria criteria=DetachedCriteria.forClass(WorkflowRecords.class);
+		criteria.add(Restrictions.eq("billid", billid));
+		criteria.add(Restrictions.eq("workflow", form.getWorkflow()));
+		return getHibernateTemplate().findByCriteria(criteria);
+	}
 	
 }

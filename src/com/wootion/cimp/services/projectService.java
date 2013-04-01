@@ -14,9 +14,9 @@ public interface projectService {
             String proname, String proidentity, String sessionID)
 			throws ParseException;
 	
-	public String saveProject(String proname, String prostate, String proresponsor, String proagency, String proauthority, String proresult,
+	public Project saveProject(String proname, String prostate, String proresponsor, String proagency, String proauthority, String proresult,
 			String procontract, String prostartdate, String proenddate, String probudget, String protimes, String prodesc, String proidentity,String trdata,String tddata)
-			throws ParseException;
+			throws Exception;
 	public boolean deleProject(String pid) throws Exception;
 	
 	public Project lookProject(String pid)throws Exception;

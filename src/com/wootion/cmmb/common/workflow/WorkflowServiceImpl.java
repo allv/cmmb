@@ -1,5 +1,7 @@
 package com.wootion.cmmb.common.workflow;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -418,15 +420,30 @@ public class WorkflowServiceImpl implements WorkflowService {
 	public WorkflowBills getWorkflowBill(Long formid, String billid) {
 		Form form = commonDao.getObject(Form.class, formid);
 		Workflow workflow = form.getWorkflow();
-		Set<WorkflowBills> bills = workflow.getBills();
 		WorkflowBills currentBill = null;
-		for (WorkflowBills bill : bills) {
-			if (bill.getBillid().equals(billid)) {
-				currentBill = bill;
-				break;
+		if(workflow != null && DomainUtil.isWorkflowUseful(workflow)) {
+			Set<WorkflowBills> bills = workflow.getBills();
+			for (WorkflowBills bill : bills) {
+				if (bill.getBillid().equals(billid)) {
+					currentBill = bill;
+					break;
+				}
 			}
 		}
 		return currentBill;
+	}
+
+	@Override
+	public List<WorkflowRecords> getWorkflowRecords(Long formid, String billid) {
+		List<WorkflowRecords> findWorkflowRecords = workflowDao.findWorkflowRecords(billid, formid);
+		Collections.sort(findWorkflowRecords, new Comparator<WorkflowRecords>() {
+
+			@Override
+			public int compare(WorkflowRecords o1, WorkflowRecords o2) {
+				return o1.getSort() - o2.getSort();
+			}
+		});
+		return findWorkflowRecords;
 	}
 
 	@Override
@@ -450,23 +467,16 @@ public class WorkflowServiceImpl implements WorkflowService {
 	public void deleteWorkflowBill(WorkflowHandle action) {
 		Long formid = action.getFormid();
 		String billid = action.getBillid();
-		Form form = commonDao.getObject(Form.class, formid);
-		Workflow workflow = form.getWorkflow();
-		Set<WorkflowBills> bills = workflow.getBills();
-		boolean existBill = false;
+		List<WorkflowBills> bills = workflowDao.findWorkflowBill(billid, formid);
 		WorkflowBills currentBill = null;
-		for (WorkflowBills bill : bills) {
-			if (bill.getBillid().equals(billid)) {
-				existBill = true;
-				currentBill = bill;
-				break;
-			}
+		if(bills != null && bills.size() > 0 ){
+			currentBill = bills.get(0);
 		}
-		if (existBill) {
+		if(currentBill != null ) {
 			currentBill.setBillStatus(WorkflowParameter.BILL_STATUS_DELETED);
+			currentBill.setHandleTime(new Date());
+			commonDao.updateObject(currentBill);
 		}
-		currentBill.setHandleTime(new Date());
-		commonDao.updateObject(currentBill);
 	}
 
 	public CommonDao getCommonDao() {

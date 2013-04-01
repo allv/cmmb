@@ -11,6 +11,7 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionContext;
 import com.wootion.cimp.services.IMPServiceFactory;
 import com.wootion.cimp.services.projectService;
+import com.wootion.cmmb.common.exception.SameObjectException;
 import com.wootion.cmmb.persistenc.po.bean.CareAssess;
 import com.wootion.cmmb.service.careservices.careService;
 import com.wootion.idp.common.utils.QueryResult;
@@ -140,9 +141,13 @@ public class careAction
 		//UserCacheBean uc = PermissionCollection.getInstance().getUserCache(
 		//		request.getSession().getId());
 		//Long userIdt = uc.getUserID();
-		
-	    flag = projectservice.saveProject(proname, prostate, proresponsor, proagency, proauthority, proresult,
-	    		procontract, prostartdate, proenddate, probudget, protimes, prodesc, proidentity,trdata,tddata);
+		Project newProject = null;
+		try{
+			newProject = projectservice.saveProject(proname, prostate, proresponsor, proagency, proauthority, proresult,
+					procontract, prostartdate, proenddate, probudget, protimes, prodesc, proidentity,trdata,tddata);
+		}catch(SameObjectException e) {
+			flag = e.getKey();
+		}
 	    PrintWriter out = null;
 		try {
 			out = response.getWriter();

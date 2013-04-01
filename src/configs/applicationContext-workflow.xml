@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd 
@@ -15,30 +14,45 @@
 			</bean>
 		</property>
 	</bean>
-	
-	<bean id="WorkflowDAO"
-		class=" com.wootion.cmmb.common.workflow.WorkflowDAOImpl">
+
+	<bean id="FormPermissionService" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.wootion.cmmb.common.formPermission.FormPermissionServiceImpl">
+				<property name="commonDao" ref="commondao" />
+				<property name="baseDao">
+					<ref bean="baseDao" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="WorkflowDAO" class=" com.wootion.cmmb.common.workflow.WorkflowDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<bean id="ProjectAction"
-		class="com.wootion.cmmb.view.action.c_series.ProjectActionImpl" >
+	<bean id="ProjectAction" class="com.wootion.cmmb.view.action.c_series.ProjectActionImpl">
 		<property name="projectservice">
 			<ref bean="projectService" />
 		</property>
 	</bean>
-	
-	<bean id="MemAction"
-		class="com.wootion.cmmb.view.action.membermanage.MemActionImpl" >
+
+	<bean id="MemAction" class="com.wootion.cmmb.view.action.membermanage.MemActionImpl">
 		<property name="memservice">
 			<ref bean="memberService" />
 		</property>
 	</bean>
 
-	<bean id="WorkflowAspect"
-		class="com.wootion.cmmb.common.workflow.WorkflowAspect">
+	<bean id="WorkflowAspect" class="com.wootion.cmmb.common.workflow.WorkflowAspect">
 		<property name="service">
 			<ref bean="WorkflowService" />
+		</property>
+	</bean>
+
+	<bean id="FormPermissionAspect"
+		class="com.wootion.cmmb.common.formPermission.FormPermissionAspect">
+		<property name="service">
+			<ref bean="FormPermissionService" />
 		</property>
 	</bean>
 	<aop:config>
@@ -51,10 +65,29 @@
 				expression="execution(public * com.wootion.cmmb.view.action..*Impl.delete*(..))" />
 			<aop:pointcut id="viewWorkflow"
 				expression="execution(public * com.wootion.cmmb.view.action..*Impl.view*(..))" />
-			<aop:after pointcut-ref="checkWorkflow" method="checkWorkflow" arg-names="joinPoint"/>
-			<aop:after pointcut-ref="handleWorkflow" method="handleWorkflow" arg-names="joinPoint"/>
-			<aop:after pointcut-ref="deleteWorkflow" method="deleteWorkflow" arg-names="joinPoint"/>
-			<aop:after pointcut-ref="viewWorkflow" method="viewWorkflow" arg-names="joinPoint"/>
+			<aop:after pointcut-ref="checkWorkflow" method="checkWorkflow"
+				arg-names="joinPoint" />
+			<aop:after pointcut-ref="handleWorkflow" method="handleWorkflow"
+				arg-names="joinPoint" />
+			<aop:after pointcut-ref="deleteWorkflow" method="deleteWorkflow"
+				arg-names="joinPoint" />
+			<aop:after pointcut-ref="viewWorkflow" method="viewWorkflow"
+				arg-names="joinPoint" />
+		</aop:aspect>
+		
+		<aop:aspect id="pmAspect" ref="FormPermissionAspect">
+			<aop:pointcut id="addFormPermission"
+				expression="execution(public * com.wootion.cmmb.view.action..*Impl.add*(..))" />
+			<aop:pointcut id="modifyFormPermission"
+				expression="execution(public * com.wootion.cmmb.view.action..*Impl.modify*(..))" />
+			<aop:pointcut id="deleteFormPermission"
+				expression="execution(public * com.wootion.cmmb.view.action..*Impl.delete*(..))" />
+			<aop:after pointcut-ref="addFormPermission" method="handleFormPermission"
+				arg-names="joinPoint" />
+			<aop:after pointcut-ref="modifyFormPermission" method="handleFormPermission"
+				arg-names="joinPoint" />
+			<aop:after pointcut-ref="deleteFormPermission" method="deleteFormPermission"
+				arg-names="joinPoint" />
 		</aop:aspect>
 	</aop:config>
 </beans>

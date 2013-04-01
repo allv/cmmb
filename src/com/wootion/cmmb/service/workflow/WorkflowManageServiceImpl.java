@@ -17,7 +17,6 @@ import com.wootion.cmmb.persistenc.po.bean.Form;
 import com.wootion.cmmb.persistenc.po.bean.Workflow;
 import com.wootion.cmmb.persistenc.po.bean.WorkflowBills;
 import com.wootion.cmmb.persistenc.po.bean.WorkflowNodes;
-import com.wootion.cmmb.persistenc.po.bean.WorkflowRecords;
 import com.wootion.idp.common.utils.EntityIDFactory;
 import com.wootion.idp.common.utils.QueryResult;
 import com.wootion.idp.persistence.po.bean.Wtuser;

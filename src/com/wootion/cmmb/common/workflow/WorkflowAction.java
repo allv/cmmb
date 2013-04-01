@@ -1,5 +1,6 @@
 package com.wootion.cmmb.common.workflow;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +28,7 @@ public class WorkflowAction extends ActionSupport {
 
 	private Set<WorkflowNodes> workflowNodes;
 	private WorkflowBills workflowBill;
-	private Set<WorkflowRecords> workflowRecords;
+	private List<WorkflowRecords> workflowRecords;
 
 	private WorkflowService service;
 
@@ -37,7 +38,7 @@ public class WorkflowAction extends ActionSupport {
 		this.billid = request.getParameter("billid");
 		Workflow wf = getService().getWorkflow(Long.valueOf(formid));
 		workflowNodes = wf.getSortNodesASC();
-		workflowRecords = wf.getSortedRecordsASC();
+		workflowRecords = getService().getWorkflowRecords(Long.valueOf(formid),billid); 
 		workflowBill = getService().getWorkflowBill(Long.valueOf(formid),billid);
 		currentHandleUsers = getService().getUsersName(workflowBill.getCurrentHandleUsers());
 		formName = wf.getForm().getName();
@@ -100,11 +101,11 @@ public class WorkflowAction extends ActionSupport {
 		this.workflowBill = workflowBill;
 	}
 
-	public Set<WorkflowRecords> getWorkflowRecords() {
+	public List<WorkflowRecords> getWorkflowRecords() {
 		return workflowRecords;
 	}
 
-	public void setWorkflowRecords(Set<WorkflowRecords> workflowRecords) {
+	public void setWorkflowRecords(List<WorkflowRecords> workflowRecords) {
 		this.workflowRecords = workflowRecords;
 	}
 

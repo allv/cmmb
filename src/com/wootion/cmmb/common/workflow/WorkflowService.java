@@ -1,9 +1,12 @@
 package com.wootion.cmmb.common.workflow;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import com.wootion.cmmb.persistenc.po.bean.Workflow;
 import com.wootion.cmmb.persistenc.po.bean.WorkflowBills;
+import com.wootion.cmmb.persistenc.po.bean.WorkflowRecords;
 
 public interface WorkflowService {
 
@@ -32,5 +35,8 @@ public interface WorkflowService {
 
 	public abstract void viewWorkflowBill(WorkflowHandle action,
 			HttpServletRequest request);
+
+	public abstract List<WorkflowRecords> getWorkflowRecords(Long valueOf,
+			String billid);
 
 }

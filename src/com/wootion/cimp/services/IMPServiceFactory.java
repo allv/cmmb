@@ -1,6 +1,7 @@
 package com.wootion.cimp.services;
 
 
+import com.wootion.cmmb.common.formPermission.FormPermissionService;
 import com.wootion.cmmb.common.workflow.WorkflowService;
 import com.wootion.cmmb.service.activity.ActivityService;
 import com.wootion.cmmb.service.activity.BloodpressureService;
@@ -101,5 +102,10 @@ public class IMPServiceFactory {
 	public static WorkflowService getWorkflowService() {
 		return (WorkflowService) SpringBeanFactory
 				.getSpringBean("WorkflowService");
+	}
+	
+	public static FormPermissionService getFormPermissionService() {
+		return (FormPermissionService) SpringBeanFactory
+				.getSpringBean("FormPermissionService");
 	}
 }

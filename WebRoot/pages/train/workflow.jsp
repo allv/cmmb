@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- 
 <script type="text/javascript" src="<%=basePath%>/js/jquery.boxy.js"></script>
 <link href="<%=basePath%>/css/boxy.css" rel="stylesheet" type="text/css" />
+ -->
+<script type="text/javascript" src="<%=basePath%>/js/jquery.showLoading.js"></script>
+<link href="<%=basePath%>/css/showLoading.css" rel="stylesheet" type="text/css" />
 <c:if test="${showWorkflow }">
 <div class="foreverTop">
 <table>
@@ -70,9 +74,11 @@ function backWorkflow() {
 }
 
 function showWorkflowDialog(wf_url,msg,msgTitle) {
-	Boxy.confirm("<div>备注:&nbsp;&nbsp;<input type='text' onblur='$('#workflowRemark').val(this.value);' /></div>",function(){
+	//var remark = prompt('备注');
+	//if(remark != null){
+		//$('#workflowRemark').val(remark,' ');
 		showWorkflowDialog1(wf_url,msg);
-	},{title:msgTitle});
+	//}
 }
 
 function showWorkflowDialog1(wf_url,msg) {
@@ -83,12 +89,12 @@ function showWorkflowDialog1(wf_url,msg) {
 	var arguments = 'billid='+billid+'&formid='+formid+'&remark='+remark;
 	
 	wf_url = wf_url + '&time='+date.getTime() +'&'+ arguments;
-	var dialog = new Boxy("div><p>处理中……请稍候！</p></div>", {modal:true});
+	$(document.body).showLoading();
 	$.ajax({
 	   type: "POST",
 	   url: wf_url,
 	   complete:function(XMLHttpRequest, textStatus) {
-		   dialog.hide();
+		   $(document.body).hideLoading()
 		   var result = XMLHttpRequest.responseText;
 	   		if('success'==result){
 	   		 	alert(msg);

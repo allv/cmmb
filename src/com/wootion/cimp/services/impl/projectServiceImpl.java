@@ -12,6 +12,7 @@ import org.hibernate.Transaction;
 import com.wootion.cimp.idao.BaseDao;
 import com.wootion.cimp.services.projectService;
 import com.wootion.cimp.vo.data.Project;
+import com.wootion.cmmb.common.exception.SameObjectException;
 import com.wootion.cmmb.persistenc.po.bean.Projecttracing;
 import com.wootion.idp.common.utils.QueryResult;
 import com.wootion.idp.persistence.dao.CommonDao;
@@ -97,12 +98,12 @@ public class projectServiceImpl implements projectService {
              maxresult, whererjpql, lst.toArray(), map);
 	}
 	
-	public String saveProject(String proname, String prostate, String proresponsor, String proagency, String proauthority, String proresult,
-			String procontract, String prostartdate, String proenddate, String probudget, String protimes, String prodesc, String proidentity,String trdata,String tddata) throws ParseException {
+	public Project saveProject(String proname, String prostate, String proresponsor, String proagency, String proauthority, String proresult,
+			String procontract, String prostartdate, String proenddate, String probudget, String protimes, String prodesc, String proidentity,String trdata,String tddata) throws ParseException, SameObjectException {
 	    Project project = new Project();
 	    List<Project> list = baseDao.find("from Project tt where tt.proidentity=?", proidentity);
 		if (list.size() > 0) {
-			return "sameid";
+			throw new SameObjectException();
 		}else{
 			try {
 					project.setProagency(proagency);
@@ -124,10 +125,10 @@ public class projectServiceImpl implements projectService {
 				    //initProjectTrack(project.getProid(),prostartdate,proenddate);
 			} catch (Exception e) {
 				e.printStackTrace();
-				return "error";
+				return null;
 			}
 		}
-		return "success";
+		return project;
 	}
 	
 	

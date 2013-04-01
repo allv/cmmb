@@ -96,7 +96,7 @@ public class AssignRoleFormsAction extends ActionSupport {
 		setAllForms(result);
 		return SUCESS;
 	}
-
+	
 	public String assignRoleForms() {
 		boolean result = getRoleService().saveRoleForms(Long.parseLong(mid),selecteForms);
 		HttpServletRequest request = (HttpServletRequest) ActionContext

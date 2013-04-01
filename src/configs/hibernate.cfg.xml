@@ -87,6 +87,8 @@
 		<mapping
 			resource="com/wootion/cmmb/persistenc/po/xml/form.hbm.xml" />
 		<mapping
+			resource="com/wootion/cmmb/persistenc/po/xml/formPermission.hbm.xml" />
+		<mapping
 			resource="com/wootion/cmmb/persistenc/po/xml/workflowNodes.hbm.xml" />
 		<mapping
 			resource="com/wootion/cmmb/persistenc/po/xml/workflowBills.hbm.xml" />
