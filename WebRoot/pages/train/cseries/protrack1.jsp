@@ -624,7 +624,7 @@ function submitData(){
    var pageData = organizeData();
    $.ajax({
        type: "POST",
-       url: basePath + "/projectaddprotrack.do?proid="+proid+'&proname='+proname+'&pagedata='+pageData+'&trackid='+trackid,
+       url: basePath + "/projectaddprotrack.do?billid="+proid+'&proname='+proname+'&pagedata='+pageData+'&trackid='+trackid,
 			   success:function (msg){
 			   		var result = msg;
 			   		if('success'==result){

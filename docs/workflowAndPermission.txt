@@ -65,4 +65,5 @@
 
 权限集成方案：
 1.在ACTION中的add,modify,delete方法中分别加入request.setAttribute(FormPermissionAspect.PRIMARY_KEY_iD, mid);
-2.在struts.xml中的定义action部分里加入interceptor
+2.在struts.xml中的定义action部分里加入CheckPermission interceptor
+3.把所有的传参ID换成billid 例如proid换成billid, meminfoid换成billid

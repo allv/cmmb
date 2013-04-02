@@ -10,7 +10,7 @@
 		</interceptors>
 		
 		<global-results>
-			<result name="unauthorized">/unauthorized.jsp</result>   
+			<result name="unauthorized">/pages/train/unauthorized.jsp</result>   
         </global-results>
         
 		<!--以下是王立文修改 -->

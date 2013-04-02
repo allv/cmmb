@@ -24,7 +24,7 @@
       <td colspan="5" bgcolor="#CBD7ED"><b>项目信息</b></td>
     </tr>
     <tr>
-      <input type="hidden" name="proid" value="${pro.proid}" />
+      <input type="hidden" name="billid" value="${pro.proid}" />
       <td align="left">项目编号：<input type="text" name="proidentity" value="${pro.proidentity}" ><span style='color:red;'>&nbsp;*</span></td>
       <td align="justify">项目等级：
        <select name="proname" id="proname" style="width:100px">
@@ -355,7 +355,7 @@ function generateURL() {
      }
 	
 	var proidentity = document.getElementById("proidentity").value;	
-    var proid = document.getElementById("proid").value;
+    var proid = document.getElementById("billid").value;
 	var proname = document.getElementById("proname").value;
 	var prostate = document.getElementById("prostate").value;
 	var proresponsor = document.getElementById("proresponsor").value;
@@ -373,7 +373,7 @@ function generateURL() {
 	   "&prostate="+encodeURI(prostate)+"&proresponsor="+encodeURI(proresponsor)+"&proagency="+encodeURI(proagency)+
 	   "&proauthority="+encodeURI(proauthority)+"&proresult="+encodeURI(proresult)+"&procontract="+
 	   encodeURI(procontract)+"&prostartdate="+prostartdate+"&probudget="+encodeURI(probudget)+"&protimes="+
-	   encodeURI(protimes)+"&proenddate="+proenddate+"&prodesc="+encodeURI(prodesc)+"&trdata="+encodeURI(trdata)+"&tddata="+encodeURI(tddata)+"&proid="+proid
+	   encodeURI(protimes)+"&proenddate="+proenddate+"&prodesc="+encodeURI(prodesc)+"&trdata="+encodeURI(trdata)+"&tddata="+encodeURI(tddata)+"&billid="+proid
 }
     
 function generateWorkflowURL(){

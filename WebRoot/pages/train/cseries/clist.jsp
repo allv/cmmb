@@ -12,7 +12,7 @@ function projectDel(proid){
 		       $.ajax({
 			   type: "POST",
 			   url: basePath + "/projectdeletepro.do", 
-			   data: {proid:proid},
+			   data: {billid:proid},
 			   success:function (msg){
 			   		var result = msg;
 			   		if('success'==result){
@@ -30,18 +30,18 @@ function projectDel(proid){
 }
 
 function projectView(proid){
-    window.location.href=basePath+"/projectviewpro.do?proid="+proid;
+    window.location.href=basePath+"/projectviewpro.do?billid="+proid;
 }
 function projectEdit(proid){
-    window.location.href=basePath+"/projectpremodify.do?proid="+proid;
+    window.location.href=basePath+"/projectpremodify.do?billid="+proid;
 }
 
 function projectTrack(proid){
-    window.location.href=basePath+"/projecttrack.do?proid="+proid;
+    window.location.href=basePath+"/projecttrack.do?billid="+proid;
 }
 
 function projectTrackView(proid){
-    window.location.href=basePath+"/projecttrack.do?proid="+proid+"&isview=true";
+    window.location.href=basePath+"/projecttrack.do?billid="+proid+"&isview=true";
 }
 </script>
 </head>
