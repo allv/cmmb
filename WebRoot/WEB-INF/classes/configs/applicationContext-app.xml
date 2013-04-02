@@ -10,6 +10,16 @@
 		</property>
 	</bean>
 	
+	<bean id="formPermissionDAO"
+		class="com.wootion.cmmb.common.formPermission.FormPermissionDAO">
+		<property name="baseDao">
+			<ref bean="baseDao" />
+		</property>
+		<property name="commondao">
+			<ref bean="commondao" />
+		</property>
+	</bean>
+	
 	<bean id="projectService" parent="txProxyTemplate">
 		<property name="target">
 			<bean
@@ -18,7 +28,7 @@
 					<ref bean="baseDao" />
 				</property>
 				<property name="commondao">
-					<ref bean="commondao" />
+					<ref bean="formPermissionDAO" />
 				</property>
 			</bean>
 		</property>

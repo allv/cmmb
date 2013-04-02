@@ -7,6 +7,7 @@ import java.util.Set;
 import org.apache.commons.lang.StringUtils;
 
 import com.wootion.cimp.idao.BaseDao;
+import com.wootion.cmmb.common.util.ServletUtil;
 import com.wootion.cmmb.common.workflow.WorkflowHandle;
 import com.wootion.cmmb.persistenc.po.bean.Form;
 import com.wootion.cmmb.persistenc.po.bean.FormPermission;
@@ -15,6 +16,7 @@ import com.wootion.cmmb.persistenc.po.bean.WorkflowBills;
 import com.wootion.idp.common.utils.DomainUtil;
 import com.wootion.idp.common.utils.EntityIDFactory;
 import com.wootion.idp.persistence.dao.CommonDao;
+import com.wootion.idp.persistence.po.bean.Wtuser;
 
 public class FormPermissionServiceImpl implements FormPermissionService {
 
@@ -85,6 +87,10 @@ public class FormPermissionServiceImpl implements FormPermissionService {
 
 	@Override
 	public boolean checkPermission(String currentUserId, String billid) {
+		Wtuser currentUser = commonDao.getObject(Wtuser.class, Long.valueOf(currentUserId));
+		if(DomainUtil.isUserAdmin(currentUser)) {
+			return true;
+		}
 		List<FormPermission> result = baseDao.find("from FormPermission where billid=?", billid);
 		if(result != null && result.size()>0) {
 			FormPermission formPermission = result.get(0);

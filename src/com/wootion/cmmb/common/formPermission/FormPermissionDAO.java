@@ -5,14 +5,20 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import com.wootion.cimp.vo.data.Project;
+import org.apache.commons.lang.StringUtils;
+
+import com.wootion.cimp.idao.BaseDao;
+import com.wootion.cmmb.common.util.ServletUtil;
+import com.wootion.cmmb.persistenc.po.bean.FormPermission;
 import com.wootion.idp.common.utils.DomainUtil;
 import com.wootion.idp.common.utils.QueryResult;
 import com.wootion.idp.persistence.dao.CommonDao;
+import com.wootion.idp.persistence.po.bean.Wtuser;
 
 public class FormPermissionDAO implements CommonDao {
 	
 	private CommonDao commondao;
+	private BaseDao baseDao;
 
 	@Override
 	public <T> void deleteAll(Collection<T> arg0) {
@@ -53,30 +59,35 @@ public class FormPermissionDAO implements CommonDao {
 	@Override
 	public <T> QueryResult<T> getScrollData(Class<T> clazz, String pk,
 			int index, int maxresult) {
-		// TODO Auto-generated method stub
-		return null;
+		return commondao.getScrollData(clazz, pk, index, maxresult);
 	}
 
 	@Override
 	public <T> QueryResult<T> getScrollData(Class<T> clazz, String pk,
 			int index, int maxresult, String whererjpql, Object[] lst,
 			LinkedHashMap<String, String> map) {
-//		DomainUtil.getColumnName(clazz, pk);
-		whererjpql = whererjpql + 
-				"and pk in ("
-				
-				("from FormPermission t where t.billid=?", billid);
-		"select * from" 
-		
-		
-		
-		
-		commondao.getScrollData(Project.class, "proid", index,
-	             maxresult, whererjpql, lst, map);
-		
-		return null;
+		Long currentUserId = ServletUtil.getCurrentUserId();
+		Wtuser currentUser = commondao.getObject(Wtuser.class, currentUserId);
+		if(DomainUtil.isUserAdmin(currentUser)) {
+			return commondao.getScrollData(clazz, pk, index,
+					maxresult, whererjpql, lst, map);
+		}else{
+			List<FormPermission> result = baseDao.find("from FormPermission t where t.historyHandleUsers like ?", "%"+currentUserId.toString()+"%");
+			StringBuffer sb = new StringBuffer();
+			if(result != null ) {
+				for(FormPermission temp:result) { 
+					sb.append("'"+temp.getBillid()+"',");
+				}
+			}
+			if(StringUtils.isNotEmpty(sb.toString())) {
+				String string = sb.toString().substring(0,sb.toString().length()-1);
+				whererjpql = whererjpql +" and "+pk+" in ("+string+")"; 
+			}
+			return commondao.getScrollData(clazz, pk, index,
+					maxresult, whererjpql, lst, map);
+		}
 	}
-
+	
 	@Override
 	public <T> int getSizeObject(Class<T> arg0, String arg1) {
 		return commondao.getSizeObject(arg0, arg1);
@@ -113,6 +124,14 @@ public class FormPermissionDAO implements CommonDao {
 
 	public void setCommondao(CommonDao commondao) {
 		this.commondao = commondao;
+	}
+
+	public BaseDao getBaseDao() {
+		return baseDao;
+	}
+
+	public void setBaseDao(BaseDao baseDao) {
+		this.baseDao = baseDao;
 	}
 	
 }

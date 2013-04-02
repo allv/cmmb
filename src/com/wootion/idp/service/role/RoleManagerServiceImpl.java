@@ -60,6 +60,7 @@ public class RoleManagerServiceImpl extends BaseServiceImpl implements
 					+ "%'";
 		}
 		whererjpql = whererjpql + " and o.isDelete=0 ";
+		whererjpql = whererjpql + " and o.wtroleId != o.parentRole ";
 		return this.commonDao.getScrollData(Wtrole.class, "wtroleId", index,
 				maxresult, whererjpql, null, null);
 	}
