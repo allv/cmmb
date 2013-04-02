@@ -88,7 +88,7 @@ public class FormPermissionServiceImpl implements FormPermissionService {
 		List<FormPermission> result = baseDao.find("from FormPermission where billid=?", billid);
 		if(result != null && result.size()>0) {
 			FormPermission formPermission = result.get(0);
-			if(formPermission.getBillid().indexOf(currentUserId)<0) {
+			if(formPermission.getCurrentHandleUsers().indexOf(currentUserId)<0) {
 				return false;
 			}
 		}

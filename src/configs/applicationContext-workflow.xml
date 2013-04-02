@@ -56,7 +56,7 @@
 		</property>
 	</bean>
 	<aop:config>
-		<aop:aspect id="wfAspect" ref="WorkflowAspect">
+		<aop:aspect id="wfAspect" ref="WorkflowAspect" order="1">
 			<aop:pointcut id="checkWorkflow"
 				expression="execution(public * com.wootion.cmmb.view.action..*Impl.premodify(..))" />
 			<aop:pointcut id="handleWorkflow"
@@ -75,7 +75,7 @@
 				arg-names="joinPoint" />
 		</aop:aspect>
 		
-		<aop:aspect id="pmAspect" ref="FormPermissionAspect">
+		<aop:aspect id="pmAspect" ref="FormPermissionAspect" order="2">
 			<aop:pointcut id="addFormPermission"
 				expression="execution(public * com.wootion.cmmb.view.action..*Impl.add*(..))" />
 			<aop:pointcut id="modifyFormPermission"

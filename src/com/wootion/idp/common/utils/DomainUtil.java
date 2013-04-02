@@ -1,5 +1,14 @@
 package com.wootion.idp.common.utils;
 
+import java.util.Iterator;
+
+import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.mapping.Column;
+import org.hibernate.mapping.PersistentClass;
+import org.hibernate.mapping.PrimaryKey;
+import org.hibernate.mapping.Property;
+
 import com.wootion.cmmb.persistenc.po.bean.Workflow;
 import com.wootion.idp.persistence.po.bean.Wtrole;
 import com.wootion.idp.persistence.po.bean.Wtuser;
@@ -8,7 +17,7 @@ public class DomainUtil {
 
 	public static final String MANAGER_ROLE_ID = "10003";
 	public static final String UNAUTHORIZED_PERMISSION = "unauthorized";
-	
+
 	public static boolean isUserDeleted(Wtuser user) {
 		return user.getIsDelete().intValue() != 0;
 	}
@@ -20,28 +29,111 @@ public class DomainUtil {
 	public static boolean isUserAvailable(Wtuser user) {
 		return !isUserDeleted(user) && isUserActived(user);
 	}
-	
-	public static boolean isManagerRole(Wtrole role) { 
-		if(!isGroupRole(role)) {
+
+	public static boolean isManagerRole(Wtrole role) {
+		if (!isGroupRole(role)) {
 			return MANAGER_ROLE_ID.equals(role.getParentRole());
 		}
 		return false;
 	}
-	
+
 	/**
-	 * 是否是权限组 
+	 * 是否是权限组
+	 * 
 	 * @param role
 	 * @return
 	 */
 	public static boolean isGroupRole(Wtrole role) {
-		return role.getParentRole() != null && role.getParentRole().equals(role.getWtroleId().toString());
+		return role.getParentRole() != null
+				&& role.getParentRole().equals(role.getWtroleId().toString());
 	}
-	
+
 	public static boolean isWorkflowUseful(Workflow wf) {
-		return wf.getUseful() != null && wf.getUseful().equals(Workflow.WORKFLOW_USEFUL);
+		return wf.getUseful() != null
+				&& wf.getUseful().equals(Workflow.WORKFLOW_USEFUL);
 	}
 
 	public static boolean isWorkflowDeleted(Workflow wf) {
-		return wf.getDeleted() != null && wf.getDeleted().equals(Workflow.WORKFLOW_DELETED);
+		return wf.getDeleted() != null
+				&& wf.getDeleted().equals(Workflow.WORKFLOW_DELETED);
 	}
+
+	private static Configuration hibernateConf;
+
+	private static Configuration getHibernateConf() {
+		if (hibernateConf == null) {
+			hibernateConf = new AnnotationConfiguration().configure();
+			hibernateConf.buildSessionFactory(); 
+		}
+		return hibernateConf;
+	}
+
+	private static PersistentClass getPersistentClass(Class<?> clazz) {
+		synchronized (DomainUtil.class) {
+			PersistentClass pc = getHibernateConf().getClassMapping(
+					clazz.getName());
+			if (pc == null) {
+				pc = getHibernateConf().getClassMapping(clazz.getName());
+
+			}
+			return pc;
+		}
+	}
+
+	/**
+	 * 功能描述：获取实体对应的表名
+	 * 
+	 * @param clazz
+	 *            实体类
+	 * @return 表名
+	 */
+	public static String getTableName(Class<?> clazz) {
+		return getPersistentClass(clazz).getTable().getName();
+	}
+
+	/**
+	 * 功能描述：获取实体对应表的主键字段名称，只适用于唯一主键的情况
+	 * 
+	 * @param clazz
+	 *            实体类
+	 * @return 主键字段名称
+	 */
+	public static String getPrimaryKey(Class<?> clazz) {
+		return getPrimaryKeys(clazz).getColumn(0).getName();
+
+	}
+
+	/**
+	 * 功能描述：获取实体对应表的主键字段名称
+	 * 
+	 * @param clazz
+	 *            实体类
+	 * @return 主键对象primaryKey ，可用primaryKey.getColumn(i).getName()
+	 */
+	public static PrimaryKey getPrimaryKeys(Class<?> clazz) {
+
+		return getPersistentClass(clazz).getTable().getPrimaryKey();
+
+	}
+
+	/**
+	 * 功能描述：通过实体类和属性，获取实体类属性对应的表字段名称
+	 * 
+	 * @param clazz
+	 *            实体类
+	 * @param propertyName
+	 *            属性名称
+	 * @return 字段名称
+	 */
+	public static String getColumnName(Class<?> clazz, String propertyName) {
+		PersistentClass persistentClass = getPersistentClass(clazz);
+		Property property = persistentClass.getProperty(propertyName);
+		Iterator<?> it = property.getColumnIterator();
+		if (it.hasNext()) {
+			Column column = (Column) it.next();
+			return column.getName();
+		}
+		return null;
+	}
+
 }

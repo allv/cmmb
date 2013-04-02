@@ -17,12 +17,12 @@ import com.wootion.cimp.services.projectService;
 import com.wootion.cimp.util.PageBasicInfo;
 import com.wootion.cimp.vo.data.Project;
 import com.wootion.cmmb.common.exception.SameObjectException;
-import com.wootion.cmmb.common.formPermission.FormPermissionAspect;
 import com.wootion.cmmb.common.workflow.WorkflowHandle;
 import com.wootion.cmmb.common.workflow.WorkflowParameter;
 import com.wootion.cmmb.persistenc.po.bean.Projecttracing;
 
 public class ProjectActionImpl implements ProjectAction,WorkflowHandle {
+	private static final String BILL_ID = WorkflowParameter.BILL_ID;
 	private PageBasicInfo pageObj = null;
 	public projectService projectservice;
 
@@ -65,7 +65,7 @@ public class ProjectActionImpl implements ProjectAction,WorkflowHandle {
 			out = response.getWriter();
 			if(newProject != null ){ 
 				flag = "success";
-				request.setAttribute(FormPermissionAspect.PRIMARY_KEY_iD, newProject.getProid());
+//				request.setAttribute(FormPermissionAspect.PRIMARY_KEY_iD, newProject.getProid());
 			}else {
 				flag = "error";
 			}
@@ -89,7 +89,7 @@ public class ProjectActionImpl implements ProjectAction,WorkflowHandle {
 		HttpServletRequest request = getRequest();
 		HttpServletResponse response = getResponse();
 		String flag = "";
-		String proid = request.getParameter("proid").trim();
+		String proid = request.getParameter(BILL_ID).trim();
 		String proname = request.getParameter("proname").trim();
 		String pagedata = request.getParameter("pagedata").trim();
 		String trackid = request.getParameter("trackid").trim();
@@ -113,7 +113,7 @@ public class ProjectActionImpl implements ProjectAction,WorkflowHandle {
 	 */
 	public String track() throws Exception {
 		HttpServletRequest request = getRequest();
-		String pid = request.getParameter("proid");
+		String pid = request.getParameter(BILL_ID);
 		String isview = request.getParameter("isview");
 		Project pro = new Project();
 		List<Projecttracing> protracing = new ArrayList<Projecttracing>();
@@ -188,7 +188,7 @@ public class ProjectActionImpl implements ProjectAction,WorkflowHandle {
 	 */
 	public String premodify() throws Exception {
 		HttpServletRequest request = getRequest();
-		String pid = request.getParameter("proid");
+		String pid = request.getParameter(BILL_ID);
 		Project pro = new Project();
 
 		try {
@@ -233,7 +233,7 @@ public class ProjectActionImpl implements ProjectAction,WorkflowHandle {
 		// String proidentity = new
 		// String(request.getParameter("proidentity").trim().getBytes("iso8859-1"),"utf-8");
 		String proidentity = request.getParameter("proidentity").trim();
-		String pid = request.getParameter("proid").trim();
+		String pid = request.getParameter(BILL_ID).trim();
 		// UserCacheBean uc = PermissionCollection.getInstance().getUserCache(
 		// request.getSession().getId());
 		// Long userIdt = uc.getUserID();
@@ -246,7 +246,7 @@ public class ProjectActionImpl implements ProjectAction,WorkflowHandle {
 		try {
 			out = response.getWriter();
 			out.print(flag);
-			request.setAttribute(FormPermissionAspect.PRIMARY_KEY_iD, pid);
+//			request.setAttribute(FormPermissionAspect.PRIMARY_KEY_iD, pid);
 		} catch (Exception e) {
 			e.printStackTrace();
 			out.print("error");
@@ -266,12 +266,12 @@ public class ProjectActionImpl implements ProjectAction,WorkflowHandle {
 		PrintWriter out = null;
 		boolean flag = false;
 		try {
-			String pID = request.getParameter("proid");// 项目ID
+			String pID = request.getParameter(BILL_ID);// 项目ID
 			out = response.getWriter();
 			flag = getProjectservice().deleProject(pID);
 			if (flag) {
 				out.print("success");
-				request.setAttribute(FormPermissionAspect.PRIMARY_KEY_iD, pID);
+//				request.setAttribute(FormPermissionAspect.PRIMARY_KEY_iD, pID);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -288,7 +288,7 @@ public class ProjectActionImpl implements ProjectAction,WorkflowHandle {
 	 */
 	public String viewpro() throws Exception {
 		HttpServletRequest request = getRequest();
-		String pid = request.getParameter("proid");
+		String pid = request.getParameter(BILL_ID);
 		Project pro = new Project();
 
 		try {
@@ -343,7 +343,7 @@ public class ProjectActionImpl implements ProjectAction,WorkflowHandle {
 	@Override
 	public String getBillid() {
 		HttpServletRequest request = getRequest();
-		return request.getParameter("proid").trim();
+		return request.getParameter(BILL_ID).trim();
 	}
 
 	@Override

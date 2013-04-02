@@ -3,6 +3,8 @@ package com.wootion.cmmb.common.workflow;
 import org.apache.commons.lang.StringUtils;
 
 public class WorkflowParameter {
+	
+	public static final String BILL_ID = "billid";
 
 	public static final String SUBMIT_FLAG = "workflowflag";
 	public static final String SHOWWORKFLOW_FLAG = "showWorkflow";

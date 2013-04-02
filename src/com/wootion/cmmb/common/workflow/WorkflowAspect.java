@@ -2,12 +2,9 @@ package com.wootion.cmmb.common.workflow;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.struts2.ServletActionContext;
 import org.aspectj.lang.JoinPoint;
 
-import com.opensymphony.xwork2.ActionContext;
-import com.wootion.idp.common.collections.PermissionCollection;
-import com.wootion.idp.common.collections.UserCacheBean;
+import com.wootion.cmmb.common.util.ServletUtil;
 
 public class WorkflowAspect {
 
@@ -23,16 +20,16 @@ public class WorkflowAspect {
 
 	public void checkWorkflow(JoinPoint joinPoint) {
 		WorkflowHandle action = (WorkflowHandle) joinPoint.getThis();
-		service.checkWorkflowBill(action, this.getRequest());
+		service.checkWorkflowBill(action, ServletUtil.getRequest());
 	}
 	
 	public void handleWorkflow(JoinPoint joinPoint) {
 		WorkflowHandle action = (WorkflowHandle) joinPoint.getThis();
-		HttpServletRequest request = this.getRequest();
+		HttpServletRequest request = ServletUtil.getRequest();
 		String submitFlag = request.getParameter(WorkflowParameter.SUBMIT_FLAG);
 
 		String remark = request.getParameter("remark");
-		Long handleUserid = getCurrentUserId(request.getSession().getId());
+		Long handleUserid = ServletUtil.getCurrentUserId();
 		if (submitFlag != null
 				&& submitFlag.equals(WorkflowParameter.HANDLE_TYPE_SUBMIT.toString())) {
 			service.submit((WorkflowHandle) action, handleUserid, remark);
@@ -58,17 +55,7 @@ public class WorkflowAspect {
 	
 	public void viewWorkflow(JoinPoint joinPoint) {
 		WorkflowHandle action = (WorkflowHandle) joinPoint.getThis();
-		service.viewWorkflowBill(action, this.getRequest());
-	}
-	
-	private Long getCurrentUserId(String sessionID) {
-		UserCacheBean uc1 = PermissionCollection.getInstance().getUserCache(
-				sessionID);
-		return uc1.getUserID();
+		service.viewWorkflowBill(action, ServletUtil.getRequest());
 	}
 
-	private HttpServletRequest getRequest() {
-		ActionContext ctx = ActionContext.getContext();
-		return (HttpServletRequest) ctx.get(ServletActionContext.HTTP_REQUEST);
-	}
 }

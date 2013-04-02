@@ -1,14 +1,12 @@
 package com.wootion.cmmb.common.formPermission;
 
-import javax.servlet.http.HttpServletRequest;
+import org.apache.commons.lang.StringUtils;
 
-import org.apache.struts2.ServletActionContext;
-
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.Interceptor;
-import com.wootion.idp.common.collections.PermissionCollection;
-import com.wootion.idp.common.collections.UserCacheBean;
+import com.wootion.cimp.services.IMPServiceFactory;
+import com.wootion.cmmb.common.util.ServletUtil;
+import com.wootion.cmmb.common.workflow.WorkflowParameter;
 import com.wootion.idp.common.utils.DomainUtil;
 
 public class FormPermissionInterceptor implements Interceptor {
@@ -29,28 +27,21 @@ public class FormPermissionInterceptor implements Interceptor {
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
 		if(invocation.getProxy().getMethod().indexOf("premodify")>=0) {
-			Long currentUserId = getCurrentUserId(getRequest().getSession().getId());
-			String billid = (String) this.getRequest().getAttribute(
-					FormPermissionAspect.PRIMARY_KEY_iD);
-			if (!service.checkPermission(currentUserId.toString(), billid)) {
-				return DomainUtil.UNAUTHORIZED_PERMISSION;
+			Long currentUserId = ServletUtil.getCurrentUserId();
+			String billid = (String) ServletUtil.getRequest().getParameter(WorkflowParameter.BILL_ID);
+			if(StringUtils.isNotEmpty(billid)) {
+				if (!this.getService().checkPermission(currentUserId.toString(), billid)) {
+					return DomainUtil.UNAUTHORIZED_PERMISSION;
+				}
 			}
 		}
 		return invocation.invoke();
 	}
 
-	private HttpServletRequest getRequest() {
-		ActionContext ctx = ActionContext.getContext();
-		return (HttpServletRequest) ctx.get(ServletActionContext.HTTP_REQUEST);
-	}
-
-	private Long getCurrentUserId(String sessionID) {
-		UserCacheBean uc1 = PermissionCollection.getInstance().getUserCache(
-				sessionID);
-		return uc1.getUserID();
-	}
-
 	public FormPermissionService getService() {
+		if(service == null ) { 
+			service = IMPServiceFactory.getFormPermissionService();
+		}
 		return service;
 	}
 
