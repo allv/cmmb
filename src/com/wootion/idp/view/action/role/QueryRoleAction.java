@@ -1,8 +1,5 @@
 package com.wootion.idp.view.action.role;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -39,24 +36,7 @@ public class QueryRoleAction extends BaseAction {
 		RoleManagerService roleService = ServiceFactroy.getRoleService();
 		result = roleService.getQueryUserResult(firstindex, maxresult,
 				startDate, endDate, rolename);
-		filterResult();
 		return SUCESS;
-	}
-
-	private void filterResult() {
-		if(result != null ) { 
-			List<Wtrole> re = new ArrayList<Wtrole>();
-			for(Wtrole role:result.getResultlist()) {
-				if(!isRoleGroup(role)){
-					re.add(role);
-				}
-			}
-			result.setResultlist(re);
-		}
-	}
-
-	private boolean isRoleGroup(Wtrole role) {
-		return role.getParentRole() != null && role.getParentRole().equals(role.getWtroleId().toString());
 	}
 
 	public QueryResult<Wtrole> getResult() {
