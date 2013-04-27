@@ -1,21 +1,16 @@
 package com.wootion.cmmb.service.management;
 
 import java.text.ParseException;
-import java.util.Date;
-import java.util.List;
 
-import com.wootion.cimp.vo.data.Project;
-import com.wootion.cmmb.persistenc.po.bean.Activityinfo;
 import com.wootion.cmmb.persistenc.po.bean.Managementhistory;
 import com.wootion.cmmb.persistenc.po.bean.Managementinfo;
-import com.wootion.cmmb.persistenc.po.bean.activityhistory;
 import com.wootion.idp.common.utils.QueryResult;
 
 public interface ManagementService {
 	public void saveManagement(Managementinfo minfos);
 	
 	public QueryResult<Managementinfo> getQueryManResult(Integer index,
-            Integer maxresult, String mstarttime,String mserialnum, String mimagefee, String mnumber,
+            Integer maxresult, String mstarttime,String mserialnum, String mimagefee, String mnumber,String a1,
             String sessionID)
 			throws ParseException;
 	

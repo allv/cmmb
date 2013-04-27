@@ -33,7 +33,7 @@ public class Member implements java.io.Serializable
     //医疗付费
     private String fees;
     //低保金额
-    private String beizhu;
+    private int beizhu;
     
     //是否免费体验
     private String mycellnumber;
@@ -232,7 +232,7 @@ public class Member implements java.io.Serializable
             String relationship,String concellnumber,String connumber,String conaddress,String concity,String conpost,String concountry,String charactor,String othercharactor,String interest,
             String apetite,String contraband,String drunk,String smoke,String sleep,String execise,String medicalcare,String hospital1,String hospital2,String hospital3,String blood,String allergic,
             String allergicdesc,String heartbeat,String pulse,String breath,String bloodpressure,String bloodsugar,String bloodfat,String view,String hear,String bone,String heartelec,String liver,
-            String yiliver,String kidney,String history,String historybak,String issugury,String assessment,String asesdate,String submitman,String submitdate,String beizhu,String timestamp
+            String yiliver,String kidney,String history,String historybak,String issugury,String assessment,String asesdate,String submitman,String submitdate,int beizhu,String timestamp
             ,String procondition,String hlbeizhu,String hlemployee,String hlfee,String hleffect,String hlways,String hltimes,String hlenddate,String hlstartdate,String hlestdate,String hlesttimes,String kfbeizhu,String kfdoctor
             ,String kfcarer,String kffee,String kfeffect,String kfways,String kfservicetimes,String kfenddate,String kfstartdate,String kfestimatedate,String kfestimatetimes)
     {
@@ -882,11 +882,11 @@ public class Member implements java.io.Serializable
 		this.submitdate = submitdate;
 	}
 
-	public String getBeizhu() {
+	public int getBeizhu() {
 		return beizhu;
 	}
 
-	public void setBeizhu(String beizhu) {
+	public void setBeizhu(int beizhu) {
 		this.beizhu = beizhu;
 	}
 

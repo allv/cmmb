@@ -40,7 +40,7 @@ public class ManagementServiceImpl implements ManagementService
 		baseDao.save(minfos);
 	}
 	public QueryResult<Managementinfo> getQueryManResult(Integer index,
-            Integer maxresult, String mstarttime,String mserialnum, String mimagefee, String mnumber,
+            Integer maxresult, String mstarttime,String mserialnum, String mimagefee, String mnumber,String a1,
             String sessionID) throws ParseException {
 		String whererjpql = "1 = 1";
 		List<Object> lst = new ArrayList<Object>();
@@ -56,8 +56,17 @@ public class ManagementServiceImpl implements ManagementService
 	     }
 		if (mimagefee != null && !mimagefee.trim().equals(""))
 	     {
-	         whererjpql = whererjpql + " and o.mimagefee >= "
+			if (a1 != null && !a1.trim().equals("")){
+				whererjpql = whererjpql + " and o.mimagefee >= "
+                + mimagefee +" and o.mimagefee <= "+a1;
+			}else{
+				whererjpql = whererjpql + " and o.mimagefee >= "
 	                 + mimagefee ;
+			}
+	     }else{
+	    	 if (a1 != null && !a1.trim().equals("")){
+					whererjpql = whererjpql + " and o.mimagefee <= "+a1;
+			 }
 	     }
 		
 		if (mnumber != null && !mnumber.trim().equals(""))

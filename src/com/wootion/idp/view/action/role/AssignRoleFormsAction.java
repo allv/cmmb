@@ -1,6 +1,8 @@
 package com.wootion.idp.view.action.role;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
@@ -96,7 +98,7 @@ public class AssignRoleFormsAction extends ActionSupport {
 		setAllForms(result);
 		return SUCESS;
 	}
-	
+
 	public String assignRoleForms() {
 		boolean result = getRoleService().saveRoleForms(Long.parseLong(mid),selecteForms);
 		HttpServletRequest request = (HttpServletRequest) ActionContext

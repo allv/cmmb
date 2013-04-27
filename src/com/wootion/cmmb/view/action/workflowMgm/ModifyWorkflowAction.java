@@ -76,17 +76,19 @@ public class ModifyWorkflowAction extends ActionSupport {
 		currentHandleUsers = new ArrayList<Wtuser>();
 		if (roles != null) {
 			for (Wtrole role : roles) {
-				if (nodeType.equals(WorkflowParameter.NODE_TYPE_AUDIT
-						.toString())) {
-					if (DomainUtil.isManagerRole(role)) {
+				if(role.checkAvailable()) {
+					if (nodeType.equals(WorkflowParameter.NODE_TYPE_AUDIT
+							.toString())) {
+						if (DomainUtil.isManagerRole(role)) {
+							sb.append(role.getWtroleName()).append(",");
+							currentHandleUsers.addAll(this.getRoleService()
+									.getRoleUsers(role.getWtroleId()));
+						}
+					} else {
 						sb.append(role.getWtroleName()).append(",");
 						currentHandleUsers.addAll(this.getRoleService()
 								.getRoleUsers(role.getWtroleId()));
 					}
-				} else {
-					sb.append(role.getWtroleName()).append(",");
-					currentHandleUsers.addAll(this.getRoleService()
-							.getRoleUsers(role.getWtroleId()));
 				}
 			}
 		}

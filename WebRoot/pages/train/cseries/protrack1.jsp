@@ -54,6 +54,7 @@ var basePath = '<%=basePath%>';
     String isView = (String)request.getAttribute("isview");
     String trackid = (String)request.getAttribute("trackid");
     String pagedataindb = (String)request.getAttribute("pagedataindb");
+    String isAdmin = (String)request.getAttribute("isadmin");
     Project pro = (Project)request.getAttribute("pro");
     String proid = "";
 	String proname = "";
@@ -72,6 +73,8 @@ var basePath = '<%=basePath%>';
 	     tddata = pro.getTddata();
     }
     %>
+    //是否管理员角色
+    var isAdmin = '<%=isAdmin%>';
     var isView = '<%=isView%>';
     //year month
     //年份数组 每次constructd constructd1时，这二个函数按年份轮流着来
@@ -350,18 +353,39 @@ function constructTd(smonth,emonth,pagetotalnum){
    		       temptd.style.textAlign="center";
    		       temptd.setAttribute("width","0.16%");
    		       //这里把翻页后的值保存下来 getTableData
+   		       
    		       var myDate = new Date();
    		       var curmonth = myDate.getMonth();    //获取当前月份(0-11,0代表1月)
+   		       var thisyear = myDate.getYear();
    		       if(isView=='true'){
    		       		//如果是查看页面则不设置可编辑状态
    		       }
    		       else{
-   		           //只能修改当月,对于普通帐号
-   		           if((parseInt(curmonth)+1)==parseInt(showmonth)){
+   		         if(isAdmin=='false'){
+   		       		//如果不是管理员角色
+   		       		//只能修改当月,对于普通帐号 管理员可以修改任意月份的
+   		           if((Math.abs(parseInt(curmonth)+1)==Math.abs(parseInt(showmonth)))&&showeyear==''&&parseInt(showsyear)==parseInt(thisyear))
+   		           {
 		   		       temptd.onclick = function (){
 						   EditCell(this);
 					   }
 				   }
+				   if((parseInt(showsyear)==parseInt(thisyear)&&parseInt(curmonth)+1==parseInt(showmonth))){
+				       temptd.onclick = function (){
+						   EditCell(this);
+					   }
+				   }else if(parseInt(showmonth)<0&&parseInt(showeyear)==parseInt(thisyear)&&Math.abs(parseInt(curmonth)+1)==Math.abs(parseInt(showmonth)))
+				   {
+				       temptd.onclick = function (){
+						   EditCell(this);
+					   }
+				   }
+   		       	 }else{
+   		       	 	 //如果管理员
+   		       	     temptd.onclick = function (){
+						   EditCell(this);
+					 }
+   		       	 }
 			   }
 			   //如果是第一次加载该页面,那么从后台传值
 		       //如果不是第一次，只是上二年，下二年的按钮点击,那么根据 格子 坐标来确定值,tr横坐标,td纵坐标
@@ -408,11 +432,11 @@ function getValueByPos(x,y,pagetotalnum){
 
 function getTotal(){
 	 var rowlen = tab.rows.length;
-	 //计算总数
-	 var plansum = new Array(12);
-	 var praticalsum = new Array(12);
+	 //计算总数 所有子标的数量之和
+	 var plansum = new Array(120);
+	 var praticalsum = new Array(120);
 	 //初始化数组
-	 for(var ik=0;ik<12;ik++){
+	 for(var ik=0;ik<120;ik++){
 	     plansum[ik]=0;
 	     praticalsum[ik]=0;
 	 }

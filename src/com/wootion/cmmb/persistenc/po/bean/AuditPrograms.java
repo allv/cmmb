@@ -4,7 +4,7 @@ import java.io.Serializable;
 /**
  * 
  * @version 1.0
- * @author  伍超
+ * @author  
  */
 public class AuditPrograms implements Serializable{
 

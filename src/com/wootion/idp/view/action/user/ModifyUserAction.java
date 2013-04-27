@@ -17,52 +17,39 @@ public class ModifyUserAction extends BaseAction
     /**帐号名*/
     private String  username;
     
-    /**新密码*/
     private String  password2;
     
-    /** 公司全称 */
 	private String corpName;
 
-	/** 公司简介 */
 	private String corpNote;
 
-	/** 公司地址 */
 	private String corpAdd;
 
-	/** 邮编 */
 	private Integer corpCode;
 
-	/** 电话 */
 	private String corpTel;
 
-	/** 传真 */
 	private String corpFax;
 
-	/** 性别 */
 	private String corpAP;
 
-	/** 开户行 */
 	private String openBank;
 
-	/** 开户名 */
 	private String openName;
 
-	/** 银行账号 */
 	private String bankID;
 
-	/** 联系人姓名 */
 	private String linkman;
 
-	/** 联系人电话 */
 	private String linkmanTel;
 
-	/** 联系人email */
 	private String linkmanEmail;
 
-	/** 联系人地址 */
 	private String linkmanAdd;
 	
 	private List<String> selectedRoles;
+	
+	private String department;
     
     @Override
     public String execute(HttpServletRequest request,
@@ -88,7 +75,7 @@ public class ModifyUserAction extends BaseAction
               user.setLinkmanTel(linkmanTel);
               user.setLinkmanEmail(linkmanEmail);
               user.setLinkmanAdd(linkmanAdd);
-              
+              user.setDepartment(department);
 //            user.setWtuserIsuseable(wtuserIsuseable);
 //            user.setUserMark(userMark);
 //            user.setUserExtendMark(userExtendMark);
@@ -255,6 +242,14 @@ public class ModifyUserAction extends BaseAction
 
 	public void setSelectedRoles(List<String> selectedRoles) {
 		this.selectedRoles = selectedRoles;
+	}
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
 	}
 
 //	public void setFtpAccount(String ftpAccount) {

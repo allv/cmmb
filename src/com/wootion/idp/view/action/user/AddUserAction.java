@@ -21,40 +21,28 @@ public class AddUserAction extends BaseAction {
 	
 	private List<String> selectedRoles;
 
-	/** 大客户 */
     private String bigclient ;
     
-    /** 子客户 */
     private String subclient ;
     
-    /** 帐号类型 */
     private String type ;
     
-    /** 公司全称 */
 	private String corpName;
 
-	/** 公司简介 */
 	private String corpNote;
 
-	/** 公司地址 */
 	private String corpAdd;
 
-	/** 邮编 */
 	private Integer corpCode;
 
-	/** 电话 */
 	private String corpTel;
 
-	/** 传真 */
 	private String corpFax;
 
-	/** 性别 */
 	private String corpAP;
 
-	/** 开户行 */
 	private String openBank;
 
-	/** 开户名 */
 	private String openName;
 
 	/** 银行账号 */
@@ -72,7 +60,8 @@ public class AddUserAction extends BaseAction {
 	/** 联系人地址 */
 	private String linkmanAdd;
 	
-	
+	/** 所属部门 */
+	private String department;
 	
 	@Override
 	public String execute(HttpServletRequest request,
@@ -138,6 +127,7 @@ public class AddUserAction extends BaseAction {
             user.setOpenBank(openBank);
             user.setOpenName(openName);
             user.setCorpAdd(corpAdd);
+            user.setDepartment(department);
             //10001:管理员角色  10002：行政人员 10003：护理人员 10004：康复人员
 //            if(null!=type){
 //            	if("x".equals(type)){
@@ -398,6 +388,14 @@ public class AddUserAction extends BaseAction {
 
 	public void setSelectedRoles(List<String> selectedRoles) {
 		this.selectedRoles = selectedRoles;
+	}
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
 	}
 
 	

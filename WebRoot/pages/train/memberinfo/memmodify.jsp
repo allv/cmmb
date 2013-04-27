@@ -68,13 +68,19 @@ Date.prototype.format = function(format)
 	}
 function onSubmit(){
   if(check("memname","string","姓名不能为空！")||check("memid","string","档案编号不能为空！")||check("creditid","string","身份证号码不能为空！")||check("conpost","string","社保号码不能为空！")
-		  ||check("mylandlinenumber","string","联系电话不能为空！")||check("assessment","string","填表人不能为空！")||check("asesdate","string","填表日期不能为空！")||check("birthday","string","出生年月不能为空！")||check("myaddress","string","家庭地址不能为空！")){
+		  ||check("mylandlinenumber","string","联系电话不能为空！")||check("mycity","string","项目名称不能为空！")||check("assessment","string","填表人不能为空！")||check("asesdate","string","填表日期不能为空！")||check("birthday","string","出生年月不能为空！")||check("myaddress","string","家庭地址不能为空！")){
 	  return false;
   }
   
+  
+  var memname = document.getElementById("memname").value;	
+  var memid = document.getElementById("memid").value;
+  
+  var memsex = '男';
   if(document.getElementById("memsex1").checked==true){
       memsex='女';
   }
+  var creditid = document.getElementById("creditid").value;
   var birthday = document.getElementById("birthday").value;
   
   //出生年月不能大于当前时间
@@ -85,9 +91,55 @@ function onSubmit(){
       return;
   }
   
+  
+  var culture = document.getElementById("culture").value;
+  var professor = '';
+  var financial = document.getElementById("financial").value;
+  var marry = document.getElementById("marry").value;;
+  var kids = '';
+  var ways = document.getElementById("ways").value;
+  var enterdate = '';
+  var reside = document.getElementById("reside").value;
+  var meminfoid = document.getElementById("meminfoid").value;
+  var fees = '';
+  var beizhu = document.getElementById("beizhu").value;
+  if(!is_positiveInteger(beizhu)){
+     alert('收入金额只能为正整数');
+     return;
+  }
+  var mycellnumber = document.getElementById("mycellnumber").value;
+  var mylandlinenumber = document.getElementById("mylandlinenumber").value;
+  var myaddress = document.getElementById("myaddress").value;
+  var mycounty = document.getElementById("mycounty").value;
+  var mystreet = document.getElementById("mystreet").value;
+  var mycity = document.getElementById("mycity").value;
+  
+  var myemail = document.getElementById("myemail").value;
+  var mynation = document.getElementById("mynation").value;
+  var coname = document.getElementById("coname").value;
+  var relationship = document.getElementById("relationship").value;
+  var concellnumber = document.getElementById("concellnumber").value;
+  var connumber = document.getElementById("connumber").value;
+  var conaddress = document.getElementById("conaddress").value;
+  var concity = document.getElementById("concity").value;
+  var conpost = document.getElementById("conpost").value;
+  var concountry = document.getElementById("concountry").value;
+  
+  var assessment = document.getElementById("assessment").value;
+  var asesdate = document.getElementById("asesdate").value;
+  
   $.ajax({
 			   type: "POST",
-			   url: generateURL(),
+			   url: basePath + "/membermodifymem.do?memname="+encodeURI(memname)+"&memid="+encodeURI(memid)+
+			   "&memsex="+encodeURI(memsex)+"&creditid="+encodeURI(creditid)+"&birthday="+encodeURI(birthday)+
+			   "&culture="+encodeURI(culture)+"&professor="+encodeURI(professor)+"&meminfoid="+meminfoid+"&financial="+
+			   encodeURI(financial)+"&marry="+encodeURI(marry)+"&kids="+encodeURI(kids)+"&ways="+
+			   encodeURI(ways)+"&enterdate="+enterdate+"&reside="+encodeURI(reside)
+			   +"&fees="+encodeURI(fees)+"&mycellnumber="+encodeURI(mycellnumber)+"&mylandlinenumber="+encodeURI(mylandlinenumber)+"&myaddress="+encodeURI(myaddress)+
+			   "&mycounty="+encodeURI(mycounty)+"&mystreet="+encodeURI(mystreet)+"&mycity="+encodeURI(mycity)+"&myemail="+
+			   encodeURI(myemail)+"&mynation="+encodeURI(mynation)+"&coname="+encodeURI(coname)+"&relationship="+encodeURI(relationship)+"&concellnumber="+encodeURI(concellnumber)
+			   +"&connumber="+encodeURI(connumber)+"&conaddress="+encodeURI(conaddress)+"&concity="+encodeURI(concity)+"&conpost="+encodeURI(conpost)+"&concountry="+encodeURI(concountry)+
+			   "&assessment="+encodeURI(assessment)+"&asesdate="+encodeURI(asesdate)+"&beizhu="+beizhu,
 			   success:function (msg){
 			   		var result = msg;
 			   		if('success'==result){
@@ -328,7 +380,7 @@ function onSubmit(){
   <tr>
     <td  style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"><div align="center">7.</div></td>
     <td  style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"><div align="center">项目名称</div></td>
-    <td  style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"><input type="text" value="${mem.mycity}"  id="mycity"/></td>
+    <td  style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"><span style="color:red;">*</span><input type="text" value="${mem.mycity}"  id="mycity"/><input type="button" value="选择" onclick="choosePro();"></td>
   </tr>
   <tr>
     <td  style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"><div align="center">8.</div></td>
@@ -366,14 +418,13 @@ function onSubmit(){
 </p>
 </div>
 <div align="center" class="fixed_div3" id="tab3">
-<table width="100%" border="0" cellspacing="0" cellpadding="5">
-  <tr align="center">
+<table width="100%" border="0">
+  <tr align="right">
     <td><button onClick="onSubmit()">提交</button> 
     <button onClick="forward('memberlist.do')">返回</button></td>
   </tr>  
 </table>
 </div>
-<%@ include file="../workflow.jsp"%>
 </form>
 <script type="text/javascript">
 var labels=document.getElementsByTagName('label');
@@ -397,71 +448,30 @@ function initClass(labesindex,labeindex){
        }
    }
 }
-function generateURL(){
-	var memname = document.getElementById("memname").value;	
-	var memid = document.getElementById("memid").value;
-	var memsex = '男';
-	var birthday = document.getElementById("birthday").value;
-	var creditid = document.getElementById("creditid").value;
-	var culture = document.getElementById("culture").value;
-	  var professor = '';
-	  var financial = document.getElementById("financial").value;
-	  var marry = document.getElementById("marry").value;;
-	  var kids = '';
-	  var ways = document.getElementById("ways").value;
-	  var enterdate = '';
-	  var reside = document.getElementById("reside").value;
-	  var meminfoid = document.getElementById("meminfoid").value;
-	  var fees = '';
-	  var beizhu = document.getElementById("beizhu").value;
-	  var mycellnumber = document.getElementById("mycellnumber").value;
-	  var mylandlinenumber = document.getElementById("mylandlinenumber").value;
-	  var myaddress = document.getElementById("myaddress").value;
-	  var mycounty = document.getElementById("mycounty").value;
-	  var mystreet = document.getElementById("mystreet").value;
-	  var mycity = document.getElementById("mycity").value;
-	  var myemail = document.getElementById("myemail").value;
-	  var mynation = document.getElementById("mynation").value;
-	  var coname = document.getElementById("coname").value;
-	  var relationship = document.getElementById("relationship").value;
-	  var concellnumber = document.getElementById("concellnumber").value;
-	  var connumber = document.getElementById("connumber").value;
-	  var conaddress = document.getElementById("conaddress").value;
-	  var concity = document.getElementById("concity").value;
-	  var conpost = document.getElementById("conpost").value;
-	  var concountry = document.getElementById("concountry").value;
-	  
-	  var assessment = document.getElementById("assessment").value;
-	  var asesdate = document.getElementById("asesdate").value;
-	
-	return basePath + "/membermodifymem.do?memname="+encodeURI(memname)+"&memid="+encodeURI(memid)+
-	   "&memsex="+encodeURI(memsex)+"&creditid="+encodeURI(creditid)+"&birthday="+encodeURI(birthday)+
-	   "&culture="+encodeURI(culture)+"&professor="+encodeURI(professor)+"&meminfoid="+meminfoid+"&financial="+
-	   encodeURI(financial)+"&marry="+encodeURI(marry)+"&kids="+encodeURI(kids)+"&ways="+
-	   encodeURI(ways)+"&enterdate="+enterdate+"&reside="+encodeURI(reside)
-	   +"&fees="+encodeURI(fees)+"&mycellnumber="+encodeURI(mycellnumber)+"&mylandlinenumber="+encodeURI(mylandlinenumber)+"&myaddress="+encodeURI(myaddress)+
-	   "&mycounty="+encodeURI(mycounty)+"&mystreet="+encodeURI(mystreet)+"&mycity="+encodeURI(mycity)+"&myemail="+
-	   encodeURI(myemail)+"&mynation="+encodeURI(mynation)+"&coname="+encodeURI(coname)+"&relationship="+encodeURI(relationship)+"&concellnumber="+encodeURI(concellnumber)
-	   +"&connumber="+encodeURI(connumber)+"&conaddress="+encodeURI(conaddress)+"&concity="+encodeURI(concity)+"&conpost="+encodeURI(conpost)+"&concountry="+encodeURI(concountry)+
-	   "&assessment="+encodeURI(assessment)+"&asesdate="+encodeURI(asesdate);
-}
 
-function generateWorkflowURL(){
-	return generateURL();
-}
-
-function getWorkflowBillid() {
-	return '${mem.meminfoid}';
-}
-
-function getWorkflowFormid() {
-	return '100002';
-}
-
-function afterWorkflowSuccess() {
-	window.location.href=basePath+"/memberlist.do";
-}
 initClass(0,2);
+
+function choosePro(){
+    var pname = "mycity";
+    var wWidth = 1040;
+    var wHeight = 510;
+    var wTop = (window.screen.height - wHeight)/2;
+    var wLeft = (window.screen.width - wWidth)/2;
+    var obj = new Object();
+    obj.name=pname;
+    
+    var url =  basePath + "/proquery.do";
+    str = window.showModalDialog(url,obj,"dialogWidth=500px;dialogHeight=400px"); 
+    arr = str.split(",");
+    //window.open(url,"","Height=400px,Width=500px");
+    if(typeof(str)=="undefined"){
+        document.getElementById(pname).value="";
+    }else if(str=="nochange"){
+        //document.getElementById(cid).value
+    }else{
+    	document.getElementById(pname).value=arr[1];
+    }
+  }  
 </script>
 </body>
 </html>

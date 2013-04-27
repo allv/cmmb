@@ -17,8 +17,14 @@ public class Managementinfo {
 	private String mimagename;
 	//活动志愿者
 	private String mimagevolunteer;
-	//活动满意度
+	//活动满意度 很满意
 	private String mimagereflect;
+	//活动满意度 满意
+	private String mimagereflect2;
+	//活动满意度 一般
+	private String mimagereflect3;
+	//活动满意度 不满意
+	private String mimagereflect4;
 	//活动费用
 	private int mimagefee;
 	
@@ -163,6 +169,24 @@ public class Managementinfo {
 	}
 	public void setA8(String a8) {
 		this.a8 = a8;
+	}
+	public String getMimagereflect2() {
+		return mimagereflect2;
+	}
+	public void setMimagereflect2(String mimagereflect2) {
+		this.mimagereflect2 = mimagereflect2;
+	}
+	public String getMimagereflect3() {
+		return mimagereflect3;
+	}
+	public void setMimagereflect3(String mimagereflect3) {
+		this.mimagereflect3 = mimagereflect3;
+	}
+	public String getMimagereflect4() {
+		return mimagereflect4;
+	}
+	public void setMimagereflect4(String mimagereflect4) {
+		this.mimagereflect4 = mimagereflect4;
 	}
 	
 }

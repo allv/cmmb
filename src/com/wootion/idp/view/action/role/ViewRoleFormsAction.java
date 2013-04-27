@@ -1,7 +1,12 @@
 package com.wootion.idp.view.action.role;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,12 +16,13 @@ import com.wootion.idp.persistence.po.bean.Wtrole;
 import com.wootion.idp.service.ServiceFactroy;
 import com.wootion.idp.service.role.RoleManagerService;
 import com.wootion.idp.view.action.BaseAction;
+import com.wootion.idp.view.vo.FormVO;
 
 public class ViewRoleFormsAction extends BaseAction {
 
-	private Set<Form> currentForms = new HashSet<Form>();
 	private String mid;
 	private String roleName;
+	private List<Form> currentForms = new ArrayList<Form>();
 
 	private RoleManagerService roleService;
 
@@ -32,11 +38,11 @@ public class ViewRoleFormsAction extends BaseAction {
 		this.roleName = roleName;
 	}
 
-	public Set<Form> getCurrentForms() {
+	public List<Form> getCurrentForms() {
 		return currentForms;
 	}
 
-	public void setCurrentForms(Set<Form> currentForms) {
+	public void setCurrentForms(List<Form> currentForms) {
 		this.currentForms = currentForms;
 	}
 
@@ -53,7 +59,18 @@ public class ViewRoleFormsAction extends BaseAction {
 		Wtrole role = (Wtrole) getRoleService().getObjectByID(Wtrole.class,
 				Long.valueOf(Long.parseLong(mid)));
 		roleName = role.getWtroleName();
-		this.currentForms = role.getForms();
+		Set<Form> forms = role.getForms();
+		currentForms.clear();
+		for(Form form:forms) {
+			currentForms.add(form);
+		}
+		Collections.sort(currentForms, new Comparator<Form>() {
+			@Override
+			public int compare(Form o1, Form o2) {
+				return o1.getId().intValue() - o2.getId().intValue();
+			}
+			
+		});
 		return SUCESS;
 	}
 

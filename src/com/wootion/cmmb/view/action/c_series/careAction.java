@@ -11,12 +11,13 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionContext;
 import com.wootion.cimp.services.IMPServiceFactory;
 import com.wootion.cimp.services.projectService;
+import com.wootion.cimp.util.PageBasicInfo;
+import com.wootion.cimp.vo.data.Project;
 import com.wootion.cmmb.common.exception.SameObjectException;
 import com.wootion.cmmb.persistenc.po.bean.CareAssess;
 import com.wootion.cmmb.service.careservices.careService;
 import com.wootion.idp.common.utils.QueryResult;
-import com.wootion.cimp.util.PageBasicInfo;
-import com.wootion.cimp.vo.data.Project;
+import com.wootion.idp.persistence.po.bean.Wtuser;
 
 public class careAction 
 {
@@ -36,6 +37,8 @@ public class careAction
 	private String memname;
 	private String belongproname;
 	
+	private QueryResult<Wtuser> userresult;
+	
 	careAction() {
 		projectservice = IMPServiceFactory.getProjectService();
 		careservice = IMPServiceFactory.getCareService();
@@ -43,6 +46,30 @@ public class careAction
 	
 	public String getcarepage(){
 		return "careadd";
+	}
+	
+	public void changeStateForData()throws Exception{
+		HttpServletResponse response = getResponse();  
+		HttpServletRequest request = getRequest();
+		String startdate = (String)request.getParameter("startdate");
+		String enddate = (String)request.getParameter("enddate");
+		String careflag = (String)request.getParameter("careflag");
+		String names = (String)request.getParameter("names");
+		String iscancel = (String)request.getParameter("isCancel");
+    	String flag = "";
+	    flag = careservice.updateDataState(names,startdate,enddate,careflag,iscancel);
+	    
+	    PrintWriter out = null;
+		try {
+			out = response.getWriter();
+			out.print(flag);
+		} catch (Exception e) {
+			e.printStackTrace();
+			out.print("error");
+		} finally {
+			out.flush();
+			out.close();
+		}
 	}
 	
 	//护理评估表
@@ -67,7 +94,7 @@ public class careAction
     	careassess.setBelongproid(belongproid);
     	careassess.setBelongproname(belongproname);
     	
-    	for(int methodi=1;methodi<=84;methodi++){
+    	for(int methodi=1;methodi<=90;methodi++){
     		String para = request.getParameter("a"+methodi);
     		String methodname = "setA"+methodi;
     		//动态调用方法
@@ -88,6 +115,34 @@ public class careAction
 			}
 		  return null;		
 	}
+	
+	public String chooseWorkers(){
+		HttpServletRequest request = getRequest();
+        Integer firstindex = 1;//当前页数
+        Integer maxresult = 10;//每页显示数
+        if (nowpage != null && !nowpage.trim().equals(""))
+        {
+            firstindex = Integer.parseInt(nowpage.trim());
+            if (firstindex == 0)
+            {
+                firstindex = 1;
+            }
+        }
+        if (maxpage != null && !maxpage.trim().equals(""))
+        {
+            maxresult = Integer.parseInt(maxpage.trim());
+        }
+        String workername = (String)request.getParameter("workername");
+        String department = (String)request.getParameter("department");
+        try {
+			userresult = careservice.getQueryUserResult(firstindex, maxresult,
+					workername,department,request.getSession().getId());
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return "chooseworkers";
+	}
+	
 	
 	public String manage() 
     {
@@ -383,13 +438,21 @@ public class careAction
     	String a82 = request.getParameter("a82");
     	String a83 = request.getParameter("a83");
     	String a84 = request.getParameter("a84");
+    	String a85 = request.getParameter("a85");
+    	String a86 = request.getParameter("a86");
+    	String a87 = request.getParameter("a87");
+    	String a88 = request.getParameter("a88");
+    	String a89 = request.getParameter("a89");
+    	String a90 = request.getParameter("a90");
+    	
 		
 	    flag = careservice.modifycare(careid, carenumber, memnumber, memname, assesman, assesdate,
 	    		belongproid, belongproname, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13,
 	    		a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30,
 	    		a31, a32, a33, a34, a35, a36, a37, a38, a39, a40, a41, a42, a43, a44, a45, a46, a47,
 	    		a48, a49, a50, a51, a52, a53, a54, a55, a56, a57, a58, a59, a60, a61, a62, a63, a64,
-	    		a65, a66, a67, a68, a69, a70, a71, a72, a73, a74, a75, a76, a77, a78, a79, a80, a81,a82,a83,a84);
+	    		a65, a66, a67, a68, a69, a70, a71, a72, a73, a74, a75, a76, a77, a78, a79, a80, a81,a82,a83,a84
+	    		,a85, a86, a87,a88,a89,a90);
 	    PrintWriter out = null;
 		try {
 			out = response.getWriter();
@@ -523,5 +586,13 @@ public class careAction
 
 	public void setResult(QueryResult<CareAssess> result) {
 		this.result = result;
+	}
+
+	public QueryResult<Wtuser> getUserresult() {
+		return userresult;
+	}
+
+	public void setUserresult(QueryResult<Wtuser> userresult) {
+		this.userresult = userresult;
 	}
 }

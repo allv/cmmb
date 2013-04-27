@@ -93,9 +93,9 @@ var basePath = '<%=basePath%>';
 		//LODOP.ADD_PRINT_TEXT(29,236,279,38,"页面内容改变布局打印");
 		LODOP.SET_PRINT_STYLEA(2,"FontSize",18);
 		LODOP.SET_PRINT_STYLEA(2,"Bold",1);
-		LODOP.ADD_PRINT_HTM(18,10,'80mm',270,document.getElementById("tab1").innerHTML);
-		LODOP.ADD_PRINT_HTM(280,10,'80mm',687,document.getElementById("tab2").innerHTML);
-		LODOP.ADD_PRINT_HTM(64,380,'80mm',967,document.getElementById("tab3").innerHTML);
+		LODOP.ADD_PRINT_HTM(88,10,'80mm',270,document.getElementById("tab1").innerHTML);
+		LODOP.ADD_PRINT_HTM(350,10,'80mm',687,document.getElementById("tab2").innerHTML);
+		LODOP.ADD_PRINT_HTM(134,380,'80mm',967,document.getElementById("tab3").innerHTML);
 		//LODOP.ADD_PRINT_TEXT(319,58,500,30,"注：其中《表单一》按显示大小，《表单二》在程序控制宽度(285px)内自适应调整");
 	};              
 	function prn3_preview(){
@@ -118,7 +118,7 @@ var basePath = '<%=basePath%>';
 <table>
    <tr>
       <td>
-         <a href="javascript:prn2_preview()"><span style="color:blue">打印预览</span></a>,其布局风格可<a href="javascript:prn2_manage();"><span style="color:blue">打印维护</span></a>调整,或者也可以<a href="javascript:printit()"><span style="color:blue">直接打印</span></a>
+         <a href="javascript:prn2_preview()"><span style="color:blue">打印预览</span></a>,其布局风格可<a href="javascript:prn2_manage();"><span style="color:blue">打印维护</span></a>调整</span></a>
       </td>
    </tr>
 </table>
@@ -312,8 +312,8 @@ var basePath = '<%=basePath%>';
 </p>
 </div>
 <div align="center" class="fixed_div3" id="tab3">
-<table width="100%" border="0" cellspacing="0" cellpadding="5">
-  <tr align="center">
+<table width="100%" border="0">
+  <tr align="right">
     <td><button onClick="forward('memberlist.do')">返回</button></td>
   </tr>  
 </table>

@@ -58,6 +58,15 @@ bottom:0;
 width:410px; 
 top:1020px;
 }
+
+.fixed_div7{
+    position:absolute; 
+	left:232px; 
+	bottom:0; 
+	width:700px; 
+	top:1510px;
+}
+
 .fixed_div0{ 
 position:absolute; 
 left:232px; 
@@ -87,20 +96,22 @@ var basePath = '<%=basePath%>';
 	};	
 	function CreateOneFormPage(){
 		LODOP=getLodop(document.getElementById('LODOP_OB'),document.getElementById('LODOP_EM'));  
-		//LODOP.PRINT_INIT("打印控件功能演示_Lodop功能_表单一");
 		LODOP.SET_PRINT_STYLE("FontSize",18);
 		LODOP.SET_PRINT_STYLE("Bold",1);
-		//LODOP.ADD_PRINT_TEXT(50,231,260,39,"打印页面部分内容");
-		LODOP.ADD_PRINT_HTM(8,10,720,495,document.getElementById("tab1").innerHTML);
-		LODOP.ADD_PRINT_HTM(465,10,410,500,document.getElementById("tab2").innerHTML);
-		LODOP.ADD_PRINT_HTM(485,370,410,500,document.getElementById("tab3").innerHTML);
+		LODOP.ADD_PRINT_HTM(88,10,720,495,document.getElementById("tab1").innerHTML);
+		LODOP.ADD_PRINT_HTM(505,10,410,500,document.getElementById("tab2").innerHTML);
+		LODOP.ADD_PRINT_HTM(505,370,410,500,document.getElementById("tab3").innerHTML);
 		
-		LODOP.NEWPAGE();
 		//第二页
-		LODOP.ADD_PRINT_HTM(8,10,410,500,document.getElementById("tab4").innerHTML);
-		LODOP.ADD_PRINT_HTM(8,370,410,500,document.getElementById("tab5").innerHTML);
-		LODOP.ADD_PRINT_HTM(225,10,410,700,document.getElementById("tab6").innerHTML);
-		LODOP.ADD_PRINT_HTM(264,370,410,700,document.getElementById("tab7").innerHTML);
+		LODOP.NEWPAGE();
+		LODOP.ADD_PRINT_HTM(88,10,410,500,document.getElementById("tab4").innerHTML);
+		LODOP.ADD_PRINT_HTM(88,370,410,500,document.getElementById("tab5").innerHTML);
+		LODOP.ADD_PRINT_HTM(325,10,410,700,document.getElementById("tab6").innerHTML);
+		LODOP.ADD_PRINT_HTM(364,370,410,700,document.getElementById("tab7").innerHTML);
+		
+		//第三页
+		LODOP.NEWPAGE();
+		LODOP.ADD_PRINT_HTM(8,10,720,1300,document.getElementById("div7").innerHTML);
 	};	                     
 	function prn1_manage(){
 	    CreateOneFormPage();
@@ -117,11 +128,11 @@ var basePath = '<%=basePath%>';
     <td background="<%=basePath%>/pages/train/skins/img/lan-index.gif">&nbsp;</td>
   </tr>
 </table>
-<div id="floatdiv" style="width:30px;height:50px;position:absolute;right:20px;top:80px;background:#FFCC00;border:1px solid #999;">
+<div id="floatdiv" style="width:30px;height:70px;position:absolute;right:20px;top:80px;background:#FFCC00;border:1px solid #999;">
    <table>
     <tr>
         <td>
-   			<a href="javascript:document.getElementById('tab1').focus();"><span style="color:blue">A</span></a>
+   			<a href="javascript:document.getElementById('tab1').focus();"><span style="color:blue">G5</span></a>
    		</td>
     </tr>
      <tr>
@@ -132,6 +143,11 @@ var basePath = '<%=basePath%>';
      <tr>
    		<td>
    			<a href="javascript:document.getElementById('tab6').focus();"><span style="color:blue">C</span></a>
+   		</td>
+    </tr>
+    <tr>
+   		<td>
+   			<a href="javascript:document.getElementById('div7').focus();"><span style="color:blue">A</span></a>
    		</td>
     </tr>
    </table>
@@ -150,7 +166,7 @@ var basePath = '<%=basePath%>';
 <table>
    <tr>
       <td>
-         <a href="javascript:prn1_preview()"><span style="color:blue">打印预览</span></a>,其布局风格可<a href="javascript:prn1_manage();"><span style="color:blue">打印维护</span></a>调整,或者也可以<a href="javascript:printit()"><span style="color:blue">直接打印</span></a>
+         <a href="javascript:prn1_preview()"><span style="color:blue">打印预览</span></a>,其布局风格可<a href="javascript:prn1_manage();"><span style="color:blue">打印维护</span></a>调整</a>
       </td>
    </tr>
 </table>
@@ -181,7 +197,7 @@ var basePath = '<%=basePath%>';
   </tr>
   <tr>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" >评估人员职务</td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div style="font-weight:bold">${care.a2}</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div style="font-weight:bold">${care.a2}&nbsp;</div></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">评估日期<span style='color:red;'>&nbsp;*</span></div></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" >
     <div style="font-weight:bold">${care.assesdate}&nbsp;</div>
@@ -592,13 +608,512 @@ B.护理评定项目
 </table>
 <p>&nbsp;</p>
 </div>
+
+<div class="fixed_div7" id="div7">
+<p>A.介护服务说明</p>
+<table width="700" border="1" style="table-layout:auto;border:solid #8B8378; border-width:1px 0px 0px 1px;">
+  <tr>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="90"><div align="center">a.个人卫生</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="115"><div align="center">6.协助如厕</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="115"><div align="center">c.助餐服务</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="115"><div align="center">14.擦浴</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="98"><div align="center">f.相谈及陪伴</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="118"><div align="center">28.陪伴就医</div></td>
+  </tr>
+  <tr>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">1.个人修饰</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">*7.排泄物清理</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">9.三餐烹饪</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">15.洗头</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">23.心理咨询</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">29.护理耗材代购</div></td>
+  </tr>
+  <tr>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">2.生活起居</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">*8灌肠</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">10.送餐服务</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">e.助行及待办</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">24.志愿者探访</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">h.其他服务</div></td>
+  </tr>
+  <tr>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">*3.理发</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">b.家政及清洁</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">11.喂饭</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">19.陪同外出散步</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">25.社工探访</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">30.网络代购</div></td>
+  </tr>
+  <tr>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">*4.扦脚</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">16.家居卫生清洁</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">12.食物加工</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">20.陪同外出</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">g.助医服务</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">31.家居设施检查</div></td>
+  </tr>
+  <tr>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">5.长期卧床老人床铺管理</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">17.厨房清洁</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">d.助浴服务</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">21.代缴费用</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">26.医生评估</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">32.衣物缝补</div></td>
+  </tr>
+  <tr>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">&nbsp;</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">18.衣物洗涤</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">13.洗浴</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">22.代领物品</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">27.护士上门</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">33.家具设施维修</div></td>
+  </tr>
+</table>
+<table id="tbody2" width="700" border="1" style="table-layout:auto;border:solid #8B8378; border-width:1px 0px 0px 1px;"  id="tbody2">
+  <tr >
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="70"><div align="center">日期</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="65"><div align="center">时段</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="65"><div align="center">时长(小时)</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="273"><div align="center">服务地址</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="76"><div align="center">服务内容</div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="61"><div align="center">护理员</div></td>
+  </tr>
+  <tr >
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="8" name="a85" id="a85"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="13" name="a86" id="a86"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a87" id="a87"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="40" name="a88" id="a88"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a89" id="a89"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="7" name="a90" id="a90"/>
+    </div></td>
+  </tr>
+ <tr >
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="8" name="a85" id="a85"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="13" name="a86" id="a86"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a87" id="a87"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="40" name="a88" id="a88"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a89" id="a89"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="7" name="a90" id="a90"/>
+    </div></td>
+  </tr>
+  <tr >
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="8" name="a85" id="a85"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="13" name="a86" id="a86"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a87" id="a87"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="40" name="a88" id="a88"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a89" id="a89"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="7" name="a90" id="a90"/>
+    </div></td>
+  </tr>
+ <tr >
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="8" name="a85" id="a85"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="13" name="a86" id="a86"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a87" id="a87"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="40" name="a88" id="a88"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a89" id="a89"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="7" name="a90" id="a90"/>
+    </div></td>
+  </tr>
+  <tr >
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="8" name="a85" id="a85"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="13" name="a86" id="a86"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a87" id="a87"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="40" name="a88" id="a88"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a89" id="a89"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="7" name="a90" id="a90"/>
+    </div></td>
+  </tr>
+  <tr >
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="8" name="a85" id="a85"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="13" name="a86" id="a86"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a87" id="a87"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="40" name="a88" id="a88"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a89" id="a89"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="7" name="a90" id="a90"/>
+    </div></td>
+  </tr>
+  <tr >
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="8" name="a85" id="a85"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="13" name="a86" id="a86"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a87" id="a87"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="40" name="a88" id="a88"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a89" id="a89"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="7" name="a90" id="a90"/>
+    </div></td>
+  </tr>
+  <tr>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="8" name="a85" id="a85"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="13" name="a86" id="a86"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a87" id="a87"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="40" name="a88" id="a88"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a89" id="a89"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="7" name="a90" id="a90"/>
+    </div></td>
+  </tr>
+  <tr>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="8" name="a85" id="a85"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="13" name="a86" id="a86"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a87" id="a87"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="40" name="a88" id="a88"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a89" id="a89"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="7" name="a90" id="a90"/>
+    </div></td>
+  </tr>
+  <tr>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="8" name="a85" id="a85"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="13" name="a86" id="a86"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a87" id="a87"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="40" name="a88" id="a88"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a89" id="a89"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="7" name="a90" id="a90"/>
+    </div></td>
+  </tr>
+  <tr >
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="8" name="a85" id="a85"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="13" name="a86" id="a86"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a87" id="a87"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="40" name="a88" id="a88"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a89" id="a89"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="7" name="a90" id="a90"/>
+    </div></td>
+  </tr>
+  <tr>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="8" name="a85" id="a85"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="13" name="a86" id="a86"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a87" id="a87"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="40" name="a88" id="a88"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a89" id="a89"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="7" name="a90" id="a90"/>
+    </div></td>
+  </tr>
+ <tr >
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="8" name="a85" id="a85"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="13" name="a86" id="a86"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a87" id="a87"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="40" name="a88" id="a88"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a89" id="a89"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="7" name="a90" id="a90"/>
+    </div></td>
+  </tr>
+  <tr >
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="8" name="a85" id="a85"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="13" name="a86" id="a86"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a87" id="a87"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="40" name="a88" id="a88"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a89" id="a89"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="7" name="a90" id="a90"/>
+    </div></td>
+  </tr>
+  <tr >
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="8" name="a85" id="a85"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="13" name="a86" id="a86"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a87" id="a87"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="40" name="a88" id="a88"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a89" id="a89"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="7" name="a90" id="a90"/>
+    </div></td>
+  </tr>
+  <tr >
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="8" name="a85" id="a85"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="13" name="a86" id="a86"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a87" id="a87"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="40" name="a88" id="a88"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a89" id="a89"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="7" name="a90" id="a90"/>
+    </div></td>
+  </tr>
+ <tr >
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="8" name="a85" id="a85"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="13" name="a86" id="a86"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a87" id="a87"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="40" name="a88" id="a88"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a89" id="a89"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="7" name="a90" id="a90"/>
+    </div></td>
+  </tr>
+  <tr >
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="8" name="a85" id="a85"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="13" name="a86" id="a86"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a87" id="a87"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="40" name="a88" id="a88"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a89" id="a89"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="7" name="a90" id="a90"/>
+    </div></td>
+  </tr>
+  <tr >
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="8" name="a85" id="a85"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="13" name="a86" id="a86"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a87" id="a87"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="40" name="a88" id="a88"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a89" id="a89"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="7" name="a90" id="a90"/>
+    </div></td>
+  </tr>
+ <tr >
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="8" name="a85" id="a85"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="13" name="a86" id="a86"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a87" id="a87"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="40" name="a88" id="a88"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a89" id="a89"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="7" name="a90" id="a90"/>
+    </div></td>
+  </tr>
+  <tr >
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="8" name="a85" id="a85"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="13" name="a86" id="a86"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a87" id="a87"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="40" name="a88" id="a88"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="2" name="a89" id="a89"/>
+    </div></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div align="center">
+      <input type="text" size="7" name="a90" id="a90"/>
+    </div></td>
+  </tr>
+</table>
+</div>
+<div id="div9" style="position:absolute;left:333px;top:2240px;width:410px;">
+  <table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr align="center">
+    <td><button onClick="forward('caremanage.do')">返回</button></td>
+  </tr>  
+</table>
+</div>
 </form>
 </body>
 <script type="text/javascript">
 <%
    CareAssess ca = (CareAssess)request.getAttribute("care");
    StringBuffer parasb = new StringBuffer(); 
-   for(int methodi=1;methodi<=84;methodi++){
+   for(int methodi=1;methodi<=90;methodi++){
     	 String methodname = "getA"+methodi;
     	 //动态调用方法
     	 //ca.getClass().getMethod(methodname, new Class[]{String.class}).invoke(ca, new Object[]{});   
@@ -610,8 +1125,25 @@ var paras = '<%=parstr%>' ;
 function fillBlank(){
     var strs= new Array(); 
     strs = paras.split(',');
+     //initRpow for tbody2
+     var len1 = parseInt(strs[84].split('#').length-1-(document.getElementById('tbody2').rows.length-1));
+     for(y1=0;y1<len1;y1++){
+       AddRowH4();
+     }
+    
     for(i=2;i<strs.length-1;i++){
         var obj = document.getElementById("a"+(i+1));
+        if(i<=89&&i>=84){
+               //butch init
+               for(var uu=0;uu<strs[i].split('#').length-1;uu++){
+                   if(strs[i].split('#')[uu]=='null'){strs[i].split('#')[uu]='';}
+                   if(document.getElementsByName("a"+(i+1))[uu].type=='text'){
+                      //if 'text'
+                      document.getElementsByName("a"+(i+1))[uu].value=strs[i].split('#')[uu];
+                   }
+               }
+               continue;
+        }
         if(obj!=null&&obj.type=='checkbox'){
              if(strs[i]=='false')
                  document.getElementById("a"+(i+1)).checked=false;
@@ -621,6 +1153,54 @@ function fillBlank(){
     }
 }	
 
+function AddRowH4(){
+   var tbody2 = document.getElementById('tbody2');
+   var row = tbody2.insertRow(tbody2.rows.length);
+   
+   var ftd = row.insertCell(row.cells.length);   
+   ftd.style.cssText='border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;';
+   ftd.innerHTML='<div align="center"><input type="text" size="8" name="a85" id="a85"/></div>';
+    
+   var ftd1 = row.insertCell(row.cells.length);   
+   ftd1.style.cssText='border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;';
+   ftd1.innerHTML='<div align="center"><input type="text" size="13" name="a86" id="a86"/></div>';
+   
+   var ftd2 = row.insertCell(row.cells.length);   
+   ftd2.style.cssText='border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;';
+   ftd2.innerHTML='<div align="center"><input type="text" size="2" name="a87" id="a87" /></div>';
+   
+   
+   var ftd3 = row.insertCell(row.cells.length);   
+   ftd3.style.cssText='border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;';
+   ftd3.innerHTML='<div align="center"><input type="text" size="40" name="a88" id="a88"/></div>';
+   
+   
+   var ftd4 = row.insertCell(row.cells.length);   
+   ftd4.style.cssText='border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;';
+   ftd4.innerHTML=' <div align="center"><input type="text" size="2" name="a89" id="a89"/></div>';
+   
+   
+   var ftd5 = row.insertCell(row.cells.length);   
+   ftd5.style.cssText='border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;';
+   ftd5.innerHTML='<div align="center"><input type="text" size="7" name="a90" id="a90"/></div>';
+   
+   readjustPos('div9',25);
+}
+
+function readjustPos(divid,val){
+     var top1=document.getElementById(divid).style.top;
+	 var topindex = top1.indexOf('px');
+	 var topval = parseInt(top1.substring(0,topindex));
+	 var curtop=(topval+val)+'px';
+	 document.getElementById(divid).style.top=curtop;
+}
+
+
+function disableAll(){
+     //禁止所有控件
+     $("#:input").attr('readonly', true);
+}
 fillBlank();
+disableAll();
 </script>
 </html>

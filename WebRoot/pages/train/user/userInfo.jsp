@@ -28,7 +28,7 @@
          </c:if>
          
          <c:if test="${user.corpAP eq 2}">
-         	<input id="corpAP"name="corpAP" type="radio" class="radio" value="1" disabled><label name="corpAP"  for="corpAP">男 &nbsp;&nbsp;&nbsp;</label>
+         	<input id="corpAP" name="corpAP" type="radio" class="radio" value="1" disabled><label name="corpAP"  for="corpAP">男 &nbsp;&nbsp;&nbsp;</label>
          	<input id="corpAP1" name="corpAP" type="radio" class="radio" value="2" disabled checked><label name="corpAP1" class="checked" for="corpAP1">女</label>
          </c:if>
          
@@ -37,6 +37,18 @@
          	<input id="corpAP1" name="corpAP" type="radio" class="radio" value="2" disabled><label name="corpAP1" for="corpAP1">女</label>
          </c:if>
       </td>
+    </tr>
+    
+    <tr>
+       <td align="right">所属部门</td>
+       <td>
+	      <select name="department" id="department" style="width:100px" disabled>
+	       <option value="无" ${user.department == '-1' ? "selected" : ""}>   无  </option>
+	       <option value="业务部" ${user.department == '0' ? "selected" : ""}>   业务部  </option>
+	       <option value="护理部" ${user.department == '1' ? "selected" : ""}>   护理部  </option>
+		   <option value="康复部" ${user.department == '2' ? "selected" : ""}>   康复部  </option>
+	     </select>
+    </td>
     </tr>
     
     <tr>

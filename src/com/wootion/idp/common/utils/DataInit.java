@@ -63,27 +63,6 @@ public class DataInit {
 			role2.setIsDelete(0);
 			commonService.saveObject(role2);
 			
-//			// 初始化角色
-//			Wtrole role3 = new Wtrole();
-//			role3.setWtroleId(10003L);
-//			role3.setWtroleName("护理人员");
-//			role3.setParentRole("10003");
-//			role3.setWtroleType("1");
-//			role3.setWtroleCreatetime(date);
-//			role3.setWtroleIsuseable("1");
-//			role3.setIsDelete(0);
-//			commonService.saveObject(role3);
-//			
-//			// 初始化角色
-//			Wtrole role4 = new Wtrole();
-//			role4.setWtroleId(10004L);
-//			role4.setWtroleName("康复人员");
-//			role4.setParentRole("10004");
-//			role4.setWtroleType("1");
-//			role4.setWtroleCreatetime(date);
-//			role4.setWtroleIsuseable("1");
-//			role4.setIsDelete(0);
-//			commonService.saveObject(role4);
 			
 	
 			{
@@ -283,13 +262,14 @@ public class DataInit {
 				funpdshAdd222.setWtresCreatetime(date);
 				commonService.saveObject(funpdshAdd222);
 				
+				/*
 				Wtfunction funCareservices = new Wtfunction();
 				funCareservices.setWtfunctionId(1455L);
 				funCareservices.setWtfunParentid(167L);
 				funCareservices.setWtfunIsleaf("1");
 				funCareservices.setWtfunCode("2035");
 				funCareservices.setWtfunOrder("2035");
-				funCareservices.setWtfunName("护理服务");
+				funCareservices.setWtfunName("护理统计");
 				funCareservices.setWtfunExcutepath("bathrecordlist.do");
 				funCareservices.setWtfunCreatetime(date);
 				commonService.saveObject(funCareservices);
@@ -313,6 +293,69 @@ public class DataInit {
 				funpdshAdd555.setWtresCode("01");
 				funpdshAdd555.setWtresCreatetime(date);
 				commonService.saveObject(funpdshAdd555);
+				*/
+				
+				Wtfunction funCareservices = new Wtfunction();
+				funCareservices.setWtfunctionId(1455L);
+				funCareservices.setWtfunParentid(167L);
+				funCareservices.setWtfunIsleaf("1");
+				funCareservices.setWtfunCode("2035");
+				funCareservices.setWtfunOrder("2035");
+				funCareservices.setWtfunName("护理会员统计");
+				funCareservices.setWtfunExcutepath("workerstatistic.do?careflag=true");
+				funCareservices.setWtfunCreatetime(date);
+				commonService.saveObject(funCareservices);
+                
+				Wtrolefunrelationship rf521 = new Wtrolefunrelationship();
+				rf521.setWtrolefunId(11556L);
+				rf521.setWtfunction(funCareservices);
+				rf521.setWtrole(role);
+			    commonService.saveObject(rf521);
+				
+			    Wtrolefunrelationship rf488 = new Wtrolefunrelationship();
+			    rf488.setWtrolefunId(11378L);
+			    rf488.setWtfunction(funCareservices);
+			    rf488.setWtrole(role2);
+			    commonService.saveObject(rf488);
+			    
+				Wtresource funpdshAdd555 = new Wtresource();
+				funpdshAdd555.setWtresourceId(16666L);
+				funpdshAdd555.setWtfunction(funCareservices);
+				funpdshAdd555.setWtresName("添加");
+				funpdshAdd555.setWtresCode("01");
+				funpdshAdd555.setWtresCreatetime(date);
+				commonService.saveObject(funpdshAdd555);
+				
+				Wtfunction funCareworker = new Wtfunction();
+				funCareworker.setWtfunctionId(1459L);
+				funCareworker.setWtfunParentid(167L);
+				funCareworker.setWtfunIsleaf("1");
+				funCareworker.setWtfunCode("2335");
+				funCareworker.setWtfunOrder("2335");
+				funCareworker.setWtfunName("护理员统计");
+				funCareworker.setWtfunExcutepath("getworkerdata.do?careflag=false");
+				funCareworker.setWtfunCreatetime(date);
+				commonService.saveObject(funCareworker);
+                
+				Wtrolefunrelationship rf524 = new Wtrolefunrelationship();
+				rf524.setWtrolefunId(11596L);
+				rf524.setWtfunction(funCareworker);
+				rf524.setWtrole(role);
+			    commonService.saveObject(rf524);
+				
+			    Wtrolefunrelationship rf4188 = new Wtrolefunrelationship();
+			    rf4188.setWtrolefunId(11878L);
+			    rf4188.setWtfunction(funCareworker);
+			    rf4188.setWtrole(role2);
+			    commonService.saveObject(rf4188);
+			    
+				Wtresource funpdshAdd1555 = new Wtresource();
+				funpdshAdd1555.setWtresourceId(16656L);
+				funpdshAdd1555.setWtfunction(funCareworker);
+				funpdshAdd1555.setWtresName("添加");
+				funpdshAdd1555.setWtresCode("01");
+				funpdshAdd1555.setWtresCreatetime(date);
+				commonService.saveObject(funpdshAdd1555);
 				
 				Wtfunction funpd222 = new Wtfunction();
 				funpd222.setWtfunctionId(189L);
@@ -374,8 +417,8 @@ public class DataInit {
 				funRecovery.setWtfunIsleaf("1");
 				funRecovery.setWtfunCode("2034");
 				funRecovery.setWtfunOrder("2034");
-				funRecovery.setWtfunName("康复服务");
-				funRecovery.setWtfunExcutepath("bloodpressurelist.do");
+				funRecovery.setWtfunName("康复会员统计");
+				funRecovery.setWtfunExcutepath("workerstatistic.do?careflag=recovermem");
 				funRecovery.setWtfunCreatetime(date);
 				commonService.saveObject(funRecovery);
                 
@@ -392,12 +435,44 @@ public class DataInit {
 			    commonService.saveObject(rf7788);
 			    
 				Wtresource funpdshAdd333 = new Wtresource();
-				funpdshAdd333.setWtresourceId(15555L);
+				funpdshAdd333.setWtresourceId(15525L);
 				funpdshAdd333.setWtfunction(funRecovery);
 				funpdshAdd333.setWtresName("添加");
 				funpdshAdd333.setWtresCode("01");
 				funpdshAdd333.setWtresCreatetime(date);
 				commonService.saveObject(funpdshAdd333);
+				
+				
+				Wtfunction funRecoveryData = new Wtfunction();
+				funRecoveryData.setWtfunctionId(1437L);
+				funRecoveryData.setWtfunParentid(189L);
+				funRecoveryData.setWtfunIsleaf("1");
+				funRecoveryData.setWtfunCode("2074");
+				funRecoveryData.setWtfunOrder("2074");
+				funRecoveryData.setWtfunName("康复工作人员统计");
+				funRecoveryData.setWtfunExcutepath("getworkerdata.do?careflag=recoverworker");
+				funRecoveryData.setWtfunCreatetime(date);
+				commonService.saveObject(funRecoveryData);
+                
+				Wtrolefunrelationship rf3219 = new Wtrolefunrelationship();
+				rf3219.setWtrolefunId(11356L);
+				rf3219.setWtfunction(funRecoveryData);
+				rf3219.setWtrole(role);
+			    commonService.saveObject(rf3219);
+			    
+			    Wtrolefunrelationship rf77488 = new Wtrolefunrelationship();
+			    rf77488.setWtrolefunId(11937L);
+			    rf77488.setWtfunction(funRecoveryData);
+			    rf77488.setWtrole(role2);
+			    commonService.saveObject(rf77488);
+			    
+				Wtresource funpdshAdd3933 = new Wtresource();
+				funpdshAdd3933.setWtresourceId(15555L);
+				funpdshAdd3933.setWtfunction(funRecoveryData);
+				funpdshAdd3933.setWtresName("添加");
+				funpdshAdd3933.setWtresCode("01");
+				funpdshAdd3933.setWtresCreatetime(date);
+				commonService.saveObject(funpdshAdd3933);
 				
 				Wtfunction funpd333 = new Wtfunction();
 				funpd333.setWtfunctionId(221L);
@@ -513,7 +588,7 @@ public class DataInit {
 				funpd1777.setWtfunIsleaf("0");
 				funpd1777.setWtfunCode("97");
 				funpd1777.setWtfunOrder("97");
-				funpd1777.setWtfunName("活动室管理");
+				funpd1777.setWtfunName("机构管理");
 				funpd1777.setWtfunExcutepath("activityhouse.do");
 				funpd1777.setWtfunCreatetime(date);
 				commonService.saveObject(funpd1777);
@@ -560,7 +635,36 @@ public class DataInit {
 				funpdshAdd1777.setWtresCode("01");
 				funpdshAdd1777.setWtresCreatetime(date);
 				
+				//业务部门统计
+				Wtfunction funbusinessstatistic = new Wtfunction();
+				funbusinessstatistic.setWtfunctionId(12877L);
+				funbusinessstatistic.setWtfunParentid(979L);
+				funbusinessstatistic.setWtfunIsleaf("1");
+				funbusinessstatistic.setWtfunCode("2497");
+				funbusinessstatistic.setWtfunOrder("2497");
+				funbusinessstatistic.setWtfunName("业务人员考评");
+				funbusinessstatistic.setWtfunExcutepath("evaluationworkerlist.do");
+				funbusinessstatistic.setWtfunCreatetime(date);
+				commonService.saveObject(funbusinessstatistic);
+                
+				Wtrolefunrelationship rf1521 = new Wtrolefunrelationship();
+				rf1521.setWtrolefunId(11347L);
+				rf1521.setWtfunction(funbusinessstatistic);
+				rf1521.setWtrole(role);
+			    commonService.saveObject(rf1521);
 				
+			    Wtrolefunrelationship rf2987 = new Wtrolefunrelationship();
+			    rf2987.setWtrolefunId(13572L);
+			    rf2987.setWtfunction(funbusinessstatistic);
+			    rf2987.setWtrole(role2);
+			    commonService.saveObject(rf2987);
+			    
+				Wtresource funpdshAdd1877 = new Wtresource();
+				funpdshAdd1877.setWtresourceId(12278L);
+				funpdshAdd1877.setWtfunction(funbusinessstatistic);
+				funpdshAdd1877.setWtresName("添加");
+				funpdshAdd1877.setWtresCode("01");
+				funpdshAdd1877.setWtresCreatetime(date);
 				
 				
 				Wtfunction funpd12 = new Wtfunction();

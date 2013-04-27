@@ -27,13 +27,16 @@
 		</property>
 	</bean>
 
-	<bean id="WorkflowDAO" class=" com.wootion.cmmb.common.workflow.WorkflowDAOImpl">
+	<bean id="WorkflowDAO" class="com.wootion.cmmb.common.workflow.WorkflowDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
 	<bean id="ProjectAction" class="com.wootion.cmmb.view.action.c_series.ProjectActionImpl">
 		<property name="projectservice">
 			<ref bean="projectService" />
+		</property>
+		<property name="commondao">
+			<ref bean="formPermissionDAO" />
 		</property>
 	</bean>
 

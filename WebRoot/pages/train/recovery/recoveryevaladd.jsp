@@ -189,7 +189,7 @@ bottom:0;
 <table>
    <tr>
       <td>
-         <a href="javascript:prn1_preview()"><span style="color:blue">打印预览</span></a>,其布局风格可<a href="javascript:prn1_manage();"><span style="color:blue">打印维护</span></a>调整,或者也可以<a href="javascript:printit()"><span style="color:blue">直接打印</span></a>
+         <a href="javascript:prn1_preview()"><span style="color:blue">打印预览</span></a>,其布局风格可<a href="javascript:prn1_manage();"><span style="color:blue">打印维护</span></a>调整</span></a>
       </td>
    </tr>
 </table>
@@ -931,7 +931,7 @@ bottom:0;
 <table width="730" border="1" style="table-layout:auto;border:solid #8B8378; border-width:1px 0px 0px 1px;">
   <tr>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width ="127">姓名</td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width ="205"><input type="text" name="a276" id="a276" value="${recovery.a276}"/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width ="205"><input type="text" name="a276" id="a276" value="${recovery.a276}" readonly/></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width ="130" rowspan="4"><div align="center">评估原因</div></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width ="240" rowspan="4"><div>评估类型：
          <select name="a102" id="a102">
@@ -954,7 +954,7 @@ bottom:0;
   </tr>
   <tr>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;">会员编号(如有)</td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"><input type="text" name="a104" id="a104" value="${recovery.a104}"/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"><input type="text" name="a104" id="a104" value="${recovery.a104}" readonly/></td>
   </tr>
   <tr>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" height="47">评估人员签字</td>
@@ -1778,7 +1778,7 @@ bottom:0;
 <table width="730" border="1" style="table-layout:auto;border:solid #8B8378; border-width:1px 0px 0px 1px;">
   <tr>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"  width="134">姓名</td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"  width="216"><input type="text" name="a277" id="a277" value="${recovery.a277}"/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"  width="216"><input type="text" name="a277" id="a277" value="${recovery.a277}" readonly/></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"  width="175" rowspan="3"><div align="center">是否服药</div></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"  width="177" rowspan="3"><p>请根据以下编号填写：0、否 1、是 
       <select name="a278" id="a278">
@@ -1793,7 +1793,7 @@ bottom:0;
   </tr>
   <tr>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"  >会员编号(如有)</td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"  ><input type="text" name="a280" id="a280" value="${recovery.a278}"/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"  ><input type="text" name="a280" id="a280" value="${recovery.a278}" readonly/></td>
   </tr>
 </table>
 </div>
@@ -2326,7 +2326,7 @@ bottom:0;
 <table width="730" border="1" style="table-layout:auto;border:solid #8B8378; border-width:1px 0px 0px 1px;">
   <tr>
     <td  style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="94">姓名</td>
-    <td  style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="144"><input type="text" name="a304" id="a304"/></td>
+    <td  style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="144"><input type="text" name="a304" id="a304" readonly/></td>
     <td  style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="103" rowspan="3"><div align="center">康复服务计划</div></td>
     <td  style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="361" rowspan="3"><div>根据G4.1康复评估表/康复计划填写</div>
     <div>
@@ -2339,7 +2339,7 @@ bottom:0;
   </tr>
   <tr>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" >会员编号(如有)</td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a290" id="a290"/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a290" id="a290" readonly/></td>
   </tr>
   <tr>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" rowspan="2">康复方式</td>
@@ -2399,8 +2399,8 @@ bottom:0;
 	     <option value="2">2</option>
     </select></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="20" name="a301" id="a301"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303"/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302" readonly/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303" readonly ondblclick="chooseWorkers(this)"/></td>
   </tr>
  <tr onclick="resetTr('tbody2')">
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a296" id="a296" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})"/></td>
@@ -2413,8 +2413,8 @@ bottom:0;
 	     <option value="2">2</option>
     </select></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="20" name="a301" id="a301"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303"/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302" readonly/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303" readonly ondblclick="chooseWorkers(this)"/></td>
   </tr>
   <tr onclick="resetTr('tbody2')">
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a296" id="a296" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})"/></td>
@@ -2427,8 +2427,8 @@ bottom:0;
 	     <option value="2">2</option>
     </select></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="20" name="a301" id="a301"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303"/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302" readonly/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303" readonly ondblclick="chooseWorkers(this)"/></td>
   </tr>
  <tr onclick="resetTr('tbody2')">
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a296" id="a296" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})"/></td>
@@ -2441,8 +2441,8 @@ bottom:0;
 	     <option value="2">2</option>
     </select></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="20" name="a301" id="a301"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303"/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302" readonly/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303" readonly ondblclick="chooseWorkers(this)"/></td>
   </tr>
   <tr onclick="resetTr('tbody2')">
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a296" id="a296" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})"/></td>
@@ -2455,8 +2455,8 @@ bottom:0;
 	     <option value="2">2</option>
     </select></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="20" name="a301" id="a301"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303"/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302" readonly/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303" readonly ondblclick="chooseWorkers(this)"/></td>
   </tr>
   <tr onclick="resetTr('tbody2')">
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a296" id="a296" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})"/></td>
@@ -2469,8 +2469,8 @@ bottom:0;
 	     <option value="2">2</option>
     </select></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="20" name="a301" id="a301"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303"/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302" readonly/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303" readonly ondblclick="chooseWorkers(this)"/></td>
   </tr>
  <tr onclick="resetTr('tbody2')">
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a296" id="a296" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})"/></td>
@@ -2483,8 +2483,8 @@ bottom:0;
 	     <option value="2">2</option>
     </select></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="20" name="a301" id="a301"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303"/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302" readonly/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303" readonly ondblclick="chooseWorkers(this)"/></td>
   </tr>
   <tr onclick="resetTr('tbody2')">
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a296" id="a296" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})"/></td>
@@ -2497,8 +2497,8 @@ bottom:0;
 	     <option value="2">2</option>
     </select></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="20" name="a301" id="a301"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303"/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302" readonly/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303" readonly ondblclick="chooseWorkers(this)"/></td>
   </tr>
   <tr onclick="resetTr('tbody2')">
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a296" id="a296" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})"/></td>
@@ -2511,8 +2511,8 @@ bottom:0;
 	     <option value="2">2</option>
     </select></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="20" name="a301" id="a301"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303"/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302" readonly/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303" readonly ondblclick="chooseWorkers(this)"/></td>
   </tr>
  <tr onclick="resetTr('tbody2')">
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a296" id="a296" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})"/></td>
@@ -2525,8 +2525,8 @@ bottom:0;
 	     <option value="2">2</option>
     </select></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="20" name="a301" id="a301"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303"/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302" readonly/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303" readonly ondblclick="chooseWorkers(this)"/></td>
   </tr>
  <tr onclick="resetTr('tbody2')">
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a296" id="a296" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})"/></td>
@@ -2539,8 +2539,8 @@ bottom:0;
 	     <option value="2">2</option>
     </select></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="20" name="a301" id="a301"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303"/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302" readonly/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303" readonly ondblclick="chooseWorkers(this)"/></td>
   </tr>
   <tr onclick="resetTr('tbody2')">
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a296" id="a296" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})"/></td>
@@ -2553,8 +2553,8 @@ bottom:0;
 	     <option value="2">2</option>
     </select></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="20" name="a301" id="a301"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303"/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302" readonly/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303" readonly ondblclick="chooseWorkers(this)"/></td>
   </tr>
   <tr onclick="resetTr('tbody2')">
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a296" id="a296" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})"/></td>
@@ -2567,8 +2567,8 @@ bottom:0;
 	     <option value="2">2</option>
     </select></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="20" name="a301" id="a301"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303"/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302" readonly/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303" readonly ondblclick="chooseWorkers(this)"/></td>
   </tr>
   <tr onclick="resetTr('tbody2')">
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a296" id="a296" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})"/></td>
@@ -2581,8 +2581,8 @@ bottom:0;
 	     <option value="2">2</option>
     </select></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="20" name="a301" id="a301"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303"/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302" readonly/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303" readonly ondblclick="chooseWorkers(this)"/></td>
   </tr>
   <tr onclick="resetTr('tbody2')">
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a296" id="a296" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})"/></td>
@@ -2595,8 +2595,8 @@ bottom:0;
 	     <option value="2">2</option>
     </select></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="20" name="a301" id="a301"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303"/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302" readonly/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303" readonly ondblclick="chooseWorkers(this)"/></td>
   </tr>
  <tr onclick="resetTr('tbody2')">
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a296" id="a296" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})"/></td>
@@ -2609,8 +2609,8 @@ bottom:0;
 	     <option value="2">2</option>
     </select></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="20" name="a301" id="a301"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302"/></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303"/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a302" id="a302" readonly/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="text" size="10" name="a303" id="a303" readonly ondblclick="chooseWorkers(this)"/></td>
   </tr>
 </table>
 </div>
@@ -2717,7 +2717,6 @@ function chooseTr(tname,obj){
      
    if(tname=='tbody2')
      {delindex2=obj.rowIndex;}
-   
 }
 
 function resetTr(tname){
@@ -2770,12 +2769,12 @@ function AddRowH4(){
    
    var ftd6 = row.insertCell(row.cells.length);   
    ftd6.style.cssText='border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;';
-   ftd6.innerHTML='<input type="text" size="10" name="a302" id="a302"/>';
+   ftd6.innerHTML='<input type="text" size="10" name="a302" id="a302" readonly value="'+document.getElementById("memname").value+'"/>';
    
    
    var ftd7 = row.insertCell(row.cells.length);   
    ftd7.style.cssText='border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;';
-   ftd7.innerHTML='<input type="text" size="10" name="a303" id="a303"/>';
+   ftd7.innerHTML='<input type="text" size="10" name="a303" id="a303" readonly ondblclick="chooseWorkers(this)"/>';
    
    readjustPos('div9',25);
    addcountdiv16++;
@@ -2986,6 +2985,17 @@ function onSubmit(){
 	            var tempa='';
 	            if(arr.length>0){
 	            	for(var ii=0;ii<arr.length;ii++){
+	            	    if(i==299){
+		                    if(arr[ii].value!=''){
+		            	       //不为空的情况下,要验证合法性，只能填写正数字
+		            	       if(!is_positiveInteger(arr[ii].value)){
+		            	          alert('服务时长只能为正整数');
+								  arr[ii].className = "errorInput";
+								  arr[ii].focus();
+								  return;
+		            	       }
+		            	    }
+	                    }
 	            	    tempa+=arr[ii].value+'#';
 	            	}
 	            	paraurl = paraurl+'&'+('a'+i)+'='+encodeURI(tempa);
@@ -3101,7 +3111,7 @@ function choosePro(){
     } 
  } 
  
-function chooseElders(){
+function chooseElders(objinput){
     var mname = "memname";
     var obj = new Object();
     obj.memname=mname;
@@ -3114,9 +3124,27 @@ function chooseElders(){
         document.getElementById(mname).value="";
     }else if(str=="nochange"){
         //nothing to do
+    }else if(objinput!=null){
+        objinput.value=arr[1];
     }else{
     	document.getElementById(mname).value=arr[1];
+    	//会员编号
     	document.getElementById("memgender").value=arr[0];
+    	//G4.2
+    	document.getElementById("a276").value=arr[1];
+    	document.getElementById("a104").value=arr[0];
+    	//H4
+    	document.getElementById("a304").value=arr[1];
+    	document.getElementById("a290").value=arr[0];
+    	//G4.3
+    	document.getElementById("a277").value=arr[1];
+    	document.getElementById("a280").value=arr[0];
+    	//G4.4
+    	var tb2 = document.getElementById('tbody2');
+    	var tablen = tb2.rows.length;
+    	for(var tindex=1;tindex<tablen;tindex++){
+    	    tb2.rows[tindex].cells[6].childNodes[0].value=arr[1];
+        }
     } 	
  }
  
@@ -3232,6 +3260,25 @@ function disableAll(){
      for(var hh=0;hh<colorarr.length;hh++){
         colorarr[hh].onclick="";
      }
+}
+
+function chooseWorkers(objinput){
+    var obj = new Object();
+    obj.workerdep="2";
+    
+    var url =  basePath + "/chooseWorkers.do?department=2";
+    //window.open(url);
+    str = window.showModalDialog(url,obj,"dialogWidth=500px;dialogHeight=400px"); 
+    arr = str.split(",");
+    if(typeof(str)=="undefined"){
+        document.getElementById("a303").value="";
+    }else if(str=="nochange"){
+        //nothing to do
+    }else if(objinput!=null){
+        objinput.value=arr[1];
+    }else{
+    	document.getElementById("a303").value=arr[1];
+    } 	
 }
 </script>
 </body>

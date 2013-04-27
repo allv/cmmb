@@ -48,6 +48,22 @@ public class DomainUtil {
 		}
 		return false;
 	}
+	
+	/**
+	 * 用户是否是经理
+	 * @param user
+	 * @return
+	 */
+	public static boolean isUserManager(Wtuser user) { 
+		if(user.getWtUserRoleRelationships() != null ) {
+			for(WtUserRoleRelationship relateion:user.getWtUserRoleRelationships()) {
+				if(isManagerRole(relateion.getWtrole())) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 
 	/**
 	 * 是否是经理角色

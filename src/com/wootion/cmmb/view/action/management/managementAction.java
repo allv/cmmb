@@ -2,11 +2,6 @@ package com.wootion.cmmb.view.action.management;
 
 import java.io.PrintWriter;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,13 +10,8 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.wootion.cimp.services.IMPServiceFactory;
-import com.wootion.cimp.vo.data.Member;
-import com.wootion.cimp.vo.data.Project;
-import com.wootion.cmmb.persistenc.po.bean.Activityinfo;
 import com.wootion.cmmb.persistenc.po.bean.Managementhistory;
 import com.wootion.cmmb.persistenc.po.bean.Managementinfo;
-import com.wootion.cmmb.persistenc.po.bean.activityhistory;
-import com.wootion.cmmb.service.activity.ActivityService;
 import com.wootion.cmmb.service.management.ManagementService;
 import com.wootion.idp.common.utils.QueryResult;
 import com.wootion.idp.view.action.BaseAction;
@@ -51,6 +41,18 @@ public class managementAction extends BaseAction
 	private String mimagevolunteer;
 	//活动满意度
 	private String mimagereflect;
+	
+	//活动满意度
+	private String mimagereflect2;
+	
+	//活动满意度
+	private String mimagereflect3;
+	
+	//活动满意度
+	private String mimagereflect4;
+	
+	private String a1;
+	
 	//活动费用
 	private String mimagefee;
 	
@@ -73,6 +75,10 @@ public class managementAction extends BaseAction
 		{
 			Managementinfo minfos = new Managementinfo();
 			String dtal = request.getParameter("detail");
+			String mimagereflect2 = request.getParameter("mimagereflect2");
+			String mimagereflect3 = request.getParameter("mimagereflect3");
+			String mimagereflect4 = request.getParameter("mimagereflect4");
+			
 			String pstrs[] = dtal.split("\\|");
 			for (int k=0; k<pstrs.length; k++)
 			{
@@ -139,6 +145,9 @@ public class managementAction extends BaseAction
 			minfos.setMimagefee(Integer.parseInt(mimagefee));
 			minfos.setMimagereflect(mimagereflect);
 			minfos.setMimagevolunteer(mimagevolunteer);
+			minfos.setMimagereflect2(mimagereflect2);
+			minfos.setMimagereflect3(mimagereflect3);
+			minfos.setMimagereflect4(mimagereflect4);
 			managementservice.saveManagement(minfos);
 			out.print("success");
 		}catch(Exception e)
@@ -286,6 +295,9 @@ public class managementAction extends BaseAction
 		minfos.setMimagename(mimagename);
 		minfos.setMimagefee(Integer.parseInt(mimagefee));
 		minfos.setMimagereflect(mimagereflect);
+		minfos.setMimagereflect2(mimagereflect2);
+		minfos.setMimagereflect3(mimagereflect3);
+		minfos.setMimagereflect4(mimagereflect4);
 		minfos.setMimagevolunteer(mimagevolunteer);
 		
     	flag = managementservice.modifyman(minfos);
@@ -352,7 +364,7 @@ public class managementAction extends BaseAction
         
         try {
 			result = managementservice.getQueryManResult(firstindex, maxresult, 
-					mstarttime, mserialnum, mimagefee,mnumber, request.getSession().getId());  
+					mstarttime, mserialnum, mimagefee,mnumber,a1, request.getSession().getId());  
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -479,5 +491,29 @@ public class managementAction extends BaseAction
 	}
 	public void setManagementservice(ManagementService managementservice) {
 		this.managementservice = managementservice;
+	}
+	public String getMimagereflect2() {
+		return mimagereflect2;
+	}
+	public void setMimagereflect2(String mimagereflect2) {
+		this.mimagereflect2 = mimagereflect2;
+	}
+	public String getMimagereflect3() {
+		return mimagereflect3;
+	}
+	public void setMimagereflect3(String mimagereflect3) {
+		this.mimagereflect3 = mimagereflect3;
+	}
+	public String getMimagereflect4() {
+		return mimagereflect4;
+	}
+	public void setMimagereflect4(String mimagereflect4) {
+		this.mimagereflect4 = mimagereflect4;
+	}
+	public String getA1() {
+		return a1;
+	}
+	public void setA1(String a1) {
+		this.a1 = a1;
 	}
 }

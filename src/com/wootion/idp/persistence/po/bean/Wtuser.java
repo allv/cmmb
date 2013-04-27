@@ -15,49 +15,30 @@ public class Wtuser implements java.io.Serializable {
     public static String Usabled = "1";
     public static String UnUsabled = "0";
     
-	/** 公司全称 */
 	private String corpName;
-	/** 公司地址 */
+	
+	/** 所属部门*/
+	private String department;
 	private String corpAdd;
-	/** 企业简介 */
 	private String corpNote;
-	/** 邮编 */
 	private Integer corpCode;
-	/** 电话 */
 	private String corpTel;
-	/** 传真 */
 	private String corpFax;
-	/** 法人代表 */
 	private String corpAP;
-	/** 开户行 */
 	private String openBank;
-	/** 开户名 */
 	private String openName;
-	/** 银行账号 */
 	private String bankID;
-	/** 联系人姓名 */
 	private String linkman;
-	/** 联系人电话 */
 	private String linkmanTel;
-	/** 联系人email */
 	private String linkmanEmail;
-	/** 联系人地址 */
 	private String linkmanAdd;
-	/** 帐号id */
 	private Long wtuserId;
-	/** 帐号登陆名 */
 	private String wtuserLoginname;
-	/** 帐号密码 */
 	private String wtuserPassword;
-	/** 帐号创建时间 */
 	private Date wtuserCreatetime;
-	/** 帐号登录时间 */
 	private Date wtuserLogintime;
-	/** 最后登陆时间 */
 	private Date wtuserLastlogintime;
-	/** 登陆次数 */
 	private Integer wtuserLoginnumber = 0;
-	/** 帐号是否有效 */
 	private String wtuserIsuseable = "0";
 	/** 审核状态 */
 	private Integer isCheck = 0;
@@ -226,7 +207,12 @@ public class Wtuser implements java.io.Serializable {
 	public void setLinkmanAdd(String linkmanAdd) {
 		this.linkmanAdd = linkmanAdd;
 	}
-	
+	public String getDepartment() {
+		return department;
+	}
+	public void setDepartment(String department) {
+		this.department = department;
+   	}
 	@Override
 	public boolean equals(Object obj) {
 		Wtuser user = (Wtuser) obj;

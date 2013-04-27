@@ -112,6 +112,20 @@ public class CareAssess implements java.io.Serializable
     private String a83;
     private String a84;
     
+    private String a85;
+    private String a86;
+    private String a87;
+    private String a88;
+    private String a89;
+    private String a90;
+    
+    private String a91;
+    private String a92;
+    private String a93;
+    private String a94;
+    private String a95;
+    private String a96;
+    
     private String de1;
     private String de2;
     private String de3;
@@ -1010,5 +1024,101 @@ public class CareAssess implements java.io.Serializable
 
 	public void setA84(String a84) {
 		this.a84 = a84;
+	}
+
+	public String getA85() {
+		return a85;
+	}
+
+	public void setA85(String a85) {
+		this.a85 = a85;
+	}
+
+	public String getA86() {
+		return a86;
+	}
+
+	public void setA86(String a86) {
+		this.a86 = a86;
+	}
+
+	public String getA87() {
+		return a87;
+	}
+
+	public void setA87(String a87) {
+		this.a87 = a87;
+	}
+
+	public String getA88() {
+		return a88;
+	}
+
+	public void setA88(String a88) {
+		this.a88 = a88;
+	}
+
+	public String getA89() {
+		return a89;
+	}
+
+	public void setA89(String a89) {
+		this.a89 = a89;
+	}
+
+	public String getA90() {
+		return a90;
+	}
+
+	public void setA90(String a90) {
+		this.a90 = a90;
+	}
+
+	public String getA91() {
+		return a91;
+	}
+
+	public void setA91(String a91) {
+		this.a91 = a91;
+	}
+
+	public String getA92() {
+		return a92;
+	}
+
+	public void setA92(String a92) {
+		this.a92 = a92;
+	}
+
+	public String getA93() {
+		return a93;
+	}
+
+	public void setA93(String a93) {
+		this.a93 = a93;
+	}
+
+	public String getA94() {
+		return a94;
+	}
+
+	public void setA94(String a94) {
+		this.a94 = a94;
+	}
+
+	public String getA95() {
+		return a95;
+	}
+
+	public void setA95(String a95) {
+		this.a95 = a95;
+	}
+
+	public String getA96() {
+		return a96;
+	}
+
+	public void setA96(String a96) {
+		this.a96 = a96;
 	}
 }

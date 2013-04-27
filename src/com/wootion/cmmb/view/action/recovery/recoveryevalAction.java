@@ -79,8 +79,7 @@ public class recoveryevalAction extends BaseAction
     	recoveryassess.setBelongproname(belongproname);
     	recoveryassess.setRecoveryid(recoveryid);
     	
-    	for(int methodi=1;methodi<=30403
-    	;methodi++){
+    	for(int methodi=1;methodi<=304;methodi++){
     		String para = request.getParameter("a"+methodi);
     		String methodname = "setA"+methodi;
     		//动态调用方法

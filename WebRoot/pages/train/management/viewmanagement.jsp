@@ -38,7 +38,7 @@ Marquee.prototype.Scroll=function(){if(this.Correct==0 && this.CTL>this.ClientSc
 </table>
 <form  method="post">
 <div style="text-align:center">
-<table style="margin:auto" width="40%" border="0" cellspacing="0" cellpadding="5">
+<table style="margin:auto" width="50%" border="0" cellspacing="0" cellpadding="5">
      <tr>
       <td align="right">活动编号</td>
       <td><input name="mserialnum" type="text" value="${result.mserialnum}" size="20" disabled/><span style='color:red;'>&nbsp;*</span></td>
@@ -54,12 +54,12 @@ Marquee.prototype.Scroll=function(){if(this.Correct==0 && this.CTL>this.ClientSc
       <td align="right">活动费用</td>
       <td><input name=mimagefee type="text" value="${result.mimagefee}" size="20" disabled/>元<span style='color:red;'>&nbsp;*</span></td>
     </tr>
-    
+    <!-- 
     <tr>
       <td align="right">所属项目</td>
       <td><input type="text" id="mbelongpro" name="mbelongpro" size="20" value="${result.mbelongpro }" disabled></td>
     </tr>
-    
+     -->
     <tr>
       <td align="right">活动时间</td>
       <td><input type="text" size="" name="mstarttime" value="${result.mstarttime}" disabled/><span style='color:red;'>&nbsp;*</span></td>
@@ -76,11 +76,10 @@ Marquee.prototype.Scroll=function(){if(this.Correct==0 && this.CTL>this.ClientSc
     <tr>
       <td align="right">活动满意度</td>
       <td>
-        <select name="mimagereflect" id="mimagereflect" disabled>
-	       <option value="很满意" ${result.mimagereflect == '很满意' ? "selected" : ""}>   很满意  </option>
-	       <option value="一般满意" ${result.mimagereflect == '一般满意' ? "selected" : ""}>   一般满意  </option>
-		   <option value="不满意" ${result.mimagereflect == '不满意' ? "selected" : ""}>   不满意  </option>
-	    </select>
+        很满意: <input disabled type="text" name="mimagereflect" id="mimagereflect" size="2" value="${result.mimagereflect}"/>%
+        满意: <input disabled type="text" name="mimagereflect2" id="mimagereflect2" size="2" value="${result.mimagereflect2}"/>%
+        一般: <input disabled type="text" name="mimagereflect3" id="mimagereflect3" size="2" value="${result.mimagereflect3}"/>%
+        不满意: <input disabled type="text" name="mimagereflect4" id="mimagereflect4" size="2" value="${result.mimagereflect4}"/>%
       </td>
     </tr>
     

@@ -129,6 +129,7 @@
 		<action name="assignRoleForms" class="com.wootion.idp.view.action.role.AssignRoleFormsAction" method="assignRoleForms">
 			<result name="sucess">/pages/train/message_popwindow.jsp</result>
 		</action>
+
 		<!-- 角色管理 end -->
 
 		<!-- 工作流管理 start-->

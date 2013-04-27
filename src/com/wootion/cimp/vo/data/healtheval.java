@@ -65,7 +65,7 @@ public class healtheval implements java.io.Serializable
     private String a43;
     private String a44;
     //ADL分数
-    private String a45;
+    private int a45;
     
     private String a46;
     private String a47;
@@ -811,11 +811,11 @@ public class healtheval implements java.io.Serializable
 		this.a44 = a44;
 	}
 
-	public String getA45() {
+	public int getA45() {
 		return a45;
 	}
 
-	public void setA45(String a45) {
+	public void setA45(int a45) {
 		this.a45 = a45;
 	}
 

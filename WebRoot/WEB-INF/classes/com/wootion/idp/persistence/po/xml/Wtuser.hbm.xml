@@ -87,6 +87,11 @@
 		<property name="linkman" type="java.lang.String">
 			<column name="linkman" length="20" />
 		</property>
+		
+		<property name="department" type="java.lang.String">
+			<column name="department" length="20" />
+		</property>
+		
 		<property name="linkmanTel" type="java.lang.String">
 			<column name="linkman_tel" length="20" />
 		</property>

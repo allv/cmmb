@@ -42,8 +42,10 @@ public class memberServiceImpl implements memberService {
 	}
 	
 	public QueryResult<Member> getQueryProResult(Integer index,
-            Integer maxresult, String enterdate, String memname,
-            String memid, String sessionID,String chooseflag)
+            Integer maxresult, String enterdate, String memname,String swage,String ewage,
+            String memid, String memsex,String culture,String reside,String financial,String myaddress,
+            String allmemnumbers,String mycity,
+            String sessionID,String chooseflag)
 			throws ParseException{
 		
      String whererjpql = " 1=1 ";
@@ -53,6 +55,12 @@ public class memberServiceImpl implements memberService {
      {
          whererjpql = whererjpql + " and o.enterdate <= ?";
          lst.add(enterdate);
+     }
+     
+     if (mycity != null && !mycity.trim().equals(""))
+     {
+         whererjpql = whererjpql + " and o.mycity like '%"
+                 + mycity + "%'";
      }
      
      if (memname != null && !memname.trim().equals(""))
@@ -65,8 +73,57 @@ public class memberServiceImpl implements memberService {
          whererjpql = whererjpql + " and o.memid = '"
                  + memid + "'";
      }
+     
+     if (memsex != null && !memsex.trim().equals(""))
+     {
+         whererjpql = whererjpql + " and o.memsex = '"
+                 + memsex + "'";
+     }
+     
+     if (culture != null && !culture.trim().equals(""))
+     {
+         whererjpql = whererjpql + " and o.culture = '"
+                 + culture + "'";
+     }
+     
+     if (reside != null && !reside.trim().equals(""))
+     {
+         whererjpql = whererjpql + " and o.reside = '"
+                 + reside + "'";
+     }
+     
+      if(swage!=null&&!swage.equals("")){
+		   whererjpql = whererjpql + " and o.beizhu >= "
+             + swage + "";
+	  }
+	  if(ewage!=null&&!ewage.equals("")){
+			whererjpql = whererjpql + " and o.beizhu <= "
+	          + ewage + "";
+	  }
+     
+     if (myaddress != null && !myaddress.trim().equals(""))
+     {
+         whererjpql = whererjpql + " and o.myaddress like '%"
+                 + myaddress + "%'";
+     }
+     
+     if (financial != null && !financial.trim().equals(""))
+     {
+         whererjpql = whererjpql + " and o.financial = '"
+                 + financial + "'";
+     }
+     
      if(chooseflag!=null&&chooseflag.trim().equals("careserve")){
     	 whererjpql = whererjpql + " and o.isCareEva <> '0'";
+     }
+     
+     //从健康评估表里取出的符合条件的会员编号
+     if(allmemnumbers!=null&&!allmemnumbers.trim().equals("")){
+    	 if(allmemnumbers.trim().equals("noresults")){
+    		 whererjpql = whererjpql + " and 1=2";
+    	 }else{
+    		 whererjpql = whererjpql + " and o.memid in "+allmemnumbers;
+    	 }
      }
      
      if(chooseflag!=null&&chooseflag.trim().equals("recoveryserve")){
@@ -116,7 +173,7 @@ public class memberServiceImpl implements memberService {
 	public String saveMem(String memname, String memid,
             String memsex,String creditid,String birthday,String culture,String professor,String financial,String marry,String kids,String ways,String enterdate,String reside,String fees,
             String mycellnumber,String mylandlinenumber,String myaddress,String mycounty,String mystreet,String mycity,String myemail,String mynation,String coname,
-            String relationship,String concellnumber,String connumber,String conaddress,String concity,String conpost,String concountry,String assessment,String asesdate)throws Exception{
+            String relationship,String concellnumber,String connumber,String conaddress,String concity,String conpost,String concountry,String assessment,String asesdate,String beizhu)throws Exception{
 		Member member = new Member();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
 		String timestamp = sdf.format(new Date());
@@ -158,6 +215,10 @@ public class memberServiceImpl implements memberService {
 				member.setRelationship(relationship);
 				member.setReside(reside);
 				member.setWays(ways);
+				if(beizhu==null||"".equals(beizhu.trim())){
+					beizhu="0";
+			    }
+				member.setBeizhu(Integer.parseInt(beizhu));
 				
 				member.setIsCareEva("0");
 				member.setIsRecoverEva("0");
@@ -175,7 +236,7 @@ public class memberServiceImpl implements memberService {
 	public String modifyMem(String meminfoid,String memname, String memid,
             String memsex,String creditid,String birthday,String culture,String professor,String financial,String marry,String kids,String ways,String enterdate,String reside,String fees,
             String mycellnumber,String mylandlinenumber,String myaddress,String mycounty,String mystreet,String mycity,String myemail,String mynation,String coname,
-            String relationship,String concellnumber,String connumber,String conaddress,String concity,String conpost,String concountry,String assessment,String asesdate)throws Exception{
+            String relationship,String concellnumber,String connumber,String conaddress,String concity,String conpost,String concountry,String assessment,String asesdate,String beizhu)throws Exception{
         SessionFactory factory = baseDao.getFactory();
         Session s1 = factory.openSession();
         Session s2 = factory.openSession();
@@ -228,11 +289,15 @@ public class memberServiceImpl implements memberService {
 				member.setRelationship(relationship);
 				member.setReside(reside);
 				member.setWays(ways);
-				
+				if(beizhu==null||"".equals(beizhu.trim())){
+					beizhu="0";
+			    }
+				member.setBeizhu(Integer.parseInt(beizhu));
 				member.setIsCareEva(list.get(0).getIsCareEva());
 				member.setIsRecoverEva(list.get(0).getIsRecoverEva());
 				member.setIsHealthEva(list.get(0).getIsHealthEva());
 				member.setIsHealthPsyEva(list.get(0).getIsHealthPsyEva());
+				
 				//baseDao.update(member);
 				s2.update(member);
 				tx2.commit();
@@ -301,14 +366,22 @@ public class memberServiceImpl implements memberService {
 				if(i!=careList.size()-1){
 					marks1+=careList.get(i).getA369()+",";
 					marks2+=careList.get(i).getA45()+",";
-					marks3+=careList.get(i).getA110()+",";
+					if(careList.get(i).getA110()==null||"".equals(careList.get(i).getA110())){
+						marks3+="0"+",";
+					}else{
+						marks3+=careList.get(i).getA110()+",";
+					}
 					mdate+=careList.get(i).getAssesdate()+",";
 					mprojs+=careList.get(i).getBelongproname()+",";
 				}
 				else{
 					marks1+=careList.get(i).getA369();
 					marks2+=careList.get(i).getA45();
-					marks3+=careList.get(i).getA110();
+					if(careList.get(i).getA110()==null||"".equals(careList.get(i).getA110())){
+						marks3+="0";
+					}else{
+						marks3+=careList.get(i).getA110();
+					}
 					mdate+=careList.get(i).getAssesdate();
 					mprojs+=careList.get(i).getBelongproname();
 				}

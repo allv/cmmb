@@ -1,12 +1,15 @@
 package com.wootion.cimp.idao;
 
 import java.util.Collection;
-
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.hibernate.HibernateException;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+
+import com.wootion.cimp.vo.data.healtheval;
+import com.wootion.cimp.vo.data.workerstatistic;
+import com.wootion.idp.common.utils.QueryResult;
 
 /**
  * <p>
@@ -31,6 +34,8 @@ public interface BaseDao<E> {
 	 */
 	public E getEntityById(String id, Class<E> entityClass);
 
+	public List<healtheval> queryNQLForHealtheval(String sql);
+	
 	/**
 	 * 返回ID=ID的代理对象，延迟加载，当记录不存在时候，产生异常
 	 * 
@@ -88,6 +93,8 @@ public interface BaseDao<E> {
 	 */
 	public void saveOrUpdate(Object entity);
 
+	//批量更新
+    public void saveOrUpdateAll(Collection<E> collection);
 	/**
 	 * 返回所有的对象信息list
 	 * 
@@ -249,4 +256,5 @@ public interface BaseDao<E> {
 	 */
 	public void saveObject(Object obj) throws HibernateException;
 
+	public QueryResult<E> getPageData(String querySql, int firstindex, int maxresult,String careflag)throws HibernateException;
 }

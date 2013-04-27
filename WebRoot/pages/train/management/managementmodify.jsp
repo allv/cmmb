@@ -98,7 +98,12 @@ function onSubmit()
    	    alert('活动编号不能为空');
    	    return;
    	}
-   	var mbelongpro = document.getElementById("mbelongpro").value;
+   	
+   	var mimagereflect2 = document.getElementById("mimagereflect2").value;
+   	var mimagereflect3 = document.getElementById("mimagereflect3").value;
+   	var mimagereflect4 = document.getElementById("mimagereflect4").value;
+   	
+   	var mbelongpro = '';
    	var minfo = document.getElementById("minfo").value;
    	//var mimageurl = document.getElementById("mimageurl").value;
    	var mimageurl = getimageurl();
@@ -112,7 +117,8 @@ function onSubmit()
         {
 	             $.ajax({
 					type : "POST",
-					url : basePath + "/managementmodifyman.do?detail=" + encodeURI(item),
+					url : basePath + "/managementmodifyman.do?detail=" + encodeURI(item)+"&mimagereflect2="+mimagereflect2
+					+"&mimagereflect3="+mimagereflect3+"&mimagereflect4="+mimagereflect4,
 					success : function(msg) {
 						var result = msg;
 						if ('success' == result) {
@@ -243,7 +249,7 @@ function showExtShow(){
 <input type="hidden" name="mid" value="${result.mid}" />
 <form method="post">
 <div style="text-align:center">
-<table style="margin:auto" width="40%" border="0" cellspacing="0" cellpadding="5">
+<table style="margin:auto" width="50%" border="0" cellspacing="0" cellpadding="5">
       <tr>
       <td align="right">活动编号</td>
       <td><input name="mserialnum" type="text" value="${result.mserialnum}" size="20"/><span style='color:red;'>&nbsp;*</span></td>
@@ -259,12 +265,12 @@ function showExtShow(){
       <td align="right">活动费用</td>
       <td><input name="mimagefee" type="text" value="${result.mimagefee}" size="20"/>元<span style='color:red;'>&nbsp;*</span></td>
     </tr>
-    
+     <!-- 
     <tr>
       <td align="right">所属项目</td>
       <td><input type="text" id="mbelongpro" name="mbelongpro" size="20" value="${result.mbelongpro }"><button onclick="choosePro()">选择项目</button></td>
     </tr>
-    
+    -->
     <tr>
       <td align="right">活动时间</td>
       <td><input type="text" size="" name="mstarttime" value="${result.mstarttime}" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})" /><span style='color:red;'>&nbsp;*</span></td>
@@ -281,11 +287,10 @@ function showExtShow(){
     <tr>
       <td align="right">活动满意度</td>
       <td>
-        <select name="mimagereflect" id="mimagereflect">
-	       <option value="很满意" ${result.mimagereflect == '很满意' ? "selected" : ""}>   很满意  </option>
-	       <option value="一般满意" ${result.mimagereflect == '一般满意' ? "selected" : ""}>   一般满意  </option>
-		   <option value="不满意" ${result.mimagereflect == '不满意' ? "selected" : ""}>   不满意  </option>
-	    </select>
+        很满意: <input type="text" name="mimagereflect" id="mimagereflect" size="2" value="${result.mimagereflect}"/>%
+        满意: <input type="text" name="mimagereflect2" id="mimagereflect2" size="2" value="${result.mimagereflect2}"/>%
+        一般: <input type="text" name="mimagereflect3" id="mimagereflect3" size="2" value="${result.mimagereflect3}"/>%
+        不满意: <input type="text" name="mimagereflect4" id="mimagereflect4" size="2" value="${result.mimagereflect4}"/>%
       </td>
     </tr>
     

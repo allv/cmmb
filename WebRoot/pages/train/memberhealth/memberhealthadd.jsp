@@ -335,7 +335,7 @@ width:730px;
 	   <option value="1">1</option>
 	   <option value="2">2</option>
     </select>
-    <div>0、能够听到：正常音量对话，电视声，电话话，门铃</div>
+    <div>0、能够听到：正常音量对话，电视声，电话，门铃</div>
     <div>1、听力减退：需调高音量或大声重复</div>
     <div>2、弱听：需要有助听器等等辅助</div></td>
   </tr>
@@ -1446,15 +1446,15 @@ width:730px;
     <div> <input type="checkbox" class="checkBox1"  name="a137" id="a137" onclick="disAb(138,140)"/>没有</div></td>
   </tr>
   <tr>
-    <td  style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="checkbox" class="checkBox1"  name="a138" id="a138" onclick="enableCheck(137)"/>
-    a.90天内(或上次评估后)，申请人感到或被人告知要少喝酒，或者他人为老人的饮酒习惯感到担心</td>
+      <td  style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="checkbox" class="checkBox1"  name="a138" id="a138" onclick="enableCheck(137)"/>
+      a.90天内(或上次评估后)，申请人感到或被人告知要少喝酒，或者他人为老人的饮酒习惯感到担心</td>
   </tr>
   <tr>
-    <td  style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="checkbox" class="checkBox1"  name="a139" id="a139" onclick="enableCheck(137)"/>
+      <td  style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="checkbox" class="checkBox1"  name="a139" id="a139" onclick="enableCheck(137)"/>
       b.90天内(或上次评估后)，申请人每天一早就开始喝酒或者因为喝酒造成问题</td>
   </tr>
   <tr>
-    <td  style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="checkbox" class="checkBox1"  name="a140" id="a140" onclick="enableCheck(137)"/>
+      <td  style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><input type="checkbox" class="checkBox1"  name="a140" id="a140" onclick="enableCheck(137)"/>
       c.每天需要吸烟</td>
   </tr>
   <tr>

@@ -14,354 +14,693 @@
         </global-results>
         
 		<!--以下是王立文修改 -->
-		
-		<action name="download" class="com.wootion.cmmb.view.action.membermanage.DownLoadAction">  
-            <!-- 设置文件名参数，由页面上传入 -->  
-            <param name="fileName">${fileName}</param>  
-            <result name="success" type="stream">  
-                <!-- 下载文件类型定义 -->  
-                <param name="contentType">text/plain</param>  
-                <!-- 下载文件处理方法 -->  
-                <param name="contentDisposition">  
-                    attachment;filename="${downloadChineseFileName}"  
-                </param>  
-                <!-- 下载文件输出流定义 -->  
-                <param name="inputName">downloadFile</param>  
-            </result>  
-        </action>
-		
-		<action name="c_serieslist" 
-		 	class="com.wootion.cmmb.view.action.c_series.clistAction">
-			<result name="sucess" >/pages/train/cseries/clist.jsp</result>
+
+		<action name="download"
+			class="com.wootion.cmmb.view.action.membermanage.DownLoadAction">
+			<!-- 设置文件名参数，由页面上传入 -->
+			<param name="fileName">${fileName}</param>
+			<result name="success" type="stream">
+				<!-- 下载文件类型定义 -->
+				<param name="contentType">text/plain</param>
+				<!-- 下载文件处理方法 -->
+				<param name="contentDisposition">
+					attachment;filename="${downloadChineseFileName}"
+				</param>
+				<!-- 下载文件输出流定义 -->
+				<param name="inputName">downloadFile</param>
+			</result>
 		</action>
-		
-		<action name="projadd" 
-		 	class="com.wootion.cmmb.view.action.c_series.proAddAction">
-			<result name="sucess" >/pages/train/cseries/proadd.jsp</result>
+
+		<action name="c_serieslist"
+			class="com.wootion.cmmb.view.action.c_series.clistAction">
+			<result name="sucess">
+				/pages/train/cseries/clist.jsp
+			</result>
 		</action>
-		
+
+		<action name="projadd"
+			class="com.wootion.cmmb.view.action.c_series.proAddAction">
+			<result name="sucess">
+				/pages/train/cseries/proadd.jsp
+			</result>
+		</action>
+
 		<action name="douserlogout"
 			class="com.wootion.idp.view.action.login.ULogoutAction">
 		</action>
-		
-		<action name="care*" 
-		 	class="com.wootion.cmmb.view.action.c_series.careAction" method="{1}">
-		 	<result name="careadd">/pages/train/care/careadd.jsp</result>
-		 	<result name="carelist">/pages/train/care/carelist.jsp</result>
-		 	<result name="caredetail">/pages/train/care/careview.jsp</result>
-		 	<result name="careedit">/pages/train/care/caremodify.jsp</result>
-			<result name="sucess">/pages/train/cseries/clist.jsp</result>
+
+		<action name="care*"
+			class="com.wootion.cmmb.view.action.c_series.careAction"
+			method="{1}">
+			<result name="careadd">
+				/pages/train/care/careadd.jsp
+			</result>
+			<result name="carelist">
+				/pages/train/care/carelist.jsp
+			</result>
+			<result name="caredetail">
+				/pages/train/care/careview.jsp
+			</result>
+			<result name="careedit">
+				/pages/train/care/caremodify.jsp
+			</result>
+			<result name="chooseworkers">
+				/pages/train/care/chooseworkers.jsp
+			</result>
+			<result name="sucess">
+				/pages/train/cseries/clist.jsp
+			</result>
 		</action>
-		
-		<!-- 
-		<action name="activity*" 
-		 	class="com.wootion.cmmb.view.action.c_series.activityAction" method="{1}">
-		 	<result name="careadd">/pages/train/care/careadd.jsp</result>
-		 	<result name="carelist">/pages/train/care/carelist.jsp</result>
-		 	<result name="caredetail">/pages/train/care/careview.jsp</result>
-		 	<result name="careedit">/pages/train/care/caremodify.jsp</result>
-			<result name="sucess">/pages/train/cseries/clist.jsp</result>
+
+		<action name="activity*"
+			class="com.wootion.cmmb.view.action.activityhouse.ActivityHouseAction"
+			method="{1}">
+			<result name="houseadd">
+				/pages/train/activityhouse/activityhouseadd.jsp
+			</result>
+			<result name="houselist">
+				/pages/train/activityhouse/activityhouselist.jsp
+			</result>
+			<result name="housedetail">
+				/pages/train/activityhouse/activityhouseview.jsp
+			</result>
+			<result name="houseedit">
+				/pages/train/activityhouse/activityhousemodify.jsp
+			</result>
+			<result name="houseactivity">
+				/pages/train/activityhouse/activitycounter.jsp
+			</result>
+			<result name="houseservice">
+				/pages/train/activityhouse/activityservice.jsp
+			</result>
+			<result name="houseplan">
+				/pages/train/activityhouse/activityplan.jsp
+			</result>
+			<result name="sucess">
+				/pages/train/activityhouse/activityhouselist.jsp
+			</result>
 		</action>
-		 -->
-		<action name="recovery*" 
-		 	class="com.wootion.cmmb.view.action.recovery.recoveryAction" method="{1}">
-		 	<result name="recoverymange">/pages/train/recovery/recoverylist.jsp</result>
-		 	<result name="viewacthis">/pages/train/recovery/viewrecoveryhistory.jsp</result>
-		 	<result name="viewact">/pages/train/recovery/viewrecovery.jsp</result>
-		 	<result name="addlist">/pages/train/recovery/recoveryadd.jsp</result>
-		 	<result name="actedit">/pages/train/recovery/recoverymodify.jsp</result>
-		 	<result name="evallist">/pages/train/recovery/recoveryevallist.jsp</result>
-		 	<result name="recoveryevaladd">/pages/train/recovery/recoveryevaladd.jsp</result>
-		    <result name="sucess">/pages/train/message.jsp</result>
-			<result name="failure">/pages/train/recovery/recoveryadd.jsp</result>
+
+		<action name="recovery*"
+			class="com.wootion.cmmb.view.action.recovery.recoveryAction"
+			method="{1}">
+			<result name="recoverymange">
+				/pages/train/recovery/recoverylist.jsp
+			</result>
+			<result name="viewacthis">
+				/pages/train/recovery/viewrecoveryhistory.jsp
+			</result>
+			<result name="viewact">
+				/pages/train/recovery/viewrecovery.jsp
+			</result>
+			<result name="addlist">
+				/pages/train/recovery/recoveryadd.jsp
+			</result>
+			<result name="actedit">
+				/pages/train/recovery/recoverymodify.jsp
+			</result>
+			<result name="evallist">
+				/pages/train/recovery/recoveryevallist.jsp
+			</result>
+			<result name="recoveryevaladd">
+				/pages/train/recovery/recoveryevaladd.jsp
+			</result>
+			<result name="sucess">/pages/train/message.jsp</result>
+			<result name="failure">
+				/pages/train/recovery/recoveryadd.jsp
+			</result>
 		</action>
-		
-		<action name="reval*" 
-		 	class="com.wootion.cmmb.view.action.recovery.recoveryevalAction" method="{1}">
-		 	<result name="recoverymange">/pages/train/recovery/recoverylist.jsp</result>
-		 	<result name="evallist">/pages/train/recovery/recoveryevallist.jsp</result>
-		 	<result name="recoveryevaladd">/pages/train/recovery/recoveryevaladd.jsp</result>
-		 	<result name="recoverydetail">/pages/train/recovery/recoveryevaladd.jsp</result>
-		 	<result name="recoveryedit">/pages/train/recovery/recoveryevaladd.jsp</result>
-		    <result name="sucess">/pages/train/message.jsp</result>
-			<result name="failure">/pages/train/recovery/recoveryadd.jsp</result>
+
+		<action name="reval*"
+			class="com.wootion.cmmb.view.action.recovery.recoveryevalAction"
+			method="{1}">
+			<result name="recoverymange">
+				/pages/train/recovery/recoverylist.jsp
+			</result>
+			<result name="evallist">
+				/pages/train/recovery/recoveryevallist.jsp
+			</result>
+			<result name="recoveryevaladd">
+				/pages/train/recovery/recoveryevaladd.jsp
+			</result>
+			<result name="recoverydetail">
+				/pages/train/recovery/recoveryevaladd.jsp
+			</result>
+			<result name="recoveryedit">
+				/pages/train/recovery/recoveryevaladd.jsp
+			</result>
+			<result name="sucess">/pages/train/message.jsp</result>
+			<result name="failure">
+				/pages/train/recovery/recoveryadd.jsp
+			</result>
 		</action>
-		
-		<action name="instrument*" 
-		 	class="com.wootion.cmmb.view.action.recovery.instrumentAction" method="{1}">
-		 	<result name="instrumentmange">/pages/train/recovery/instrumentlist.jsp</result>
-		 	<result name="viewmenthis">/pages/train/recovery/viewinstrumenthistory.jsp</result>
-		 	<result name="addlist">/pages/train/recovery/instrumentadd.jsp</result>
-		 	<result name="mentedit">/pages/train/recovery/instrumentmodify.jsp</result>
-		 	<result name="mentview">/pages/train/recovery/instrumentview.jsp</result>
-		    <result name="sucess">/pages/train/message.jsp</result>
-			<result name="failure">/pages/train/recovery/instrumentadd.jsp</result>
+
+		<action name="instrument*"
+			class="com.wootion.cmmb.view.action.recovery.instrumentAction"
+			method="{1}">
+			<result name="instrumentmange">
+				/pages/train/recovery/instrumentlist.jsp
+			</result>
+			<result name="viewmenthis">
+				/pages/train/recovery/viewinstrumenthistory.jsp
+			</result>
+			<result name="addlist">
+				/pages/train/recovery/instrumentadd.jsp
+			</result>
+			<result name="mentedit">
+				/pages/train/recovery/instrumentmodify.jsp
+			</result>
+			<result name="mentview">
+				/pages/train/recovery/instrumentview.jsp
+			</result>
+			<result name="sucess">/pages/train/message.jsp</result>
+			<result name="failure">
+				/pages/train/recovery/instrumentadd.jsp
+			</result>
 		</action>
-		
-		<action name="bathrecord*" 
-		 	class="com.wootion.cmmb.view.action.careservices.bathrecordAction" method="{1}">
-		 	<result name="bathrecordmange">/pages/train/careservices/bathrecordlist.jsp</result>
-		 	<result name="viewacthis">/pages/train/careservices/viewbathrecordhistory.jsp</result>
-		 	<result name="addlist">/pages/train/careservices/bathrecordsadd.jsp</result>
-		 	<result name="batedit">/pages/train/careservices/bathrecordmodify.jsp</result>
-		 	<result name="batview">/pages/train/careservices/bathrecordview.jsp</result>
-		    <result name="sucess">/pages/train/message.jsp</result>
-			<result name="failure">/pages/train/careservices/bathrecordsadd.jsp</result>
+
+		<action name="bathrecord*"
+			class="com.wootion.cmmb.view.action.careservices.bathrecordAction"
+			method="{1}">
+			<result name="bathrecordmange">
+				/pages/train/careservices/bathrecordlist.jsp
+			</result>
+			<result name="viewacthis">
+				/pages/train/careservices/viewbathrecordhistory.jsp
+			</result>
+			<result name="addlist">
+				/pages/train/careservices/bathrecordsadd.jsp
+			</result>
+			<result name="batedit">
+				/pages/train/careservices/bathrecordmodify.jsp
+			</result>
+			<result name="batview">
+				/pages/train/careservices/bathrecordview.jsp
+			</result>
+			<result name="sucess">/pages/train/message.jsp</result>
+			<result name="failure">
+				/pages/train/careservices/bathrecordsadd.jsp
+			</result>
 		</action>
-		
-		<action name="othercareservices*" 
-		 	class="com.wootion.cmmb.view.action.careservices.othercareservicesAction" method="{1}">
-		 	<result name="othercareservicesmange">/pages/train/careservices/othercareserviceslist.jsp</result>
-		 	<result name="viewacthis">/pages/train/careservices/viewothercareserviceshistory.jsp</result>
-		 	<result name="addlist">/pages/train/careservices/othercareservicesadd.jsp</result>
-		 	<result name="caredit">/pages/train/careservices/othercareservicesmodify.jsp</result>
-		 	<result name="carview">/pages/train/careservices/othercareservicesview.jsp</result>
-		    <result name="sucess">/pages/train/message.jsp</result>
-			<result name="failure">/pages/train/careservices/othercareservicesadd.jsp</result>
+
+		<action name="othercareservices*"
+			class="com.wootion.cmmb.view.action.careservices.othercareservicesAction"
+			method="{1}">
+			<result name="othercareservicesmange">
+				/pages/train/careservices/othercareserviceslist.jsp
+			</result>
+			<result name="viewacthis">
+				/pages/train/careservices/viewothercareserviceshistory.jsp
+			</result>
+			<result name="addlist">
+				/pages/train/careservices/othercareservicesadd.jsp
+			</result>
+			<result name="caredit">
+				/pages/train/careservices/othercareservicesmodify.jsp
+			</result>
+			<result name="carview">
+				/pages/train/careservices/othercareservicesview.jsp
+			</result>
+			<result name="sucess">/pages/train/message.jsp</result>
+			<result name="failure">
+				/pages/train/careservices/othercareservicesadd.jsp
+			</result>
 		</action>
-		
-		<action name="serviceplan*" 
-		 	class="com.wootion.cmmb.view.action.careservices.serviceplanAction" method="{1}">
-		 	<result name="serviceplanmange">/pages/train/careservices/serviceplanlist.jsp</result>
-		 	<result name="viewacthis">/pages/train/careservices/viewserviceplanhistory.jsp</result>
-		 	<result name="addlist">/pages/train/careservices/serviceplanadd.jsp</result>
-		 	<result name="seredit">/pages/train/careservices/serviceplanmodify.jsp</result>
-		 	<result name="serview">/pages/train/careservices/serviceplanview.jsp</result>
-		    <result name="sucess">/pages/train/message.jsp</result>
-			<result name="failure">/pages/train/careservices/serviceplanadd.jsp</result>
+
+		<action name="serviceplan*"
+			class="com.wootion.cmmb.view.action.careservices.serviceplanAction"
+			method="{1}">
+			<result name="serviceplanmange">
+				/pages/train/careservices/serviceplanlist.jsp
+			</result>
+			<result name="viewacthis">
+				/pages/train/careservices/viewserviceplanhistory.jsp
+			</result>
+			<result name="addlist">
+				/pages/train/careservices/serviceplanadd.jsp
+			</result>
+			<result name="seredit">
+				/pages/train/careservices/serviceplanmodify.jsp
+			</result>
+			<result name="serview">
+				/pages/train/careservices/serviceplanview.jsp
+			</result>
+			<result name="sucess">/pages/train/message.jsp</result>
+			<result name="failure">
+				/pages/train/careservices/serviceplanadd.jsp
+			</result>
 		</action>
-		
-		<action name="management*" 
-		 	class="com.wootion.cmmb.view.action.management.managementAction" method="{1}">
-		 	<result name="managementmange">/pages/train/management/managementlist.jsp</result>
-		 	<result name="viewacthis">/pages/train/management/viewmanagementhistory.jsp</result>
-		 	<result name="addlist">/pages/train/management/managementadd.jsp</result>
-		 	<result name="viewman">/pages/train/management/viewmanagement.jsp</result>
-		 	<result name="manedit">/pages/train/management/managementmodify.jsp</result>
-		    <result name="sucess">/pages/train/message.jsp</result>
-			<result name="failure">/pages/train/management/managementadd.jsp</result>
+
+		<action name="management*"
+			class="com.wootion.cmmb.view.action.management.managementAction"
+			method="{1}">
+			<result name="managementmange">
+				/pages/train/management/managementlist.jsp
+			</result>
+			<result name="viewacthis">
+				/pages/train/management/viewmanagementhistory.jsp
+			</result>
+			<result name="addlist">
+				/pages/train/management/managementadd.jsp
+			</result>
+			<result name="viewman">
+				/pages/train/management/viewmanagement.jsp
+			</result>
+			<result name="manedit">
+				/pages/train/management/managementmodify.jsp
+			</result>
+			<result name="sucess">/pages/train/message.jsp</result>
+			<result name="failure">
+				/pages/train/management/managementadd.jsp
+			</result>
 		</action>
-		
-		<action name="helpclean*" 
-		 	class="com.wootion.cmmb.view.action.careservices.helpcleanAction" method="{1}">
-		 	<result name="helpcleanmange">/pages/train/careservices/helpcleanlist.jsp</result>
-		 	<result name="viewacthis">/pages/train/careservices/viewhelpcleanhistory.jsp</result>
-		 	<result name="addlist">/pages/train/careservices/helpcleanadd.jsp</result>
-		 	<result name="heledit">/pages/train/careservices/helpcleanmodify.jsp</result>
-		 	<result name="helview">/pages/train/careservices/helpcleanview.jsp</result>
-		    <result name="sucess">/pages/train/message.jsp</result>
-			<result name="failure">/pages/train/careservices/helpcleanadd.jsp</result>
+
+		<action name="helpclean*"
+			class="com.wootion.cmmb.view.action.careservices.helpcleanAction"
+			method="{1}">
+			<result name="helpcleanmange">
+				/pages/train/careservices/helpcleanlist.jsp
+			</result>
+			<result name="viewacthis">
+				/pages/train/careservices/viewhelpcleanhistory.jsp
+			</result>
+			<result name="addlist">
+				/pages/train/careservices/helpcleanadd.jsp
+			</result>
+			<result name="heledit">
+				/pages/train/careservices/helpcleanmodify.jsp
+			</result>
+			<result name="helview">
+				/pages/train/careservices/helpcleanview.jsp
+			</result>
+			<result name="sucess">/pages/train/message.jsp</result>
+			<result name="failure">
+				/pages/train/careservices/helpcleanadd.jsp
+			</result>
 		</action>
-		
-		<action name="bloodpressure*" 
-		 	class="com.wootion.cmmb.view.action.recovery.BloodpressureAction" method="{1}">
-		 	<result name="bloodpressuremange">/pages/train/recovery/bloodpressurelist.jsp</result>
-		 	<result name="viewacthis">/pages/train/recovery/viewbloodpressurehistory.jsp</result>
-		 	<result name="addlist">/pages/train/recovery/bloodpressureadd.jsp</result>
-		 	<result name="bloedit">/pages/train/recovery/bloodpressuremodify.jsp</result>
-		 	<result name="bloview">/pages/train/recovery/bloodpressureview.jsp</result>
-		    <result name="sucess">/pages/train/message.jsp</result>
-			<result name="failure">/pages/train/recovery/bloodpressureadd.jsp</result>
+
+		<action name="bloodpressure*"
+			class="com.wootion.cmmb.view.action.recovery.BloodpressureAction"
+			method="{1}">
+			<result name="bloodpressuremange">
+				/pages/train/recovery/bloodpressurelist.jsp
+			</result>
+			<result name="viewacthis">
+				/pages/train/recovery/viewbloodpressurehistory.jsp
+			</result>
+			<result name="addlist">
+				/pages/train/recovery/bloodpressureadd.jsp
+			</result>
+			<result name="bloedit">
+				/pages/train/recovery/bloodpressuremodify.jsp
+			</result>
+			<result name="bloview">
+				/pages/train/recovery/bloodpressureview.jsp
+			</result>
+			<result name="sucess">/pages/train/message.jsp</result>
+			<result name="failure">
+				/pages/train/recovery/bloodpressureadd.jsp
+			</result>
 		</action>
-		
-		<action name="psychology*" 
-		 	class="com.wootion.cmmb.view.action.recovery.psychologyAction" method="{1}">
-		 	<result name="recoverymange">/pages/train/psychology/psychologylist.jsp</result>
-		 	<result name="viewacthis">/pages/train/psychology/viewpsychologyhistory.jsp</result>
-		 	<result name="addlist">/pages/train/psychology/psychologyadd.jsp</result>
-		 	<result name="psyedit">/pages/train/psychology/psychologymodify.jsp</result>
-		 	<result name="psyview">/pages/train/psychology/psychologyview.jsp</result>
-		    <result name="sucess">/pages/train/message.jsp</result>
-			<result name="failure">/pages/train/psychology/psychologyadd.jsp</result>
+
+		<action name="psychology*"
+			class="com.wootion.cmmb.view.action.recovery.psychologyAction"
+			method="{1}">
+			<result name="recoverymange">
+				/pages/train/psychology/psychologylist.jsp
+			</result>
+			<result name="viewacthis">
+				/pages/train/psychology/viewpsychologyhistory.jsp
+			</result>
+			<result name="addlist">
+				/pages/train/psychology/psychologyadd.jsp
+			</result>
+			<result name="psyedit">
+				/pages/train/psychology/psychologymodify.jsp
+			</result>
+			<result name="psyview">
+				/pages/train/psychology/psychologyview.jsp
+			</result>
+			<result name="sucess">/pages/train/message.jsp</result>
+			<result name="failure">
+				/pages/train/psychology/psychologyadd.jsp
+			</result>
 		</action>
-		
-		<action name="sensory*" 
-		 	class="com.wootion.cmmb.view.action.recovery.sensoryAction" method="{1}">
-		 	<result name="sensorymange">/pages/train/recovery/sensorylist.jsp</result>
-		 	<result name="viewacthis">/pages/train/recovery/viewsensoryhistory.jsp</result>
-		 	<result name="addlist">/pages/train/recovery/sensoryadd.jsp</result>
-		 	<result name="senedit">/pages/train/recovery/sensorymodify.jsp</result>
-		 	<result name="senview">/pages/train/recovery/sensoryview.jsp</result>
-		    <result name="sucess">/pages/train/message.jsp</result>
-			<result name="failure">/pages/train/recovery/sensoryadd.jsp</result>
+
+		<action name="sensory*"
+			class="com.wootion.cmmb.view.action.recovery.sensoryAction"
+			method="{1}">
+			<result name="sensorymange">
+				/pages/train/recovery/sensorylist.jsp
+			</result>
+			<result name="viewacthis">
+				/pages/train/recovery/viewsensoryhistory.jsp
+			</result>
+			<result name="addlist">
+				/pages/train/recovery/sensoryadd.jsp
+			</result>
+			<result name="senedit">
+				/pages/train/recovery/sensorymodify.jsp
+			</result>
+			<result name="senview">
+				/pages/train/recovery/sensoryview.jsp
+			</result>
+			<result name="sucess">/pages/train/message.jsp</result>
+			<result name="failure">
+				/pages/train/recovery/sensoryadd.jsp
+			</result>
 		</action>
-		
-		<action name="volunteer*" 
-		 	class="com.wootion.cmmb.view.action.volunteer.volunteerAction" method="{1}">
-		 	<result name="volunteermange">/pages/train/volunteer/volunteerlist.jsp</result>
-		 	<result name="viewacthis">/pages/train/volunteer/viewvolunteerhistory.jsp</result>
-		 	<result name="addlist">/pages/train/volunteer/volunteeradd.jsp</result>
-		 	<result name="voledit">/pages/train/volunteer/volunteermodify.jsp</result>
-		 	<result name="volview">/pages/train/volunteer/volunteerview.jsp</result>
-		    <result name="sucess">/pages/train/message.jsp</result>
-			<result name="failure">/pages/train/volunteer/volunteeradd.jsp</result>
+
+		<action name="volunteer*"
+			class="com.wootion.cmmb.view.action.volunteer.volunteerAction"
+			method="{1}">
+			<result name="volunteermange">
+				/pages/train/volunteer/volunteerlist.jsp
+			</result>
+			<result name="viewacthis">
+				/pages/train/volunteer/viewvolunteerhistory.jsp
+			</result>
+			<result name="addlist">
+				/pages/train/volunteer/volunteeradd.jsp
+			</result>
+			<result name="voledit">
+				/pages/train/volunteer/volunteermodify.jsp
+			</result>
+			<result name="volview">
+				/pages/train/volunteer/volunteerview.jsp
+			</result>
+			<result name="volservtime">
+				/pages/train/volunteer/volunteerservtime.jsp
+			</result>
+			<result name="volgetallbir">
+				/pages/train/volunteer/volunteerbirbook.jsp
+			</result>
+			<result name="volpic">
+				/pages/train/volunteer/volunteershowpic.jsp
+			</result>
+			<result name="sucess">/pages/train/message.jsp</result>
+			<result name="failure">
+				/pages/train/volunteer/volunteeradd.jsp
+			</result>
 		</action>
-		
-		<action name="project*" 
-		 	class="ProjectAction" method="{1}">
-		 	<interceptor-ref name="CheckPermission" />
-		 	<result name="protrack">/pages/train/cseries/protrack1.jsp</result>
-		 	<result name="projectlist">/pages/train/cseries/clist.jsp</result>
-		 	<result name="prodetail">/pages/train/cseries/proview.jsp</result>
-		 	<result name="proedit">/pages/train/cseries/promodify.jsp</result>
-			<result name="sucess">/pages/train/cseries/clist.jsp</result>
+
+		<action name="project*"
+			class="ProjectAction"
+			method="{1}">
+			<interceptor-ref name="CheckPermission" />
+			<result name="protrack">
+				/pages/train/cseries/protrack1.jsp
+			</result>
+			<result name="projectlist">
+				/pages/train/cseries/clist.jsp
+			</result>
+			<result name="prodetail">
+				/pages/train/cseries/proview.jsp
+			</result>
+			<result name="proedit">
+				/pages/train/cseries/promodify.jsp
+			</result>
+			<result name="sucess">
+				/pages/train/cseries/clist.jsp
+			</result>
 		</action>
-		
-		<action name="member*" 
-		 	class="MemAction" method="{1}">
-		 	<result name="memlist">/pages/train/memberinfo/memberlist.jsp</result>
-		 	<result name="memstatic">/pages/train/memberinfo/memberstatic.jsp</result>
-		 	<result name="memhealthpage">/pages/train/memberinfo/memberhealth.jsp</result>
-		 	<result name="memhislist">/pages/train/memberinfo/memberhislist.jsp</result>
-		 	<result name="memhisdetail">/pages/train/memberinfo/memhisview.jsp</result>
-		 	<result name="memdetail">/pages/train/memberinfo/memview.jsp</result>
-		 	<result name="memedit">/pages/train/memberinfo/memmodify.jsp</result>
-			<result name="sucess">/pages/train/memberinfo/memberlist.jsp</result>
+
+		<action name="member*"
+			class="MemAction"
+			method="{1}">
+			<result name="memlist">
+				/pages/train/memberinfo/memberlist.jsp
+			</result>
+			<result name="memstatic">
+				/pages/train/memberinfo/memberstatic.jsp
+			</result>
+			<result name="memhealthpage">
+				/pages/train/memberinfo/memberhealth.jsp
+			</result>
+			<result name="memhislist">
+				/pages/train/memberinfo/memberhislist.jsp
+			</result>
+			<result name="memhisdetail">
+				/pages/train/memberinfo/memhisview.jsp
+			</result>
+			<result name="memdetail">
+				/pages/train/memberinfo/memview.jsp
+			</result>
+			<result name="memedit">
+				/pages/train/memberinfo/memmodify.jsp
+			</result>
+			<result name="sucess">
+				/pages/train/memberinfo/memberlist.jsp
+			</result>
 		</action>
-       
-        <action name="healthEval*" 
-		 	class="com.wootion.cmmb.view.action.memberhealth.MemhealthAction" method="{1}">
-		 	<result name="memhealthlist">/pages/train/memberhealth/memberhealthlist.jsp</result>
-		 	<result name="memhealthadd">/pages/train/memberhealth/memberhealthadd.jsp</result>
-		 	<result name="memhealthedit">/pages/train/memberhealth/memberhealthedit.jsp</result>
-		 	<result name="memhealthview">/pages/train/memberhealth/memberhealthdetail.jsp</result>
-		 	<result name="healthpsyedit">/pages/train/memberhealthforpsy/memberhealthforpsyadd.jsp</result>
+
+		<action name="healthEval*"
+			class="com.wootion.cmmb.view.action.memberhealth.MemhealthAction"
+			method="{1}">
+			<result name="memhealthlist">
+				/pages/train/memberhealth/memberhealthlist.jsp
+			</result>
+			<result name="memhealthadd">
+				/pages/train/memberhealth/memberhealthadd.jsp
+			</result>
+			<result name="memhealthedit">
+				/pages/train/memberhealth/memberhealthedit.jsp
+			</result>
+			<result name="memhealthview">
+				/pages/train/memberhealth/memberhealthdetail.jsp
+			</result>
+			<result name="healthpsyedit">
+				/pages/train/memberhealthforpsy/memberhealthforpsyadd.jsp
+			</result>
 		</action>
-       
-		<action name="manquery" 
-		 	class="com.wootion.cmmb.view.action.c_series.manQueryAction">
-			<result name="sucess" >/pages/train/cseries/chooseman.jsp</result>
+
+		<action name="manquery"
+			class="com.wootion.cmmb.view.action.c_series.manQueryAction">
+			<result name="sucess">
+				/pages/train/cseries/chooseman.jsp
+			</result>
 		</action>
-		
-		<action name="proquery" 
-		 	class="com.wootion.cmmb.view.action.recovery.proQueryAction">
-			<result name="sucess" >/pages/train/psychology/choosepro.jsp</result>
+
+		<action name="proquery"
+			class="com.wootion.cmmb.view.action.recovery.proQueryAction">
+			<result name="sucess">
+				/pages/train/psychology/choosepro.jsp
+			</result>
 		</action>
-		
-		<action name="elderquery" 
-		 	class="com.wootion.cmmb.view.action.recovery.proQueryAction">
-			<result name="sucess" >/pages/train/psychology/choosepro.jsp</result>
+
+		<action name="elderquery"
+			class="com.wootion.cmmb.view.action.recovery.proQueryAction">
+			<result name="sucess">
+				/pages/train/psychology/choosepro.jsp
+			</result>
 		</action>
-		
-		<action name="recoverylist" 
-		 	class="com.wootion.cmmb.view.action.recovery.recoveryAction">
-			<result name="recoverymange">/pages/train/recovery/recoverylist.jsp</result>
+
+		<action name="recoverylist"
+			class="com.wootion.cmmb.view.action.recovery.recoveryAction">
+			<result name="recoverymange">
+				/pages/train/recovery/recoverylist.jsp
+			</result>
 		</action>
-		
-		<action name="recoveryhistory" 
-		 	class="com.wootion.cmmb.view.action.recovery.recoveryHistoryAction">
-			<result name="recoveryhistory">/pages/train/recovery/recoveryhistory.jsp</result>
+
+		<action name="recoveryhistory"
+			class="com.wootion.cmmb.view.action.recovery.recoveryHistoryAction">
+			<result name="recoveryhistory">
+				/pages/train/recovery/recoveryhistory.jsp
+			</result>
 		</action>
-		
-		<action name="sensoryhistory" 
-		 	class="com.wootion.cmmb.view.action.recovery.sensoryHistoryAction">
-			<result name="sensoryhistory">/pages/train/recovery/sensoryhistory.jsp</result>
+
+		<action name="sensoryhistory"
+			class="com.wootion.cmmb.view.action.recovery.sensoryHistoryAction">
+			<result name="sensoryhistory">
+				/pages/train/recovery/sensoryhistory.jsp
+			</result>
 		</action>
-		
-		<action name="bloodpressurehistory" 
-		 	class="com.wootion.cmmb.view.action.recovery.BloodpressureHistoryAction">
-			<result name="bloodpressurehistory">/pages/train/recovery/bloodpressurehistory.jsp</result>
+
+		<action name="bloodpressurehistory"
+			class="com.wootion.cmmb.view.action.recovery.BloodpressureHistoryAction">
+			<result name="bloodpressurehistory">
+				/pages/train/recovery/bloodpressurehistory.jsp
+			</result>
 		</action>
-		
-		<action name="psychologyhistory" 
-		 	class="com.wootion.cmmb.view.action.recovery.psychologyHistoryAction">
-			<result name="psychologyhistory">/pages/train/psychology/psychologyhistory.jsp</result>
+
+		<action name="psychologyhistory"
+			class="com.wootion.cmmb.view.action.recovery.psychologyHistoryAction">
+			<result name="psychologyhistory">
+				/pages/train/psychology/psychologyhistory.jsp
+			</result>
 		</action>
-		
-		<action name="instrumentlist" 
-		 	class="com.wootion.cmmb.view.action.recovery.instrumentAction">
-			<result name="instrumentmange">/pages/train/recovery/instrumentlist.jsp</result>
+
+		<action name="instrumentlist"
+			class="com.wootion.cmmb.view.action.recovery.instrumentAction">
+			<result name="instrumentmange">
+				/pages/train/recovery/instrumentlist.jsp
+			</result>
 		</action>
-		
-		<action name="instrumenthistory" 
-		 	class="com.wootion.cmmb.view.action.recovery.instrumentHistoryAction">
-			<result name="instrumenthistory">/pages/train/recovery/instrumenthistory.jsp</result>
+
+		<action name="instrumenthistory"
+			class="com.wootion.cmmb.view.action.recovery.instrumentHistoryAction">
+			<result name="instrumenthistory">
+				/pages/train/recovery/instrumenthistory.jsp
+			</result>
 		</action>
-		
-		<action name="psychologylist" 
-		 	class="com.wootion.cmmb.view.action.recovery.psychologyAction">
-			<result name="psychologymange">/pages/train/psychology/psychologylist.jsp</result>
+
+		<action name="psychologylist"
+			class="com.wootion.cmmb.view.action.recovery.psychologyAction">
+			<result name="psychologymange">
+				/pages/train/psychology/psychologylist.jsp
+			</result>
 		</action>
-		
-		<action name="sensorylist" 
-		 	class="com.wootion.cmmb.view.action.recovery.sensoryAction">
-			<result name="sensorymange">/pages/train/recovery/sensorylist.jsp</result>
+
+		<action name="sensorylist"
+			class="com.wootion.cmmb.view.action.recovery.sensoryAction">
+			<result name="sensorymange">
+				/pages/train/recovery/sensorylist.jsp
+			</result>
 		</action>
-		
-		<action name="volunteerlist" 
-		 	class="com.wootion.cmmb.view.action.volunteer.volunteerAction">
-			<result name="volunteermange">/pages/train/volunteer/volunteerlist.jsp</result>
+
+		<action name="volunteerlist"
+			class="com.wootion.cmmb.view.action.volunteer.volunteerAction">
+			<result name="volunteermange">
+				/pages/train/volunteer/volunteerlist.jsp
+			</result>
 		</action>
-		
-		<action name="volunteerhistory" 
-		 	class="com.wootion.cmmb.view.action.volunteer.volunteerHistoryAction">
-			<result name="volunteerhistory">/pages/train/volunteer/volunteerhistory.jsp</result>
+
+		<action name="volunteerhistory"
+			class="com.wootion.cmmb.view.action.volunteer.volunteerHistoryAction">
+			<result name="volunteerhistory">
+				/pages/train/volunteer/volunteerhistory.jsp
+			</result>
 		</action>
-		
-		<action name="bathrecordlist" 
-		 	class="com.wootion.cmmb.view.action.careservices.bathrecordAction">
-			<result name="bathrecordmange">/pages/train/careservices/bathrecordlist.jsp</result>
+
+		<action name="bathrecordlist"
+			class="com.wootion.cmmb.view.action.careservices.bathrecordAction">
+			<result name="bathrecordmange">
+				/pages/train/careservices/bathrecordlist.jsp
+			</result>
 		</action>
-		
-		<action name="bathrecordhistory" 
-		 	class="com.wootion.cmmb.view.action.careservices.bathrecordHistoryAction">
-			<result name="bathrecordhistory">/pages/train/careservices/bathrecordhistory.jsp</result>
+
+		<action name="bathrecordhistory"
+			class="com.wootion.cmmb.view.action.careservices.bathrecordHistoryAction">
+			<result name="bathrecordhistory">
+				/pages/train/careservices/bathrecordhistory.jsp
+			</result>
 		</action>
-		
-		<action name="othercareserviceslist" 
-		 	class="com.wootion.cmmb.view.action.careservices.othercareservicesAction">
-			<result name="othercareservicesmange">/pages/train/careservices/othercareserviceslist.jsp</result>
+
+		<action name="othercareserviceslist"
+			class="com.wootion.cmmb.view.action.careservices.othercareservicesAction">
+			<result name="othercareservicesmange">
+				/pages/train/careservices/othercareserviceslist.jsp
+			</result>
 		</action>
-		
-		<action name="othercareserviceshistory" 
-		 	class="com.wootion.cmmb.view.action.careservices.othercareservicesHistoryAction">
-			<result name="othercareserviceshistory">/pages/train/careservices/othercareserviceshistory.jsp</result>
+
+		<action name="othercareserviceshistory"
+			class="com.wootion.cmmb.view.action.careservices.othercareservicesHistoryAction">
+			<result name="othercareserviceshistory">
+				/pages/train/careservices/othercareserviceshistory.jsp
+			</result>
 		</action>
-		
-		<action name="serviceplanlist" 
-		 	class="com.wootion.cmmb.view.action.careservices.serviceplanAction">
-			<result name="serviceplanmange">/pages/train/careservices/serviceplanlist.jsp</result>
+
+		<action name="serviceplanlist"
+			class="com.wootion.cmmb.view.action.careservices.serviceplanAction">
+			<result name="serviceplanmange">
+				/pages/train/careservices/serviceplanlist.jsp
+			</result>
 		</action>
-		
-		<action name="serviceplanhistory" 
-		 	class="com.wootion.cmmb.view.action.careservices.serviceplanHistoryAction">
-			<result name="serviceplanhistory">/pages/train/careservices/serviceplanhistory.jsp</result>
+
+		<action name="serviceplanhistory"
+			class="com.wootion.cmmb.view.action.careservices.serviceplanHistoryAction">
+			<result name="serviceplanhistory">
+				/pages/train/careservices/serviceplanhistory.jsp
+			</result>
 		</action>
-		
-		<action name="managementlist" 
-		 	class="com.wootion.cmmb.view.action.management.managementAction">
-			<result name="managementmange">/pages/train/management/managementlist.jsp</result>
+
+		<action name="managementlist"
+			class="com.wootion.cmmb.view.action.management.managementAction">
+			<result name="managementmange">
+				/pages/train/management/managementlist.jsp
+			</result>
 		</action>
-		
-		<action name="managementhistory" 
-		 	class="com.wootion.cmmb.view.action.management.managementHistoryAction">
-			<result name="managementhistory">/pages/train/management/managementhistory.jsp</result>
+
+		<action name="managementhistory"
+			class="com.wootion.cmmb.view.action.management.managementHistoryAction">
+			<result name="managementhistory">
+				/pages/train/management/managementhistory.jsp
+			</result>
 		</action>
-		
-		<action name="helpcleanlist" 
-		 	class="com.wootion.cmmb.view.action.careservices.helpcleanAction">
-			<result name="helpcleanmange">/pages/train/careservices/helpcleanlist.jsp</result>
+
+		<action name="helpcleanlist"
+			class="com.wootion.cmmb.view.action.careservices.helpcleanAction">
+			<result name="helpcleanmange">
+				/pages/train/careservices/helpcleanlist.jsp
+			</result>
 		</action>
-		
-		<action name="helpcleanhistory" 
-		 	class="com.wootion.cmmb.view.action.careservices.helpcleanHistoryAction">
-			<result name="helpcleanhistory">/pages/train/careservices/helpcleanhistory.jsp</result>
+
+		<action name="helpcleanhistory"
+			class="com.wootion.cmmb.view.action.careservices.helpcleanHistoryAction">
+			<result name="helpcleanhistory">
+				/pages/train/careservices/helpcleanhistory.jsp
+			</result>
 		</action>
-		
-		<action name="bloodpressurelist" 
-		 	class="com.wootion.cmmb.view.action.recovery.BloodpressureAction">
-			<result name="bloodpressuremange">/pages/train/recovery/bloodpressurelist.jsp</result>
+
+		<action name="bloodpressurelist"
+			class="com.wootion.cmmb.view.action.recovery.BloodpressureAction">
+			<result name="bloodpressuremange">
+				/pages/train/recovery/bloodpressurelist.jsp
+			</result>
 		</action>
-		
+
 		<!-- 会员管理 -->
-		<action name="memberlist" 
-		 	class="com.wootion.cmmb.view.action.membermanage.memlistAction">
-			<result name="sucess" >/pages/train/memberinfo/memberlist.jsp</result>
-			<result name="choosemem" >/pages/train/memberinfo/chooseMem.jsp</result>
+		<action name="memberlist"
+			class="com.wootion.cmmb.view.action.membermanage.memlistAction">
+			<result name="sucess">
+				/pages/train/memberinfo/memberlist.jsp
+			</result>
+			<result name="choosemem">
+				/pages/train/memberinfo/chooseMem.jsp
+			</result>
 		</action>
-		<action name="memadd" 
-		 	class="com.wootion.cmmb.view.action.membermanage.memAddAction">
-			<result name="sucess" >/pages/train/memberinfo/memadd.jsp</result>
+		<action name="memadd"
+			class="com.wootion.cmmb.view.action.membermanage.memAddAction">
+			<result name="sucess">
+				/pages/train/memberinfo/memadd.jsp
+			</result>
+		</action>
+		<action name="chooseWorkers"
+			class="com.wootion.cmmb.view.action.careservices.chooseworkerAction">
+			<result name="chooseworkers">
+				/pages/train/care/chooseworkers.jsp
+			</result>
+		</action>
+
+		<action name="workerstatistic"
+			class="com.wootion.cmmb.view.action.careservices.workerstatisticAction">
+			<result name="personstatistic">
+				/pages/train/care/workerstatistic.jsp
+			</result>
+			<result name="recovermemdata">
+				/pages/train/recovery/workerstatistic.jsp
+			</result>
+		</action>
+
+		<action name="getworkerdata"
+			class="com.wootion.cmmb.view.action.careservices.getworkerdataAction">
+			<result name="getworkerdata">
+				/pages/train/care/getworkerdata.jsp
+			</result>
+			<result name="getrecworkerdata">
+				/pages/train/recovery/getworkerdata.jsp
+			</result>
+		</action>
+
+		<action name="evaluationworker*"
+			class="com.wootion.cmmb.view.action.careservices.evaluationWorkerAction"
+			method="{1}">
+			<result name="returnlist">
+				/pages/train/activityhouse/evalBusinessList.jsp
+			</result>
+			<result name="evaluationnew">
+				/pages/train/activityhouse/evalbusinessadd.jsp
+			</result>
 		</action>
 	</package>
 </struts>

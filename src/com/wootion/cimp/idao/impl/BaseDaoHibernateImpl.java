@@ -3,6 +3,7 @@ package com.wootion.cimp.idao.impl;
 import java.lang.reflect.ParameterizedType;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.sql.Types;
 import java.util.Collection;
 import java.util.HashMap;
@@ -11,12 +12,21 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
+import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.AliasToBeanResultTransformer;
+import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
 import com.wootion.cimp.idao.BaseDao;
+import com.wootion.cimp.vo.data.healtheval;
+import com.wootion.cimp.vo.data.memstatistic;
+import com.wootion.cimp.vo.data.workerdata;
+import com.wootion.idp.common.utils.QueryResult;
 
 /**
  * <p>
@@ -227,6 +237,12 @@ public class BaseDaoHibernateImpl<E> extends HibernateDaoSupport implements
 		return getSession().createSQLQuery(sql).list();
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<healtheval> queryNQLForHealtheval(String sql) {
+		return getSession().createSQLQuery(sql).addEntity(healtheval.class).list();
+	}
+
+	
 	/**
 	 * 返回根据字段name和数据value得到的持久对象
 	 * 
@@ -463,5 +479,46 @@ public class BaseDaoHibernateImpl<E> extends HibernateDaoSupport implements
 			e.printStackTrace();
 			logger.error("保存一个对象失败", e);
 		}
+	}
+	
+	public QueryResult<E> getPageData(final String querySql, final int firstindex, final int maxresult,final String careflag)throws HibernateException{
+        QueryResult qre = null;
+        qre = (QueryResult)getHibernateTemplate().execute(
+        	      new HibernateCallback() {
+
+        public Object doInHibernate(Session session)
+              throws HibernateException, SQLException
+        {
+        	
+        	SQLQuery query = session.createSQLQuery(querySql);
+        	if("true".equals(careflag)||"recovermem".equals(careflag)){
+        		query.addScalar("totaltime", Hibernate.STRING).addScalar("startservedate",Hibernate.STRING).addScalar("endservedate",Hibernate.STRING).addScalar("workid",Hibernate.STRING).addScalar("membername", Hibernate.STRING).addScalar("mylandlinenumber", Hibernate.STRING).addScalar("myaddress", Hibernate.STRING).setResultTransformer(new AliasToBeanResultTransformer(memstatistic.class));
+        	}else if("false".equals(careflag)||"recoverworker".equals(careflag)){
+        		query.addScalar("totaltime", Hibernate.STRING).addScalar("startservedate",Hibernate.STRING).addScalar("endservedate",Hibernate.STRING).addScalar("workid",Hibernate.STRING).addScalar("workername", Hibernate.STRING).addScalar("linkman_tel", Hibernate.STRING).addScalar("corpAdd", Hibernate.STRING).setResultTransformer(new AliasToBeanResultTransformer(workerdata.class));
+        	}
+        	query.setCacheable(true);
+	        int lisre = query.list().size();
+	        //int lisre = 3;
+	        if(firstindex != -1 && maxresult != -1)
+	        {
+	            Integer nowindex = Integer.valueOf((firstindex - 1) * maxresult);
+	            query.setFirstResult(nowindex.intValue()).setMaxResults(maxresult);
+	        }
+	        QueryResult qr = new QueryResult();
+	        qr.setResultlist(query.list());
+	        if(lisre == 0)
+	            qr.setTotalrecord(0L);
+	        else
+	            qr.setTotalrecord((long)lisre);
+	        qr.setNowPageNumber(firstindex);
+	        qr.setPerPageNumber(maxresult);
+	        long allPages = qr.getTotalrecord() / (long)qr.getPerPageNumber() + 1L;
+	        if(qr.getTotalrecord() % (long)qr.getPerPageNumber() == 0L)
+	            allPages--;
+	        qr.setAllPages(allPages);
+	        return qr;
+        }
+       });
+        return qre;
 	}
 }

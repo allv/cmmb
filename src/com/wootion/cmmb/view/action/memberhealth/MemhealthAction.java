@@ -68,14 +68,15 @@ public class MemhealthAction extends BaseAction
 		HttpServletRequest request = getRequest();
     	HttpServletResponse response = getResponse();  
     	String flag = "";
-    	healtheval health = new healtheval();
+    	String healthid = request.getParameter("healthid");
+    	healtheval health = memhealthservice.lookHealthEval(healthid);
     	String memname = request.getParameter("memname");
     	String memnumber = request.getParameter("memnumber");
     	String assesdate = request.getParameter("assesdate");
     	String healthnumber = request.getParameter("healthnumber");
     	String belongproname = request.getParameter("belongproname");
     	String applyreason = request.getParameter("applyreason");
-    	String healthid = request.getParameter("healthid");
+    	
     	
     	health.setMemname(memname);
     	health.setMemnumber(memnumber);
@@ -87,8 +88,13 @@ public class MemhealthAction extends BaseAction
     	for(int methodi=1;methodi<=369;methodi++){
     		String para = request.getParameter("a"+methodi);
     		String methodname = "setA"+methodi;
-    		//动态调用方法
-    		health.getClass().getMethod(methodname, new Class[]{String.class}).invoke(health, new Object[]{para});   
+    		if(methodi==45){
+    			//整型
+    			health.setA45(Integer.parseInt(para));
+    		}else{
+	    		//动态调用方法
+	    		health.getClass().getMethod(methodname, new Class[]{String.class}).invoke(health, new Object[]{para});
+    		}
     	}
     	flag = memhealthservice.modifyHealthEval(health);
     	
@@ -205,7 +211,13 @@ public class MemhealthAction extends BaseAction
     		String para = request.getParameter("a"+methodi);
     		String methodname = "setA"+methodi;
     		//动态调用方法
-    		health.getClass().getMethod(methodname, new Class[]{String.class}).invoke(health, new Object[]{para});   
+    		if(methodi==45){
+    			//整型
+    			health.setA45(Integer.parseInt(para));
+    		}else{
+	    		//动态调用方法
+	    		health.getClass().getMethod(methodname, new Class[]{String.class}).invoke(health, new Object[]{para});
+    		}
     	}
     	flag = memhealthservice.saveHealthEval(health);
     	

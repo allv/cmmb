@@ -330,7 +330,52 @@
         </property>
         
         <property name="a84" type="java.lang.String">
-            <column name="a84" length="32" />
+            <column name="a84" length="50" />
+        </property>
+        
+        
+         <property name="a85" type="java.lang.String">
+            <column name="a85" length="320" />
+        </property>
+        
+         <property name="a86" type="java.lang.String">
+            <column name="a86" length="320" />
+        </property>
+        
+         <property name="a87" type="java.lang.String">
+            <column name="a87" length="500" />
+        </property>
+        
+         <property name="a88" type="java.lang.String">
+            <column name="a88" length="800" />
+        </property>
+        
+         <property name="a89" type="java.lang.String">
+            <column name="a89" length="100" />
+        </property>
+        
+        <property name="a90" type="java.lang.String">
+            <column name="a90" length="320" />
+        </property>
+        
+         <property name="a91" type="java.lang.String">
+            <column name="a91" length="32" />
+        </property>
+        
+         <property name="a92" type="java.lang.String">
+            <column name="a92" length="32" />
+        </property>
+        
+         <property name="a93" type="java.lang.String">
+            <column name="a93" length="32" />
+        </property>
+        
+         <property name="a94" type="java.lang.String">
+            <column name="a94" length="32" />
+        </property>
+        
+         <property name="a95" type="java.lang.String">
+            <column name="a95" length="32" />
         </property>
         
         <property name="de1" type="java.lang.String">

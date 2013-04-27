@@ -283,6 +283,7 @@ function trim(szStr){
 		        <td>
 	        		<input type="button" class="groovybutton" onclick="DelRow()" value="删除标的" />
 	            </td>
+	            
 		    </tr>
 		    <tr>
 		        <th style="width:40px">序列号</th>

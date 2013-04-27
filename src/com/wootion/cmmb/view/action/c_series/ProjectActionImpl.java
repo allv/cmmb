@@ -17,15 +17,27 @@ import com.wootion.cimp.services.projectService;
 import com.wootion.cimp.util.PageBasicInfo;
 import com.wootion.cimp.vo.data.Project;
 import com.wootion.cmmb.common.exception.SameObjectException;
+import com.wootion.cmmb.common.util.ServletUtil;
 import com.wootion.cmmb.common.workflow.WorkflowHandle;
 import com.wootion.cmmb.common.workflow.WorkflowParameter;
 import com.wootion.cmmb.persistenc.po.bean.Projecttracing;
+import com.wootion.idp.common.utils.DomainUtil;
+import com.wootion.idp.persistence.dao.CommonDao;
+import com.wootion.idp.persistence.dao.CommonDaoHibernate;
+import com.wootion.idp.persistence.po.bean.Wtuser;
 
 public class ProjectActionImpl implements ProjectAction,WorkflowHandle {
 	private static final String BILL_ID = WorkflowParameter.BILL_ID;
-	private PageBasicInfo pageObj = null;
 	public projectService projectservice;
+	private CommonDao commondao;
+    
+	public CommonDao getCommondao() {
+		return commondao;
+	}
 
+	public void setCommondao(CommonDao commondao) {
+		this.commondao = commondao;
+	}
 	/* (non-Javadoc)
 	 * @see com.wootion.cmmb.view.action.c_series.ProjectAction#addpro()
 	 */
@@ -117,6 +129,14 @@ public class ProjectActionImpl implements ProjectAction,WorkflowHandle {
 		String isview = request.getParameter("isview");
 		Project pro = new Project();
 		List<Projecttracing> protracing = new ArrayList<Projecttracing>();
+		Long currentUserId = ServletUtil.getCurrentUserId();
+		Wtuser currentUser = commondao.getObject(Wtuser.class, currentUserId);
+		if(DomainUtil.isUserAdmin(currentUser)){
+			//管理员可以操作任意数据
+			request.setAttribute("isadmin", "true");
+		}else{
+			request.setAttribute("isadmin", "false");
+		}
 		try {
 			pro = getProjectservice().lookProject(pid);// 获取项目信息
 			protracing = getProjectservice().lookProjectTrace(pid);// 获取项目进度追踪信息
@@ -177,10 +197,6 @@ public class ProjectActionImpl implements ProjectAction,WorkflowHandle {
 			e.printStackTrace();
 		}
 		return iMonth+1;
-	}
-
-	private void setTdata(String[] tdata, Project pro) {
-		
 	}
 
 	/* (non-Javadoc)
@@ -358,5 +374,4 @@ public class ProjectActionImpl implements ProjectAction,WorkflowHandle {
 	public void setProjectservice(projectService projectservice) {
 		this.projectservice = projectservice;
 	}
-
 }

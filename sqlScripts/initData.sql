@@ -22,6 +22,25 @@ INSERT INTO `wtrolefunrelationship` VALUES (119914,10003,130,NULL);
 INSERT INTO `wtrolefunrelationship` VALUES (119915,10003,142,NULL);
 
 
+--add by jim
+INSERT INTO `wtrolefunrelationship` VALUES (119916,10003,1437,NULL);
+INSERT INTO `wtrolefunrelationship` VALUES (119917,10002,1437,NULL);
+INSERT INTO `wtrolefunrelationship` VALUES (119918,10003,979,NULL);
+INSERT INTO `wtrolefunrelationship` VALUES (119919,10002,979,NULL);
+INSERT INTO `wtrolefunrelationship` VALUES (119920,10003,11977,NULL);
+INSERT INTO `wtrolefunrelationship` VALUES (119921,10002,11977,NULL);
+
+INSERT INTO `wtrolefunrelationship` VALUES (119922,10003,12877,NULL);
+INSERT INTO `wtrolefunrelationship` VALUES (119923,10002,12877,NULL);
+
+
+INSERT INTO `wtrolefunrelationship` VALUES (119924,10003,1459,NULL);
+INSERT INTO `wtrolefunrelationship` VALUES (119925,10002,1459,NULL);
+INSERT INTO `wtrolefunrelationship` VALUES (119926,10003,1459,NULL);
+INSERT INTO `wtrolefunrelationship` VALUES (119927,10002,1459,NULL);
+
+
+--工作流
 INSERT INTO `tbl_form` (`form_id`,`form_createtime`,`form_name`,`form_desc`,`form_code`) VALUES (100001,'2013-02-26 11:11:11','项目',NULL,NULL);
 INSERT INTO `tbl_form` (`form_id`,`form_createtime`,`form_name`,`form_desc`,`form_code`) VALUES (100002,'2013-02-26 11:11:11','申请人登记表',NULL,NULL);
 INSERT INTO `tbl_form` (`form_id`,`form_createtime`,`form_name`,`form_desc`,`form_code`) VALUES (100003,'2013-02-26 11:11:11','健康评估表',NULL,NULL);

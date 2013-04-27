@@ -64,7 +64,7 @@ BUTTON {
 						</tr>
 						<c:forEach items="${allForms }" var="vo">
 						<tr>
-							<td align="center" nowrap bgcolor="#E4E4E4"><input type="checkbox" name="selecteForms" value="${vo.form.id }" <c:if test="${vo.checked }">checked</c:if> " /></td>
+							<td align="center" nowrap bgcolor="#E4E4E4"><input type="checkbox" name="selecteForms" value="${vo.form.id }" <c:if test="${vo.checked }">checked</c:if> /></td>
 							<td align="center" nowrap bgcolor="#E4E4E4">${vo.form.name }</td>
 							<td align="center" nowrap bgcolor="#E4E4E4">${vo.form.code }</td>
 							<td align="center" nowrap bgcolor="#E4E4E4">${vo.form.description }</td>

@@ -226,16 +226,16 @@ var basePath = '<%=basePath%>';
 		LODOP.SET_PRINT_STYLE("Bold",1);
 		//LODOP.ADD_PRINT_TEXT(50,231,260,39,"打印页面部分内容");
 		//第一页
-		LODOP.ADD_PRINT_HTM(8,10,370,795,document.getElementById("divA").innerHTML);
-		LODOP.ADD_PRINT_HTM(73,385,370,500,document.getElementById("divC").innerHTML);
-		LODOP.ADD_PRINT_HTM(455,10,370,500,document.getElementById("divB").innerHTML);
-		LODOP.ADD_PRINT_HTM(455,385,370,500,document.getElementById("divD").innerHTML);
+		LODOP.ADD_PRINT_HTM(88,10,370,795,document.getElementById("divA").innerHTML);
+		LODOP.ADD_PRINT_HTM(153,385,370,500,document.getElementById("divC").innerHTML);
+		LODOP.ADD_PRINT_HTM(535,10,370,500,document.getElementById("divB").innerHTML);
+		LODOP.ADD_PRINT_HTM(535,385,370,500,document.getElementById("divD").innerHTML);
 		
 		LODOP.NEWPAGE();
 		//第二页
-		LODOP.ADD_PRINT_HTM(18,10,370,895,document.getElementById("divE").innerHTML);
-		LODOP.ADD_PRINT_HTM(18,420,350,500,document.getElementById("divF").innerHTML);
-		LODOP.ADD_PRINT_HTM(385,420,330,550,document.getElementById("divG").innerHTML);
+		LODOP.ADD_PRINT_HTM(88,10,370,895,document.getElementById("divE").innerHTML);
+		LODOP.ADD_PRINT_HTM(88,420,350,500,document.getElementById("divF").innerHTML);
+		LODOP.ADD_PRINT_HTM(455,420,330,550,document.getElementById("divG").innerHTML);
 		
 		LODOP.NEWPAGE();
 		//第三页
@@ -264,16 +264,16 @@ var basePath = '<%=basePath%>';
 		
 		//第七页
 		LODOP.NEWPAGE();
-		LODOP.ADD_PRINT_HTM(18,5,580,1050,document.getElementById("divO1").innerHTML);
+		LODOP.ADD_PRINT_HTM(88,5,580,1050,document.getElementById("divO1").innerHTML);
 		
 		//第八页
 		LODOP.NEWPAGE();
-		LODOP.ADD_PRINT_HTM(18,5,580,1050,document.getElementById("divP").innerHTML);
+		LODOP.ADD_PRINT_HTM(88,5,580,1050,document.getElementById("divP").innerHTML);
 		
 		//第九页
 		LODOP.NEWPAGE();
-		LODOP.ADD_PRINT_HTM(8,5,580,500,document.getElementById("divP1").innerHTML);
-		LODOP.ADD_PRINT_HTM(438,5,580,600,document.getElementById("divQ").innerHTML);
+		LODOP.ADD_PRINT_HTM(108,5,580,500,document.getElementById("divP1").innerHTML);
+		LODOP.ADD_PRINT_HTM(538,5,580,600,document.getElementById("divQ").innerHTML);
 	};	                     
 	function prn1_manage(){
 	    CreateOneFormPage();
@@ -293,7 +293,7 @@ var basePath = '<%=basePath%>';
 <table>
    <tr>
       <td>
-         <a href="javascript:prn1_preview()"><span style="color:blue">打印预览</span></a>,其布局风格可<a href="javascript:prn1_manage();"><span style="color:blue">打印维护</span></a>调整,或者也可以<a href="javascript:printit()"><span style="color:blue">直接打印</span></a>
+         <a href="javascript:prn1_preview()"><span style="color:blue">打印预览</span></a>,其布局风格可<a href="javascript:prn1_manage();"><span style="color:blue">打印维护</span></a>调整</a>
       </td>
    </tr>
 </table>

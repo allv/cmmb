@@ -55,7 +55,7 @@ function manView(mid){
 </table>
 <div style="height:10px;">
 </div>
-<form method="post" name="actform" action="managementlist.do">
+<form method="post" name="actform" action="managementlist.do?maxfee=">
   <table width="100%" border="0" cellspacing="0" cellpadding="2">
     <tr>
       <td align="right">活动时间</td>
@@ -67,8 +67,8 @@ function manView(mid){
     </tr>
     <tr>
       <td align="right">活动费用</td>
-      <td><input name="mimagefee" id="mimagefee" value="" type="text" size="20">
-      
+      <td><input name="mimagefee" id="mimagefee" value="" type="text" size="2">
+      --<input name="a1" id="a1" value="" type="text" size="2">
       <td align="right">活动编号</td>
       <td><input name="mserialnum" id="mserialnum" value="" type="text" size="20">
         <button type="submit">搜索</button></td>

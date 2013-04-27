@@ -75,7 +75,7 @@ is_Integer = function(d) {
 }
 
 is_positiveInteger = function(d) {
-	var regInt = /^[1-9]\d*$/;
+	var regInt = /^[0-9]\d*$/;
 	if (!regInt.test(d)) {
 		return false;
 	}

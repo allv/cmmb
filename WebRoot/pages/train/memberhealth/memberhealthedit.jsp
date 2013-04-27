@@ -848,8 +848,8 @@ function chooseElders(){
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="73"><input type="text" size="5" value="0" name="a369" id="a369" readonly//></td>
   </tr>
   <tr>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" onclick="getprevious(this);" onchange="getvalue(this);"><div>a.使用电话能力：
-     <select name="a37" id="a37" style="width:50px">
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div>a.使用电话能力：
+     <select name="a37" id="a37" style="width:50px" onclick="getprevious(this);" onchange="getvalue(this);">
            <option value="0" selected>0</option>
 	       <option value="1">1</option>
       </select>
@@ -859,8 +859,8 @@ function chooseElders(){
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="63" rowspan="5">&nbsp;</td>
   </tr>
   <tr>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" onclick="getprevious(this);" onchange="getvalue(this);"><div>b.购物：
-      <select name="a38" id="a38" style="width:50px">
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div>b.购物：
+      <select name="a38" id="a38" style="width:50px" onclick="getprevious(this);" onchange="getvalue(this);">
            <option value="0" selected>0</option>
 	       <option value="1">1</option>
       </select></div>
@@ -868,8 +868,8 @@ function chooseElders(){
     1.所有的采购都能够独立完成</td>
   </tr>
   <tr>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" onclick="getprevious(this);" onchange="getvalue(this);"><div>c.三餐准备：
-        <select name="a39" id="a39" style="width:50px">
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div>c.三餐准备：
+        <select name="a39" id="a39" style="width:50px" onclick="getprevious(this);" onchange="getvalue(this);">
            <option value="0" selected>0</option>
 	       <option value="1">1</option>
       </select></div>
@@ -877,8 +877,8 @@ function chooseElders(){
       1.独立计划、烹饪三餐</td>
   </tr>
   <tr>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" onclick="getprevious(this);" onchange="getvalue(this);"><div>d.居家卫生：
-      <select name="a40" id="a40" style="width:50px">
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" ><div>d.居家卫生：
+      <select name="a40" id="a40" style="width:50px" onclick="getprevious(this);" onchange="getvalue(this);">
            <option value="0" selected>0</option>
 	       <option value="1">1</option>
       </select></div>
@@ -886,8 +886,8 @@ function chooseElders(){
     1.独立或在别人帮助下完成清洁重活、洗碗、床铺整理、一般日常清洁、家庭设施维护</td>
   </tr>
   <tr>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" onclick="getprevious(this);" onchange="getvalue(this);">e.衣物清洗
-    <select name="a41" id="a41" style="width:50px">
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" >e.衣物清洗
+    <select name="a41" id="a41" style="width:50px" onclick="getprevious(this);" onchange="getvalue(this);">
            <option value="0" selected>0</option>
 	       <option value="1">1</option>
       </select></td>
@@ -903,8 +903,8 @@ function chooseElders(){
     <p>1.所有的私人衣物或部分小件衣服自己可以独立完成清洗</p></td>
   </tr>
   <tr>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2" onclick="getprevious(this);" onchange="getvalue(this);"><p>f.交通方式: 
-      <select name="a42" id="a42" style="width:50px">
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2" ><p>f.交通方式: 
+      <select name="a42" id="a42" style="width:50px" onclick="getprevious(this);" onchange="getvalue(this);">
           <option value="0" selected>0</option>
 	      <option value="1">1</option>
       </select></p>
@@ -912,8 +912,8 @@ function chooseElders(){
     <p>1.能够独自或在人陪伴下乘坐公共交通工具或能够为自己叫车</p></td>
   </tr>
   <tr>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2" onclick="getprevious(this);" onchange="getvalue(this);"><p>g.服药:
-     <select name="a43" id="a43" style="width:50px">
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2" ><p>g.服药:
+     <select name="a43" id="a43" style="width:50px" onclick="getprevious(this);" onchange="getvalue(this);">
           <option value="0" selected>0</option>
 	      <option value="1">1</option>
       </select></p>
@@ -921,8 +921,8 @@ function chooseElders(){
     <p>1.独立在正确时间服用正确计量的药物</p></td>
   </tr>
   <tr>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2" onclick="getprevious(this);" onchange="getvalue(this);"><p>h.理财：
-      <select name="a44" id="a44" style="width:50px">
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2" ><p>h.理财：
+      <select name="a44" id="a44" style="width:50px" onclick="getprevious(this);" onchange="getvalue(this);">
           <option value="0" selected>0</option>
 	      <option value="1">1</option>
       </select></p>
@@ -935,8 +935,8 @@ function chooseElders(){
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="101"><input type="text" size="5" name="a45" id="a45" value="0" readonly//></td>
   </tr>
   <tr>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2" onclick="getprevious1(this);" onchange="getvalue1(this);">a.进食：
-       <select name="a46" id="a46" style="width:50px">
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2" >a.进食：
+       <select name="a46" id="a46" style="width:50px" onclick="getprevious1(this);" onchange="getvalue1(this);">
            <option value="0" selected>0</option>
 	       <option value="5">5</option>
 	       <option value="10">10</option>
@@ -946,8 +946,8 @@ function chooseElders(){
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2">0.无法进食 5.需要帮助切割、粉碎食物等 10、独立</td>
   </tr>
   <tr>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2" onclick="getprevious1(this);" onchange="getvalue1(this);">b.洗浴：
-       <select name="a47" id="a47" style="width:50px">
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2" >b.洗浴：
+       <select name="a47" id="a47" style="width:50px" onclick="getprevious1(this);" onchange="getvalue1(this);">
            <option value="0" selected>0</option>
 	       <option value="5">5</option>
 	       <option value="10">10</option>
@@ -957,8 +957,8 @@ function chooseElders(){
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2">0.需要帮助 5.独立完成</td>
   </tr>
   <tr>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2" onclick="getprevious1(this);" onchange="getvalue1(this);">c.修饰：
-        <select name="a48" id="a48" style="width:50px">
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2" >c.修饰：
+        <select name="a48" id="a48" style="width:50px" onclick="getprevious1(this);" onchange="getvalue1(this);">
           <option value="0" selected>0</option>
 	      <option value="5">5</option>
       </select></td>
@@ -967,8 +967,8 @@ function chooseElders(){
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2">0.需要帮助　5.独立完成洗脸/洗头/刷牙/剃须</td>
   </tr>
   <tr>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2" onclick="getprevious1(this);" onchange="getvalue1(this);">d.着装：
-     <select name="a49" id="a49" style="width:50px">
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2">d.着装：
+     <select name="a49" id="a49" style="width:50px"  onclick="getprevious1(this);" onchange="getvalue1(this);">
            <option value="0" selected>0</option>
 	       <option value="5">5</option>
 	       <option value="10">10</option>
@@ -979,8 +979,8 @@ function chooseElders(){
     <p>10.独立完成(包括扣纽扣、拉链等)</p></td>
   </tr>
   <tr>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2" onclick="getprevious1(this);" onchange="getvalue1(this);">e.大便：
-     <select name="a50" id="a50" style="width:50px">
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2" >e.大便：
+     <select name="a50" id="a50" style="width:50px" onclick="getprevious1(this);" onchange="getvalue1(this);">
            <option value="0" selected>0</option>
 	       <option value="5">5</option>
 	       <option value="10">10</option>
@@ -990,8 +990,8 @@ function chooseElders(){
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2">0.失禁(或需要灌肠) 5.偶尔失禁</td>
   </tr>
   <tr>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2" onclick="getprevious1(this);" onchange="getvalue1(this);">f.小便：
-     <select  name="a51" id="a51" style="width:50px">
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2" >f.小便：
+     <select  name="a51" id="a51" style="width:50px" onclick="getprevious1(this);" onchange="getvalue1(this);">
            <option value="0" selected>0</option>
 	       <option value="5">5</option>
 	       <option value="10">10</option>
@@ -1002,8 +1002,8 @@ function chooseElders(){
     <p>5.偶尔失禁 10.正常</p></td>
   </tr>
   <tr>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2" onclick="getprevious1(this);" onchange="getvalue1(this);">g.如厕：
-      <select name="a52" id="a52" style="width:50px">
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2" >g.如厕：
+      <select name="a52" id="a52" style="width:50px" onclick="getprevious1(this);" onchange="getvalue1(this);">
            <option value="0" selected>0</option>
 	       <option value="5">5</option>
 	       <option value="10">10</option>
@@ -1022,8 +1022,8 @@ function chooseElders(){
   <table width="349" border="1" style="table-layout:auto;border:solid #8B8378; border-width:1px 0px 0px 1px;">
   <tr>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="18" rowspan="4">&nbsp;<div align="center"></div></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2" onclick="getprevious1(this);" onchange="getvalue1(this);">h.转移(床与椅子之间)：
-     <select name="a53" id="a53" style="width:50px">
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2" >h.转移(床与椅子之间)：
+     <select name="a53" id="a53" style="width:50px" onclick="getprevious1(this);" onchange="getvalue1(this);">
          <option value="0" selected>0</option>
 	     <option value="5">5</option>
 	     <option value="10">10</option>
@@ -1036,8 +1036,8 @@ function chooseElders(){
     <p>10.部分帮助(口头与肢体上) 15.独立</p></td>
   </tr>
   <tr>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2" onclick="getprevious1(this);" onchange="getvalue1(this);"><p>i.平地行走：
-       <select name="a54" id="a54" style="width:50px">
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2" ><p>i.平地行走：
+       <select name="a54" id="a54" style="width:50px" onclick="getprevious1(this);" onchange="getvalue1(this);">
          <option value="0" selected>0</option>
 	     <option value="5">5</option>
 	     <option value="10">10</option>
@@ -1050,8 +1050,8 @@ function chooseElders(){
     <p>15.独立行走(但可能需要一些支持，例如拐杖)步行大于45米</p></td>
   </tr>
   <tr>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2" onclick="getprevious1(this);" onchange="getvalue1(this);"><p>j.楼梯：
-     <select name="a55" id="a55" style="width:50px">
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" colspan="2" ><p>j.楼梯：
+     <select name="a55" id="a55" style="width:50px" onclick="getprevious1(this);" onchange="getvalue1(this);">
          <option value="0" selected>0</option>
 	     <option value="5">5</option>
 	     <option value="10">10</option>
@@ -2930,6 +2930,7 @@ function getvalue1(objS){
 
 function getprevious1(objP1){
     pValue2=parseInt(objP1.options[objP1.selectedIndex].value); 
+    //alert(pValue2);
 }
 
 function getprevious(objP){

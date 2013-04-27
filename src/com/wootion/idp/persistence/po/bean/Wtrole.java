@@ -13,6 +13,8 @@ import com.wootion.cmmb.persistenc.po.bean.Form;
 
 public class Wtrole implements java.io.Serializable {
 
+	private static final long serialVersionUID = 5732629816579167988L;
+
 	// Fields
 
 	private Long wtroleId; // 角色id
@@ -191,6 +193,14 @@ public class Wtrole implements java.io.Serializable {
 
 	public void setForms(Set<Form> forms) {
 		this.forms = forms;
+	}
+	
+	public boolean checkDeleted() { 
+		return isDelete == 1;
+	}
+	
+	public boolean checkAvailable() {
+		return !checkDeleted();
 	}
 
 }

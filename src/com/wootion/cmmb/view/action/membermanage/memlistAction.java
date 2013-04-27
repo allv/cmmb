@@ -6,9 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.wootion.cimp.services.IMPServiceFactory;
+import com.wootion.cimp.services.memberHealthService;
 import com.wootion.cimp.services.memberService;
-import com.wootion.idp.common.utils.QueryResult;
 import com.wootion.cimp.vo.data.Member;
+import com.wootion.idp.common.utils.QueryResult;
 import com.wootion.idp.view.action.BaseAction;
 
 public class memlistAction extends BaseAction
@@ -49,6 +50,9 @@ public class memlistAction extends BaseAction
     private String reside;
     //付费情况
     private String fees;
+    
+    //家庭地址
+    private String myaddress;
 
     private String r2;
     
@@ -79,12 +83,42 @@ public class memlistAction extends BaseAction
         }
         
         memberService memService = IMPServiceFactory.getMemberService();
+        memberHealthService hevalservice = IMPServiceFactory.getMemberHealthService();
+        String adlmarks = (String)request.getParameter("adlmarks");
+        String adlmarks2 = (String)request.getParameter("adlmarks2");
+        String listen = (String)request.getParameter("listen");
+        String view = (String)request.getParameter("view");
+        String smoke = (String)request.getParameter("smoke");
+        String drink = (String)request.getParameter("drink");
+        String mycity = (String)request.getParameter("mycity");
+        
+        //月收入
+        String swage = (String)request.getParameter("swage");
+        String ewage = (String)request.getParameter("ewage");
+        
+        String memname = (String)request.getParameter("memname");
+        String memid = (String)request.getParameter("memid");
+        String memsex = (String)request.getParameter("memsex");
+        String culture = (String)request.getParameter("culture");
+        String reside = (String)request.getParameter("reside");
+        String financial = (String)request.getParameter("financial");
+        String myaddress = (String)request.getParameter("myaddress");
+        //取出所有符合条件的memnumber 从healthinfo表中
         try {
+        	String allmemnumbers = "";
+        	if(adlmarks!=null&&adlmarks2!=null&&listen!=null&&view!=null&&smoke!=null&&drink!=null){
+        		if(!adlmarks.trim().equals("")||!adlmarks2.trim().equals("")||!listen.trim().equals("-1")||!view.trim().equals("-1")
+        				||!smoke.trim().equals("-1")||!drink.trim().equals("-1")){
+        		   allmemnumbers = hevalservice.filterMemberNumbers(adlmarks,adlmarks2,listen,view,smoke,drink);
+        		}
+        	}
 			result = memService.getQueryProResult(firstindex, maxresult,
-					enterdate, memname, memid,
+					enterdate, memname, swage,ewage,memid,memsex,culture,reside,financial,myaddress,allmemnumbers,mycity,
 			         request.getSession().getId(),chooseflag);
 		} catch (ParseException e) {
 			e.printStackTrace();
+		} catch(Exception ee){
+			ee.printStackTrace();
 		}
 		if(chooseflag==null||chooseflag==""){
 			return SUCESS;
@@ -276,6 +310,14 @@ public class memlistAction extends BaseAction
 
 	public void setIsHaveData(String isHaveData) {
 		this.isHaveData = isHaveData;
+	}
+
+	public String getMyaddress() {
+		return myaddress;
+	}
+
+	public void setMyaddress(String myaddress) {
+		this.myaddress = myaddress;
 	}
 
 }

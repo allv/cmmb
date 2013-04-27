@@ -99,8 +99,12 @@ public class UserManagerServiceImpl extends BaseServiceImpl implements
 						.getUserCacheUName(userName);
 				//防止浏览器异常崩溃，sessionListener类方法destroy 未执行
 				UserCacheBean uc1 = PermissionCollection.getInstance().getUserCache(sessionID);
-				if (uc != null&&uc1!=null) {// 说明用户已经登陆
-					return FordGlobal.LOGINSUCESS;
+				if (uc != null&&uc1!=null) {// 同一session 同一用户已经登陆
+					return FordGlobal.USERLOGINED;
+				}else if(uc==null&&uc1!=null){
+					//同一个sessionid 不同帐号 让原先的session 失效
+					getRequest().getSession(false).invalidate();
+					sessionID = getRequest().getSession(true).getId();
 				} else {
 					uc = new UserCacheBean();
 					uc.setSessionID(sessionID);

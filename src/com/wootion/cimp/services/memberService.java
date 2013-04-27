@@ -9,14 +9,15 @@ import com.wootion.idp.common.utils.QueryResult;
 
 public interface memberService {
 	public QueryResult<Member> getQueryProResult(Integer index,
-            Integer maxresult, String enterdate, String memname,
-            String memid, String sessionID,String chooseflag)
+            Integer maxresult, String enterdate, String memname,String swage,String ewage,
+            String memid,String memsex,String culture ,String reside,String financial,String myaddress,String allmemnumbers,
+            String mycity,String sessionID,String chooseflag)
 			throws ParseException;
 	
 	public String saveMem(String memname, String memid,
             String memsex,String creditid,String birthday,String culture,String professor,String financial,String marry,String kids,String ways,String enterdate,String reside,String fees,
             String mycellnumber,String mylandlinenumber,String myaddress,String mycounty,String mystreet,String mycity,String myemail,String mynation,String coname,
-            String relationship,String concellnumber,String connumber,String conaddress,String concity,String conpost,String concountry,String assessment,String asesdate)throws Exception;
+            String relationship,String concellnumber,String connumber,String conaddress,String concity,String conpost,String concountry,String assessment,String asesdate,String beizhu)throws Exception;
 
     public boolean deleMember(String memid)throws Exception;
     
@@ -27,7 +28,7 @@ public interface memberService {
     public String modifyMem(String meminfoid,String memname, String memid,
             String memsex,String creditid,String birthday,String culture,String professor,String financial,String marry,String kids,String ways,String enterdate,String reside,String fees,
             String mycellnumber,String mylandlinenumber,String myaddress,String mycounty,String mystreet,String mycity,String myemail,String mynation,String coname,
-            String relationship,String concellnumber,String connumber,String conaddress,String concity,String conpost,String concountry,String assessment,String asesdate)throws Exception;
+            String relationship,String concellnumber,String connumber,String conaddress,String concity,String conpost,String concountry,String assessment,String asesdate,String beizhu)throws Exception;
 
     public QueryResult<Memberhistory> getQueryMemhisResult(Integer index,
             Integer maxresult, String submitdate, String memname,

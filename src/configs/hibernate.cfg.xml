@@ -76,6 +76,8 @@
 			resource="com/wootion/cmmb/persistenc/po/xml/Instrumenthistory.hbm.xml" />
 		<mapping
 			resource="com/wootion/cmmb/persistenc/po/xml/Volunteerinfo.hbm.xml" />
+	    <mapping
+			resource="com/wootion/cmmb/persistenc/po/xml/Activityhouse.hbm.xml" />
 		<mapping
 			resource="com/wootion/cmmb/persistenc/po/xml/Volunteerhistory.hbm.xml" />
 	    <mapping
@@ -94,6 +96,10 @@
 			resource="com/wootion/cmmb/persistenc/po/xml/workflowBills.hbm.xml" />
 		<mapping
 			resource="com/wootion/cmmb/persistenc/po/xml/workflowRecords.hbm.xml" />
+	    <mapping
+			resource="com/wootion/cimp/vo/xml/workerstatistic.hbm.xml" />		
+		<mapping
+			resource="com/wootion/cmmb/persistenc/po/xml/evaluationforbusiness.hbm.xml" />
 	</session-factory>
 
 </hibernate-configuration>

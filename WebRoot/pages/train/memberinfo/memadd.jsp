@@ -43,7 +43,7 @@ top:339px;
 var basePath = '<%=basePath%>';
 function onSubmit(){
   if(check("memname","string","姓名不能为空！")||check("memid","string","档案编号不能为空！")||check("creditid","string","身份证号码不能为空！")||check("conpost","string","社保号码不能为空！")
-		  ||check("mylandlinenumber","string","联系电话不能为空！")||check("assessment","string","填表人不能为空！")||check("asesdate","string","填表日期不能为空！")||check("birthday","string","出生年月不能为空！")||check("myaddress","string","家庭地址不能为空！")){
+		  ||check("mylandlinenumber","string","联系电话不能为空！")||check("mycity","string","项目名称不能为空！")||check("assessment","string","填表人不能为空！")||check("asesdate","string","填表日期不能为空！")||check("birthday","string","出生年月不能为空！")||check("myaddress","string","家庭地址不能为空！")){
 	  return false;
   }
   
@@ -77,6 +77,10 @@ function onSubmit(){
   
   var fees = '';
   var beizhu = document.getElementById("beizhu").value;
+   if(!is_positiveInteger(beizhu)){
+     alert('收入金额只能为正整数');
+     return;
+  }
   var mycellnumber = document.getElementById("mycellnumber").value;
   var mylandlinenumber = document.getElementById("mylandlinenumber").value;
   var myaddress = document.getElementById("myaddress").value;
@@ -108,7 +112,7 @@ function onSubmit(){
 			   "&mycounty="+encodeURI(mycounty)+"&mystreet="+encodeURI(mystreet)+"&mycity="+encodeURI(mycity)+"&myemail="+
 			   encodeURI(myemail)+"&mynation="+encodeURI(mynation)+"&coname="+encodeURI(coname)+"&relationship="+encodeURI(relationship)+"&concellnumber="+encodeURI(concellnumber)
 			   +"&connumber="+encodeURI(connumber)+"&conaddress="+encodeURI(conaddress)+"&concity="+encodeURI(concity)+"&conpost="+encodeURI(conpost)+"&concountry="+encodeURI(concountry)+
-			   "&assessment="+encodeURI(assessment)+"&asesdate="+encodeURI(asesdate),
+			   "&assessment="+encodeURI(assessment)+"&asesdate="+encodeURI(asesdate)+"&beizhu="+beizhu,
 			   success:function (msg){
 			   		var result = msg;
 			   		if('success'==result){
@@ -251,7 +255,7 @@ function onSubmit(){
       </div>
       <div>
       金额：
-      <input type="text" id="beizhu" size="8"/>
+      <input type="text" id="beizhu" size="8" value="0"/>
       RMB</div></td>
   </tr>
   <tr>
@@ -352,7 +356,7 @@ function onSubmit(){
   <tr>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"><div align="left">7.</div></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"><div align="left">项目名称</div></td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"><input type="text"   id="mycity"/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"><input type="text" id="mycity" /><input type="button" value="选择" onclick="choosePro();"></td>
   </tr>
   <tr>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"><div align="left">8.</div></td>
@@ -391,8 +395,8 @@ function onSubmit(){
 </div>
 
 <div align="center" class="fixed_div3" id="tab3">
-<table width="100%" border="0" cellspacing="0" cellpadding="5">
-  <tr align="center">
+<table width="100%" border="0">
+  <tr align="right">
     <td>&nbsp;</td>
     <td><button onClick="onSubmit()">提交</button> 
 		<button onClick="forward('memberlist.do')">返回</button></td>
@@ -429,6 +433,28 @@ function initClass(labesindex,labeindex){
 }
 
 initClass(0,2);
+
+function choosePro(){
+    var pname = "mycity";
+    var wWidth = 1040;
+    var wHeight = 510;
+    var wTop = (window.screen.height - wHeight)/2;
+    var wLeft = (window.screen.width - wWidth)/2;
+    var obj = new Object();
+    obj.name=pname;
+    
+    var url =  basePath + "/proquery.do";
+    str = window.showModalDialog(url,obj,"dialogWidth=500px;dialogHeight=400px"); 
+    arr = str.split(",");
+    //window.open(url,"","Height=400px,Width=500px");
+    if(typeof(str)=="undefined"){
+        document.getElementById(pname).value="";
+    }else if(str=="nochange"){
+        //document.getElementById(cid).value
+    }else{
+    	document.getElementById(pname).value=arr[1];
+    }
+  }  
 </script>
 </body>
 </html>

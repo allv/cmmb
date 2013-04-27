@@ -26,7 +26,7 @@ import com.wootion.idp.common.utils.QueryResult;
 public class MemActionImpl implements MemAction ,WorkflowHandle
 {
 	private PageBasicInfo pageObj = null;
-	public memberService memservice;
+	public memberService memservice;  
 	
 	private String              nowpage       = null; // 页码
 
@@ -106,6 +106,7 @@ public class MemActionImpl implements MemAction ,WorkflowHandle
 		
 		String assessment = request.getParameter("assessment").trim();
 		String asesdate = request.getParameter("asesdate").trim();
+		String beizhu = request.getParameter("beizhu").trim();
 		
 		//UserCacheBean uc = PermissionCollection.getInstance().getUserCache(
 		//		request.getSession().getId());
@@ -114,7 +115,7 @@ public class MemActionImpl implements MemAction ,WorkflowHandle
 	    flag = memservice.saveMem(memname,  memid,
 	             memsex, creditid, birthday, culture, professor, financial, marry, kids, ways, enterdate, reside, fees,
 	              mycellnumber, mylandlinenumber, myaddress, mycounty, mystreet, mycity, myemail, mynation, coname,
-	              relationship, concellnumber, connumber, conaddress, concity, conpost, concountry,assessment,asesdate);
+	              relationship, concellnumber, connumber, conaddress, concity, conpost, concountry,assessment,asesdate,beizhu);
 	    PrintWriter out = null;
 		try {
 			out = response.getWriter();
@@ -195,7 +196,7 @@ public class MemActionImpl implements MemAction ,WorkflowHandle
 		
 		String assessment = request.getParameter("assessment").trim();
 		String asesdate = request.getParameter("asesdate").trim();
-		
+		String beizhu = request.getParameter("beizhu").trim();
 		String meminfoid = request.getParameter("meminfoid").trim();
 		//UserCacheBean uc = PermissionCollection.getInstance().getUserCache(
 		//		request.getSession().getId());
@@ -204,7 +205,7 @@ public class MemActionImpl implements MemAction ,WorkflowHandle
 	    flag = memservice.modifyMem(meminfoid,memname,  memid,
 	             memsex, creditid, birthday, culture, professor, financial, marry, kids, ways, enterdate, reside, fees,
 	              mycellnumber, mylandlinenumber, myaddress, mycounty, mystreet, mycity, myemail, mynation, coname,
-	              relationship, concellnumber, connumber, conaddress, concity, conpost, concountry,assessment,asesdate);
+	              relationship, concellnumber, connumber, conaddress, concity, conpost, concountry,assessment,asesdate,beizhu);
 	    PrintWriter out = null;
 		try {
 			out = response.getWriter();

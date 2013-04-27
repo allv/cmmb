@@ -3,15 +3,6 @@ package com.wootion.cimp.util;
 import java.util.Map;
 
 /**
- * <p>文件名称: PageBasicInfo.java</p>
- * <p>文件描述: 分页基本信息对象</p>
- * <p>版权所有: 版权所有(C)2001-2006</p>
- * <p>内容摘要: </p>
- * <p>其他说明: </p>
- * <p>完成日期： May 12, 2009</p>
- * <p>修改记录0：无</p>
- * @version 1.0
- * @author
  */
 public class PageBasicInfo
 {

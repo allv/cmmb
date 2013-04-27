@@ -7,8 +7,8 @@ import java.util.GregorianCalendar;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.wootion.idp.common.collections.PermissionCollection;
 import com.wootion.idp.common.utils.FordGlobal;
 import com.wootion.idp.service.ServiceFactroy;
 import com.wootion.idp.service.user.UserManagerService;
@@ -27,14 +27,15 @@ public class LoginUserAction extends BaseAction {
 		//	return FAILURE;
 		//}
 		UserManagerService userSerivce = ServiceFactroy.getUserService();
+		HttpSession session = request.getSession();
 		switch (userSerivce.userLogin(username, password, request.getSession()
 				.getId())) {
 		case FordGlobal.ERRORPASSWORD:
 			request.setAttribute("msg", "用户名密码不匹配，请重新输入！");
 			return FAILURE;
-		//case FordGlobal.USERLOGINED:
-		//	request.setAttribute("msg", "当前用户已经登陆，若问题，请联系管理员！");
-		//	return FAILURE;
+		case FordGlobal.USERLOGINED:
+			request.setAttribute("msg", "请先退出该机器上相同帐号，若有问题，请联系管理员！");
+			return FAILURE;
 		case FordGlobal.USERUNUSEABLE:
 			request.setAttribute("msg", "账号未审核！");
 			return FAILURE;

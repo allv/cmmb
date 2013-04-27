@@ -32,6 +32,8 @@ function onSubmit(){
 		}
 	}
 }
+
+
 </script>
 </head>
 <body>
@@ -44,7 +46,7 @@ function onSubmit(){
 <form  method="post" action="adduser.do" onSubmit="return onSubmit()">
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
 
-  <tr>
+  	<tr>
       <td colspan="2" bgcolor="#66DD00"><b>快速注册</b></td>
     </tr>
     <tr>
@@ -86,8 +88,20 @@ function onSubmit(){
       </td>
     </tr>
     
+     <tr>
+      <td align="right">所属部门</td>
+       <td>
+	      <select name="department" id="department" style="width:100px">
+	       <option value="-1">   -- 无 --  </option>
+	       <option value="0">   业务部  </option>
+	       <option value="1">   护理部  </option>
+		   <option value="2">   康复部  </option>
+	     </select>
+    </td>
+    </tr>
+    
     <tr>
-      <td align="right">联系电话</td>
+      <td align="right">手机</td>
        <td>
       <input name="linkmanTel" type="text" value="${linkmanTel}"></td>
     </tr>
@@ -105,7 +119,7 @@ function onSubmit(){
       <td align="right">角色</td>
       <td>
       <c:forEach items="${roleList }" var="role">
-	      <input type="checkbox" value="${role.wtroleId }" name="selectedRoles"/> ${role.wtroleName }
+	      <input type="checkbox" class="checkBox1" value="${role.wtroleId }" name="selectedRoles"/> ${role.wtroleName }
       </c:forEach>
       </td>
     </tr>

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>心理评估表新增</title>
+<title>心理评估表</title>
 <object id="LODOP_OB" classid="clsid:2105C259-1E0C-4534-8141-A753534CB4CA" width=0 height=0> 
 	<embed id="LODOP_EM" type="application/x-print-lodop" width=0 height=0 pluginspage="../install_lodop32.exe"></embed>
 </object>
@@ -306,20 +306,12 @@ function chooseElders(fromwhere){
     }else if(str=="nochange"){
         //nothing to do
     }else{
-        if(fromwhere=='G31'){
     		document.getElementById(mname).value=arr[1];
     		document.getElementById("memnumber").value=arr[0];
-    	}
-    	
-    	if(fromwhere=='G32'){
     		document.getElementById('a22').value=arr[1];
     		document.getElementById("a25").value=arr[0];
-        }
-    	
-    	if(fromwhere=='G33'){
     		document.getElementById('a45').value=arr[1];
     		document.getElementById('a48').value=arr[0];
-        }
     } 	
  }
 </script>
@@ -353,8 +345,8 @@ function chooseElders(fromwhere){
 		
 		LODOP.NEWPAGE();
 		//第二页
-		LODOP.ADD_PRINT_HTM(8,10,570,795,document.getElementById("div4").innerHTML);
-		LODOP.ADD_PRINT_HTM(293,10,570,995,document.getElementById("div5").innerHTML);
+		LODOP.ADD_PRINT_HTM(88,10,570,795,document.getElementById("div4").innerHTML);
+		LODOP.ADD_PRINT_HTM(373,10,570,995,document.getElementById("div5").innerHTML);
 		
 		LODOP.NEWPAGE();
 		//第三页
@@ -371,7 +363,7 @@ function chooseElders(fromwhere){
         LODOP.PRINT();
     }
 </script>
-<div class="topLanBar"><b>当前位置：</b>健康评估 > 心理评估新增</div>
+<div class="topLanBar"><b>当前位置：</b>健康评估 > 心理评估</div>
 <table width="100%">
   <tr>
     <td background="<%=basePath%>/pages/train/skins/img/lan-index.gif">&nbsp;</td>
@@ -380,7 +372,7 @@ function chooseElders(fromwhere){
 <table>
    <tr>
       <td>
-         <a href="javascript:prn1_preview()"><span style="color:blue">打印预览</span></a>,其布局风格可<a href="javascript:prn1_manage();"><span style="color:blue">打印维护</span></a>调整,或者也可以<a href="javascript:printit()"><span style="color:blue">直接打印</span></a>
+         <a href="javascript:prn1_preview()"><span style="color:blue">打印预览</span></a>,其布局风格可<a href="javascript:prn1_manage();"><span style="color:blue">打印维护</span></a>调整</a>
       </td>
    </tr>
 </table>
@@ -392,7 +384,7 @@ function chooseElders(fromwhere){
 <table width="730" border="1" style="table-layout:auto;border:solid #8B8378; border-width:1px 0px 0px 1px;">
   <tr>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="138"><span style='color:red;'>&nbsp;*</span>姓名：</td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="200"><input type="text" name="memname" id="memname" value="${health.memname}" disabled/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="200"><input type="text" name="memname" id="memname" value="${health.memname}" readonly/></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="190" rowspan="5"><div align="center">评估原因</div></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="174" rowspan="5"><div>评估类型：
       <select name="applyreason" id="applyreason">
@@ -415,7 +407,7 @@ function chooseElders(fromwhere){
   </tr>
   <tr>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"><span style='color:red;'>&nbsp;*</span>会员编号(如有)：</td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"><input type="text" name="memnumber" id="memnumber" value="${health.memnumber}"/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"><input type="text" name="memnumber" id="memnumber" value="${health.memnumber}" readonly/></td>
   </tr>
   <tr>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;">评估人员签字：</td>
@@ -459,7 +451,7 @@ function chooseElders(fromwhere){
     </select>
     分</td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;">现在是什么季节？</td>
-  </tr>j
+  </tr>
   <tr>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;">
     <select name="a3" id="a3" onclick="getprevious(this);" onchange="getvalue(this);">
@@ -729,7 +721,7 @@ function chooseElders(fromwhere){
 <table width="730" border="1" style="table-layout:auto;border:solid #8B8378; border-width:1px 0px 0px 1px;">
   <tr>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="138"><span style='color:red;'>&nbsp;*</span>姓名：</td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="200"><input type="text" name="a22" id="a22" value="${health.memname}" disabled/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="200"><input type="text" name="a22" id="a22" value="${health.memname}" readonly/></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="190" rowspan="5"><div align="center">评估原因</div></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="174" rowspan="5"><div>评估类型：
       <select name="a23" id="a23">
@@ -752,7 +744,7 @@ function chooseElders(fromwhere){
   </tr>
   <tr>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"><span style='color:red;'>&nbsp;*</span>会员编号(如有)：</td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"><input type="text" name="a25" id="a25" value="${health.memnumber}"/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"><input type="text" name="a25" id="a25" value="${health.memnumber}" readonly/></td>
   </tr>
   <tr>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;">评估人员签字：</td>
@@ -982,7 +974,7 @@ function chooseElders(fromwhere){
 <table width="730" border="1" style="table-layout:auto;border:solid #8B8378; border-width:1px 0px 0px 1px;">
   <tr>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="138"><span style='color:red;'>&nbsp;*</span>姓名：</td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="200"><input type="text" name="a45" id="a45" value="${health.memname}" disabled/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="200"><input type="text" name="a45" id="a45" value="${health.memname}" readonly/></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="190" rowspan="5"><div align="center">评估原因</div></td>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;" width="174" rowspan="5"><div>评估类型：
       <select name="a46" id="a46">
@@ -1005,7 +997,7 @@ function chooseElders(fromwhere){
   </tr>
   <tr>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"><span style='color:red;'>&nbsp;*</span>会员编号(如有)：</td>
-    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"><input type="text" name="a48" id="a48" value="${health.memnumber}"/></td>
+    <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;"><input type="text" name="a48" id="a48" value="${health.memnumber}" readonly/></td>
   </tr>
   <tr>
     <td style="border:solid #8B8378; border-width:0px 1px 1px 0px; padding:0px 0px;">评估人员签字：</td>

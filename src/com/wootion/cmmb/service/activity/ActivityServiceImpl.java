@@ -11,8 +11,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.wootion.cimp.idao.BaseDao;
+import com.wootion.cimp.vo.data.workerstatistic;
 import com.wootion.cmmb.persistenc.po.bean.Activityinfo;
-import com.wootion.cmmb.persistenc.po.bean.CareAssess;
 import com.wootion.cmmb.persistenc.po.bean.activityhistory;
 import com.wootion.cmmb.persistenc.po.bean.recoveryAssess;
 import com.wootion.idp.common.utils.QueryResult;
@@ -39,6 +39,7 @@ public class ActivityServiceImpl implements ActivityService
 	{
 		baseDao.save(ainfos);
 	}
+	
 	public QueryResult<Activityinfo> getQueryActResult(Integer index,
 			Integer maxresult, String atime, String aname,
 			String sessionID) throws ParseException {
@@ -93,8 +94,58 @@ public class ActivityServiceImpl implements ActivityService
 	             maxresult, whererjpql, lst.toArray(), map);
 	}
 	
+	
+	
+	
+	private void saveAllstaData(recoveryAssess sinfos){
+        try{
+        	String memname = sinfos.getMemname();
+        	int length = sinfos.getA303().lastIndexOf("#")-1;
+        	String[] workernames = sinfos.getA303().split("#",length+1);
+        	String[] workerdates = sinfos.getA296().split("#",length+1);
+        	//String[] durations = sinfos.getA299().split("#",length+1);
+        	//時長
+        	String[] worktimes = sinfos.getA299().split("#",length+1);
+        	String[] workcontents = sinfos.getA301().split("#",length+1);
+        	for(int i=0;i<worktimes.length-1;i++){
+        		if(workernames[i]==null||"".equals(workernames[i])){
+        			workernames[i]="#";
+        		}if(workerdates[i]==null||"".equals(workerdates[i])){
+        			workerdates[i]="#";
+        		}
+        	    if(worktimes[i]==null||"".equals(worktimes[i])){
+        	    	worktimes[i]="0";		
+        		}
+                if(memname==null||"".equals(memname)){
+                	memname="#";
+        		}
+        		workerstatistic wdata = new workerstatistic();
+        		//康复部
+        		wdata.setDepartment("2");
+        		wdata.setWorkcontent(workcontents[i]);
+        		wdata.setWorkdate(workerdates[i]);
+        		wdata.setWorkername(workernames[i]);
+        		wdata.setWorktime(Integer.parseInt(worktimes[i]));
+        		wdata.setDuration("");
+        		wdata.setMembername(memname);
+        		wdata.setCarenumber(sinfos.getRecoverynumber());
+        		wdata.setLinenumber(i);
+        		//未经确认
+        		wdata.setA1("0");
+        		wdata.setA2("0");
+        		//保存護理服務表數據到統計表中
+        		baseDao.save(wdata);
+        	}
+        	
+        }catch(Exception ee){
+        	ee.printStackTrace();
+        }	
+	}
+	
 	public String saveRecoveryAssessment(recoveryAssess sinfos) {
 		try{
+			//康复评估 没有关联会员信息,直接保存
+			saveAllstaData(sinfos);
 			baseDao.save(sinfos);
 			return "success";
 		}catch(Exception e){
@@ -135,12 +186,124 @@ public class ActivityServiceImpl implements ActivityService
 	
 	public String modifyRecoveryAssessment(recoveryAssess sinfos)throws Exception{
 		try{
+			   //filter and insert all data needed to be counted to workerstatistic 
+			    updateAllstaData(sinfos);
 				baseDao.update(sinfos);
 			} catch (Exception e) {
 				e.printStackTrace();
 				return "error";
 			}
     	return "success";
+	}
+	
+	private void updateAllstaData(recoveryAssess cs){
+		List<workerstatistic> serList = null;
+		try{
+			serList = new ArrayList<workerstatistic>();
+			serList = baseDao.find("from workerstatistic ac where ac.carenumber=?", cs.getRecoverynumber());
+			//有新增行 更新已有行 新增多出來的行
+			if(serList.size()<=cs.getA303().split("#",300).length-1){
+				for(int i=0;i<serList.size();i++){
+					updateSingleRecord(cs,serList.get(i),serList.get(i).getLinenumber());
+				}
+				//保存新增值
+				for(int j=serList.size();j<cs.getA303().split("#",300).length-1;j++){
+					workerstatistic newinstance = new workerstatistic();
+					saveSingleRecord(cs,newinstance,j);
+				}
+			}
+			
+			//有刪減行 更新已有行 刪除多余行
+			if(serList.size()>cs.getA303().split("#",300).length-1){
+				for(int i=0;i<cs.getA303().split("#",300).length;i++){
+					updateSingleRecord(cs,serList.get(i),serList.get(i).getLinenumber());
+				}
+				//刪除多余行
+				for(int j=cs.getA303().split("#",300).length-1;j<serList.size();j++){
+					deleteSingleRecord(serList.get(j));
+				}
+			}
+		}catch(Exception ee){}
+	}
+	
+	private void deleteSingleRecord(workerstatistic wdata){
+		baseDao.delete(wdata);
+	}
+	
+	private void saveSingleRecord(recoveryAssess sinfos,workerstatistic wdata,int i){
+		try{String memname = sinfos.getMemname();
+		int len = sinfos.getA303().lastIndexOf("#")-1;
+    	String[] workernames = sinfos.getA303().split("#",len+1);
+    	String[] workerdates = sinfos.getA296().split("#",len+1);
+    	//String[] durations = sinfos.getA86().split("#",len+1);
+    	//時長
+    	String[] worktimes = sinfos.getA299().split("#",len+1);
+    	String[] workcontents = sinfos.getA301().split("#",len+1);
+    		if(workernames[i]==null||"".equals(workernames[i])){
+    			workernames[i]="#";
+    		}if(workerdates[i]==null||"".equals(workerdates[i])){
+    			workerdates[i]="#";
+    		}
+    	    if(worktimes[i]==null||"".equals(worktimes[i])){
+    	    	worktimes[i]="0";		
+    		}
+            if(memname==null||"".equals(memname)){
+            	memname="#";
+    		}
+    		//康复部
+    		wdata.setDepartment("2");
+    		wdata.setWorkcontent(workcontents[i]);
+    		wdata.setWorkdate(workerdates[i]);
+    		wdata.setWorkername(workernames[i]);
+    		wdata.setWorktime(Integer.parseInt(worktimes[i]));
+    		wdata.setDuration("");
+    		wdata.setMembername(memname);
+    		wdata.setCarenumber(sinfos.getRecoverynumber());
+    		wdata.setLinenumber(i);
+    		wdata.setA1("0");
+    		wdata.setA2("0");
+    		//保存護理服務表數據到統計表中
+    		baseDao.save(wdata);
+    	
+    }catch(Exception ee){}	
+	}
+	
+	private void updateSingleRecord(recoveryAssess sinfos,workerstatistic wdata,int i){
+			try{String memname = sinfos.getMemname();
+			int len = sinfos.getA303().lastIndexOf("#")-1;
+	    	String[] workernames = sinfos.getA303().split("#",len+1);
+	    	String[] workerdates = sinfos.getA296().split("#",len+1);
+	    	//String[] durations = sinfos.getA86().split("#",len+1);
+	    	//時長
+	    	String[] worktimes = sinfos.getA299().split("#",len+1);
+	    	String[] workcontents = sinfos.getA301().split("#",len+1);
+	    		if(workernames[i]==null||"".equals(workernames[i])){
+	    			workernames[i]="#";
+	    		}if(workerdates[i]==null||"".equals(workerdates[i])){
+	    			workerdates[i]="#";
+	    		}
+	    	    if(worktimes[i]==null||"".equals(worktimes[i])){
+	    	    	worktimes[i]="0";		
+	    		}
+	            if(memname==null||"".equals(memname)){
+	            	memname="#";
+	    		}
+	    		//康复部
+	    		wdata.setDepartment("2");
+	    		wdata.setWorkcontent(workcontents[i]);
+	    		wdata.setWorkdate(workerdates[i]);
+	    		wdata.setWorkername(workernames[i]);
+	    		wdata.setWorktime(Integer.parseInt(worktimes[i]));
+	    		wdata.setDuration("");
+	    		wdata.setMembername(memname);
+	    		wdata.setCarenumber(sinfos.getRecoverynumber());
+	    		wdata.setLinenumber(i);
+	    		wdata.setA1(wdata.getA1());
+	    		wdata.setA2(wdata.getA2());
+	    		//保存護理服務表數據到統計表中
+	    		baseDao.update(wdata);
+	    	
+	    }catch(Exception ee){}	
 	}
 	
 	public boolean deleActivityinfo(String anumber) throws Exception {

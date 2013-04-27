@@ -51,6 +51,7 @@
       <th nowrap>账号</th>
       <th nowrap>姓名</th>
       <th nowrap>注册时间</th>
+      <th nowrap>所属部门</th>
       <th nowrap>用户状态</th>
       <th nowrap>操作</th>
     </tr>
@@ -61,6 +62,7 @@
 	      <td align="center" nowrap bgcolor="#CBD7ED">${fuser.corpName}</td>
 	      <td align="center" nowrap bgcolor="#CBD7ED">
 	      <fmt:formatDate value="${fuser.wtuserCreatetime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+	      <td align="center" nowrap bgcolor="#CBD7ED">${fuser.department == 0?"业务部":fuser.department == 1?"护理部":"康复部"}</td>
 	      <td align="center" nowrap bgcolor="#CBD7ED"><b>
 				${fuser.wtuserIsuseable == 0 ? "<font>停用</font>" : "激活"}</b></td>
 	      <td align="center" nowrap bgcolor="#CBD7ED">

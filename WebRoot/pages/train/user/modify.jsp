@@ -64,6 +64,18 @@ function onSubmit(){
       </td>
     </tr>
     
+      <tr>
+      <td align="right">所属部门</td>
+       <td>
+	      <select name="department" id="department" style="width:100px">
+	      <option value="-1" ${user.department == -1 ? "selected" : ""}>   无  </option>
+	       <option value="0" ${user.department == 0 ? "selected" : ""}>   业务部  </option>
+	       <option value="1" ${user.department == 1 ? "selected" : ""}>   护理部  </option>
+		   <option value="2" ${user.department == 2 ? "selected" : ""}>   康复部  </option>
+	     </select>
+    </td>
+    </tr>
+    
     <tr>
       <td align="right">手机</td>
        <td>
@@ -83,7 +95,7 @@ function onSubmit(){
       <td align="right">角色</td>
       <td>
       <c:forEach items="${allRoles }" var="role">
-	      <input type="checkbox" value="${role.role.wtroleId }" name="selectedRoles" <c:if test="${role.checked }">checked</c:if> /> ${role.role.wtroleName }
+	      <input type="checkbox" class="checkBox1" value="${role.role.wtroleId }" name="selectedRoles" <c:if test="${role.checked }">checked</c:if> /> ${role.role.wtroleName }
       </c:forEach>
       </td>
     </tr>
@@ -91,8 +103,6 @@ function onSubmit(){
       <td align="right">工作职责简介</td>
       <td><textarea name="corpNote" cols="58" rows="4">${user.corpNote}</textarea></td>
     </tr>
-    
-   		
 			<tr>
 				<td align="right">
 					&nbsp;

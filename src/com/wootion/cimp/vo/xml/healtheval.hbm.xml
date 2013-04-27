@@ -181,7 +181,7 @@
         <property name="a44" type="java.lang.String">
             <column name="a44" length="32" />
         </property>
-        <property name="a45" type="java.lang.String">
+        <property name="a45" type="java.lang.Integer">
             <column name="a45" length="32"  />
         </property>
         <property name="a46" type="java.lang.String">

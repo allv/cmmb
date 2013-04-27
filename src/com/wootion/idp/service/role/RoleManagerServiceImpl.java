@@ -169,14 +169,16 @@ public class RoleManagerServiceImpl extends BaseServiceImpl implements
 		List<Wtrolefunrelationship> lstRF = new ArrayList<Wtrolefunrelationship>();
 		String[] tempFun = funs.split(",");
 		for (int i = 0; i < tempFun.length; i++) {
-			Wtrolefunrelationship rf = new Wtrolefunrelationship();
-			rf.setWtrolefunId(EntityIDFactory.getBeanID());
-			rf.setWtrole(wtrole);
-
-			Wtfunction fun = new Wtfunction();
-			fun.setWtfunctionId(Long.parseLong(tempFun[i]));
-			rf.setWtfunction(fun);
-			lstRF.add(rf);
+			if(StringUtils.isNotEmpty(tempFun[i])) {
+				Wtrolefunrelationship rf = new Wtrolefunrelationship();
+				rf.setWtrolefunId(EntityIDFactory.getBeanID());
+				rf.setWtrole(wtrole);
+				
+				Wtfunction fun = new Wtfunction();
+				fun.setWtfunctionId(Long.parseLong(tempFun[i]));
+				rf.setWtfunction(fun);
+				lstRF.add(rf);
+			}
 		}
 
 		List<Wtpermission> lstPer = new ArrayList<Wtpermission>();
@@ -321,8 +323,9 @@ public class RoleManagerServiceImpl extends BaseServiceImpl implements
 	public List<Wtuser> getRoleUsers(Long roleid) {
 		List<Wtuser> result = new ArrayList<Wtuser>();
 		Wtrole role = (Wtrole) commonDao.getObject(Wtrole.class, roleid);
-		if (role == null)
+		if (role == null || !role.checkAvailable()) {
 			return result;
+		}
 		Set<WtUserRoleRelationship> wtUserRoleRelationships = role
 				.getWtUserRoleRelationships();
 		for (WtUserRoleRelationship relation : wtUserRoleRelationships) {
@@ -361,6 +364,7 @@ public class RoleManagerServiceImpl extends BaseServiceImpl implements
 		Wtrole role = (Wtrole) this.getObjectByID(Wtrole.class, roleid);
 		if (role == null)
 			return false;
+		role.getForms().clear();
 		if (selecteForms != null) {
 			role.getForms().clear();
 			for (String formid : selecteForms) {

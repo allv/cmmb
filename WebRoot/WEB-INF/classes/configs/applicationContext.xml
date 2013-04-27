@@ -14,9 +14,9 @@
 
 	<!-- Local C3P0 DataSource that works in any environment -->
 	<!-- See JPetStore for an example of using Apache Commons DBCP as alternative -->
-	<!-- (Both DataSource implementations have a "close" method to be called 
-		on shutdown) -->
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+	<!-- (Both DataSource implementations have a "close" method to be called on shutdown) -->
+	<bean id="dataSource"
+		class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
 		<property name="driverClass" value="${jdbc.driverClassName}" />
 		<property name="jdbcUrl" value="${jdbc.url}" />
@@ -45,7 +45,8 @@
 			</list>
 		</property>
 	</bean>
-	<bean id="commondao" class="com.wootion.idp.persistence.dao.CommonDaoHibernate">
+	<bean id="commondao"
+		class="com.wootion.idp.persistence.dao.CommonDaoHibernate">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<!-- 配置事务管理器 -->
@@ -55,7 +56,7 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	<!-- service manager 本处采用继承的方式进行事务管理，且只限定对服务层的(接口处)事务管理，其他服务层应该继承该bean -->
+	<!-- service manager 本处采用继承的方式进行事务管理，且只限定对服务层的(接口处)事务管理，其他服务层应该继承该bean-->
 	<bean id="txProxyTemplate" abstract="true"
 		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
 		<property name="transactionManager" ref="transactionManager" />
@@ -78,7 +79,8 @@
 
 	<bean id="commonservice" parent="txProxyTemplate">
 		<property name="target">
-			<bean class="com.wootion.idp.service.CommonServiceImpl">
+			<bean
+				class="com.wootion.idp.service.CommonServiceImpl">
 				<property name="commondao" ref="commondao" />
 			</bean>
 		</property>
@@ -91,7 +93,8 @@
 	</bean>
 	<bean id="usermanagerservice" parent="txProxyTemplate">
 		<property name="target">
-			<bean class="com.wootion.idp.service.user.UserManagerServiceImpl">
+			<bean
+				class="com.wootion.idp.service.user.UserManagerServiceImpl">
 				<property name="commonDao" ref="commondao" />
 				<property name="managerDAO" ref="usermanagerdao" />
 			</bean>
@@ -102,14 +105,16 @@
 		class="com.wootion.idp.persistence.dao.role.RoleManagerDAOHibernate">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-
-	<bean id="roleDAO" class="com.wootion.idp.persistence.dao.role.RoleDAO">
+	
+	<bean id="roleDAO"
+		class="com.wootion.idp.persistence.dao.role.RoleDAO">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-
+	
 	<bean id="rolemanageservice" parent="txProxyTemplate">
 		<property name="target">
-			<bean class="com.wootion.idp.service.role.RoleManagerServiceImpl">
+			<bean
+				class="com.wootion.idp.service.role.RoleManagerServiceImpl">
 				<property name="commonDao" ref="commondao" />
 				<property name="managerDAO" ref="rolemanagedao" />
 				<property name="userDAO" ref="usermanagerdao" />
@@ -124,7 +129,8 @@
 	</bean>
 	<bean id="functionmanagerservice" parent="txProxyTemplate">
 		<property name="target">
-			<bean class="com.wootion.idp.service.function.FunctionManagerServiceImpl">
+			<bean
+				class="com.wootion.idp.service.function.FunctionManagerServiceImpl">
 				<property name="commonDao" ref="commondao" />
 				<property name="managerDAO" ref="functionmanagerdao" />
 			</bean>
@@ -137,11 +143,12 @@
 	</bean>
 	<bean id="resourcemanageservice" parent="txProxyTemplate">
 		<property name="target">
-			<bean class="com.wootion.idp.service.resource.ResourceManagerServiceImpl">
+			<bean
+				class="com.wootion.idp.service.resource.ResourceManagerServiceImpl">
 				<property name="commonDao" ref="commondao" />
 				<property name="managerDAO" ref="resourcemanagerdao" />
 			</bean>
 		</property>
 	</bean>
-	
+
 </beans>

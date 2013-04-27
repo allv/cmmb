@@ -9,10 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <link href="<%=basePath%>/pages/train/skins/css/common.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=basePath%>/js/md5.js"></script>
-<!-- 
 <script type="text/javascript" src="<%=basePath%>/js/jquery-1.3.2.min.js"></script>
- -->
-<script type="text/javascript" src="<%=basePath%>/js/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>/pages/train/js/check.js"></script>
 <script type="text/javascript" src="<%=basePath%>/pages/train/js/LodopFuncs.js"></script>
 <script type="text/javascript" src="<%=basePath%>/js/My97DatePicker/WdatePicker.js"></script>

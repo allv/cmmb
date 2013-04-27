@@ -51,8 +51,8 @@
             <column name="enterdate" length="32"/>
         </property>
         
-        <property name="beizhu" type="java.lang.String">
-            <column name="beizhu" length="200"/>
+        <property name="beizhu" type="java.lang.Integer">
+            <column name="beizhu" length="20"/>
         </property>
         
         <property name="reside" type="java.lang.String">
