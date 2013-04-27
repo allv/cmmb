@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.wootion.cmmb.persistenc.po.bean.evaluationforbusiness" table="evaluationforbusiness">
+		<id name="evaluationid" type="java.lang.String">
+			<column name="evaluationid" length="32"/>
+			<generator class="uuid.hex" />
+		</id>
+		<property name="evaluationnumber" type="java.lang.String">
+			<column name="evaluationnumber" length="50"/>
+		</property>
+		<property name="evalname" type="java.lang.String">
+			<column name="evalname" length="32"/>
+		</property>
+		<property name="evaldate" type="java.lang.String">
+			<column name="evaldate" length="32"/>
+		</property>
+		<property name="a1" type="java.lang.Integer">
+			<column name="a1"  length="10"/>
+		</property>
+		<property name="a2" type="java.lang.Integer">
+			<column name="a2" length="10" />
+		</property>
+		<property name="a3" type="java.lang.Integer">
+			<column name="a3" length="10" />
+		</property>
+		<property name="a4" type="java.lang.Integer">
+			<column name="a4" length="10" />
+		</property>
+		<property name="a5" type="java.lang.Integer">
+			<column name="a5" length="10" />
+		</property>
+		<property name="a6" type="java.lang.Integer">
+			<column name="a6" length="10" />
+		</property>
+		<property name="a7" type="java.lang.Integer">
+			<column name="a7" length="10" />
+		</property>
+		<property name="a8" type="java.lang.Integer">
+			<column name="a8" length="10" />
+		</property>
+		<property name="a9" type="java.lang.Integer">
+			<column name="a9" length="10" />
+		</property>
+		<property name="a10" type="java.lang.Integer">
+			<column name="a10" length="10" />
+		</property>
+		<property name="a11" type="java.lang.Integer">
+			<column name="a11" length="10" />
+		</property>
+		<property name="a12" type="java.lang.Integer">
+			<column name="a12" length="10" />
+		</property>
+		<property name="a13" type="java.lang.Integer">
+			<column name="a13" length="10" />
+		</property>
+		<property name="a14" type="java.lang.Integer">
+			<column name="a14" length="10" />
+		</property>
+		<property name="a15" type="java.lang.Integer">
+			<column name="a15" length="10" />
+		</property>
+		<property name="a16" type="java.lang.Integer">
+			<column name="a16" length="10" />
+		</property>
+		<property name="a17" type="java.lang.Integer">
+			<column name="a17" length="10" />
+		</property>
+		<property name="a18" type="java.lang.Integer">
+			<column name="a18" length="10" />
+		</property>
+		<property name="a19" type="java.lang.Integer">
+			<column name="a19" length="10" />
+		</property>
+		<property name="a20" type="java.lang.Integer">
+			<column name="a20" length="10" />
+		</property>
+		<property name="a21" type="java.lang.Integer">
+			<column name="a21" length="10" />
+		</property>
+		<property name="a22" type="java.lang.Integer">
+			<column name="a22" length="10" />
+		</property>
+		<property name="a23" type="java.lang.Integer">
+			<column name="a23" length="10" />
+		</property>
+		<property name="a24" type="java.lang.Integer">
+			<column name="a24" length="10" />
+		</property>
+		<property name="a25" type="java.lang.Integer">
+			<column name="a25" length="10" />
+		</property>
+		<property name="a26" type="java.lang.Integer">
+			<column name="a26" length="10" />
+		</property>
+		<property name="a27" type="java.lang.Integer">
+			<column name="a27" length="10" />
+		</property>
+		<property name="a28" type="java.lang.Integer">
+			<column name="a28" length="10" />
+		</property>
+		<property name="a29" type="java.lang.Integer">
+			<column name="a29" length="10" />
+		</property>
+		<property name="a30" type="java.lang.Integer">
+			<column name="a30" length="10" />
+		</property>
+		<property name="a31" type="java.lang.Integer">
+			<column name="a31" length="10" />
+		</property>
+		<property name="a32" type="java.lang.Integer">
+			<column name="a32" length="10" />
+		</property>
+		<property name="a33" type="java.lang.Integer">
+			<column name="a33" length="10" />
+		</property>
+		<property name="a34" type="java.lang.Integer">
+			<column name="a34" length="10" />
+		</property>
+		<property name="a35" type="java.lang.Integer">
+			<column name="a35" length="10" />
+		</property>
+		<property name="a36" type="java.lang.Integer">
+			<column name="a36" length="10" />
+		</property>
+		<property name="a37" type="java.lang.Integer">
+			<column name="a37" length="10" />
+		</property>
+		<property name="a38" type="java.lang.Integer">
+			<column name="a38" length="10" />
+		</property>
+		<property name="a39" type="java.lang.Integer">
+			<column name="a39" length="10" />
+		</property>
+		<property name="a40" type="java.lang.Integer">
+			<column name="a40" length="10" />
+		</property>
+		<property name="a41" type="java.lang.Integer">
+			<column name="a41" length="10" />
+		</property>
+		<property name="a42" type="java.lang.Integer">
+			<column name="a42" length="10" />
+		</property>
+		<property name="a43" type="java.lang.Integer">
+			<column name="a43" length="10" />
+		</property>
+		<property name="a44" type="java.lang.Integer">
+			<column name="a44" length="10" />
+		</property>
+		<property name="a45" type="java.lang.Integer">
+			<column name="a45" length="10" />
+		</property>
+		<property name="a46" type="java.lang.Integer">
+			<column name="a46" length="10" />
+		</property>
+		<property name="a47" type="java.lang.Integer">
+			<column name="a47" length="10" />
+		</property>
+		<property name="a48" type="java.lang.Integer">
+			<column name="a48" length="10" />
+		</property>
+		<property name="a49" type="java.lang.Integer">
+			<column name="a49" length="10" />
+		</property>
+		<property name="a50" type="java.lang.Integer">
+			<column name="a50" length="10" />
+		</property>
+		<property name="a51" type="java.lang.Integer">
+			<column name="a51" length="10" />
+		</property>
+		<property name="a52" type="java.lang.Integer">
+			<column name="a52" length="10" />
+		</property>
+		<property name="a53" type="java.lang.Integer">
+			<column name="a53" length="10" />
+		</property>
+		<property name="a54" type="java.lang.Integer">
+			<column name="a54" length="10" />
+		</property>
+		<property name="a55" type="java.lang.Integer">
+			<column name="a55" length="10" />
+		</property>
+		<property name="a56" type="java.lang.Integer">
+			<column name="a56" length="10" />
+		</property>
+		<property name="a57" type="java.lang.Integer">
+			<column name="a57" length="10" />
+		</property>
+		<property name="a58" type="java.lang.Integer">
+			<column name="a58" length="10" />
+		</property>
+		<property name="a59" type="java.lang.Integer">
+			<column name="a59" length="10" />
+		</property>
+		<property name="a60" type="java.lang.Integer">
+			<column name="a60" length="10" />
+		</property>
+		<property name="a61" type="java.lang.Integer">
+			<column name="a61" length="10" />
+		</property>
+		<property name="a62" type="java.lang.Integer">
+			<column name="a62" length="10" />
+		</property>
+		<property name="a63" type="java.lang.Integer">
+			<column name="a63" length="10" />
+		</property>
+		<property name="a64" type="java.lang.Integer">
+			<column name="a64" length="10" />
+		</property>
+		<property name="a65" type="java.lang.Integer">
+			<column name="a65" length="10" />
+		</property>
+		<property name="a66" type="java.lang.Integer">
+			<column name="a66" length="10" />
+		</property>
+		<property name="a67" type="java.lang.Integer">
+			<column name="a67" length="10" />
+		</property>
+		<property name="a68" type="java.lang.Integer">
+			<column name="a68" length="10" />
+		</property>
+		<property name="a69" type="java.lang.Integer">
+			<column name="a69" length="10" />
+		</property>
+		<property name="a70" type="java.lang.Integer">
+			<column name="a70" length="10" />
+		</property>
+		<property name="a71" type="java.lang.Integer">
+			<column name="a71" length="10" />
+		</property>
+		<property name="a72" type="java.lang.Integer">
+			<column name="a72" length="10" />
+		</property>
+		<property name="a73" type="java.lang.Integer">
+			<column name="a73" length="10" />
+		</property>
+		<property name="a74" type="java.lang.Integer">
+			<column name="a74" length="10" />
+		</property>
+		<property name="a75" type="java.lang.Integer">
+			<column name="a75" length="10" />
+		</property>
+		<property name="a76" type="java.lang.Integer">
+			<column name="a76" length="10" />
+		</property>
+		<property name="a77" type="java.lang.Integer">
+			<column name="a77" length="10" />
+		</property>
+		<property name="a78" type="java.lang.Integer">
+			<column name="a78" length="10" />
+		</property>
+		
+		<!-- back up -->
+		<property name="a79" type="java.lang.Integer">
+			<column name="a79" length="10" />
+		</property>
+		
+		<property name="a80" type="java.lang.String">
+			<column name="a80" length="100" />
+		</property>
+		<property name="a81" type="java.lang.String">
+			<column name="a81" length="100" />
+		</property>
+		<property name="a82" type="java.lang.String">
+			<column name="a82" length="100" />
+		</property>
+		<property name="a83" type="java.lang.String">
+			<column name="a83" length="100" />
+		</property>
+		<property name="a84" type="java.lang.String">
+			<column name="a84" length="100" />
+		</property>
+		<property name="a85" type="java.lang.String">
+			<column name="a85" length="100" />
+		</property>
+	</class>
+</hibernate-mapping>

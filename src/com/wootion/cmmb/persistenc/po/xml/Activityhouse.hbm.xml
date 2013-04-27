@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.wootion.cmmb.persistenc.po.bean.Activityhouse" table="Activityhouse">
+		<id name="ahid" type="java.lang.String">
+			<column name="ahid" length="32"/>
+			<generator class="uuid.hex" />
+		</id>
+		<property name="ahnum" type="java.lang.String">
+			<column name="ahnum" length="50"/>
+		</property>
+		<property name="ahplan" type="java.lang.String">
+			<column name="ahplan" length="32"/>
+		</property>
+		<property name="ahmanager" type="java.lang.String">
+			<column name="ahmanager" length="32"/>
+		</property>
+		<property name="ahvolunteer" type="java.lang.String">
+			<column name="ahvolunteer"  length="100"/>
+		</property>
+		<property name="ahtotalnum" type="java.lang.Integer">
+			<column name="ahtotalnum" length="10" />
+		</property>
+		<property name="ahtotalpeo" type="java.lang.Integer">
+			<column name="ahtotalpeo" length="10" />
+		</property>
+		<property name="activitynum" type="java.lang.String">
+			<column name="activitynum" length="300" />
+		</property>
+		<property name="activitypeonum" type="java.lang.String">
+			<column name="activitypeonum" length="300" />
+		</property>
+		<property name="activitydate" type="java.lang.String">
+			<column name="activitydate" length="500" />
+		</property>
+		<property name="activitybak" type="java.lang.String">
+			<column name="activitybak" length="1000" />
+		</property>
+		<property name="ahservicename" type="java.lang.String">
+			<column name="ahservicename" length="300" />
+		</property>
+		
+		<property name="ahservicestart" type="java.lang.String">
+			<column name="ahservicestart" length="300" />
+		</property>
+		
+		<property name="ahserviceend" type="java.lang.String">
+			<column name="ahserviceend" length="300" />
+		</property>
+		
+		<property name="ahservicestop" type="java.lang.String">
+			<column name="ahservicestop" length="400" />
+		</property>
+		
+	    <property name="arrange1" type="java.lang.String">
+			<column name="arrange1" length="400" />
+		</property>
+		<property name="arrange2" type="java.lang.String">
+			<column name="arrange2" length="400" />
+		</property>
+		<property name="arrange3" type="java.lang.String">
+			<column name="arrange3" length="400" />
+		</property>
+		<property name="arrange4" type="java.lang.String">
+			<column name="arrange4" length="400" />
+		</property>
+		<property name="arrange5" type="java.lang.String">
+			<column name="arrange5" length="400" />
+		</property>
+		
+		<property name="a1" type="java.lang.String">
+			<column name="a1" length="100" />
+		</property>
+		
+		<property name="a2" type="java.lang.String">
+			<column name="a2" length="100" />
+		</property>
+		
+		<property name="a3" type="java.lang.String">
+			<column name="a3" length="100" />
+		</property>
+		<property name="a4" type="java.lang.String">
+			<column name="a4" length="100" />
+		</property>
+		
+		<property name="a5" type="java.lang.String">
+			<column name="a5" length="500" />
+		</property>
+		
+		<property name="a6" type="java.lang.String">
+			<column name="a6" length="500" />
+		</property>
+	</class>
+</hibernate-mapping>
